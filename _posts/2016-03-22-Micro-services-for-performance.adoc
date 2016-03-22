@@ -5,6 +5,10 @@
 
 Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved?
 
+== Component testability and consistency
+
+Once you have assembled a large system, it can be hard to impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently can help the consistency of your system end to end.
+
 == The UNIX Philosophy
 
 Many of the key concepts of Micro-services have been used in distributed systems for many years.  
