@@ -2,7 +2,7 @@
 
 == Overview
 
-Micro-services is a buzz word at the moment. Is it really something orginal or based on established best practices. There are some disadvantages to the way micro-services have been implemented but can these be solved?
+Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved?
 
 == The UNIX Philosophy
 
@@ -45,7 +45,7 @@ There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages] t
 * Too-fine-grained microservices have been criticized as an anti-pattern
 ""
 
-But can we get the best features of a monolith, and micro-services. Does it have to be one or the other.  Should be not use the approach which best suits our problem.  One of the key aspect of Micro-services is controlled deployment of an application. In which case shouldn't we be able to deploy components as a Monolith or Micro-services where it makes the most sense to do so.
+Can we get the best features of a monolith, and micro-services? Does it have to be one or the other?  Should we not use the approach which best suits our problem.  One of the key aspects of Micro-services is controlled deployment of an application. In which case, shouldn't we be able to deploy components as a Monolith or Micro-services where it makes the most sense to do so.
 
 ""
 Proposed alternatives to nanoservices include:[21]
@@ -59,11 +59,11 @@ Proposed alternatives to nanoservices include:[21]
 
 == Make your components composable
 
-If your components are composable, they are always the right size.  You can combine them as needed into a service, or everything into one service.
+If your components are composable, they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.
 
-This is partcularly important for testing.  You need to know a group of components work together without the infrstructure getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.
+This is particularly important for testing and debugging.  You need to know a group of components work together without the infrastructure getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.
 
-Only once your components work together correctly without infrstructure, do you need to test how they behave with infrastructure.
+Only once your components work together correctly without infrastructure, do you need to test how they behave with infrastructure.
 
 == Make your infrastructure as fast as your application needs.
 
@@ -71,16 +71,16 @@ Low latency trading systems are distributed systems, and yet they also have very
 
 The keys to achieving low latencies are
 
-* low infrastructure latencies for messaging and logging. Ideally around a 1 micro-second.
+* low latency infrastructure for messaging and logging. Ideally around a 1 micro-second for short messages.
 * a minimum of network hops.
-* a high level of reproducability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies.
-* viewing each CPU core as having a specific task/service, with it's own CPU cache local data and code. The focus is on the distribution of your application between cores (rather than between computers)
+* a high level of reproduce-ability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies.
+* viewing each CPU core as having a specific task/service, with it's own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers)
 
 Your L2 cache coherence bus is your messaging layer between high performance services.
 
 image::L2-Cache-Coherence-small.jpg[L2 Cache, 230, link="http://slideplayer.com/slide/3348635/"]
 
-On a hashwell processor you can perform a CAS operation on the same data between two difference cores, where each thread toggles the value set by the other thread with a rount trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.
+You can perform a CAS operation on the same data between two difference cores, where each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.
 
 Examples of low latency instructure in Java are
 
@@ -91,24 +91,24 @@ These transports have different advantages in terms of handling load balancing a
 
 == Make the message format a configuration consideration.
 
-There is number of compeating concerns in message formats. You want
+There is a number of competing concerns in message formats. You want
 
 * Human readability so you can validate the messages are not just behaving correctly but doing so in the manner you expect.  I am often surprised how many issues I find by dumping a storage file or the message logs.
-* Binary format for speed.
+* Machine friendly binary format for speed.
 * Flexability in terms of future schema changes. Flexability means adding redundancy so the software can cope with adding/removing fields and changing their data types in future. This redundancy is a waste if you don't need it.
 
-Ideally, the best option is one you can choose at testing/deployment time.
+Ideally, you can choose the best option at testing/deployment time.
 
 Some examples of serializations libraries where you can change the actual wire format to suit your needs are
 
 * https://github.com/FasterXML/jackson-core[Jackson Speaming API] which support JSON, XML, CSV, CBOR (a binary format)
 * https://github.com/OpenHFT/Chronicle-Wire[Chronicle Wire] which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.
 
-What I found useful in http://www.yaml.org/spec/1.2/spec.html[YAML] verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language and the natrual support for types, comments and messages.
+What I found useful in http://www.yaml.org/spec/1.2/spec.html[YAML] verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators
 
 == Conclusion
 
-I think there is a lot of good ideas on how to use micro services, and I think many of the critisms around them are based on how they have been implemented and I believe they are solvable.
+I think there is a lot of good ideas on how to use micro services, and I think many of the criticisms around them are based on how they have been implemented and I believe they are solvable.
 
 
 
