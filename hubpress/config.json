@@ -6,5 +6,11 @@
   },
   "theme": {
     "name": "Casper-1.2.8"
+  },
+  "socialnetwork": {
+    "twitter": "PeterLawrey",
+    "github": "peter-lawrey",
+    "googleplus": "PeterLawrey",
+    "linkedin": "peterlawrey"
   }
 }
