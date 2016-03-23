@@ -7,7 +7,7 @@ Microservices is a buzz word at the moment. Is it really something original or b
 
 == Component testability and consistency
 
-Once you have assembled a large system, it can be hard to impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently can help the consistency of your system end to end.
+Once you have assembled a large system, it can be hard to impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently and be tested stand alone can help you achieve the the consistency of your system needs end to end.
 
 == The UNIX Philosophy
 
