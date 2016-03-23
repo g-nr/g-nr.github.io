@@ -1,0 +1,130 @@
+= Microservices in the Chronicle world - Part 1
+:hp-tags: microservices, examples
+
+At a high level, Microservices have a lot in common.  They subscribe to the same ideals.
+When it comes to the details of how they are actually implemented, they can vary.
+
+Microservices in the Chronicle world are designed around
+
+* simplicity, simple is fast, flexiable and easier to maintain.
+* transparent, you can't control what you don't understand.
+* reproducablity, must be in your design to ensure a quality solution.
+
+=== What do we mean by simple?
+
+A key part of the microservices design is how messages are passed between services/components. The simplest messages could be called *asynchronous method calls*.
+
+An asynchronous method call is one which
+
+* doesn't return anything.
+* doesn't alter it's arguments.
+* doesn't throw any exceptions. (Although the underlying transport could)
+
+The reason this approach is used, is that the simplest transport is no transport at all.  One component calls another.  This is not only fast (with inlining might not take any time at all), but it is simple to setup, debug and profile.  For most unit tests you don't need a real transport so there is no advantage in making the test more complicated than it need to be.
+
+=== Lets look at an example
+
+Say we have a service/component which is taking incremental market data updates. In the simplest case, this could be a market update with only one side, a buy or a sell.  The component could transform this into a full market update combining both the buy and sell price and quantity.
+
+.Our inbound data structure
+[source, java]
+----
+public class SidedPrice extends AbstractMarshallable {
+    String symbol;
+    long timestamp;
+    Side side;
+    double price, quantity;
+
+    public SidedPrice(String symbol, long timestamp, Side side, double price, double quantity) {
+        this.symbol = symbol;
+        this.timestamp = timestamp;
+        this.side = side;
+        this.price = price;
+        this.quantity = quantity;
+    }
+}
+----
+
+.Our outbound data structure
+[source, java]
+----
+public class TopOfBookPrice extends AbstractMarshallable {
+    String symbol;
+    long timestamp;
+    double buyPrice, buyQuantity;
+    double sellPrice, sellQuantity;
+
+    public TopOfBookPrice(String symbol, long timestamp, double buyPrice, double buyQuantity, double sellPrice, double sellQuantity) {
+        this.symbol = symbol;
+        this.timestamp = timestamp;
+        this.buyPrice = buyPrice;
+        this.buyQuantity = buyQuantity;
+        this.sellPrice = sellPrice;
+        this.sellQuantity = sellQuantity;
+    }
+    
+    // more methods <1>
+}
+----
+<1> For the complete code https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/TopOfBookPrice.java[TopOfBookPrice.java]
+
+The component which takes one sided prices could have an interface
+
+[source, java]
+----
+public interface SidedMarketDataListener {
+    void onSidedPrice(SidedPrice sidedPrice);
+}
+----
+
+and it's output also has one method
+
+[source, java]
+----
+public interface MarketDataListener {
+    void onTopOfBookPrice(TopOfBookPrice price);
+}
+----
+
+=== What does our microservice look like?
+
+At a high level, the combiner is very simple
+
+[source, java]
+----
+public class SidedMarketDataCombiner implements SidedMarketDataListener {
+    final MarketDataListener mdListener;
+    final Map<String, TopOfBookPrice> priceMap = new TreeMap<>();
+
+    public SidedMarketDataCombiner(MarketDataListener mdListener) {
+        this.mdListener = mdListener;
+    }
+
+    public void onSidedPrice(SidedPrice sidedPrice) {
+        TopOfBookPrice price = priceMap.computeIfAbsent(sidedPrice.symbol, TopOfBookPrice::new);
+        if (price.combine(sidedPrice))
+            mdListener.onTopOfBookPrice(price);
+    }
+}
+----
+
+It implements our input interface and take the output interface as a listener.
+
+=== Testing our component
+
+TBD
+
+=== Mocking our component
+
+TBD
+
+=== Performance testing our component
+
+TBD
+
+=== Source for examples
+
+https://github.com/Vanilla-Java/Microservices/tree/master/src/main/java/net/openhft/samples/microservices
+
+
+
