@@ -302,7 +302,7 @@ b.button:after { content: "]"; padding: 0 2px 0 3px; }
 #header br + span.author { padding-left: 0; }
 #header br + span.author:before { content: ", "; }
 
-#toc { border-bottom: 1px solid #dddddd; padding-top: 1em; padding-bottom: 1.25em; }
+#toc { border-bottom: 1px solid #dddddd; padding-top: 1em; padding-bottom: 0.75em; }
 #toc > ul { margin-left: 0.25em; }
 #toc ul.sectlevel0 > li > a { font-style: italic; }
 #toc ul.sectlevel0 ul.sectlevel1 { margin-left: 0; margin-top: 0.5em; margin-bottom: 0.5em; }
@@ -336,7 +336,7 @@ b.button:after { content: "]"; padding: 0 2px 0 3px; }
 
 #footer-text { color: #dddddd; line-height: 1.44; }
 
-.sect1 { padding-bottom: 1.25em; }
+.sect1 { padding-bottom: 0.8em; }
 
 .sect1 + .sect1 { border-top: 1px solid #dddddd; }
 
