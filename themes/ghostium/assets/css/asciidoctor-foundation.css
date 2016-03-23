@@ -173,8 +173,8 @@ p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6, pre, form, p, blockquote, th, td { margin: 0; padding: 0; direction: ltr; }
 
 /* Default Link Styles */
-a { color: #2ba6cb; text-decoration: none; line-height: inherit; }
-a:hover, a:focus { color: #2795b6; }
+a { color: #007cc3; text-decoration: none; line-height: inherit; }
+a:hover, a:focus { color: #277cc3; }
 a img { border: none; }
 
 /* Default paragraph styles */
