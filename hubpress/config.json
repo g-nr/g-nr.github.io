@@ -7,10 +7,18 @@
   "theme": {
     "name": "Casper-1.2.8"
   },
+  "site": {
+    "title": "Vanilla Java",
+    "logo": "https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg",
+    "postsPerPage": "10",
+    "googleAnalytics": "UA-XXXXX-1",
+    "disqus": "peter-lawrey",
+    "url": "http://blog.hubpress.io"
+  },
   "socialnetwork": {
-    "twitter": "PeterLawrey",
-    "github": "peter-lawrey",
-    "googleplus": "PeterLawrey",
-    "linkedin": "peterlawrey"
+    "twitter": "https://twitter.com/PeterLawrey",
+    "github": "https://github.com/peter-lawrey",
+    "googleplus": "https://plus.google.com/u/0/+PeterLawrey",
+    "linkedin": "https://www.linkedin.com/in/peterlawrey"
   }
 }
