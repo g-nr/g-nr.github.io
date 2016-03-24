@@ -51,8 +51,9 @@ OrderIdeaListener orderManager = queue.createAppender()
                                       .methodWriter(OrderIdeaListener.class, MarketDataListener.class);
 ----
 
-Our combiner write to this queue, as does our test
+Our combiner writes to this queue, as does our test
 
+.The SidedPrice combiner
 [source, java]
 ----
 SidedMarketDataCombiner combiner = new SidedMarketDataCombiner((MarketDataListener) orderManager);
@@ -180,13 +181,15 @@ onOrderIdea: {
 # 83885299 bytes remaining
 ----
 
+To run the test and dump the queue in my IDE took 233 ms.
+
 == Conclusion
 
 We can test components stand alone with queue or in a chain by using more queues. More importantly we can test our components without the infrstructure complicating the debugging process.  When our components work without a transport, we can show they do the same thing with a transport.
 
 == In our next part
 
-In the next part we will look at benchamrking profiling using Queue.  While Queue is deisgned to be simple and transparent, it is also designed to be faster, even with no tuning, even faster with tuning.
+In the next part we will look at benchmarking and profiling using Queue.  While Queue is designed to be simple and transparent, it is also designed to be faster than other transports, even with no tuning.
 
 
 
