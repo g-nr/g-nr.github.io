@@ -19,3 +19,174 @@ The is a wide range of possible transports available
 * no transport at all (method calls are fine for a given use case)
 
 It is the Chronicle Queue we will be looking at in the post.
+
+=== Using queue in a unit test
+
+Chronicle Queue is persisted, however in unit tests you usually want to start fresh and remove the queue afterwards.  The idiom you can use as as follow
+
+.Creating a temporary Queue
+[source, java]
+----
+File queuePath = new File(OS.TARGET, "testName-" + System.nanoTime());
+try {
+    try (SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(queuePath).build()) {
+        // use the queue
+    }
+
+} finally {
+    IOTools.shallowDeleteDirWithFiles(queuePath);
+}
+----
+
+This creates a queue which is stored in a single file.  The file is rolled daily by default and includes the current date in the path.
+
+==== Writing events
+
+If we repeat out test as before, instead of using a mock listener, we can use a listener which writes each method called to a queue
+
+.Write methods called to a queue for either interface
+[source, java]
+----
+OrderIdeaListener orderManager = queue.createAppender().methodWriter(OrderIdeaListener.class, MarketDataListener.class);
+----
+
+Our combiner write to this queue, as does our test
+
+[source, java]
+----
+SidedMarketDataCombiner combiner = new SidedMarketDataCombiner((MarketDataListener) orderManager);
+----
+
+and we can repeat the events inbound.  Putting all this together we get
+
+[source, java]
+----
+try (SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(queuePath).build()) {
+    OrderIdeaListener orderManager = queue.createAppender().methodWriter(OrderIdeaListener.class, MarketDataListener.class);
+    SidedMarketDataCombiner combiner = new SidedMarketDataCombiner((MarketDataListener) orderManager);
+
+    // events in
+    orderManager.onOrderIdea(new OrderIdea("EURUSD", Side.Buy, 1.1180, 2e6)); // not expected to trigger
+
+    combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789000L, Side.Sell, 1.1172, 2e6));
+    combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Buy, 1.1160, 2e6));
+
+    combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Buy, 1.1167, 2e6));
+
+    orderManager.onOrderIdea(new OrderIdea("EURUSD", Side.Buy, 1.1165, 1e6)); // expected to trigger
+}
+----
+
+and we have written all the events to our queue. Now we can process the queue in our test. A more realistic example would run these two component in different threads, or even different processes, however this just complicates the tests and the result should be the same provides the transport does it's job.
+
+==== Reading events.
+
+When we read the events we need a component which implements the methods called above and a mock listener to ensure it trigger the right events.
+
+.Read all the events and check the right output
+[source, java]
+----
+// what we expect to happen
+OrderListener listener = createMock(OrderListener.class);
+listener.onOrder(new Order("EURUSD", Side.Buy, 1.1167, 1_000_000));
+replay(listener);
+
+try (SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(queuePath).build()) {
+    // build our scenario
+    OrderManager orderManager = new OrderManager(listener); // <1>
+    MethodReader reader = queue.createTailer().methodReader(orderManager); // <2>
+    for (int i = 0; i < 5; i++)
+        assertTrue(reader.readOne()); // <3>
+
+    assertFalse(reader.readOne()); // <4>
+    System.out.println(queue.dump()); //<5>
+}
+
+verify(listener);
+----
+<1> our component to test
+<2> our queue reader which will call the methods
+<3> loop to read/process one method at a time.
+<4> we have no more messages
+<5> dump the queue contents so we can see what the input was.
+
+.The output of dump()
+[source, yaml]
+----
+--- !!meta-data #binary
+header: !SCQStore {
+  wireType: !WireType BINARY,
+  writePosition: 777,
+  roll: !SCQSRoll {
+    length: 86400000,
+    format: yyyyMMdd,
+    epoch: 0
+    },
+  indexing: !SCQSIndexing {
+    indexCount: !int 8192,
+    indexSpacing: 64,
+    index2Index: 0,
+    lastIndex: 0
+    }
+}
+# position: 227
+--- !!data #binary
+onOrderIdea: {
+  symbol: EURUSD,
+  side: Buy,
+  limitPrice: 1.118,
+  quantity: 2000000.0
+}
+# position: 306
+--- !!data #binary
+onTopOfBookPrice: {
+  symbol: EURUSD,
+  timestamp: 123456789000,
+  buyPrice: NaN,
+  buyQuantity: 0,
+  sellPrice: 1.1172,
+  sellQuantity: 2000000.0
+}
+# position: 434
+--- !!data #binary
+onTopOfBookPrice: {
+  symbol: EURUSD,
+  timestamp: 123456789100,
+  buyPrice: 1.116,
+  buyQuantity: 2000000.0,
+  sellPrice: 1.1172,
+  sellQuantity: 2000000.0
+}
+# position: 566
+--- !!data #binary
+onTopOfBookPrice: {
+  symbol: EURUSD,
+  timestamp: 123456789100,
+  buyPrice: 1.1167,
+  buyQuantity: 2000000.0,
+  sellPrice: 1.1172,
+  sellQuantity: 2000000.0
+}
+# position: 698
+--- !!data #binary
+onOrderIdea: {
+  symbol: EURUSD,
+  side: Buy,
+  limitPrice: 1.1165,
+  quantity: 1000000.0
+}
+...
+# 83885299 bytes remaining
+----
+
+== Conclusion
+
+We can test components stand alone with queue or in a chain by using more queues. More importantly we can test our components without the infrstructure complicating the debugging process.  When our components work without a transport, we can show they do the same thing with a transport.
+
+== In our next part
+
+In the next part we will look at benchamrking profiling using Queue.  While Queue is deisgned to be simple and transparent, it is also designed to be faster, even with no tuning, even faster with tuning.
+
+
+
+
