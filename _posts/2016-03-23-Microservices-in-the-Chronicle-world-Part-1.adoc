@@ -169,7 +169,7 @@ assertEquals(tobp, tobp2);
 However when you run this test in your IDE, you get a comparison window.
 
 .Comparison Windows in your IDE
-image::TopOfBookPrice-comparison.png[Top Of Book Price comparison, 720]
+image::TopOfBookPrice-comparison.png[Top Of Book Price comparison, 720, align="center"]
 
 If you have a large nested/complex object where `assertEquals` fails, it can really save you a lot of time finding what the discrepency is.
 
