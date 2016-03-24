@@ -80,7 +80,7 @@
     <meta property="og:description" content="In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-worlds-Part-2.html" />
     <meta property="article:published_time" content="2016-03-24T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-24T13:57:38.363Z" />
+    <meta property="article:modified_time" content="2016-03-24T14:01:29.884Z" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Microservices in the Chronicle worlds - Part 2" />
@@ -102,7 +102,7 @@
     "headline": "Microservices in the Chronicle worlds - Part 2",
     "url": "https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-worlds-Part-2.html",
     "datePublished": "2016-03-24T00:00:00.000Z",
-    "dateModified": "2016-03-24T13:57:38.363Z",
+    "dateModified": "2016-03-24T14:01:29.884Z",
     "description": "In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..."
 }
     </script>
@@ -324,7 +324,7 @@ try {
 </div>
 </div>
 <div class="paragraph">
-<p>and we have written all the events to our queue. Now we can process the queue in our test. A more realistic example would run these two component in different threads, or even different processes, however this just complicates the tests and the result should be the same provides the transport does it&#8217;s job.</p>
+<p>Once we have written all the events to our queue, we can process the queue in our test. A more realistic example would be to run these two components in different threads, processes or on different machines, however this just complicates the tests and the result should be the same provides the transport does it&#8217;s job.</p>
 </div>
 </div>
 <div class="sect3">
@@ -377,6 +377,9 @@ verify(listener);</code></pre>
 <td>dump the queue contents so we can see what the input was.</td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.</p>
 </div>
 <div class="listingblock">
 <div class="title">The output of dump()</div>
@@ -456,7 +459,7 @@ onOrderIdea: {
 <h2 id="_conclusion">Conclusion</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We can test components stand alone with queue or in a chain by using more queues. More importantly we can test our components without the infrstructure complicating the debugging process.  When our components work without a transport, we can show they do the same thing with a transport.</p>
+<p>We can test components stand alone with a queue or in a chain by using more queues. More importantly we can test our components without the infrastructure complicating the debugging process.  When our components work without a transport, we can show they do the same thing with a transport.</p>
 </div>
 </div>
 </div>
@@ -464,7 +467,7 @@ onOrderIdea: {
 <h2 id="_in_our_next_part">In our next part</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the next part we will look at benchmarking and profiling using Queue.  While Queue is designed to be simple and transparent, it is also designed to be faster than other transports, even with no tuning.</p>
+<p>In the next part we will look at benchmarking and profiling with Queue.  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.</p>
 </div>
 </div>
 </div>
