@@ -80,7 +80,7 @@
     <meta property="og:description" content="At a high level, Microservices have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around simplicity,..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html" />
     <meta property="article:published_time" content="2016-03-23T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-24T12:00:30.542Z" />
+    <meta property="article:modified_time" content="2016-03-24T12:21:08.194Z" />
     <meta property="article:tag" content="microservices" />
     <meta property="article:tag" content="examples" />
     
@@ -104,7 +104,7 @@
     "headline": "Microservices in the Chronicle world - Part 1",
     "url": "https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html",
     "datePublished": "2016-03-23T00:00:00.000Z",
-    "dateModified": "2016-03-24T12:00:30.542Z",
+    "dateModified": "2016-03-24T12:21:08.194Z",
     "keywords": "microservices,  examples",
     "description": "At a high level, Microservices have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around simplicity,..."
 }
@@ -272,6 +272,9 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="paragraph">
 <p>Say we have a service/component which is taking incremental market data updates. In the simplest case, this could be a market update with only one side, a buy or a sell.  The component could transform this into a full market update combining both the buy and sell price and quantity.</p>
 </div>
+<div class="paragraph">
+<p>In this example, we have only one message type to start with, however we can add more message types. I suggest you create a different message name/method for each message rather than overloading a method.</p>
+</div>
 <div class="listingblock">
 <div class="title">Our inbound data structure</div>
 <div class="content">
@@ -325,6 +328,7 @@ When it comes to the details of how they are actually implemented, they can vary
 <p>The component which takes one sided prices could have an interface</p>
 </div>
 <div class="listingblock">
+<div class="title">Inbound interface for the first component</div>
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">public interface SidedMarketDataListener {
     void onSidedPrice(SidedPrice sidedPrice);
@@ -335,6 +339,7 @@ When it comes to the details of how they are actually implemented, they can vary
 <p>and it&#8217;s output also has one method</p>
 </div>
 <div class="listingblock">
+<div class="title">Outbound interface for the first component</div>
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">public interface MarketDataListener {
     void onTopOfBookPrice(TopOfBookPrice price);
