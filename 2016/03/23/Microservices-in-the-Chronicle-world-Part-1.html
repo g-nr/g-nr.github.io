@@ -80,7 +80,7 @@
     <meta property="og:description" content="At a high level, Microservices have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around simplicity,..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html" />
     <meta property="article:published_time" content="2016-03-23T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-23T20:36:49.986Z" />
+    <meta property="article:modified_time" content="2016-03-24T09:55:46.657Z" />
     <meta property="article:tag" content="microservices" />
     <meta property="article:tag" content="examples" />
     
@@ -104,7 +104,7 @@
     "headline": "Microservices in the Chronicle world - Part 1",
     "url": "https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html",
     "datePublished": "2016-03-23T00:00:00.000Z",
-    "dateModified": "2016-03-23T20:36:49.986Z",
+    "dateModified": "2016-03-24T09:55:46.657Z",
     "keywords": "microservices,  examples",
     "description": "At a high level, Microservices have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around simplicity,..."
 }
@@ -367,6 +367,81 @@ When it comes to the details of how they are actually implemented, they can vary
 </div>
 <div class="paragraph">
 <p>It implements our input interface and take the output interface as a listener.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_does_abstractmarshallable_provide">What does AbstractMarshallable provide?</h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/OpenHFT/Chronicle-Wire/blob/master/src/main/java/net/openhft/chronicle/wire/AbstractMarshallable.java">AbstractMarshallable</a> class is a conveience class which implements <code>toString()</code>, <code>equals(Object)</code> and <code>hashCode()</code>. It also supports Marshallable&#8217;s <code>writeMarshallable(WireOut)</code> and <code>readMarshallable(WireIn)</code></p>
+</div>
+<div class="paragraph">
+<p>The default implementations use all the non-static non-transient fields to either print, compare or build a hashCode.  Note: the resulting toString() can always be de-serialized with <code>Marshallable.fromString(CharSequence)</code></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at a couple of examples</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">SidedPrice sp = new SidedPrice("Symbol", 123456789000L, Side.Buy, 1.2345, 1_000_000);
+assertEquals("!SidedPrice {\n" +
+        "  symbol: Symbol,\n" +
+        "  timestamp: 123456789000,\n" +
+        "  side: Buy,\n" +
+        "  price: 1.2345,\n" +
+        "  quantity: 1000000.0\n" +
+        "}\n", sp.toString());
+
+// from string
+SidedPrice sp2 = Marshallable.fromString(sp.toString());
+assertEquals(sp2, sp);
+assertEquals(sp2.hashCode(), sp.hashCode());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, the <code>toString()</code> is in YAML, concise and readable to a human and in code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">TopOfBookPrice tobp = new TopOfBookPrice("Symbol", 123456789000L, 1.2345, 1_000_000, 1.235, 2_000_000);
+assertEquals("!TopOfBookPrice {\n" +
+        "  symbol: Symbol,\n" +
+        "  timestamp: 123456789000,\n" +
+        "  buyPrice: 1.2345,\n" +
+        "  buyQuantity: 1000000.0,\n" +
+        "  sellPrice: 1.235,\n" +
+        "  sellQuantity: 2000000.0\n" +
+        "}\n", tobp.toString());
+
+// from string
+TopOfBookPrice topb2 = Marshallable.fromString(tobp.toString());
+assertEquals(topb2, tobp);
+assertEquals(topb2.hashCode(), tobp.hashCode());
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One of the advantages of using this format is that it makes it easier to find the reason for a failing test even in complex objects.</p>
+</div>
+<div class="listingblock">
+<div class="title">Even in a trivial test it&#8217;s not obvious what the problem is</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">TopOfBookPrice tobp = new TopOfBookPrice("Symbol", 123456789000L, 1.2345, 1_000_000, 1.235, 2_000_000);
+TopOfBookPrice tobp2 = new TopOfBookPrice("Symbol", 123456789000L, 1.2345, 1_000_000, 1.236, 2_000_000);
+
+assertEquals(tobp, tobp2);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However when you run this test in your IDE, you get a comparison window.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/TopOfBookPrice-comparison.png" alt="Top Of Book Price comparison" width="720">
+</div>
+<div class="title">Figure 1. Comparison Windows in your IDE</div>
+</div>
+<div class="paragraph">
+<p>If you have a large nested/complex object where <code>assertEquals</code> fails, it can really save you a lot of time finding what the discrepency is.</p>
 </div>
 </div>
 <div class="sect2">
