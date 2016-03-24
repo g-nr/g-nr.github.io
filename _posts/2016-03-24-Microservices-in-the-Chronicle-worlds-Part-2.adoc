@@ -1,0 +1,21 @@
+= Microservices in the Chronicle worlds - Part 2
+
+In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service?
+
+=== Turning our components into a service.
+
+The key thing which is missing from our components is a transport.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.
+
+The is a wide range of possible transports available
+
+* Raw TCP messages or UDP packets
+* JMS Messaging
+* REST API
+* Database tables
+* Files dropped into a directory.
+* a thread safe Queue
+* shared memory
+* http://chronicle.software/products/chronicle-queue/[Chronicle Queue]
+* no transport at all (method calls are fine for a given use case)
+
+It is the Chronicle Queue we will be looking at in the post.
