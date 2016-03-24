@@ -47,7 +47,8 @@ If we repeat out test as before, instead of using a mock listener, we can use a 
 .Write methods called to a queue for either interface
 [source, java]
 ----
-OrderIdeaListener orderManager = queue.createAppender().methodWriter(OrderIdeaListener.class, MarketDataListener.class);
+OrderIdeaListener orderManager = queue.createAppender()
+                                      .methodWriter(OrderIdeaListener.class, MarketDataListener.class);
 ----
 
 Our combiner write to this queue, as does our test
