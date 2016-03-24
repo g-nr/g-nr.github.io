@@ -79,7 +79,7 @@ try (SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(queuePath).
 }
 ----
 
-and we have written all the events to our queue. Now we can process the queue in our test. A more realistic example would run these two component in different threads, or even different processes, however this just complicates the tests and the result should be the same provides the transport does it's job.
+Once we have written all the events to our queue, we can process the queue in our test. A more realistic example would be to run these two components in different threads, processes or on different machines, however this just complicates the tests and the result should be the same provides the transport does it's job.
 
 ==== Reading events.
 
@@ -111,6 +111,8 @@ verify(listener);
 <3> loop to read/process one method at a time.
 <4> we have no more messages
 <5> dump the queue contents so we can see what the input was.
+
+Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.
 
 .The output of dump()
 [source, yaml]
@@ -185,11 +187,11 @@ To run the test and dump the queue in my IDE took 233 ms.
 
 == Conclusion
 
-We can test components stand alone with queue or in a chain by using more queues. More importantly we can test our components without the infrstructure complicating the debugging process.  When our components work without a transport, we can show they do the same thing with a transport.
+We can test components stand alone with a queue or in a chain by using more queues. More importantly we can test our components without the infrastructure complicating the debugging process.  When our components work without a transport, we can show they do the same thing with a transport.
 
 == In our next part
 
-In the next part we will look at benchmarking and profiling using Queue.  While Queue is designed to be simple and transparent, it is also designed to be faster than other transports, even with no tuning.
+In the next part we will look at benchmarking and profiling with Queue.  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.
 
 
 
