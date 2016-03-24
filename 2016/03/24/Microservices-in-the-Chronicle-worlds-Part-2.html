@@ -80,7 +80,7 @@
     <meta property="og:description" content="In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-worlds-Part-2.html" />
     <meta property="article:published_time" content="2016-03-24T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-24T13:52:43.796Z" />
+    <meta property="article:modified_time" content="2016-03-24T13:57:38.363Z" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Microservices in the Chronicle worlds - Part 2" />
@@ -102,7 +102,7 @@
     "headline": "Microservices in the Chronicle worlds - Part 2",
     "url": "https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-worlds-Part-2.html",
     "datePublished": "2016-03-24T00:00:00.000Z",
-    "dateModified": "2016-03-24T13:52:43.796Z",
+    "dateModified": "2016-03-24T13:57:38.363Z",
     "description": "In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..."
 }
     </script>
@@ -294,9 +294,10 @@ try {
 </div>
 </div>
 <div class="paragraph">
-<p>Our combiner write to this queue, as does our test</p>
+<p>Our combiner writes to this queue, as does our test</p>
 </div>
 <div class="listingblock">
+<div class="title">The SidedPrice combiner</div>
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">SidedMarketDataCombiner combiner = new SidedMarketDataCombiner((MarketDataListener) orderManager);</code></pre>
 </div>
@@ -446,6 +447,9 @@ onOrderIdea: {
 # 83885299 bytes remaining</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>To run the test and dump the queue in my IDE took 233 ms.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -460,7 +464,7 @@ onOrderIdea: {
 <h2 id="_in_our_next_part">In our next part</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the next part we will look at benchamrking profiling using Queue.  While Queue is deisgned to be simple and transparent, it is also designed to be faster, even with no tuning, even faster with tuning.</p>
+<p>In the next part we will look at benchmarking and profiling using Queue.  While Queue is designed to be simple and transparent, it is also designed to be faster than other transports, even with no tuning.</p>
 </div>
 </div>
 </div>
