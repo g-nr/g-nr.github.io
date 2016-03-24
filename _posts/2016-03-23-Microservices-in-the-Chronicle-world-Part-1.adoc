@@ -30,10 +30,10 @@ Say we have a service/component which is taking incremental market data updates.
 [source, java]
 ----
 public class SidedPrice extends AbstractMarshallable {
-    String symbol;
-    long timestamp;
-    Side side;
-    double price, quantity;
+    final String symbol;
+    final long timestamp;
+    final Side side;
+    final double price, quantity;
 
     public SidedPrice(String symbol, long timestamp, Side side, double price, double quantity) {
         this.symbol = symbol;
@@ -49,10 +49,10 @@ public class SidedPrice extends AbstractMarshallable {
 [source, java]
 ----
 public class TopOfBookPrice extends AbstractMarshallable {
-    String symbol;
-    long timestamp;
-    double buyPrice, buyQuantity;
-    double sellPrice, sellQuantity;
+    final String symbol;
+    final long timestamp;
+    final double buyPrice, buyQuantity;
+    final double sellPrice, sellQuantity;
 
     public TopOfBookPrice(String symbol, long timestamp, double buyPrice, double buyQuantity, double sellPrice, double sellQuantity) {
         this.symbol = symbol;
@@ -173,22 +173,93 @@ image::TopOfBookPrice-comparison.png[Top Of Book Price comparison, 720, align="c
 
 If you have a large nested/complex object where `assertEquals` fails, it can really save you a lot of time finding what the discrepency is.
 
+=== Mocking our component
+
+We can mock an interface using a tool like http://easymock.org/[EasyMock]. I find EasyMock is simpler when dealing with event driven interfaces. It is not as powerful as PowerMock or Mockito, however if you are keeping things simple, you might not need those features.
+
+[source, java]
+----
+// what we expect to happen
+SidedPrice sp = new SidedPrice("Symbol", 123456789000L, Side.Buy, 1.2345, 1_000_000);
+SidedMarketDataListener listener = createMock(SidedMarketDataListener.class);
+listener.onSidedPrice(sp);
+replay(listener);
+
+// what happens
+listener.onSidedPrice(sp);
+
+// verify we got everything we expected.
+verify(listener);
+----
+
+We can also mock the expected output of a component the same way.
 
 === Testing our component
 
-TBD
+By mocking the output interface and calling the input interface for our compoonent we can check it behaves as expected.
 
-=== Mocking our component
+[source, java]
+----
+MarketDataListener listener = createMock(MarketDataListener.class);
+listener.onTopOfBookPrice(new TopOfBookPrice("EURUSD", 123456789000L, 1.1167, 1_000_000, Double.NaN, 0)); // <1>
+listener.onTopOfBookPrice(new TopOfBookPrice("EURUSD", 123456789100L, 1.1167, 1_000_000, 1.1172, 2_000_000)); //<2>
+replay(listener);
 
-TBD
+SidedMarketDataListener combiner = new SidedMarketDataCombiner(listener);
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789000L, Side.Buy, 1.1167, 1e6)); // <1>
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Sell, 1.1172, 2e6)); // <2>
 
-=== Performance testing our component
+verify(listener);
+----
+<1> Setting the buy price
+<2> Setting the sell price
 
-TBD
+
+=== Testing a series of components
+
+Lets add an OrderManager as a down stream components. This order manager will receive both market data updates and order ideas, and in turn will produce orders.
+
+[source, java]
+----
+// what we expect to happen
+OrderListener listener = createMock(OrderListener.class);
+listener.onOrder(new Order("EURUSD", Side.Buy, 1.1167, 1_000_000));
+replay(listener);
+
+// build our scenario
+OrderManager orderManager = new OrderManager(listener); // <2>
+SidedMarketDataCombiner combiner = new SidedMarketDataCombiner(orderManager); // <1>
+
+// events in
+orderManager.onOrderIdea(new OrderIdea("EURUSD", Side.Buy, 1.1180, 2e6)); // not expected to trigger
+
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789000L, Side.Sell, 1.1172, 2e6));
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Buy, 1.1160, 2e6));
+
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Buy, 1.1167, 2e6));
+
+orderManager.onOrderIdea(new OrderIdea("EURUSD", Side.Buy, 1.1165, 1e6)); // expected to trigger
+
+verify(listener);
+----
+<1> the first component combines sided prices
+<2> the second component listens to order ideas and top of book market data
+
+=== Debugging our components
+
+You can see that one component just calls another one. When debugging this single threaded code each event from the first component is a call to the second component and when that finishes it returns to the first one and the tests.
+
+When any individual event triggers an error, you can see in the stack trace which event caused the issue. However, if you are expecting an event which doesn't happen this is tricker unless your tests are simple (or you do a series of simple tests with `verify()`, `reset()` and `replay()`
+
+Note: this takes almost no time at all to start up the test and debug it in your IDE.  You can run hundreds of test like this in less than a second.
 
 === Source for examples
 
 https://github.com/Vanilla-Java/Microservices/tree/master/src/main/java/net/openhft/samples/microservices
+
+== How do we create these as services?
+
+We have shown how easy it is to test and debug our components, but how do we turn these into services.  This is coming up in Part 2.
 
 
 
