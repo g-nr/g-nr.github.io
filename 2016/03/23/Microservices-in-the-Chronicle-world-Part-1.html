@@ -80,7 +80,7 @@
     <meta property="og:description" content="At a high level, Microservices have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around simplicity,..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html" />
     <meta property="article:published_time" content="2016-03-23T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-24T09:55:46.657Z" />
+    <meta property="article:modified_time" content="2016-03-24T12:00:30.542Z" />
     <meta property="article:tag" content="microservices" />
     <meta property="article:tag" content="examples" />
     
@@ -104,7 +104,7 @@
     "headline": "Microservices in the Chronicle world - Part 1",
     "url": "https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html",
     "datePublished": "2016-03-23T00:00:00.000Z",
-    "dateModified": "2016-03-24T09:55:46.657Z",
+    "dateModified": "2016-03-24T12:00:30.542Z",
     "keywords": "microservices,  examples",
     "description": "At a high level, Microservices have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around simplicity,..."
 }
@@ -276,10 +276,10 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="title">Our inbound data structure</div>
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">public class SidedPrice extends AbstractMarshallable {
-    String symbol;
-    long timestamp;
-    Side side;
-    double price, quantity;
+    final String symbol;
+    final long timestamp;
+    final Side side;
+    final double price, quantity;
 
     public SidedPrice(String symbol, long timestamp, Side side, double price, double quantity) {
         this.symbol = symbol;
@@ -295,10 +295,10 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="title">Our outbound data structure</div>
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">public class TopOfBookPrice extends AbstractMarshallable {
-    String symbol;
-    long timestamp;
-    double buyPrice, buyQuantity;
-    double sellPrice, sellQuantity;
+    final String symbol;
+    final long timestamp;
+    final double buyPrice, buyQuantity;
+    final double sellPrice, sellQuantity;
 
     public TopOfBookPrice(String symbol, long timestamp, double buyPrice, double buyQuantity, double sellPrice, double sellQuantity) {
         this.symbol = symbol;
@@ -445,27 +445,127 @@ assertEquals(tobp, tobp2);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testing_our_component">Testing our component</h3>
-<div class="paragraph">
-<p>TBD</p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_mocking_our_component">Mocking our component</h3>
 <div class="paragraph">
-<p>TBD</p>
+<p>We can mock an interface using a tool like <a href="http://easymock.org/">EasyMock</a>. I find EasyMock is simpler when dealing with event driven interfaces. It is not as powerful as PowerMock or Mockito, however if you are keeping things simple, you might not need those features.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// what we expect to happen
+SidedPrice sp = new SidedPrice("Symbol", 123456789000L, Side.Buy, 1.2345, 1_000_000);
+SidedMarketDataListener listener = createMock(SidedMarketDataListener.class);
+listener.onSidedPrice(sp);
+replay(listener);
+
+// what happens
+listener.onSidedPrice(sp);
+
+// verify we got everything we expected.
+verify(listener);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can also mock the expected output of a component the same way.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_performance_testing_our_component">Performance testing our component</h3>
+<h3 id="_testing_our_component">Testing our component</h3>
 <div class="paragraph">
-<p>TBD</p>
+<p>By mocking the output interface and calling the input interface for our compoonent we can check it behaves as expected.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MarketDataListener listener = createMock(MarketDataListener.class);
+listener.onTopOfBookPrice(new TopOfBookPrice("EURUSD", 123456789000L, 1.1167, 1_000_000, Double.NaN, 0)); <i class="conum" data-value="1"></i><b>(1)</b>
+listener.onTopOfBookPrice(new TopOfBookPrice("EURUSD", 123456789100L, 1.1167, 1_000_000, 1.1172, 2_000_000)); <i class="conum" data-value="2"></i><b>(2)</b>
+replay(listener);
+
+SidedMarketDataListener combiner = new SidedMarketDataCombiner(listener);
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789000L, Side.Buy, 1.1167, 1e6)); <i class="conum" data-value="1"></i><b>(1)</b>
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Sell, 1.1172, 2e6)); <i class="conum" data-value="2"></i><b>(2)</b>
+
+verify(listener);</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Setting the buy price</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Setting the sell price</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_a_series_of_components">Testing a series of components</h3>
+<div class="paragraph">
+<p>Lets add an OrderManager as a down stream components. This order manager will receive both market data updates and order ideas, and in turn will produce orders.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// what we expect to happen
+OrderListener listener = createMock(OrderListener.class);
+listener.onOrder(new Order("EURUSD", Side.Buy, 1.1167, 1_000_000));
+replay(listener);
+
+// build our scenario
+OrderManager orderManager = new OrderManager(listener); <i class="conum" data-value="2"></i><b>(2)</b>
+SidedMarketDataCombiner combiner = new SidedMarketDataCombiner(orderManager); <i class="conum" data-value="1"></i><b>(1)</b>
+
+// events in
+orderManager.onOrderIdea(new OrderIdea("EURUSD", Side.Buy, 1.1180, 2e6)); // not expected to trigger
+
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789000L, Side.Sell, 1.1172, 2e6));
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Buy, 1.1160, 2e6));
+
+combiner.onSidedPrice(new SidedPrice("EURUSD", 123456789100L, Side.Buy, 1.1167, 2e6));
+
+orderManager.onOrderIdea(new OrderIdea("EURUSD", Side.Buy, 1.1165, 1e6)); // expected to trigger
+
+verify(listener);</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>the first component combines sided prices</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>the second component listens to order ideas and top of book market data</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_debugging_our_components">Debugging our components</h3>
+<div class="paragraph">
+<p>You can see that one component just calls another one. When debugging this single threaded code each event from the first component is a call to the second component and when that finishes it returns to the first one and the tests.</p>
+</div>
+<div class="paragraph">
+<p>When any individual event triggers an error, you can see in the stack trace which event caused the issue. However, if you are expecting an event which doesn&#8217;t happen this is tricker unless your tests are simple (or you do a series of simple tests with <code>verify()</code>, <code>reset()</code> and <code>replay()</code></p>
+</div>
+<div class="paragraph">
+<p>Note: this takes almost no time at all to start up the test and debug it in your IDE.  You can run hundreds of test like this in less than a second.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_source_for_examples">Source for examples</h3>
 <div class="paragraph">
 <p><a href="https://github.com/Vanilla-Java/Microservices/tree/master/src/main/java/net/openhft/samples/microservices" class="bare">https://github.com/Vanilla-Java/Microservices/tree/master/src/main/java/net/openhft/samples/microservices</a></p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_do_we_create_these_as_services">How do we create these as services?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We have shown how easy it is to test and debug our components, but how do we turn these into services.  This is coming up in Part 2.</p>
+</div>
 </div>
 </div>
           </div>
