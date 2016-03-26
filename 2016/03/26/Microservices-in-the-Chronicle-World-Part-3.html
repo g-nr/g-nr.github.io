@@ -77,17 +77,17 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Microservices in the Chronicle World - Part 3" />
-    <meta property="og:description" content="One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a..." />
+    <meta property="og:description" content="In Part 2 we saw how we can take a component and add a transport to it to make it a service. One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html" />
     <meta property="article:published_time" content="2016-03-26T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-26T10:32:14.692Z" />
+    <meta property="article:modified_time" content="2016-03-26T11:33:48.006Z" />
     <meta property="article:tag" content="JMH" />
     <meta property="article:tag" content="Chronicle-Queue" />
     <meta property="article:tag" content="Microservices" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Microservices in the Chronicle World - Part 3" />
-    <meta name="twitter:description" content="One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a..." />
+    <meta name="twitter:description" content="In Part 2 we saw how we can take a component and add a transport to it to make it a service. One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of..." />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html" />
     
     <script type="application/ld+json">
@@ -105,9 +105,9 @@
     "headline": "Microservices in the Chronicle World - Part 3",
     "url": "https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html",
     "datePublished": "2016-03-26T00:00:00.000Z",
-    "dateModified": "2016-03-26T10:32:14.692Z",
+    "dateModified": "2016-03-26T11:33:48.006Z",
     "keywords": "JMH,  Chronicle-Queue,  Microservices",
-    "description": "One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a..."
+    "description": "In Part 2 we saw how we can take a component and add a transport to it to make it a service. One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of..."
 }
     </script>
 
@@ -222,20 +222,50 @@
             <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.</p>
+<p>In <a href="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html">Part 2</a> we saw how we can take a component and add a transport to it to make it a service.</p>
+</div>
+<div class="paragraph">
+<p>One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Passing data between threads is not free. This information needs to be passed over the L2 CPU Cache Coherence bus. If you do this in an uncontrolled manner and just let the application discover the objects it needs to pull from one thread&#8217;s cache to its own, it can be slower than only passing the data you need, streamed serially. Chronicle Queue gives greater transparency by recording every event, allowing you to optmise exactly what one thread passes to another.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+In one low latency trading system, before adding Chronicle Queue, the average latency from read in to write out was 35 micro-seconds, after utilising Chronicle Queue to optimie the data passed between threads the latency dropped to 23 micro-seconds. Using Chronicle Queue also showed up issues which were not apparent before, and with replay of events, gave confidence these issues had been fixed.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_benchmarking_with_jmh">Benchmarking with JMH</h3>
 <div class="paragraph">
-<p><a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a> which might stand for Java Micro-benchamrk Harness is an exelent tool for measureing the throughput and sample latencies end to end.  We can look at an example of what it good for with regard to our example.  We added our own micro-benchamrk harness for asynchronous tasks run across multiple threads where you want to time individual portion (which will be covered in the next Part). For now we will look at latencies end-to-end.</p>
+<p><a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a>, which might stand for Java Micro-benchmark Harness, is an excellent tool for measuring the throughput and sampling latencies end to end.  We can look at an example of what it is good for with regard to our sample microservice.</p>
+</div>
+<div class="paragraph">
+<p>We create our own micro-benchmark harness, in Chronicle-Core, for measuring asynchronmos tasks run across multiple threads where you want to time individual portions (which will be covered in Part 4). For now we will look at latencies end-to-end.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_our_jmh_services_latency_test">Our JMH services latency test</h3>
+<h3 id="_jmh_latency_test_of_our_service">JMH latency test of our service</h3>
 <div class="paragraph">
-<p>As mentioned pervious, we can only measure timings not portions of the benchmark. For this reason we cannot time a service standalone but must include the producer. We must also look at the timing of one thread.</p>
+<p>With JMH we can measure timings for the end-to-end benchmark. We have to include a producer to drive the test rather than time a service standalone. We are looking at the single threaded timings.</p>
 </div>
 <div class="listingblock">
 <div class="title">Our JMH benchmark</div>
@@ -349,13 +379,13 @@ public void benchmarkComponents() {
 </table>
 </div>
 <div class="paragraph">
-<p>This is running on my development machine which is an E-2650 v2 running Ubuntu.  For better results, I suggest the latest Haswell or Skylake and Centos.  However the exact timing isn&#8217;t important as the number and type of fields in the mesasge is also is a factor.  What is particularly interesting to be is the 99.9%tile latency (worst 1 in 1000) which is consistently until 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.</p>
+<p>This is running on my development machine (Ubuntu 15.04, two E5-2650 v2, 128 GB memory).  For better results, I suggest the latest Haswell or Skylake and Centos.  The exact timing of this benchmark isn&#8217;t important as the number and type of fields in the message is also is a significant factor.  What is particularly interesting to me is the 99.9%tile latency (worst 1 in 1000) which is consistently under 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_looking_at_how_jmh_is_called">Looking at how JMH is called.</h3>
 <div class="paragraph">
-<p>To control how JMH is run I used the following parameters</p>
+<p>To control how JMH is run the following parameters were used.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -424,7 +454,7 @@ new Runner(opt).run();</code></pre>
 <div class="sect2">
 <h3 id="_in_our_next_part">In our next part</h3>
 <div class="paragraph">
-<p>I would like to look at how we can time just the component running in another thread. In particualr see how long it takes to read, process and write each message with individual timings.</p>
+<p>I would like to look at how we can time just the component running in another thread. In particular see how long it takes to read, process and write each message with individual timings.</p>
 </div>
 </div>
           </div>
