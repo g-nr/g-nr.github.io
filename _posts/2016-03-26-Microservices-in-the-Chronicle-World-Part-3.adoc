@@ -1,15 +1,23 @@
 = Microservices in the Chronicle World - Part 3
 :hp-tags: JMH, Chronicle-Queue, Microservices
 
-One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.
+In https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html[Part 2] we saw how we can take a component and add a transport to it to make it a service.
+
+One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.
+
+NOTE: Passing data between threads is not free. This information needs to be passed over the L2 CPU Cache Coherence bus. If you do this in an uncontrolled manner and just let the application discover the objects it needs to pull from one thread's cache to its own, it can be slower than only passing the data you need, streamed serially. Chronicle Queue gives greater transparency by recording every event, allowing you to optmise exactly what one thread passes to another.
+
+IMPORTANT: In one low latency trading system, before adding Chronicle Queue, the average latency from read in to write out was 35 micro-seconds, after utilising Chronicle Queue to optimie the data passed between threads the latency dropped to 23 micro-seconds. Using Chronicle Queue also showed up issues which were not apparent before, and with replay of events, gave confidence these issues had been fixed.
 
 === Benchmarking with JMH
 
-http://openjdk.java.net/projects/code-tools/jmh/[JMH] which might stand for Java Micro-benchamrk Harness is an exelent tool for measureing the throughput and sample latencies end to end.  We can look at an example of what it good for with regard to our example.  We added our own micro-benchamrk harness for asynchronous tasks run across multiple threads where you want to time individual portion (which will be covered in the next Part). For now we will look at latencies end-to-end.
+http://openjdk.java.net/projects/code-tools/jmh/[JMH], which might stand for Java Micro-benchmark Harness, is an excellent tool for measuring the throughput and sampling latencies end to end.  We can look at an example of what it is good for with regard to our sample microservice.  
 
-=== Our JMH services latency test
+We create our own micro-benchmark harness, in Chronicle-Core, for measuring asynchronmos tasks run across multiple threads where you want to time individual portions (which will be covered in Part 4). For now we will look at latencies end-to-end.
 
-As mentioned pervious, we can only measure timings not portions of the benchmark. For this reason we cannot time a service standalone but must include the producer. We must also look at the timing of one thread.
+=== JMH latency test of our service
+
+With JMH we can measure timings for the end-to-end benchmark. We have to include a producer to drive the test rather than time a service standalone. We are looking at the single threaded timings.
 
 .Our JMH benchmark
 [source, java]
@@ -85,11 +93,11 @@ The first portions sets up and tearsdown the test.  The actual benchmark injects
 <1> Critical latency threashold for many systems.
 <2> Can still be important in some systems.
 
-This is running on my development machine which is an E-2650 v2 running Ubuntu.  For better results, I suggest the latest Haswell or Skylake and Centos.  However the exact timing isn't important as the number and type of fields in the mesasge is also is a factor.  What is particularly interesting to be is the 99.9%tile latency (worst 1 in 1000) which is consistently until 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.
+This is running on my development machine (Ubuntu 15.04, two E5-2650 v2, 128 GB memory).  For better results, I suggest the latest Haswell or Skylake and Centos.  The exact timing of this benchmark isn't important as the number and type of fields in the message is also is a significant factor.  What is particularly interesting to me is the 99.9%tile latency (worst 1 in 1000) which is consistently under 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.
 
 === Looking at how JMH is called.
 
-To control how JMH is run I used the following parameters
+To control how JMH is run the following parameters were used.
 
 [source, java]
 ----
@@ -138,6 +146,6 @@ if (Jvm.isFlightRecorder()) {
 
 === In our next part
 
-I would like to look at how we can time just the component running in another thread. In particualr see how long it takes to read, process and write each message with individual timings.
+I would like to look at how we can time just the component running in another thread. In particular see how long it takes to read, process and write each message with individual timings.
 
 
