@@ -1,6 +1,8 @@
 = Microservices in the Chronicle world - Part 2
 :hp-tags: Chronicle-Queue, Microservices
 
+In this part we look at turning a component into a service.
+
 In https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html[Part 1], we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service?
 
 === Turning our components into a service.
