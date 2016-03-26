@@ -81,11 +81,11 @@ try (SingleChronicleQueue queue = SingleChronicleQueueBuilder.binary(queuePath).
 }
 ----
 
-Once we have written all the events to our queue, we can process the queue in our test. A more realistic example would be to run these two components in different threads, processes or on different machines, however this just complicates the tests and the result should be the same provides the transport does it's job.
+Once we have written all the events to our queue, we can process the queue in our test. A more realistic example would be to run these two components in different threads, processes or on different machines, however this just complicates the tests and the result should be the same provided the transport does it's job.
 
 ==== Reading events.
 
-When we read the events we need a component which implements the methods called above and a mock listener to ensure it trigger the right events.
+When we read the events we need a component which implements the methods called above and a mock listener to ensure it triggers the right events.
 
 .Read all the events and check the right output
 [source, java]
@@ -114,7 +114,7 @@ verify(listener);
 <4> we have no more messages
 <5> dump the queue contents so we can see what the input was.
 
-Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.
+Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won't be able to be stored in a String.  You can use https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java[DumpQueueMain] f
 
 .The output of dump()
 [source, yaml]
