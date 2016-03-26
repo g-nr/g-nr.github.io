@@ -80,7 +80,7 @@
     <meta property="og:description" content="One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html" />
     <meta property="article:published_time" content="2016-03-26T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-26T10:26:04.501Z" />
+    <meta property="article:modified_time" content="2016-03-26T10:32:14.692Z" />
     <meta property="article:tag" content="JMH" />
     <meta property="article:tag" content="Chronicle-Queue" />
     <meta property="article:tag" content="Microservices" />
@@ -105,7 +105,7 @@
     "headline": "Microservices in the Chronicle World - Part 3",
     "url": "https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html",
     "datePublished": "2016-03-26T00:00:00.000Z",
-    "dateModified": "2016-03-26T10:26:04.501Z",
+    "dateModified": "2016-03-26T10:32:14.692Z",
     "keywords": "JMH,  Chronicle-Queue,  Microservices",
     "description": "One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a..."
 }
@@ -227,7 +227,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_benchamrking_with_jmh">Benchamrking with JMH</h3>
+<h3 id="_benchmarking_with_jmh">Benchmarking with JMH</h3>
 <div class="paragraph">
 <p><a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a> which might stand for Java Micro-benchamrk Harness is an exelent tool for measureing the throughput and sample latencies end to end.  We can look at an example of what it good for with regard to our example.  We added our own micro-benchamrk harness for asynchronous tasks run across multiple threads where you want to time individual portion (which will be covered in the next Part). For now we will look at latencies end-to-end.</p>
 </div>
@@ -328,13 +328,25 @@ public void benchmarkComponents() {
      p(50.0000) =      2.796 us/op
      p(90.0000) =      5.600 us/op
      p(95.0000) =      5.720 us/op
-     p(99.0000) =      8.496 us/op
-     p(99.9000) =     15.232 us/op
-     p(99.9900) =     19.977 us/op
+     p(99.0000) =      8.496 us/op <i class="conum" data-value="1"></i><b>(1)</b>
+     p(99.9000) =     15.232 us/op <i class="conum" data-value="1"></i><b>(1)</b>
+     p(99.9900) =     19.977 us/op <i class="conum" data-value="2"></i><b>(2)</b>
      p(99.9990) =    422.475 us/op
      p(99.9999) =    438.784 us/op
     p(100.0000) =    438.784 us/op</pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Critical latency threashold for many systems.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Can still be important in some systems.</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>This is running on my development machine which is an E-2650 v2 running Ubuntu.  For better results, I suggest the latest Haswell or Skylake and Centos.  However the exact timing isn&#8217;t important as the number and type of fields in the mesasge is also is a factor.  What is particularly interesting to be is the 99.9%tile latency (worst 1 in 1000) which is consistently until 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.</p>
@@ -365,7 +377,7 @@ new Runner(opt).run();</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Sample to test latencies rather than throughput.</td>
+<td><code>SampleTime</code> mode to test latencies rather than throughput.</td>
 </tr>
 </table>
 </div>
@@ -376,7 +388,9 @@ new Runner(opt).run();</code></pre>
 <div class="title">Running in Flight Recorder and Debug</div>
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">if (Jvm.isFlightRecorder()) {
-    // -verbose:gc  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=dumponexit=true,filename=myrecording.jfr,settings=profile -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints
+    // -verbose:gc -XX:+UnlockCommercialFeatures -XX:+FlightRecorder
+    // -XX:StartFlightRecording=dumponexit=true,filename=myrecording.jfr,settings=profile
+    // -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints <i class="conum" data-value="2"></i><b>(2)</b>
     System.out.println("Detected Flight Recorder");
     main.setup();
     long start = System.currentTimeMillis();
@@ -399,6 +413,10 @@ new Runner(opt).run();</code></pre>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Run for 1 minute before shutting down.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Enable profiling between safepoints.</td>
 </tr>
 </table>
 </div>
