@@ -80,7 +80,7 @@
     <meta property="og:description" content="In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html" />
     <meta property="article:published_time" content="2016-03-24T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-26T11:05:05.709Z" />
+    <meta property="article:modified_time" content="2016-03-26T11:10:14.724Z" />
     <meta property="article:tag" content="Chronicle-Queue" />
     <meta property="article:tag" content="Microservices" />
     
@@ -104,7 +104,7 @@
     "headline": "Microservices in the Chronicle world - Part 2",
     "url": "https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html",
     "datePublished": "2016-03-24T00:00:00.000Z",
-    "dateModified": "2016-03-26T11:05:05.709Z",
+    "dateModified": "2016-03-26T11:10:14.724Z",
     "keywords": "Chronicle-Queue,  Microservices",
     "description": "In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..."
 }
@@ -336,13 +336,13 @@ try {
 </div>
 </div>
 <div class="paragraph">
-<p>Once we have written all the events to our queue, we can process the queue in our test. A more realistic example would be to run these two components in different threads, processes or on different machines, however this just complicates the tests and the result should be the same provides the transport does it&#8217;s job.</p>
+<p>Once we have written all the events to our queue, we can process the queue in our test. A more realistic example would be to run these two components in different threads, processes or on different machines, however this just complicates the tests and the result should be the same provided the transport does it&#8217;s job.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_reading_events">Reading events.</h4>
 <div class="paragraph">
-<p>When we read the events we need a component which implements the methods called above and a mock listener to ensure it trigger the right events.</p>
+<p>When we read the events we need a component which implements the methods called above and a mock listener to ensure it triggers the right events.</p>
 </div>
 <div class="listingblock">
 <div class="title">Read all the events and check the right output</div>
@@ -391,7 +391,7 @@ verify(listener);</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.</p>
+<p>Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won&#8217;t be able to be stored in a String.  You can use <a href="https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java">DumpQueueMain</a> f</p>
 </div>
 <div class="listingblock">
 <div class="title">The output of dump()</div>
