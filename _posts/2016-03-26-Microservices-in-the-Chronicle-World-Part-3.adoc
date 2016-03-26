@@ -3,7 +3,7 @@
 
 One of the problem with using micro-services is performance.  Both latencies are higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.
 
-=== Benchamrking with JMH
+=== Benchmarking with JMH
 
 http://openjdk.java.net/projects/code-tools/jmh/[JMH] which might stand for Java Micro-benchamrk Harness is an exelent tool for measureing the throughput and sample latencies end to end.  We can look at an example of what it good for with regard to our example.  We added our own micro-benchamrk harness for asynchronous tasks run across multiple threads where you want to time individual portion (which will be covered in the next Part). For now we will look at latencies end-to-end.
 
@@ -75,13 +75,15 @@ The first portions sets up and tearsdown the test.  The actual benchmark injects
      p(50.0000) =      2.796 us/op
      p(90.0000) =      5.600 us/op
      p(95.0000) =      5.720 us/op
-     p(99.0000) =      8.496 us/op
-     p(99.9000) =     15.232 us/op
-     p(99.9900) =     19.977 us/op
+     p(99.0000) =      8.496 us/op # <1>
+     p(99.9000) =     15.232 us/op # <1>
+     p(99.9900) =     19.977 us/op # <2>
      p(99.9990) =    422.475 us/op
      p(99.9999) =    438.784 us/op
     p(100.0000) =    438.784 us/op
 ----
+<1> Critical latency threashold for many systems.
+<2> Can still be important in some systems.
 
 This is running on my development machine which is an E-2650 v2 running Ubuntu.  For better results, I suggest the latest Haswell or Skylake and Centos.  However the exact timing isn't important as the number and type of fields in the mesasge is also is a factor.  What is particularly interesting to be is the 99.9%tile latency (worst 1 in 1000) which is consistently until 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.
 
@@ -104,7 +106,7 @@ Options opt = new OptionsBuilder()
 
 new Runner(opt).run();
 ----
-<1> Sample to test latencies rather than throughput.
+<1> `SampleTime` mode to test latencies rather than throughput.
 
 However, I have had trouble profiling and debugging JMH benchmarks so I change the way the test is run depending on how it is started
 
@@ -112,7 +114,9 @@ However, I have had trouble profiling and debugging JMH benchmarks so I change t
 [source, java]
 ----
 if (Jvm.isFlightRecorder()) {
-    // -verbose:gc  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=dumponexit=true,filename=myrecording.jfr,settings=profile -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints
+    // -verbose:gc -XX:+UnlockCommercialFeatures -XX:+FlightRecorder 
+    // -XX:StartFlightRecording=dumponexit=true,filename=myrecording.jfr,settings=profile 
+    // -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints <2>
     System.out.println("Detected Flight Recorder");
     main.setup();
     long start = System.currentTimeMillis();
@@ -130,6 +134,7 @@ if (Jvm.isFlightRecorder()) {
     }
 ----
 <1> Run for 1 minute before shutting down.
+<2> Enable profiling between safepoints.
 
 === In our next part
 
