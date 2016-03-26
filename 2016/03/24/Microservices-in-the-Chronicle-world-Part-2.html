@@ -80,7 +80,7 @@
     <meta property="og:description" content="In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html" />
     <meta property="article:published_time" content="2016-03-24T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-03-26T10:25:27.825Z" />
+    <meta property="article:modified_time" content="2016-03-26T11:05:05.709Z" />
     <meta property="article:tag" content="Chronicle-Queue" />
     <meta property="article:tag" content="Microservices" />
     
@@ -104,7 +104,7 @@
     "headline": "Microservices in the Chronicle world - Part 2",
     "url": "https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html",
     "datePublished": "2016-03-24T00:00:00.000Z",
-    "dateModified": "2016-03-26T10:25:27.825Z",
+    "dateModified": "2016-03-26T11:05:05.709Z",
     "keywords": "Chronicle-Queue,  Microservices",
     "description": "In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into a service. The..."
 }
@@ -221,7 +221,7 @@
             <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service?</p>
+<p>In <a href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html">Part 1</a>, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service?</p>
 </div>
 </div>
 </div>
@@ -231,33 +231,36 @@
 <p>The key thing which is missing from our components is a transport.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.</p>
 </div>
 <div class="paragraph">
-<p>The is a wide range of possible transports available</p>
+<p>There is a wide range of possible transports available</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Raw TCP messages or UDP packets</p>
+<p>Raw TCP messages or UDP packets with a library like <a href="http://netty.io/">Netty</a></p>
 </li>
 <li>
-<p>JMS Messaging</p>
+<p><a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html">JMS Messaging</a></p>
 </li>
 <li>
-<p>REST API</p>
+<p><a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">REST API</a></p>
 </li>
 <li>
-<p>Database tables</p>
+<p>Database tables via <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/">JDBC</a></p>
 </li>
 <li>
-<p>Files dropped into a directory.</p>
+<p>Files dropped into a directory and use the directory <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html">WatchService</a></p>
 </li>
 <li>
-<p>a thread safe Queue</p>
+<p>a thread safe Queue, like <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html">BlockingQueue</a></p>
 </li>
 <li>
-<p>shared memory</p>
+<p><a href="https://en.wikipedia.org/wiki/Shared_memory">shared memory</a></p>
 </li>
 <li>
 <p><a href="http://chronicle.software/products/chronicle-queue/">Chronicle Queue</a></p>
+</li>
+<li>
+<p><a href="http://aries.apache.org/">Apache Aries</a> for pluggable transports</p>
 </li>
 <li>
 <p>no transport at all (method calls are fine for a given use case)</p>
