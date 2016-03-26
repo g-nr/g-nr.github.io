@@ -1,9 +1,9 @@
 = Microservices in the Chronicle World - Part 3
 :hp-tags: JMH, Chronicle-Queue, Microservices
 
-In https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html[Part 2] we saw how we can take a component and add a transport to it to make it a service.
-
 One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.
+
+In https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html[Part 2] we saw how we can take a component and add a transport to it to make it a service.
 
 NOTE: Passing data between threads is not free. This information needs to be passed over the L2 CPU Cache Coherence bus. If you do this in an uncontrolled manner and just let the application discover the objects it needs to pull from one thread's cache to its own, it can be slower than only passing the data you need, streamed serially. Chronicle Queue gives greater transparency by recording every event, allowing you to optmise exactly what one thread passes to another.
 
