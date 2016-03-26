@@ -1,4 +1,5 @@
 = Microservices in the Chronicle world - Part 2
+:hp-tags: Chronicle-Queue, Microservices
 
 In Part 1, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service?
 
