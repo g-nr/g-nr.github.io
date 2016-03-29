@@ -1,0 +1,57 @@
+= Microservices in the Chronicle world - Part 4
+Peter Lawrey
+
+A common question we cover in our workshops is, how to restart a queue reader after a failure.
+
+The answer is not a simple as you might think.
+
+=== Knowing when a message should be replayed on startup.
+
+It's not enough to know which messages have been played.  You need to know which messages were completed successfully in a transaction.  
+
+When updating a database, one way to achieve this is to update the index read in a row in the database, this ways either
+
+- the transaction suceeds and the message doesn't need to be played again.
+- the transaction fails and the message does need to be played again.
+
+The important detail is that there is no situation where it is unclear whether the input message should be replayed.
+
+=== Restarting a reader when writing to a queue as output.
+
+In general, we suggest you write your results to an output queue.  An output queue can be a replacement for logging and a means of monitoring but can also record where each event came from.  
+In particular, and output queue can help
+
+- replay messages in the same order, which were sourced from multiple input queue.
+- ensure that after an upgrade of your software, you honour the decisions you made earlier. i.e. new software replaying the input message might make different decisions. By reading from the output you ensure that after an upgrade you know what state you should be in.
+- restart an input queue from the last message successfully outputed for an input from that queue.
+
+In this example, it reads just one unprocessed message.
+
+.Read one message which hasn't been processed.
+[source, java]
+--------------
+try (SingleChronicleQueue in = SingleChronicleQueueBuilder.binary(queuePath)
+        .sourceId(1)
+        .build();
+     SingleChronicleQueue out = SingleChronicleQueueBuilder.binary(queuePath2)
+             .rollCycle(RollCycles.TEST_DAILY)
+             .build()) {
+
+    MarketDataListener mdListener = out.createAppender()
+            .methodWriterBuilder(MarketDataListener.class)
+            .recordHistory(true)
+            .get();
+    SidedMarketDataCombiner combiner = new SidedMarketDataCombiner(mdListener);
+    MethodReader reader = in.createTailer()
+            .afterLastWritten(out)
+            .methodReader(combiner);
+    assertTrue(reader.readOne());
+}
+--------------
+
+It would be really inefficient to do this every time. The only line which is required for each message is
+
+[source, java]
+--------------
+reader.readOne();
+--------------
