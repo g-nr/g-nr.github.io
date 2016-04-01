@@ -3,7 +3,7 @@ Peter Lawrey
 
 A common question we cover in our workshops is, how to restart a queue reader after a failure.
 
-NOTE: We do an on site one week workshop to help kick start a new project, with alook at ensuring the infrastructure has a good balance of speed and simplicity.  Often simplicity is the most important and it will also be fast enough. You can contavt mailto:sales@chronicle.software[] for more details.
+NOTE: We do an on site one week workshop to help kick start a new project, with alook at ensuring the infrastructure has a good balance of speed and simplicity.  Often simplicity is the most important and it will also be fast enough. You can contact mailto:sales@chronicle.software for more details.
 
 The answer is not a simple as you might think.
 
