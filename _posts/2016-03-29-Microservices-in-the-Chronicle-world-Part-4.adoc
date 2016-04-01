@@ -7,7 +7,10 @@ The answer is not a simple as you might think.
 
 === Knowing when a message should be replayed on startup.
 
-It's not enough to know which messages have been played.  You need to know which messages were completed successfully in a transaction.  
+It's not enough to know which messages have been played.  You need to know which messages were completed successfully in a transaction. This assumes you must have each message processed exactly once. Simpler alternatives are
+
+- play every message again and ignore duplicates.
+- play every message from the end (or the last N minutes) and assume anything older than that has expired.
 
 When updating a database, one way to achieve this is to update the index read in a row in the database, this ways either
 
@@ -31,7 +34,7 @@ In this example, it reads just one unprocessed message.
 [source, java]
 --------------
 try (SingleChronicleQueue in = SingleChronicleQueueBuilder.binary(queuePath)
-        .sourceId(1)
+        .sourceId(1) // <1>
         .build();
      SingleChronicleQueue out = SingleChronicleQueueBuilder.binary(queuePath2)
              .rollCycle(RollCycles.TEST_DAILY)
@@ -39,19 +42,30 @@ try (SingleChronicleQueue in = SingleChronicleQueueBuilder.binary(queuePath)
 
     MarketDataListener mdListener = out.createAppender()
             .methodWriterBuilder(MarketDataListener.class)
-            .recordHistory(true)
+            .recordHistory(true) // <2>
             .get();
     SidedMarketDataCombiner combiner = new SidedMarketDataCombiner(mdListener);
     MethodReader reader = in.createTailer()
-            .afterLastWritten(out)
+            .afterLastWritten(out) // <3>
             .methodReader(combiner);
     assertTrue(reader.readOne());
 }
 --------------
+<1> give the queue a unique id for tracing purposes
+<2> write a history for timings, sources for each message processed
+<3> read the output queue to see what was the last message processed
 
-It would be really inefficient to do this every time. The only line which is required for each message is
+It would be really inefficient to do all this every time. The only line which is required for each message is
 
 [source, java]
 --------------
 reader.readOne();
 --------------
+
+=== Conclusion
+
+While there is a number of ways you could implement restart, if you need it, it is useful to have built in support for one of the most common ways to do this.
+
+
+
+
