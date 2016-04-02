@@ -1,7 +1,8 @@
 = Microservices in the Chronicle World - Part 5
 Peter Lawrey
+:hp-tags: Microservices, latency profile, JLBH
 
-In this part we look at putting this together as collection of services and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Bnehcmark Harness) to test these services.
+In this part we look at putting this together as collection of services and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services.
 
 === Building a Service Wrapper
 
