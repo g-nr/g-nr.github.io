@@ -162,9 +162,56 @@ public void init(JLBH jlbh) {
 <4> The output gateway reads from the third service and writes its result to a log/queue.
 <5> The last service also sets the end to end timing.
 
+NOTE: Every message is being persisted at each stage and is available on restart. As there is one output message for every input pmessage you could restart by winding to the same index as the output. A more robust strategy would be to record te history in the output as covered in the previous post.
 
+=== Running the tests
 
+There are two important considerations when running performance tests
 
+- what is the percentile that you care about? 
+  * Typical, 
+  * 99%tile (worst 1 in 100)
+  * 99.9%tile (worst 1 in 1000)
+  * 99.99%tile ( worst 1 in 10000)
+  * worst, ever
+- what is the throughput you are looking to test.
+
+It is important that you control the throughput for the test so you can see how your system behaves at different sustained throuhgputs.  You system will run as fast as possible for short periods, however buffers and caches quickly fill up and cannot support this rate without getting large delays.
+
+=== Looking at the typical performance.
+
+In this test on a E5-2650 v2, the throughput it can achieve for this test is 600,000 messages/second.  However, it wouldn't be practical to do this for any long period of time as the system quickly gets to the point where it is behind with increasing delay the long this goes on.  This is because there is no head room to deal with any jitter or delay in the system. Every delay accumulates as the system struggle to keeps up. So what is a more practical throughput for this mock system.
+
+.Worst Typical was the highest of 15, 2 minute runs.
+image::mtm-typical-vs-rate.png[align=center]
+
+This looks fine, for all the throughputs up to 400,000 messages per second, the typical performance is consistent.  However, for a throughput of 450,000 messages per second, the service could get a delay which it would struggle to recover from and the typical latency would jump to 20 - 40 seconds.
+
+In short, by looking at the typical performance our estimate of throughput we might prefer has dropped from 600K/s to 400K/s
+
+=== Looking at the nines.
+
+By looking at the higher percentiles (worst results) we can for a view as to what delays would be acceptable and how often.  Typically, I would consider a 99%tile which 4x the typical and a 99.9%tile which 10x the typical latency.  This is rule of thumb I use, however the results vary between systems.
+
+.The worst 1 in 100 gets higher as the throughput increases.
+image::mtm-99-vs-rate.png[align=center]
+
+You might take the view that the 99%tile should be under 10 micro-seconds, and conclude the system can handle 300K messages/second.
+
+.The worst 1 in 1000 gets higher as the throughput increases.
+image::mtm-999-vs-rate.png[align=center]
+
+Looking at the 99.9%tile you can see that above 200K msg/second our latencies shoot up.  Up to 200 K/s our system has very stable latencies.
+
+=== Can we sustain 200 K msg/second?
+
+The problem arises that we will not want to sustain this rate for long.  Bursts are fine, but do this all day long and you generate a lot of data. If all the messages are recorded and they total say 1/2 KB for each inbound message, this will be producing 200 MB/s, and while an SSD can do this easily it will run out of space pretty fast. 200 MB/s is 9 TB per day. Nine TB of usable high performance SSD is still pretty pricy.
+
+Lets say we wanted to record less than 2 TB per day.  A few high capacity HDD could persist all your messages for a week. This is 23 MB/s sustained. At 512 bytes per message (total) you are looking at a more modest 50K message/second sustained, but with burst of up to 200K/s - 600K/s depending on your requirements.
+
+=== In summary
+
+We have a test harness for multi-threaded asynchronous processes and it can help you explore how your service might behave under various throughput loads.  While your system might be able to support high throughputs for very short periods of time, how sustained throughput impacts the latency of your system.
 
 
 
