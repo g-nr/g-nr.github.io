@@ -4,11 +4,11 @@ Peter Lawrey
 
 === A deep dive into a low latency microservice
 
-We loo at a microservice which can run in it's own JVM which can perform JDBC updates and queries via a persisted queue for in bound request and a queue for results.
+We look at a microservice which can run in it's own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for results.
 
 In previous posts I looked at the theory behind there low latency micro-services so lets have a look at a micro-service which can do something useful.
 
-I would consider this a Gateway Service as it inteacts with a system which is outside the microservice model.
+I would consider this a Gateway Service as it interacts with a system which is outside the microservice model.
 
 === What does this service do?
 
@@ -38,7 +38,7 @@ public interface JDBCResult {
 
 === Component wrapped as a Service
 
-As in previous posts, we create a component which can be executed without a transport.  This can be unit testsed stand alone, or a series of components without the transport complicating testing and debugging.
+As in previous posts, we create a component which can be executed without a transport.  This can be unit tested stand alone, or with a series of components without the transport complicating testing and debugging.
 
 .Looking at the executorUpdate method
 [source, java]
@@ -66,7 +66,7 @@ public class JDBCComponent implements JDBCStatement {
     }
 ----
 
-You can see that every input message creates an output message with the results.  This will be useful later for restarting the service from where it got up to and monitoring it's progress.
+You can see that every input message creates an output message with the results.  This will be useful later for restarting the service from where it got up to and monitoring it's progress, as well as obtaining the results.
 
 .How to wrap this as a service
 [source, java]
@@ -128,7 +128,7 @@ public class JDBCService implements Closeable {
     }
 }
 ----
-<1> create a thread with a meaningful name. We use an ExecutorService in case we want to something more complex with it later.
+<1> Create a thread with a meaningful name. We use an ExecutorService in case we want to do something more complex with it later.
 <2> Add this task to the pool
 <3> Create a proxy to write to the output queue
 <4> Start reading after the last message to be successfully processed.
@@ -140,7 +140,7 @@ public class JDBCService implements Closeable {
 
 I tested this writing to HSQLDB which is pretty fast, even writing to a file. Even so, using it as a Service could be useful for very bursty activity as we can handle much higher rates for periods of time.
 
-The performance test write 200K messages as fast as possible and waits for the to all complete.  The first timing is the average latency to write each request, and the second latency is the average time to receive the result.
+The performance test writes 200K messages as fast as possible and waits for the to all complete.  The first timing is the average latency to write each request, and the second latency is the average time to receive the result.
 
 ----
 Average time to write each update 1.5 us, average time to perform each update 29.7 us
@@ -151,7 +151,7 @@ While HSQLDB was able to sustain over 33 K updates per second, (1 / 29.7 us), th
 
 === How long can a burst be?
 
-Both Linux and Windows tend to perform well up to 10% of main memory being "dirty" or not written to disk. For example, if you have 256 GB, you can have 25 GB of "dirty" data.  Even so, if the burst faster than the consuming service, but slow enough that the disk subsystem can keep up, your bursts can exceed main memory size.  To put that in context, if you messages are 256 bytes long, the service could be behind by more than one billion messages, and it will not run out of memory, or fail.  The main limitation in this case, is the amount of free disk space you have.  At the time of posting you can buy 1 TB of Enteprise SSD for less than $600, and Samsung is selling 16 TB SSD drives, so there is no sign that storage costs are continuing to fall.
+Both Linux and Windows tend to perform well up to 10% of main memory being "dirty" or not written to disk. For example, if you have 256 GB, you can have 25 GB of "dirty" data.  Even so, if the burst rate is faster than the consuming service, but slow enough that the disk subsystem can keep up, your bursts can exceed main memory size.  To put that in context, if your messages are 256 bytes long, the service could be behind by more than one billion messages, and it will not run out of memory, or fail.  The main limitation in this case, is the amount of free disk space you have.  At the time of posting you can buy 1 TB of Enterprise SSD for less than $600, and Samsung is selling 16 TB SSD drives. I expect  storage costs will continue to fall.
 
 === Conclusion
 
