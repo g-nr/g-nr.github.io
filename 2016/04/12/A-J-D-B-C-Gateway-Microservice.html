@@ -77,17 +77,17 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="A JDBC Gateway Microservice" />
-    <meta property="og:description" content="A deep dive into a low latency microservice We loo at a microservice which can run in it&amp;#8217;s own JVM which can perform JDBC updates and queries via a persisted queue for in bound request and a queue..." />
+    <meta property="og:description" content="A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html" />
     <meta property="article:published_time" content="2016-04-11T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-04-12T17:55:50.315Z" />
+    <meta property="article:modified_time" content="2016-04-12T18:11:02.018Z" />
     <meta property="article:tag" content="Microservice" />
     <meta property="article:tag" content="JDBC" />
     <meta property="article:tag" content="Example" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="A JDBC Gateway Microservice" />
-    <meta name="twitter:description" content="A deep dive into a low latency microservice We loo at a microservice which can run in it&amp;#8217;s own JVM which can perform JDBC updates and queries via a persisted queue for in bound request and a queue..." />
+    <meta name="twitter:description" content="A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for..." />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html" />
     
     <script type="application/ld+json">
@@ -105,9 +105,9 @@
     "headline": "A JDBC Gateway Microservice",
     "url": "https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html",
     "datePublished": "2016-04-11T23:00:00.000Z",
-    "dateModified": "2016-04-12T17:55:50.315Z",
+    "dateModified": "2016-04-12T18:11:02.018Z",
     "keywords": "Microservice,  JDBC,  Example",
-    "description": "A deep dive into a low latency microservice We loo at a microservice which can run in it&amp;#8217;s own JVM which can perform JDBC updates and queries via a persisted queue for in bound request and a queue..."
+    "description": "A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for..."
 }
     </script>
 
@@ -222,13 +222,13 @@
             <div class="sect2">
 <h3 id="_a_deep_dive_into_a_low_latency_microservice">A deep dive into a low latency microservice</h3>
 <div class="paragraph">
-<p>We loo at a microservice which can run in it&#8217;s own JVM which can perform JDBC updates and queries via a persisted queue for in bound request and a queue for results.</p>
+<p>We look at a microservice which can run in it&#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for results.</p>
 </div>
 <div class="paragraph">
 <p>In previous posts I looked at the theory behind there low latency micro-services so lets have a look at a micro-service which can do something useful.</p>
 </div>
 <div class="paragraph">
-<p>I would consider this a Gateway Service as it inteacts with a system which is outside the microservice model.</p>
+<p>I would consider this a Gateway Service as it interacts with a system which is outside the microservice model.</p>
 </div>
 </div>
 <div class="sect2">
@@ -262,7 +262,7 @@
 <div class="sect2">
 <h3 id="_component_wrapped_as_a_service">Component wrapped as a Service</h3>
 <div class="paragraph">
-<p>As in previous posts, we create a component which can be executed without a transport.  This can be unit testsed stand alone, or a series of components without the transport complicating testing and debugging.</p>
+<p>As in previous posts, we create a component which can be executed without a transport.  This can be unit tested stand alone, or with a series of components without the transport complicating testing and debugging.</p>
 </div>
 <div class="listingblock">
 <div class="title">Looking at the executorUpdate method</div>
@@ -291,7 +291,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>You can see that every input message creates an output message with the results.  This will be useful later for restarting the service from where it got up to and monitoring it&#8217;s progress.</p>
+<p>You can see that every input message creates an output message with the results.  This will be useful later for restarting the service from where it got up to and monitoring it&#8217;s progress, as well as obtaining the results.</p>
 </div>
 <div class="listingblock">
 <div class="title">How to wrap this as a service</div>
@@ -358,7 +358,7 @@
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>create a thread with a meaningful name. We use an ExecutorService in case we want to something more complex with it later.</td>
+<td>Create a thread with a meaningful name. We use an ExecutorService in case we want to do something more complex with it later.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -393,7 +393,7 @@
 <p>I tested this writing to HSQLDB which is pretty fast, even writing to a file. Even so, using it as a Service could be useful for very bursty activity as we can handle much higher rates for periods of time.</p>
 </div>
 <div class="paragraph">
-<p>The performance test write 200K messages as fast as possible and waits for the to all complete.  The first timing is the average latency to write each request, and the second latency is the average time to receive the result.</p>
+<p>The performance test writes 200K messages as fast as possible and waits for the to all complete.  The first timing is the average latency to write each request, and the second latency is the average time to receive the result.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -407,7 +407,7 @@
 <div class="sect2">
 <h3 id="_how_long_can_a_burst_be">How long can a burst be?</h3>
 <div class="paragraph">
-<p>Both Linux and Windows tend to perform well up to 10% of main memory being "dirty" or not written to disk. For example, if you have 256 GB, you can have 25 GB of "dirty" data.  Even so, if the burst faster than the consuming service, but slow enough that the disk subsystem can keep up, your bursts can exceed main memory size.  To put that in context, if you messages are 256 bytes long, the service could be behind by more than one billion messages, and it will not run out of memory, or fail.  The main limitation in this case, is the amount of free disk space you have.  At the time of posting you can buy 1 TB of Enteprise SSD for less than $600, and Samsung is selling 16 TB SSD drives, so there is no sign that storage costs are continuing to fall.</p>
+<p>Both Linux and Windows tend to perform well up to 10% of main memory being "dirty" or not written to disk. For example, if you have 256 GB, you can have 25 GB of "dirty" data.  Even so, if the burst rate is faster than the consuming service, but slow enough that the disk subsystem can keep up, your bursts can exceed main memory size.  To put that in context, if your messages are 256 bytes long, the service could be behind by more than one billion messages, and it will not run out of memory, or fail.  The main limitation in this case, is the amount of free disk space you have.  At the time of posting you can buy 1 TB of Enterprise SSD for less than $600, and Samsung is selling 16 TB SSD drives. I expect  storage costs will continue to fall.</p>
 </div>
 </div>
 <div class="sect2">
