@@ -146,6 +146,6 @@ if (Jvm.isFlightRecorder()) {
 
 === In our next part
 
-I would like to look at how we can time just the component running in another thread. In particular see how long it takes to read, process and write each message with individual timings.
+https://vanilla-java.github.io/2016/03/29/Microservices-in-the-Chronicle-world-Part-4.html[Part 4: How can we time just the component running in another thread]. In particular see how long it takes to read, process and write each message with individual timings.
 
 
