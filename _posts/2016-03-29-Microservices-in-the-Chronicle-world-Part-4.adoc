@@ -68,6 +68,10 @@ reader.readOne();
 
 While there is a number of ways you could implement restart, if you need it, it is useful to have built in support for one of the most common ways to do this.
 
+=== In the next part.
+
+https://vanilla-java.github.io/2016/04/02/Microservices-in-the-Chronicle-World-Part-5.html[How does this perform end to end with multiple asynchronous services are how can we measure there?]
+
 
 
 
