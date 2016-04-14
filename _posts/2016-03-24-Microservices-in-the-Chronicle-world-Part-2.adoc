@@ -195,7 +195,7 @@ We can test components stand alone with a queue or in a chain by using more queu
 
 == In our next part
 
-In the next part we will look at benchmarking and profiling with Queue.  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.
+https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html[In part 3, we will look at benchmarking and profiling with Queue]  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.
 
 
 
