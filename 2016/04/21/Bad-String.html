@@ -77,14 +77,15 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Bad String" />
-    <meta property="og:description" content=".toggler { 	padding-top: 0.2em; }  Show solution  function getBlockField(blockId) { 	return document.getElementById(blockId + &quot;Field&quot;); } function isBlockVisible(blockId) { 	return getBlockField(blockId).checked; } function updateBlocks(blockId) {   var elements = document.getEl..." />
+    <meta property="og:description" content="This program has two threads printing messages alternatively.  However if you change a String from &quot;cC&quot; to &quot;cc&quot; it doesn&amp;#8217;t print anything, WHY? public class PingPongMain {     public static void main(String[] args) throws InterruptedException {         new Thread(() -&amp;gt;..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/04/21/Bad-String.html" />
     <meta property="article:published_time" content="2016-04-20T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-04-21T19:53:53.659Z" />
+    <meta property="article:modified_time" content="2016-04-21T20:08:27.202Z" />
+    <meta property="article:tag" content="Puzzler" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Bad String" />
-    <meta name="twitter:description" content=".toggler { 	padding-top: 0.2em; }  Show solution  function getBlockField(blockId) { 	return document.getElementById(blockId + &quot;Field&quot;); } function isBlockVisible(blockId) { 	return getBlockField(blockId).checked; } function updateBlocks(blockId) {   var elements = document.getEl..." />
+    <meta name="twitter:description" content="This program has two threads printing messages alternatively.  However if you change a String from &quot;cC&quot; to &quot;cc&quot; it doesn&amp;#8217;t print anything, WHY? public class PingPongMain {     public static void main(String[] args) throws InterruptedException {         new Thread(() -&amp;gt;..." />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/04/21/Bad-String.html" />
     
     <script type="application/ld+json">
@@ -102,8 +103,9 @@
     "headline": "Bad String",
     "url": "https://vanilla-java.github.io/2016/04/21/Bad-String.html",
     "datePublished": "2016-04-20T23:00:00.000Z",
-    "dateModified": "2016-04-21T19:53:53.659Z",
-    "description": ".toggler { \tpadding-top: 0.2em; }  Show solution  function getBlockField(blockId) { \treturn document.getElementById(blockId + &quot;Field&quot;); } function isBlockVisible(blockId) { \treturn getBlockField(blockId).checked; } function updateBlocks(blockId) {   var elements = document.getEl..."
+    "dateModified": "2016-04-21T20:08:27.202Z",
+    "keywords": "Puzzler",
+    "description": "This program has two threads printing messages alternatively.  However if you change a String from &quot;cC&quot; to &quot;cc&quot; it doesn&amp;#8217;t print anything, WHY? public class PingPongMain {     public static void main(String[] args) throws InterruptedException {         new Thread(() -&amp;gt;..."
 }
     </script>
 
@@ -111,7 +113,7 @@
     <link rel="alternate" type="application/rss+xml" title="Vanilla Java" href="https://vanilla-java.github.io/rss" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
   </head>
-  <body class="post-template">
+  <body class="post-template tag-Puzzler">
 
     <button data-action="open-drawer" id="drawer-button" class="drawer-button"><i class="fa fa-bars"></i></button>
     <nav tabindex="-1" class="drawer">
@@ -179,7 +181,7 @@
             
 <section class="wrapper wrapper-post">
   <div class="wrapper-container">
-    <article itemscope itemtype="http://schema.org/BlogPosting" role="article" class="post post">
+    <article itemscope itemtype="http://schema.org/BlogPosting" role="article" class="post post tag-Puzzler">
         <section class="post-container">
           <header class="post-header">
             <ul class="post-meta-list">
@@ -188,6 +190,12 @@
                   2016-04-21 00:00:00<ago class="ago">
                 </time>
               </li>
+                <li class="post-meta-item">
+                  <span class="tags"><i class="fa fa-tags"></i>
+                      <span>
+                      <a href="https://vanilla-java.github.io/tag/Puzzler">Puzzler</a></span>
+                  </span>
+                </li>
               <li class="post-meta-item">
                 <a href="#disqus_thread" data-disqus-identifier="f58472c0-2cb0-40b8-a0cc-6f6ce7b0d483">Comments</a>
               </li>
@@ -209,50 +217,10 @@
             </div>
           </aside>
           <div itemprop="articleBody" class="post-body">
-            <style>
-.toggler {
-	padding-top: 0.2em;
-}
-</style>
-
-<div class="toggler"><input id="javaSourceCodeField" type="checkbox" checked /> Show solution </div>
-
-<script>
-function getBlockField(blockId) {
-	return document.getElementById(blockId + "Field");
-}
-
-function isBlockVisible(blockId) {
-	return getBlockField(blockId).checked;
-}
-
-function updateBlocks(blockId) {
-  var elements = document.getElementsByClassName(blockId);
-
-  var display = isBlockVisible(blockId) ? "block" : "none";
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.display = display;
-  }
-}
-
-function updateAllBlocks() {
-	updateBlocks("javaSourceCode");
-}
-
-getBlockField("javaSourceCode").addEventListener("click", function() {
-	getBlockField("xtendSourceCode").disabled = !isBlockVisible("javaSourceCode");
-	updateAllBlocks();
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-	getBlockField("javaSourceCode").disabled = true;
-	getBlockField("javaSourceCode").checked = false;
-
-	updateAllBlocks();
-});
-</script>
+            <div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>This program has two threads printing messages alternatively.  However if you change a <code>String</code> from <code>"cC"</code> to <code>"cc"</code>, WHY?</p>
+<p>This program has two threads printing messages alternatively.  However if you change a <code>String</code> from <code>"cC"</code> to <code>"cc"</code> it doesn&#8217;t print anything, WHY?</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -305,10 +273,48 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="paragraph">
 <p>The solution is below</p>
 </div>
-<div class="listingblock javaSourceCode">
-<div class="title">Solution</div>
+<div class="paragraph">
+<p>.</p>
+</div>
+<div class="paragraph">
+<p>.</p>
+</div>
+<div class="paragraph">
+<p>.</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre class="highlight"><code>Both "bb" and "cC" have the same hashcode. More to follow.</code></pre>
+<img src="/images/omg_wtf.jpg" alt="omg wtf.jpg">
+</div>
+</div>
+<div class="paragraph">
+<p>.</p>
+</div>
+<div class="paragraph">
+<p>.</p>
+</div>
+<div class="paragraph">
+<p>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_combination_of_strangeness">A combination of strangeness</h4>
+<div class="paragraph">
+<p>There is a couple of elements to this puzzle</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>using a String literal as a Object to lock on.</p>
+</li>
+<li>
+<p>corrupting a String in the literal pool.</p>
+</li>
+<li>
+<p>replacing one String with another with the same hashCode so the replacement is found. "bb".hashCode() == "cC".hashCode()</p>
+</li>
+</ul>
 </div>
 </div>
           </div>
