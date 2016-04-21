@@ -1,0 +1,104 @@
+= Bad String
+
+++++
+<style>
+.toggler {
+	padding-top: 0.2em;
+}
+</style>
+
+<div class="toggler"><input id="javaSourceCodeField" type="checkbox" checked /> Show solution </div>
+
+<script>
+function getBlockField(blockId) {
+	return document.getElementById(blockId + "Field");
+}
+
+function isBlockVisible(blockId) {
+	return getBlockField(blockId).checked;
+}
+
+function updateBlocks(blockId) {
+  var elements = document.getElementsByClassName(blockId);
+
+  var display = isBlockVisible(blockId) ? "block" : "none";
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display = display;
+  }
+}
+
+function updateAllBlocks() {
+	updateBlocks("javaSourceCode");
+}
+
+getBlockField("javaSourceCode").addEventListener("click", function() {
+	getBlockField("xtendSourceCode").disabled = !isBlockVisible("javaSourceCode");
+	updateAllBlocks();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+	getBlockField("javaSourceCode").disabled = true;
+	getBlockField("javaSourceCode").checked = false;
+
+	updateAllBlocks();
+});
+</script>
+++++
+
+This program has two threads printing messages alternatively.  However if you change a `String` from `"cC"` to `"cc"`, WHY?
+
+[source,java]
+----
+public class PingPongMain {
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(() -> {
+            try {
+                synchronized ("bb") {
+                    while (true) {
+                        "bb".wait();
+                        "bb".notifyAll();
+                        System.out.println("b");
+                    }
+                }
+            } catch (InterruptedException e) {
+                throw new AssertionError(e);
+            }
+        }).start();
+        Thread.sleep(100);
+        setString("bb", 'c', 'C');
+        new Thread(() -> {
+            try {
+                // change "cC" to "cc" and this program prints nothing.
+                synchronized ("cC") {
+                    while (true) {
+                        "cC".notifyAll();
+                        "cC".wait();
+                        System.out.println("c");
+                    }
+                }
+            } catch (InterruptedException e) {
+                throw new AssertionError(e);
+            }
+        }).start();
+        
+    }
+
+    public static void setString(String s, char... chars) {
+        try {
+            Field value = String.class.getDeclaredField("value");
+            value.setAccessible(true);
+            value.set(s, chars);
+        } catch (Exception e) {
+            throw new AssertionError(e);
+        }
+    }
+}
+----
+
+The solution is below
+
+[source,indent=0,role="javaSourceCode"]
+.Solution
+----
+Both "bb" and "cC" have the same hashcode. More to follow.
+----
