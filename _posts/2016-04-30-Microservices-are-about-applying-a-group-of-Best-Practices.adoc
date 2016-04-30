@@ -48,7 +48,7 @@ The initial steps I suggest are
 This is a score card I put together for a senior manager for firm of over 60 developers. In the space of an hour we went from not considering Microservices, to being convinced it was a path to enhance their solutions.
 
 .Best Practice Scorecard
-[colls="3,1,1,1"]
+[cols="3,1,1,1"]
 |===
 |  | Today | Quick Wins | 6 Months
 
