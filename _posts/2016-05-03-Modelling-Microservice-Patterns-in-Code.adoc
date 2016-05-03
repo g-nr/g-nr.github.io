@@ -1,0 +1,62 @@
+= Modelling Microservice Patterns in Code
+Peter Lawrey
+:hp-tags: Microservices, Patterns, Java
+
+=== Service Interactions
+
+There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into synchronous and asynchronous messages.
+
+=== Synchronous Messages
+
+Synchronous messaging is often the simplest to reason about.  GUI client often use synchronous messaging as the response is often only relevent to the one making the request
+
+==== Request/Response
+
+The client sends a message to a server.  That message contains information to call an action on the server and usually includes a payload of data.  The response is usually just data.
+
+For every message the client sends the server, it responses with a single message. Often the client waits for the response, however the client can process the response asynchronously to improve performance.
+
+image::https://www.healingradius.com/Content/Images/placeholder.png[]
+
+With asynchronous response processing, the client can send multiple requests over the same channel rather than wait for each one to complete.
+
+.Synchronous server with synchronous client
+[source,java]
+----
+interface OneRequestResponse {
+    Response requestType(RequestData data);
+}
+----
+
+.Synchronous server with asynchronous client
+[source,java]
+----
+interface OneRequestResponse2 {
+    void requestType(RequestData data, Consumer<Response> responseConsumer);
+}
+----
+
+==== Request/Callback
+
+The client sends a message to a server.  That message contains information to call an action on the server and usually includes a payload of data.  The callback is also a message containing an action and data.
+
+image::https://www.healingradius.com/Content/Images/placeholder.png[]
+
+The use of a callback provides a richer interaction between the caller and callee.
+
+.Synchronous server with a callback
+[source,java]
+----
+interface OneCallback {
+    void resultOne(ResultOne one);
+    
+    void errorResult(String message);
+}
+
+interface OneRequestCallback {
+    void requestType(RequestData data, OneCallback callback);
+}
+----
+
+The client can be configured to either wait for the server to call the callback, or handle the callback asynchronously.  The thread which performs the method in the callback will be on the client side.
+
