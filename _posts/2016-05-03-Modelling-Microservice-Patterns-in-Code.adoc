@@ -4,15 +4,15 @@ Peter Lawrey
 
 === Service Interactions
 
-There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into synchronous and asynchronous messages.
+There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into client-server and peir-to-peir messaginf.
 
-=== Synchronous Messages
+=== Client-Server Messaging
 
-Synchronous messaging is often the simplest to reason about.  GUI client often use synchronous messaging as the response is often only relevent to the one making the request
+Client-Server messaging is oftne sychronous, although asynchronous messaging is useful in reducing hte cost of network latency. 
 
 ==== Request/Response
 
-The client sends a message to a server.  That message contains information to call an action on the server and usually includes a payload of data.  The response is usually just data.
+The client sends a message to a server.  That message contains a message type to chose an action to perform on the server and usually includes a payload of data.  The response is usually just data.
 
 For every message the client sends the server, it responses with a single message. Often the client waits for the response, however the client can process the response asynchronously to improve performance.
 
@@ -48,8 +48,10 @@ The use of a callback provides a richer interaction between the caller and calle
 [source,java]
 ----
 interface OneCallback {
-    void resultOne(ResultOne one);
-    
+    void resultOne(ResultOne result);
+
+    void resultTwo(List<ResultOne> results);
+
     void errorResult(String message);
 }
 
