@@ -1,5 +1,6 @@
 = Microservices in the Chronicle world - Part 4
 Peter Lawrey
+:hp-tags: Microservices, Restarting
 
 A common question we cover in our workshops is, how to restart a queue reader after a failure.
 
