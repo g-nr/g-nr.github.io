@@ -1,6 +1,6 @@
 = A JDBC Gateway Microservice
 Peter Lawrey
-:hp-tags: Microservice, JDBC, Example
+:hp-tags: Microservices, JDBC, Example
 
 === A deep dive into a low latency microservice
 
