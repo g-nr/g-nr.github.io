@@ -1,5 +1,5 @@
 = Microservices in the Chronicle world - Part 1
-:hp-tags: microservices, examples
+:hp-tags: Microservices, examples
 
 At a high level, different Microservices strategies have a lot in common.  They subscribe to the same ideals.
 When it comes to the details of how they are actually implemented, they can vary.
