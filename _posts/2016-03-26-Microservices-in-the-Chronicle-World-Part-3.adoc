@@ -1,5 +1,5 @@
 = Microservices in the Chronicle World - Part 3
-:hp-tags: JMH, Chronicle-Queue, Microservices
+:hp-tags: Microservices, JMH, Chronicle-Queue
 
 One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.
 
