@@ -1,6 +1,6 @@
 = Micro-services for performance
 :published_at: 2016-03-22
-:hp-tags: microservices, design
+:hp-tags: Microservices, design
 
 == Overview
 
