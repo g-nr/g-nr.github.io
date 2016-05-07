@@ -1,5 +1,5 @@
 = Microservices in the Chronicle world - Part 2
-:hp-tags: Chronicle-Queue, Microservices
+:hp-tags: Microservices, Chronicle-Queue
 
 In this part we look at turning a component into a service.
 
