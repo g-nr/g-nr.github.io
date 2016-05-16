@@ -8,7 +8,7 @@ There is a number of simple interactions a service can support.  Which pattern i
 
 === Client-Server Messaging
 
-Client-Server messaging is often synchronous, although asynchronous messaging is useful in reducing hte cost of network latency. 
+Client-Server messaging is often synchronous, although asynchronous messaging is useful in reducing the cost of network latency.
 
 ==== Request/Response
 
@@ -36,6 +36,29 @@ interface OneRequestResponse2 {
 }
 ----
 
+==== Request/Proxy
+
+This is like request/response, except the object returned is a proxy for further access.  This is useful when the interface returned is a complex, or very large object.
+
+image::Request-Proxy.jpg[]
+
+This is used in Map returning a key set or values which is a proxy to the underlying map.
+
+.Method on java.util.Map
+[source,java]
+----
+public interface Map<K, V> {
+
+    Set<K> keySet();
+    
+    Set<Map.Entry<K, V>> entrySet();
+    
+    Collection<V> values();
+}
+----
+
+Using a proxy gives access to data without having to pass all the data from the server to the client.
+
 ==== Request/Callback
 
 The client sends a message to a server.  That message contains information to call an action on the server and usually includes a payload of data.  The callback is also a message containing an action and data.
@@ -62,9 +85,56 @@ interface OneRequestCallback {
 
 The client can be configured to either wait for the server to call the callback, or handle the callback asynchronously.  The thread which performs the method in the callback will be on the client side.
 
+==== Request/Visitor
+
+The client sends one or two visitors to the server to apply to local objects or actors.  This visitor can be an update which applied atomically to an actor, and/or a vistor can be applied to retrieve specific information.
+
+image::Request-Visitor.jpg[]
+
+.Pass a function to apply on a server for a given key
+[source,java]
+----
+interface KeyedResources<V> {
+
+    void asyncUpdate(String key, Visitor<V> vistor);
+    
+    <R> R syncUpdate(String key, Visitor<V> updater, Function<V, R> returnFunction);
+    
+}
+----
+
+
+
+
+
 ==== Request/Subscription
 
+By requesting a subscription, a client can receive multiple asynchronous events.  This can start with a bootstrap of existing information, followed by live updates.
 
+Once a subscription ahs been made, it should be altered, or cancelled
 
 image::Request-Subscription.jpg[]
+
+.Pass a function to apply on a server for a given key
+[source,java]
+----
+
+interface Queryable<E> {
+
+    <R> Subscription<E, R> subscribe(Filter<E> filter, Function<E, R> returnMapping, Subscriber<R> subscriber);
+    
+}
+
+interface Subscription<R> {
+    // change the current filter.
+    void setFilter(Filter<E> newFilter);
+    
+    void cancel();
+}
+----
+
+==== Client Injected Harness
+
+image::Client-Injected-Handler.jpg[]
+
 
