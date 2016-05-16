@@ -8,7 +8,7 @@ There is a number of simple interactions a service can support.  Which pattern i
 
 === Client-Server Messaging
 
-Client-Server messaging is oftne sychronous, although asynchronous messaging is useful in reducing hte cost of network latency. 
+Client-Server messaging is often synchronous, although asynchronous messaging is useful in reducing hte cost of network latency. 
 
 ==== Request/Response
 
@@ -16,7 +16,7 @@ The client sends a message to a server.  That message contains a message type to
 
 For every message the client sends the server, it responses with a single message. Often the client waits for the response, however the client can process the response asynchronously to improve performance.
 
-image::https://www.healingradius.com/Content/Images/placeholder.png[]
+image::Request-Response.jpg[]
 
 With asynchronous response processing, the client can send multiple requests over the same channel rather than wait for each one to complete.
 
@@ -40,7 +40,7 @@ interface OneRequestResponse2 {
 
 The client sends a message to a server.  That message contains information to call an action on the server and usually includes a payload of data.  The callback is also a message containing an action and data.
 
-image::https://www.healingradius.com/Content/Images/placeholder.png[]
+image::Request-Callback.jpg[]
 
 The use of a callback provides a richer interaction between the caller and callee.
 
@@ -61,4 +61,10 @@ interface OneRequestCallback {
 ----
 
 The client can be configured to either wait for the server to call the callback, or handle the callback asynchronously.  The thread which performs the method in the callback will be on the client side.
+
+==== Request/Subscription
+
+
+
+image::Request-Subscription.jpg[]
 
