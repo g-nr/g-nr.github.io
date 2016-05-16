@@ -103,8 +103,7 @@ interface KeyedResources<V> {
 }
 ----
 
-
-
+This approach allows the caller to apply an operation to an actor without needing to know where that actor is.
 
 
 ==== Request/Subscription
@@ -135,6 +134,26 @@ interface Subscription<R> {
 
 ==== Client Injected Harness
 
+This approach allows the client to version and configure which handlers are used on the server on the client's behalf. In particular, this is useful when supporting multiple versions of client concurrently.
+
 image::Client-Injected-Handler.jpg[]
+
+.Client passes a handler to intergate with the server and act it's behalf
+[source,java]
+----
+interface AcceptsHandler {
+
+    /**
+     * The accept method takes a handler to pass to the server.
+     * and it returns a proxy it can call to invoke that hdnler on the server.
+     */
+    <H extends ContextAcceptor> H accept(H handler);
+}
+----
+
+==== Conclusion
+
+TBA.  Tomorrow.
+
 
 
