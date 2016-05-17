@@ -10,6 +10,15 @@ There is a number of simple interactions a service can support.  Which pattern i
 
 Client-Server messaging is often synchronous, although asynchronous messaging is useful in reducing the cost of network latency.
 
+==== Using a human readable protocol
+
+It is useful to be able to see the underlying messages in readable text.  I suggest using either text or a binary format which can be automatically converted to text to make it easy to  check the data sent. I suggest using YAML as the human readable form as;
+
+- it is designed to be human readable instead of a subset of another language/format.
+- it supports messages, types and comments.
+- it can be converted to binary for performance.
+
+
 ==== Request/Response
 
 The client sends a message to a server.  That message contains a message type to chose an action to perform on the server and usually includes a payload of data.  The response is usually just data.
@@ -36,6 +45,25 @@ interface OneRequestResponse2 {
 }
 ----
 
+Using this API could be translated into YAML such as
+
+.Synchronous server with synchronous or asynchronous client
+[source,yaml]
+----
+--- # client sends to server
+requestType: {
+  data: 1,
+  text: my text
+}
+--- # server sends to client
+reply: !MyResponse {
+  moreData: 128,
+  message: Success
+}
+...
+----
+
+
 ==== Request/Proxy
 
 This is like request/response, except the object returned is a proxy for further access.  This is useful when the interface returned is a complex, or very large object.
@@ -58,6 +86,29 @@ public interface Map<K, V> {
 ----
 
 Using a proxy gives access to data without having to pass all the data from the server to the client.
+
+.Method on java.util.Map
+[source,yaml]
+----
+--- # client sends to server
+keySet: []
+---
+entrySet: []
+---
+values: []
+--- # server sends to client
+reply: !set-proxy {
+   csp: /map/my-map?viewType=KeySet
+}
+---
+reply: !set-proxy {
+   csp: /map/my-map?viewType=EntrySet
+}
+---
+reply: !set-proxy {
+   csp: /map/my-map?viewType=Values
+}
+----
 
 ==== Request/Callback
 
@@ -85,6 +136,28 @@ interface OneRequestCallback {
 
 The client can be configured to either wait for the server to call the callback, or handle the callback asynchronously.  The thread which performs the method in the callback will be on the client side.
 
+.Synchronous server with a callback
+[source,yaml]
+----
+--- # client sends to server
+requestType: {
+  data: 1,
+  text: my text
+}
+--- # server sends to client
+resultTwo: [
+  {
+      moreData: 128,
+      message: Success
+  },
+  {
+      moreData: 1111,
+      message: Failure
+  }  
+}
+...
+----
+
 ==== Request/Visitor
 
 The client sends one or two visitors to the server to apply to local objects or actors.  This visitor can be an update which applied atomically to an actor, and/or a vistor can be applied to retrieve specific information.
@@ -104,6 +177,25 @@ interface KeyedResources<V> {
 ----
 
 This approach allows the caller to apply an operation to an actor without needing to know where that actor is.
+
+.Pass a function to apply on a server for a given key
+[source,java]
+----
+--- # client sends to server
+asyncUpdate: [ 
+    "key-5", 
+    !MyVisitor { add: 10 } 
+] # no return value
+--- # subtract 3 and return x * x
+syncUpdate: [ 
+    "key-6", 
+    !MyVisiitor { add: -3 }, 
+    !Square { } 
+];
+--- # server sends to client
+reply: 1024
+...
+----
 
 
 ==== Request/Subscription
@@ -131,6 +223,44 @@ interface Subscription<R> {
     void cancel();
 }
 ----
+
+Up to this point, all the message are actions lived with a single response.  In Chronicle-Engine, we associate a `csp` or Chronicle Service Path for each actor, and a `tid` or Transaction ID with each operation.  This allows multiple concurrent actions to different actors.  This routing information is passed in meta data, with the actions for that destination following
+
+.Pass a function to apply on a server for a given key
+[source,yaml]
+----
+# client sends server
+--- !!meta-data # binary
+csp: /maps/my-map
+tid: 12345
+--- !!data # binary
+subscribe: [
+   !MyFilter { field: age, op: gt, value: 18 },
+   !Getter { field: name }
+]
+
+# server sends client
+--- !!meta-data # binary
+tid: 12345
+--- !data-not-complete # binary
+reply: Steve Jobs
+--- !data-not-complete # binary
+reply: Alan Turing
+
+# client sends server
+--- !!meta-data # binary
+tid: 12345
+--- !data # binary
+cancel: []
+
+# server sends client
+--- !!meta-data # binary
+tid: 12345
+--- !data # binary
+cancelled: "By request"
+...
+----
+
 
 ==== Client Injected Harness
 
