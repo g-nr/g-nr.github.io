@@ -4,11 +4,13 @@ Peter Lawrey
 
 === Service Interactions
 
-There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into client-server and peir-to-peir messaginf.
+There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into client-server and peir-to-peir messaging.
+
+For peir-to-peir message, one approach to take is https://vanilla-java.github.io/2016/05/16/Simple-Asynchronous-Microservices-using-Lambda-Architecture.html[Lambda Architecture] however from supporting GUI clients, client - server models can be easier to work with.
 
 === Client-Server Messaging
 
-Client-Server messaging is often synchronous, although asynchronous messaging is useful in reducing the cost of network latency.
+Client-Server messaging is often used in a synchronous way.  Aynchronous messaging can support multiple concurrent requests, reducing the cost of network latency and increasing throughput. Asynchronous message can perform best when it is altency, rather than network bandwidth which is your limiting factor.
 
 ==== Using a human readable protocol
 
@@ -50,12 +52,15 @@ Using this API could be translated into YAML such as
 .Synchronous server with synchronous or asynchronous client
 [source,yaml]
 ----
---- # client sends to server
+# client sends to server
+---
 requestType: {
   data: 1,
   text: my text
 }
---- # server sends to client
+
+# server sends to client
+---
 reply: !MyResponse {
   moreData: 128,
   message: Success
@@ -90,13 +95,16 @@ Using a proxy gives access to data without having to pass all the data from the 
 .Method on java.util.Map
 [source,yaml]
 ----
---- # client sends to server
+# client sends to server
+---
 keySet: []
 ---
 entrySet: []
 ---
 values: []
---- # server sends to client
+
+# server sends to client
+---
 reply: !set-proxy {
    csp: /map/my-map?viewType=KeySet
 }
@@ -139,12 +147,15 @@ The client can be configured to either wait for the server to call the callback,
 .Synchronous server with a callback
 [source,yaml]
 ----
---- # client sends to server
+# client sends to server
+---
 requestType: {
   data: 1,
   text: my text
 }
---- # server sends to client
+
+# server sends to client
+---
 resultTwo: [
   {
       moreData: 128,
@@ -181,18 +192,22 @@ This approach allows the caller to apply an operation to an actor without needin
 .Pass a function to apply on a server for a given key
 [source,java]
 ----
---- # client sends to server
+# client sends to server
+---
 asyncUpdate: [ 
     "key-5", 
     !MyVisitor { add: 10 } 
-] # no return value
+] 
+# no return value
 --- # subtract 3 and return x * x
 syncUpdate: [ 
     "key-6", 
     !MyVisiitor { add: -3 }, 
     !Square { } 
 ];
---- # server sends to client
+
+# server sends to client
+---
 reply: 1024
 ...
 ----
@@ -238,6 +253,7 @@ subscribe: [
    !MyFilter { field: age, op: gt, value: 18 },
    !Getter { field: name }
 ]
+request: 2 # only send me two events for now.
 
 # server sends client
 --- !!meta-data # binary
@@ -262,7 +278,7 @@ cancelled: "By request"
 ----
 
 
-==== Client Injected Harness
+==== Client Injected Handler
 
 This approach allows the client to version and configure which handlers are used on the server on the client's behalf. In particular, this is useful when supporting multiple versions of client concurrently.
 
@@ -281,9 +297,28 @@ interface AcceptsHandler {
 }
 ----
 
+A simple example of a handler we use is for heartbeats
+
+[source,yaml]
+----
+# client sends server
+--- !!meta-data # binary
+csp: /
+cid: 1
+handler: !HeartbeatHandler {
+    heartbeatTimeoutMs: 10000
+    heartbeatIntervalMs: 2000
+}
+...
+----
+
+NOTE: This allows different clients to be working with dfferent versions of handlers at the same time, supporting old and new clients.
+
 ==== Conclusion
 
-TBA.  Tomorrow.
+In addition to https://vanilla-java.github.io/2016/05/16/Simple-Asynchronous-Microservices-using-Lambda-Architecture.html[Lambda Architecture] models for back end services, we can support a rich set of interactions between clients and servers.
+
+As covered in previous posts, these interactions can be performed without a transport i.e. one component directly calls another to make testing and debugging easier.
 
 
 
