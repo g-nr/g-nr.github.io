@@ -73,7 +73,7 @@ reply: !MyResponse {
 ...
 ----
 
-
+[[Request-Proxy]]
 ==== Request/Proxy
 
 This is like request/response, except the object returned is a proxy for further events.  This is useful when the value returned represents a complex, or very large object.
@@ -150,6 +150,7 @@ reply: true # <2>
 <1> no need to send 128,000 keys just to determine how many there was.
 <2> key was removed on the server, not a copy sent to the client.
 
+[[Request-Callback]]
 ==== Request/Callback
 
 The client sends a message to a server.  That message contains information to call an action on the server and usually includes a payload of data.  The callback is also a message containing an action and data.
@@ -203,6 +204,7 @@ resultTwo: [
 ...
 ----
 
+[[Request-Visitor]]
 ==== Request/Visitor
 
 The client sends one or two visitors to the server to apply to local objects or actors.  This visitor can be an update which applied atomically to an actor, and/or a vistor can be applied to retrieve specific information.
@@ -246,7 +248,7 @@ reply: 1024
 ...
 ----
 
-
+[[Request-Subscription]]
 ==== Request/Subscription
 
 By requesting a subscription, a client can receive multiple asynchronous events.  This can start with a bootstrap of existing information, followed by live updates.
@@ -312,6 +314,7 @@ cancelled: "By request"
 ----
 
 
+[[Client-Injected-Handler]]
 ==== Client Injected Handler
 
 This approach allows the client to version and configure which handlers are used on the server on the client's behalf. In particular, this is useful when supporting multiple versions of clients concurrently.
