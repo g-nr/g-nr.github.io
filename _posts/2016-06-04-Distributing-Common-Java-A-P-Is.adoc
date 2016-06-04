@@ -1,0 +1,4 @@
+= Distributing Common Java APIs
+:hp-tags: Microservices, Data Containers
+
+Distributing data containers e.g. Maps, can be a way of avoiding having to think too much about distributing you application.  Your business logic is much the same
