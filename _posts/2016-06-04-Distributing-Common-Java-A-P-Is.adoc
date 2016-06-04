@@ -1,4 +1,47 @@
 = Distributing Common Java APIs
 :hp-tags: Microservices, Data Containers
 
-Distributing data containers e.g. Maps, can be a way of avoiding having to think too much about distributing you application.  Your business logic is much the same
+=== Distributing data stores vs Private data stores in Microservices
+Distributing data containers e.g. Maps, can be a way of avoiding having to think too much about distributing you application.  Your business logic is much the same, and it is your data collections which a visable to all your services.
+
+This has a number of scalability issues, as it requires every low level data access to be distributed in a generic way which isn't optimised for particular business requirements.  
+
+Distributing business components with private data stores is the favoured approach of Microservices and it limits the "surface area" of each service which reduces security issues, performance considerations and gives you mroe freedom for independant changes to service's data structures.
+
+In this review, I will be focusing on distributed data containers, largely because the interfaces are available in the JDK and available for everyone to look at.  I expect the conclusions drawn here are broadly similar for Business focused APIs, though each one will vary.
+
+=== Review of different interaction types for common Data store APIs in the JDK.
+
+I have reviewed a number of APIs in the JDK using a https://github.com/OpenHFT/Chronicle-Essence/tree/master/src/main/java/net/openhft/chronicle/essence/classify[tool available here]
+
+The interfaces reviewed are:
+
+- ScheduledExecutorService (incl ExecutorService)
+- ReadWriteLock
+- Lock
+- BlockingDeque (incl BlockingQueue)
+- List (incl Collection)
+- ConcurrentNavigableMap (Incl SortedMap)
+- ConcurrentMap (incl Map)
+- NavigableSet (incl SortedSet, Set)
+
+Interfaces higher up the inheritance tree where not included to avoid duplication. However there is still some duplication e.g. Set and List are Collection(s).
+
+https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html#Request-Response[Request-Response] - 104 methods
+
+https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html#Request-Proxy[Request-Proxy] - 29 methods
+
+https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html#Request-Visitor[Request-Visitor] - 26 methods
+
+https://vanilla-java.github.io/2016/05/16/Simple-Asynchronous-Microservices-using-Lambda-Architecture.html[Asynchronous Lambda] - 20 methods
+
+https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html#Request-Callback[Request-Subscription] - 7 methods
+
+Default Call - 22 methods
+
+NOTE: Request-Visitor is variation on Request-Repsonse but ratehr than passing a Data Transfer Object, a Command Object is passed.
+
+NOTE: "Default Call" means the default implmentation of the interface is appropriate an can be executed on the caller.
+
+As I have noted in the past, while I believe using Lambda style asynchronous calls is ideal, this is not a natrual interaction for many APIs and wouldn't work so well in these methods.
+
