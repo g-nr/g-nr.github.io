@@ -25,7 +25,7 @@ It is useful to be able to see the underlying messages in readable text.  I sugg
 
 A human readable format allows you to quickly determine whether it is the sender or receiver which is behaving incorrectly.  It can allow you to see and stop undesirable behaviour which doesn't show up in a test. e.g. are there too many heartbeats.
 
-
+[[Request-Response]]
 ==== Request/Response
 
 The client sends a message to a server.  That message contains a message type to choose an action to perform on the server and usually includes a payload of data.  The response is usually just data.
@@ -37,7 +37,7 @@ image::Request-Response.jpg[]
 With asynchronous response processing, the client can send multiple requests over the same channel rather than wait for each one to complete.
 
 .Synchronous server with synchronous client
-[source, java]
+[source,java]
 ----
 interface OneRequestResponse {
     Response requestType(RequestData data);
@@ -45,7 +45,7 @@ interface OneRequestResponse {
 ----
 
 .Synchronous server with asynchronous client
-[source, java]
+[source,java]
 ----
 interface OneRequestResponse2 {
     void requestType(RequestData data, Consumer<Response> responseConsumer);
@@ -55,7 +55,7 @@ interface OneRequestResponse2 {
 Using this API could be translated into YAML such as
 
 .Synchronous server with synchronous or asynchronous client
-[source, YAML]
+[source,yaml]
 ----
 # client sends to server
 ---
@@ -83,7 +83,7 @@ image::Request-Proxy.jpg[]
 This is used in Map returning a key set or values which is a proxy to the underlying map.
 
 .Method on java.util.Map
-[source, java]
+[source,java]
 ----
 public interface Map<K, V> {
 
@@ -98,7 +98,7 @@ public interface Map<K, V> {
 Using a proxy gives access to data without having to pass all the data from the server to the client.
 
 .Method on java.util.Map
-[source, YAML]
+[source,yaml]
 ----
 # client sends to server
 --- !!meta-data # binary
@@ -161,7 +161,7 @@ image::Request-Callback.jpg[]
 The use of a callback provides a richer interaction between the caller and callee.
 
 .Synchronous server with a callback
-[source, java]
+[source,java]
 ----
 interface OneCallback {
     void resultOne(ResultOne result);
@@ -179,7 +179,7 @@ interface OneRequestCallback {
 The client could be configured to either wait for the server to call the callback, or handle the callback asynchronously.  The thread which performs the method in the callback will be on the client side.
 
 .Synchronous server with a callback
-[source, YAML]
+[source,yaml]
 ----
 # client sends to server
 ---
@@ -210,7 +210,7 @@ The client sends one or two visitors to the server to apply to local objects or 
 image::Request-Visitor.jpg[]
 
 .Pass a function to apply on a server for a given key
-[source, java]
+[source,java]
 ----
 interface KeyedResources<V> {
 
@@ -224,7 +224,7 @@ interface KeyedResources<V> {
 This approach allows the caller to apply an operation to an actor without needing to know where that actor is.
 
 .Pass a function to apply on a server for a given key
-[source, java]
+[source,java]
 ----
 # client sends to server
 ---
@@ -256,7 +256,7 @@ Once a subscription ahs been made, it should be altered, or cancelled
 image::Request-Subscription.jpg[]
 
 .Pass a function to apply on a server for a given key
-[source, java]
+[source,java]
 ----
 
 interface Queryable<E> {
@@ -276,7 +276,7 @@ interface Subscription<R> {
 Up to this point, all the message are actions lived with a single response.  In Chronicle-Engine, we associate a `csp` or Chronicle Service Path for each actor, and a `tid` or Transaction ID with each operation.  This allows multiple concurrent actions to different actors.  This routing information is passed in meta data, with the actions for that destination following
 
 .Pass a function to apply on a server for a given key
-[source, YAML]
+[source,yaml]
 ----
 # client sends server
 --- !!meta-data # binary
@@ -319,7 +319,7 @@ This approach allows the client to version and configure which handlers are used
 image::Client-Injected-Handler.jpg[]
 
 .Client passes a handler to intergate with the server and act it's behalf
-[source, java]
+[source,java]
 ----
 interface AcceptsHandler {
 
@@ -333,7 +333,7 @@ interface AcceptsHandler {
 
 A simple example of a handler we use is for heartbeats
 
-[source, YAML]
+[source,yaml]
 ----
 # client sends server
 --- !!meta-data # binary
