@@ -80,7 +80,7 @@
     <meta property="og:description" content="Service Interactions There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html" />
     <meta property="article:published_time" content="2016-05-16T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-05-28T21:13:58.342Z" />
+    <meta property="article:modified_time" content="2016-06-04T12:03:08.765Z" />
     <meta property="article:tag" content="Microservices" />
     <meta property="article:tag" content="Patterns" />
     <meta property="article:tag" content="Java" />
@@ -105,7 +105,7 @@
     "headline": "Modelling Microservice Patterns in Code",
     "url": "https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html",
     "datePublished": "2016-05-16T23:00:00.000Z",
-    "dateModified": "2016-05-28T21:13:58.342Z",
+    "dateModified": "2016-06-04T12:03:08.765Z",
     "keywords": "Microservices,  Patterns,  Java",
     "description": "Service Interactions There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into..."
 }
@@ -199,7 +199,7 @@
                   </span>
                 </li>
               <li class="post-meta-item">
-                <a href="#disqus_thread" data-disqus-identifier="c4b0f363-ca60-4587-9e61-21be7087684b">Comments</a>
+                <a href="#disqus_thread" data-disqus-identifier="ce958b99-38c8-4918-88e0-fbec403b66cd">Comments</a>
               </li>
             </ul>
             <h1 itemprop="name headline" class="post-title"><a href="/2016/05/17/Modelling-Microservice-Patterns-in-Code.html" itemprop="url" data-pjax title="Modelling Microservice Patterns in Code">Modelling Microservice Patterns in Code</a></h1>
@@ -259,7 +259,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_response">Request/Response</h4>
+<h4 id="Request-Response">Request/Response</h4>
 <div class="paragraph">
 <p>The client sends a message to a server.  That message contains a message type to choose an action to perform on the server and usually includes a payload of data.  The response is usually just data.</p>
 </div>
@@ -296,7 +296,7 @@
 <div class="listingblock">
 <div class="title">Synchronous server with synchronous or asynchronous client</div>
 <div class="content">
-<pre class="highlight"><code class="language-YAML" data-lang="YAML"># client sends to server
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"># client sends to server
 ---
 requestType: {
   data: 1,
@@ -345,7 +345,7 @@ reply: !MyResponse {
 <div class="listingblock">
 <div class="title">Method on java.util.Map</div>
 <div class="content">
-<pre class="highlight"><code class="language-YAML" data-lang="YAML"># client sends to server
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"># client sends to server
 --- !!meta-data # binary
 csp: /map/my-map?view=map
 ---
@@ -444,7 +444,7 @@ interface OneRequestCallback {
 <div class="listingblock">
 <div class="title">Synchronous server with a callback</div>
 <div class="content">
-<pre class="highlight"><code class="language-YAML" data-lang="YAML"># client sends to server
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"># client sends to server
 ---
 requestType: {
   data: 1,
@@ -552,7 +552,7 @@ interface Subscription&lt;R&gt; {
 <div class="listingblock">
 <div class="title">Pass a function to apply on a server for a given key</div>
 <div class="content">
-<pre class="highlight"><code class="language-YAML" data-lang="YAML"># client sends server
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"># client sends server
 --- !!meta-data # binary
 csp: /maps/my-map
 tid: 12345
@@ -614,7 +614,7 @@ cancelled: "By request"
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-YAML" data-lang="YAML"># client sends server
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"># client sends server
 --- !!meta-data # binary
 csp: /
 cid: 1
