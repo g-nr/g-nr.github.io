@@ -80,7 +80,7 @@
     <meta property="og:description" content="Service Interactions There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into..." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html" />
     <meta property="article:published_time" content="2016-05-16T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-06-04T12:03:08.765Z" />
+    <meta property="article:modified_time" content="2016-06-04T12:04:56.092Z" />
     <meta property="article:tag" content="Microservices" />
     <meta property="article:tag" content="Patterns" />
     <meta property="article:tag" content="Java" />
@@ -105,7 +105,7 @@
     "headline": "Modelling Microservice Patterns in Code",
     "url": "https://vanilla-java.github.io/2016/05/17/Modelling-Microservice-Patterns-in-Code.html",
     "datePublished": "2016-05-16T23:00:00.000Z",
-    "dateModified": "2016-06-04T12:03:08.765Z",
+    "dateModified": "2016-06-04T12:04:56.092Z",
     "keywords": "Microservices,  Patterns,  Java",
     "description": "Service Interactions There is a number of simple interactions a service can support.  Which pattern is best for your application can depend on what an existing application expects, and what latency requirements you have.  Broadly speaking these interactions fall into..."
 }
@@ -314,7 +314,7 @@ reply: !MyResponse {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_proxy">Request/Proxy</h4>
+<h4 id="Request-Proxy">Request/Proxy</h4>
 <div class="paragraph">
 <p>This is like request/response, except the object returned is a proxy for further events.  This is useful when the value returned represents a complex, or very large object.</p>
 </div>
@@ -407,7 +407,7 @@ reply: true <i class="conum" data-value="2"></i><b>(2)</b>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_callback">Request/Callback</h4>
+<h4 id="Request-Callback">Request/Callback</h4>
 <div class="paragraph">
 <p>The client sends a message to a server.  That message contains information to call an action on the server and usually includes a payload of data.  The callback is also a message containing an action and data.</p>
 </div>
@@ -468,7 +468,7 @@ resultTwo: [
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_visitor">Request/Visitor</h4>
+<h4 id="Request-Visitor">Request/Visitor</h4>
 <div class="paragraph">
 <p>The client sends one or two visitors to the server to apply to local objects or actors.  This visitor can be an update which applied atomically to an actor, and/or a vistor can be applied to retrieve specific information.</p>
 </div>
@@ -517,7 +517,7 @@ reply: 1024
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_subscription">Request/Subscription</h4>
+<h4 id="Request-Subscription">Request/Subscription</h4>
 <div class="paragraph">
 <p>By requesting a subscription, a client can receive multiple asynchronous events.  This can start with a bootstrap of existing information, followed by live updates.</p>
 </div>
@@ -587,7 +587,7 @@ cancelled: "By request"
 </div>
 </div>
 <div class="sect3">
-<h4 id="_client_injected_handler">Client Injected Handler</h4>
+<h4 id="Client-Injected-Handler">Client Injected Handler</h4>
 <div class="paragraph">
 <p>This approach allows the client to version and configure which handlers are used on the server on the client&#8217;s behalf. In particular, this is useful when supporting multiple versions of clients concurrently.</p>
 </div>
