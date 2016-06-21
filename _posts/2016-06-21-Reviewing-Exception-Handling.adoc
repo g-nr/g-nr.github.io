@@ -19,7 +19,7 @@ Even if you give exception handling some consideration as you code, it is worth 
 
 === Catch an Exception to fall back.
 
-When a specific Exception occurs you can fall back to a default result.
+When an expected Exception occurs you can fall back to a default result.
 
 .Simple fallback
 [source, Java]
@@ -358,12 +358,24 @@ void bootstrapTree(@NotNull Asset asset, @NotNull Subscriber<TopologicalEvent> s
 }
 ----
 
+=== Using temporarily checked exception.
+
+One way to ensure your documentation and handling of unchecked exception is correct is to make them temporarily checked.  I recently did this for one of our custom exceptions and ended up changing 65 files. In many cases, the exception was documented as occuring, but didn't and in many cases it could occur but wasn't documentated.  In a couple of cases, this forced me to consider whether this was the most appropriate exception to be throwing and I changed it.  I would say I ended up fixing around 6 bugs as a part of this review.
+
+We also have a checked version of many built in unchecked exceptions and we use this to review those as well from time to time. https://github.com/OpenHFT/Chronicle-Core/tree/master/checked-exceptions
+
 === What do we do in our libraries?
 
-I reviewing our code in terms of exception handling and refactored it quite a bit as well as fixing a number of issues. Afterwards the profile looked like this
+I reviewed our OpenHFT libraries in terms of exception handling and refactored it quite a bit as well as fixing a number of issues. Afterwards the profile looked like this
 
 image::Exception-handling-mix.png[]
 
 In the end about 30% were hndled in the code itself. The FATAL ones mean the code is broken, and the DEBUG ones are expected to be ignored, possibly logged.  The wrapped and rethrown exceptions expect the caller to handle the exception in some way.
+
+=== Conclusion
+
+Knowing when to consider about exception handling and what to do about it is not easy.  Having checked exceptions can help you with that revirew when you are ready to do that.  
+
+Until you are ready to think about how to handle these exceptions I suggest passing the exception to the caller rather than logging them and pretending they didn't happen.
 
 
