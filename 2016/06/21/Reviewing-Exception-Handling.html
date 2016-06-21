@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1466531944027"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1466531944027"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1466531944027"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1466532126966"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1466532126966"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1466532126966"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1466531944027"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1466532126966"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/06/21/Reviewing-Exception-Handling.html" />
     <meta name="referrer" content="origin" />
@@ -522,7 +522,7 @@ public static &lt;T extends Throwable&gt; RuntimeException rethrow(Throwable thr
 </div>
 <div class="paragraph">
 <p>However, this is really a hack to get around the fact that the <code>Function</code> used, doesn&#8217;t support a checked exception.
-A better solution, if you can chose the type of lambda is to have one which expects an Exception. See next.</p>
+A better solution, if you can choose the type of lambda is to have one which expects an Exception. See next.</p>
 </div>
 </div>
 <div class="sect3">
@@ -596,8 +596,7 @@ public interface ThrowingSupplier&lt;V, T extends Throwable&gt; {
 <div class="sect3">
 <h4 id="_using_a_throwingconsumer">Using a ThrowingConsumer</h4>
 <div class="paragraph">
-<p>In the following example, you can pass a consumer to <code>forEachChild</code> which can throw a checked exception
-which is will thrown back to the caller.</p>
+<p>In the following example, you can pass a consumer to <code>forEachChild</code> which can throw a checked exception, which is then thrown back to the caller.</p>
 </div>
 <div class="listingblock">
 <div class="title">If the acceptor throws a checked Exception, the method throws the same Exception</div>
@@ -625,7 +624,7 @@ which is will thrown back to the caller.</p>
 <div class="sect2">
 <h3 id="_using_temporarily_checked_exception">Using temporarily checked exception.</h3>
 <div class="paragraph">
-<p>One way to ensure your documentation and handling of unchecked exception is correct is to make them temporarily checked.  I recently did this for one of our custom exceptions and ended up changing 65 files. In many cases, the exception was documented as occuring, but didn&#8217;t and in many cases it could occur but wasn&#8217;t documentated.  In a couple of cases, this forced me to consider whether this was the most appropriate exception to be throwing and I changed it.  I would say I ended up fixing around 6 bugs as a part of this review.</p>
+<p>One way to ensure your documentation and handling of unchecked exception is correct is to make them temporarily checked.  I recently did this for one of our custom exceptions and ended up changing 65 files. In many cases, the exception was documented as occuring, but didn&#8217;t and in many cases it could occur but wasn&#8217;t documented.  In a couple of cases, this forced me to consider whether this was the most appropriate exception to be throwing and I changed it.  I would say I ended up fixing around 6 bugs as a part of this review.</p>
 </div>
 <div class="paragraph">
 <p>We also have a checked version of many built in unchecked exceptions and we use this to review those as well from time to time. <a href="https://github.com/OpenHFT/Chronicle-Core/tree/master/checked-exceptions" class="bare">https://github.com/OpenHFT/Chronicle-Core/tree/master/checked-exceptions</a></p>
@@ -735,7 +734,7 @@ which is will thrown back to the caller.</p>
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1466531944027"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1466532126966"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
