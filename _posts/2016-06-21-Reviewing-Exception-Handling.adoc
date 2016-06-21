@@ -12,7 +12,7 @@ What are some alternatives? If you have to pass on the exception how might you d
 
 Ideally, you should be only catching an exception when you know what to do with it. If you don't think you can add value, pass it back to the caller.  I highly recommend letting your IDE manage the updating of the method signature, as this can be tedious to do manually.
 
-Even if you give exception handling some consideration in your code, it is worth doing a periodic review of your exception handling code to make sure that they are being handled approriately.
+Even if you give exception handling some consideration in your code, it is worth doing a periodic review of your exception handling code to make sure that they are being handled appropriately.
 
 
 == Handling the Exception
