@@ -267,7 +267,7 @@ public static <T extends Throwable> RuntimeException rethrow(Throwable throwable
 ----
 
 However, this is really a hack to get around the fact that the `Function` used, doesn't support a checked exception.
-A better solution, if you can chose the type of lambda is to have one which expects an Exception. See next.
+A better solution, if you can choose the type of lambda is to have one which expects an Exception. See next.
 
 ==== Capturing a Throwable thrown in a plain thread in a unit test.
 
@@ -335,8 +335,7 @@ public interface ThrowingSupplier<V, T extends Throwable> {
 
 ==== Using a ThrowingConsumer
 
-In the following example, you can pass a consumer to `forEachChild` which can throw a checked exception
-which is will thrown back to the caller.
+In the following example, you can pass a consumer to `forEachChild` which can throw a checked exception, which is then thrown back to the caller.
 
 .If the acceptor throws a checked Exception, the method throws the same Exception
 [source, Java]
@@ -361,7 +360,7 @@ void bootstrapTree(@NotNull Asset asset, @NotNull Subscriber<TopologicalEvent> s
 
 === Using temporarily checked exception.
 
-One way to ensure your documentation and handling of unchecked exception is correct is to make them temporarily checked.  I recently did this for one of our custom exceptions and ended up changing 65 files. In many cases, the exception was documented as occuring, but didn't and in many cases it could occur but wasn't documentated.  In a couple of cases, this forced me to consider whether this was the most appropriate exception to be throwing and I changed it.  I would say I ended up fixing around 6 bugs as a part of this review.
+One way to ensure your documentation and handling of unchecked exception is correct is to make them temporarily checked.  I recently did this for one of our custom exceptions and ended up changing 65 files. In many cases, the exception was documented as occuring, but didn't and in many cases it could occur but wasn't documented.  In a couple of cases, this forced me to consider whether this was the most appropriate exception to be throwing and I changed it.  I would say I ended up fixing around 6 bugs as a part of this review.
 
 We also have a checked version of many built in unchecked exceptions and we use this to review those as well from time to time. https://github.com/OpenHFT/Chronicle-Core/tree/master/checked-exceptions
 
