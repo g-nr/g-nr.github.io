@@ -2,11 +2,18 @@
 Peter Lawrey
 :hp-tags: Exceptions
 
-When developing an application it can be hard enough to get the happy path of an application working, let alone worry about what might happen when something goes wrong.
+When developing an application it can be hard enough to get the happy path working, let alone worry about what might happen when something goes wrong.
 
 I have asked a number of developers recently what they do when they get an exception and usually they log it or pass it back to the user.
 
-However, are there alternatives and what ways can to pass it the exception on?
+What are some alternatives? If you have to pass on the exception how might you do that?
+
+=== When to consider exception handling?
+
+Ideally, you should be only catching an exception when you know what to do with it. If you don't think you can add value, pass it back to the caller.  I highly recommend letting your IDE manage the updating of the method signature, as this can be tedious to do manually.
+
+Even if you give exception handling some consideration as you code, it is worth doing a periodic review of your exception handling code to make sure that they are being handled approriately.
+
 
 == Handling the Exception
 
@@ -83,7 +90,7 @@ NOTE: The checked exception is thrown inside a lambda which expects this specifi
 
 In this case, the Field returned by getField shouldn't ever throw an IllegalAccessException, so it has been wrapped with an AssertionError.
 
-It only make sense to wrap an Exception with an AssertionError when you know this is something which should never happen (not something you hope will never happen)
+It only make senses to wrap an Exception with an AssertionError when you know this is something which should never happen (not something you hope will never happen)
 
 .Exception is not possible
 [source, Java]
@@ -140,6 +147,55 @@ public static void pause(long millis) {
 }
 ----
 
+=== Passing on the exception
+
+==== Using a callback to handle the exception.
+
+Using a callback allows a developer using a library to control how exceptions should be handled.
+
+- for production you might want to shutdown the whole server on a fatal error, log warnings and ignore debug messages.
+- for unit tests you might wish to capture your exceptions to see if any error occurred, or only the expected error occured.
+
+.An interface you could call in the event of an Exception.
+[source, Java]
+----
+@FunctionalInterface
+public interface ExceptionHandler {
+    default void on(Class clazz, Throwable thrown) {
+        on(clazz, "", thrown);
+    }
+
+    default void on(Class clazz, String message) {
+        on(clazz, message, null);
+    }
+
+    /**
+     * A method to call when an exception occurs. It assumes there is a different handler for different levels.
+     * 
+     * @param clazz the error is associated with, e.g. the one in which it was caught 
+     * @param message any message associated with the error, or empty String.
+     * @param thrown any Thorwable caught, or null if there was no exception.
+     */
+    void on(Class clazz, String message, Throwable thrown);
+}
+----
+
+We have an ExceptionHandle which open a web page on Google or Stackoverflow approriate for the error, or using a fallback Exception handler.
+
+[source, Java]
+----
+    try {
+        if (Jvm.isDebug() && Desktop.isDesktopSupported())
+            Desktop.getDesktop().browse(new URI(uri));
+        else
+            fallBack.on(clazz, message, t);
+
+    } catch (Exception e) {
+        fallBack.on(clazz, message, t);
+        fallBack.on(getClass(), "Failed to open browser", e);
+    }
+----        
+
 ==== Additional printing for debugging only.
 
 Sometimes an error which would be too "noisy" for production code might be useful in trying to trace a bug in the code.
@@ -151,11 +207,14 @@ In this case, we check whether the code is running in the debugger and log an ex
 ----
 if (Jvm.isDebug())
     e.printStackTrace();
+// continue handling the exception.
 ----
+
+Using `printStackTrace` makes it clearer this is not intended for production use and makes it easier to find and remove later.
 
 ==== Adding the Exception to the result.
 
-In a method which does a best attempt at decoding some binary data, and the caller wants to see as much as could be decoded, even if an exception occurred.
+In a method which does a best attempt at decoding some data, and the caller wants to see as much as could be decoded, even if an exception occurred.
 
 .Add the Exception to the StringWriter.
 [source, Java]
@@ -164,30 +223,8 @@ In a method which does a best attempt at decoding some binary data, and the call
     e.printStackTrace(new PrintWriter(writer));
 ----
 
-=== Capturing a Throwable thrown in a plain thread in a unit test.
 
-Sometimes you just want to use a plain thread.  However, you still need an exception thrown in that thread to cause the test to fail.
-
-[source, Java]
-----
-Throwable[] thrown = { null };
-
-Thread t = new Thread(() -> {
-    try {
-        // something
-    } catch (Throwable e) {
-        thrown[0] = e;
-    }
-});
-t.start();
-
-// check something.
-
-t.join();
-
-if (thrown[0] != null)
-    throw thrown[0];
-----
+=== Passing on a check exception so it can be caught
 
 ==== Rethrow as an unchecked exception.
 
@@ -230,6 +267,31 @@ public static <T extends Throwable> RuntimeException rethrow(Throwable throwable
 
 However, this is really a hack to get around the fact that the `Function` used, doesn't support a checked exception.
 A better solution, if you can chose the type of lambda is to have one which expects an Exception. See next.
+
+==== Capturing a Throwable thrown in a plain thread in a unit test.
+
+Instead of an Executor service or a parallelStream(), sometimes you just want to use a plain thread for testing purposes.  You still need an exception thrown in that thread to cause the test to fail.
+
+[source, Java]
+----
+Throwable[] thrown = { null };
+
+Thread t = new Thread(() -> {
+    try {
+        // something
+    } catch (Throwable e) {
+        thrown[0] = e;
+    }
+});
+t.start();
+
+// check something.
+
+t.join();
+
+if (thrown[0] != null)
+    throw thrown[0];
+----
 
 === Using a lambda which expects a checked exception.
 
@@ -295,3 +357,13 @@ void bootstrapTree(@NotNull Asset asset, @NotNull Subscriber<TopologicalEvent> s
     });
 }
 ----
+
+=== What do we do in our libraries?
+
+I reviewing our code in terms of exception handling and refactored it quite a bit as well as fixing a number of issues. Afterwards the profile looked like this
+
+image::Exception-handling-mix.png[]
+
+In the end about 30% were hndled in the code itself. The FATAL ones mean the code is broken, and the DEBUG ones are expected to be ignored, possibly logged.  The wrapped and rethrown exceptions expect the caller to handle the exception in some way.
+
+
