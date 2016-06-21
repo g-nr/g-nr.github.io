@@ -221,6 +221,7 @@ In a method which does a best attempt at decoding some data, and the caller want
 ----
 } catch (Exception e) {
     e.printStackTrace(new PrintWriter(writer));
+    }
 ----
 
 
@@ -247,7 +248,7 @@ public List<String> collectFiles(List<String> filenames) throws IOException {
 }
 ----
 
-Where Jvm.rethrow is implement as follows
+Where Jvm.rethrow is implemented as follows
 
 [source, Java]
 ----
