@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1466531838384"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1466531838384"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1466531838384"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1466531944027"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1466531944027"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1466531944027"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1466531838384"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1466531944027"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/06/21/Reviewing-Exception-Handling.html" />
     <meta name="referrer" content="origin" />
@@ -470,7 +470,8 @@ public interface ExceptionHandler {
 <div class="title">Add the Exception to the StringWriter.</div>
 <div class="content">
 <pre class="highlight"><code class="language-Java" data-lang="Java">} catch (Exception e) {
-    e.printStackTrace(new PrintWriter(writer));</code></pre>
+    e.printStackTrace(new PrintWriter(writer));
+    }</code></pre>
 </div>
 </div>
 </div>
@@ -501,7 +502,7 @@ public interface ExceptionHandler {
 </div>
 </div>
 <div class="paragraph">
-<p>Where Jvm.rethrow is implement as follows</p>
+<p>Where Jvm.rethrow is implemented as follows</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -734,7 +735,7 @@ which is will thrown back to the caller.</p>
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1466531838384"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1466531944027"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
