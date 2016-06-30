@@ -1,0 +1,35 @@
+= Goldilocks Microservices
+Peter Lawrey
+:hb-tags: Microservices, Right Sizing
+
+=== How to structure microservices?
+
+When structuring microservices we have to consider; 
+
+- how fine grain should our components be?
+- how distributed should they be?
+
+I believe it's important to treat these as separate concerns, even to the extent of ensuring your business logic components are not dependant on the choice of transport, or even whether you have a transport at all.
+
+=== How do we right size microservices?
+
+The right size for you components can depend on why you chose microservices in the first place.
+
+- is it to scale the development effort, allowing each developer to work as independently as possible. (Developer efficiency)
+- is it to scale the utilisation of the hardware, allowing each CPU or server to work as independently as possible. (Computer efficiency)
+
+Often we want some of each where the number of components under development is likely to be a function of the number of developers and the number of deployed instances is likely to be a function of the number of CPU or servers.
+
+If perforamnce is a key concern, I would make sure that you have developer efficiency and I would expect for most projects to have around one to three business components per developer.
+
+=== How do we use the right deployment for our components?
+
+A microservices is a business component with the option of a transport.  I believe the option of a transport is an important consideration because the business component shouldn't be influenced too heavily by the choice of transport.
+
+WHen you are writing unit tests and debugging your business component, you should need to have a transport involved.  If you want to see how two component interact you should be able to create a simple program which creates two or more compoenents and see how they work together in the same thread.
+
+==== Levels of distribution
+
+There is different levels of distribution youw ant to consider.  Initially you might want no transport at all, provide you ensure these component could be distributed later.  Later you need either fine grain or course grained distribution, but over time as the component mature you don't need the overhead of managing lots of services and you want the ability to consolidate them.
+
+. 
