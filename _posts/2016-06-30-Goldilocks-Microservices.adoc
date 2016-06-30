@@ -1,6 +1,6 @@
 = Goldilocks Microservices
 Peter Lawrey
-:hb-tags: Microservices, Right Sizing
+:hp-tags: Microservices, Right Sizing
 
 === How to structure microservices?
 
