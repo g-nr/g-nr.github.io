@@ -13,23 +13,46 @@ I believe it's important to treat these as separate concerns, even to the extent
 
 === How do we right size microservices?
 
-The right size for you components can depend on why you chose microservices in the first place.
+The business component in you system are;
+
+- the smallest deployable unit of code and data.
+- functionality which could makes sense to a business user based on your requirements.
+
+The right size for your components can depend on why you chose microservices.
 
 - is it to scale the development effort, allowing each developer to work as independently as possible. (Developer efficiency)
 - is it to scale the utilisation of the hardware, allowing each CPU or server to work as independently as possible. (Computer efficiency)
 
-Often we want some of each where the number of components under development is likely to be a function of the number of developers and the number of deployed instances is likely to be a function of the number of CPU or servers.
+Often we want some of each where the number of components under development is likely to be a function of the number of developers and the number of deployed instances of those components is likely to be a function of the number of CPU or servers.
 
-If perforamnce is a key concern, I would make sure that you have developer efficiency and I would expect for most projects to have around one to three business components per developer.
+Unless you know performance is a key concern, I would make sure that you prioritise developer efficiency. I would expect for most projects to have around one to three business components per developer.
 
 === How do we use the right deployment for our components?
 
-A microservices is a business component with the option of a transport.  I believe the option of a transport is an important consideration because the business component shouldn't be influenced too heavily by the choice of transport.
+A microservice is a business component with the option of a transport.  I believe having an optional transport is an important consideration because the business component shouldn't be influenced too heavily by the choice of transport and not having a transport can be helpful at different stages of the project.
 
-WHen you are writing unit tests and debugging your business component, you should need to have a transport involved.  If you want to see how two component interact you should be able to create a simple program which creates two or more compoenents and see how they work together in the same thread.
+When you are writing unit tests and debugging your business component, you shouldn't need to have a transport involved.  If you want to see how two components interact you should be able to create a simple program which creates two or more compoenents, run from your IDE and see how they work together in the same thread.
 
 ==== Levels of distribution
 
-There is different levels of distribution youw ant to consider.  Initially you might want no transport at all, provide you ensure these component could be distributed later.  Later you need either fine grain or course grained distribution, but over time as the component mature you don't need the overhead of managing lots of services and you want the ability to consolidate them.
+There is different levels of distribution you want to consider.  Initially you might want no transport at all, provide you ensure these component could be distributed later.  Later you need either fine grain or course grained distribution, but over time as the component matures you don't need the overhead of managing lots of services and you want the ability to consolidate them.
 
-. 
+1. Instances are the same logical task and are wired together with no layer between them.
+1. Instances are in separate logical tasks, but share the same thread pool footnote:[a thread pool might have one thread].
+1. Instances are in separate thread pool, but in the same process.
+1. Instances are in separate OSes, but in the same physical machine.
+1. Instances are in the same data centre, but different machines.
+1. Instances are in different data centres.
+
+For performance, I favour #1, #2 & #3, for testing and development I favour #1 and #3 and for High Availability you need either #5 and #6.
+
+If you don't need to seperate instances across machines for HA, you want your instances to be no more seperate than needed.  The degree of separation desirable can change over time.  When a component is being added to production initially, it can be useful to be able to deploy, upgrade and restart that component without impacting the rest of the system.  However as the component stablises and is not changing so much you may want to reduce the overhead of managing this service and include it in a process which has multiple services.  You might find the service uses a trivial amount of CPU and you can combine it into the same thread pool as other services. If it turns out it's interaction with another instance is highly coupled you might wire them together as a single component.
+
+==== Migrating to Microservices
+
+Say you have a monolith, how to do you migrate to using microservices?  Do you have to re-engineer your entire solution, no. This is easier than it sounds as the main advantage for microservices is when in the early stages of put a service into production.  Anything which is running well into your monolith, leave it there.  Anything you need to add or make major changes to, move it into it's own service while it's under development and maturing.  You can imagine this as one monolith, planet sized microservices and a number of smaller satelite micro-services surronding it.
+
+=== Flexable Design
+
+You want your developers to work efficiently and your system to make good utilisation of your servers.  You don't want the choices you made at the start to bind you into a solution you will regret later.  If you use a flexable design, you can maximise productivity, and ensure you use microservices to the extend they are helping you, but without the disadvantages of over using this technique.
+
