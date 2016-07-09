@@ -1,6 +1,8 @@
 = Batching and Low Latency
 Peter Lawrey
-:bp-tags: Microservices, Batching, Low Latency
+:hp-tags: Microservices, Batching, Low Latency
+
+NOTE: Still under development.
 
 === Why Batch your data?
 
@@ -45,5 +47,24 @@ The test spends 30 seconds warming up, and 120 seconds running.  The distributio
 
 As I have discussed prevously, I am focusing on minimising the 99%ile latency (worst 1 in 100).  On the system, I am reporting no more than 100 million messages per second as this is close to the point there the 99% starts to increase dramatically. i.e. it is close the limit of what this system can process in soft real time.
 
+=== End to End latency for different batch sizes
 
+.99%ile latency end to end
+|=======
+| Batch Size | 60 million events per minute | 100 million events per minute |
+| 1 | 28 &micro;s | 176 &micro;s |
+| 2 | 29 &micro;s | 30 &micro;s |
+| 5 | 22 &micro;s | 27 &micro;s |
+| 10 | 26 &micro;s | 27 &micro;s |
+| 20 | 34 &micro;s | 31 &micro;s |
+|=======
 
+NOTE: 1 &micro;s is 0.001 ms or 1 millionth of a second.
+
+So you can see that batching helps for size of one to five 40 byte messages.  This may yet provide to be a performance bug which can be solved later, but for now it might help.
+
+=== How is batching used internally?
+
+=== Conclusion
+
+TBD
