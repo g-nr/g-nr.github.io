@@ -51,12 +51,12 @@ As I have discussed prevously, I am focusing on minimising the 99%ile latency (w
 
 .99%ile latency end to end
 |=======
-| Batch Size | 60 million events per minute | 100 million events per minute |
-| 1 | 28 &micro;s | 176 &micro;s |
-| 2 | 29 &micro;s | 30 &micro;s |
-| 5 | 22 &micro;s | 27 &micro;s |
-| 10 | 26 &micro;s | 27 &micro;s |
-| 20 | 34 &micro;s | 31 &micro;s |
+| Batch Size | 60 million events per minute | 100 million events per minute 
+| 1 | 28 &micro;s | 176 &micro;s 
+| 2 | 29 &micro;s | 30 &micro;s 
+| 5 | 22 &micro;s | 27 &micro;s 
+| 10 | 26 &micro;s | 27 &micro;s 
+| 20 | 34 &micro;s | 31 &micro;s 
 |=======
 
 NOTE: 1 &micro;s is 0.001 ms or 1 millionth of a second.
