@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Batching and Low Latency</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Batching and Low Latency">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Batching and Low Latency">
+    <meta property="og:description" content="">
+
+    <!-- <meta name="twitter:site" content="">
+
+<meta name="twitter:creator" content="">
+
+<meta name="google-site-verification" content="">
+
+<meta property="fb:admins" content="">
+ -->
+
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
+
+    <link href="//fonts.googleapis.com/" rel="dns-prefetch">
+    <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1468066448870"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1468066448870"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1468066448870"/>
+
+
+
+
+    <script type="text/javascript">
+      var ga_ua = 'UA-XXXXX-X';
+      
+      var disqus_shortname = 'example';
+      
+      var enable_pjax = true;
+
+      // Pace Options
+      // ==============
+      window.paceOptions = {
+        catchupTime: 100,
+        minTime: 100,
+        elements: false,
+        restartOnRequestAfter: 500,
+        startOnPageLoad: false
+      }
+
+      // Ghostium Globals
+      // ==============
+      window.GHOSTIUM = {};
+      GHOSTIUM.haveGA = typeof ga_ua !== 'undefined' && ga_ua !== 'UA-XXXXX-X';
+      GHOSTIUM.haveDisqus = typeof disqus_shortname !== 'undefined' && disqus_shortname !== 'example';
+      GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
+    </script>
+
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1468066448870"></script>
+
+    <link rel="canonical" href="https://vanilla-java.github.io/2016/07/09/Batching-and-Low-Latency.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="Vanilla Java" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Batching and Low Latency" />
+    <meta property="og:description" content="Still under development. Why Batch your data? Batching of multiple messages or updates into a single transaction is a common technique for improving performance, in particular it is useful for increasing throughput (messages per second) when the latency (time to process a single message) is high.  However when latencies are" />
+    <meta property="og:url" content="https://vanilla-java.github.io/2016/07/09/Batching-and-Low-Latency.html" />
+    <meta property="article:tag" content="Microservices" />
+    <meta property="article:tag" content=" Batching" />
+    <meta property="article:tag" content=" Low Latency" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Batching and Low Latency" />
+    <meta name="twitter:description" content="Still under development. Why Batch your data? Batching of multiple messages or updates into a single transaction is a common technique for improving performance, in particular it is useful for increasing throughput (messages per second) when the latency (time to process a single message) is high.  However when latencies are" />
+    <meta name="twitter:url" content="https://vanilla-java.github.io/2016/07/09/Batching-and-Low-Latency.html" />
+    
+    <script type="application/ld+json">
+null
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="Vanilla Java" href="https://vanilla-java.github.io/rss/" />
+  </head>
+  <body class="post-template tag-Microservices tag-Batching tag-Low-Latency">
+
+    <button data-action="open-drawer" id="drawer-button" class="drawer-button"><i class="fa fa-bars"></i></button>
+    <nav tabindex="-1" class="drawer">
+      <div class="drawer-container">
+        <!--.drawer-search(role="search")-->
+        <ul role="navigation" class="drawer-list">
+          
+          <li class="drawer-list-item">
+            <a href="https://vanilla-java.github.io" data-pjax>
+              <i class="fa fa-home"></i>Home
+            </a>
+          </li>
+          <!-- <li class="drawer-list-item">
+            <a href="https://vanilla-java.github.io" title="Vanilla Java" data-pjax>
+              <i class="fa fa-list-alt"></i>All posts
+            </a>
+          </li> -->
+          <!--
+          <li class="drawer-list-item">
+            <a href="https://vanilla-java.github.io/rss/">
+              <i class="fa fa-rss"></i>Subscribe to Feed
+            </a>
+          </li>
+          -->
+          <li class="drawer-list-divider"></li>
+          <li class="drawer-list-item drawer-list-title">
+            Follow me
+          </li>
+          
+          
+          <li class="drawer-list-item">
+            <a href="https://twitter.com/PeterLawrey" title="Twitter" target="_blank">
+              <i class="fa fa-twitter"></i>Twitter
+            </a>
+          </li>
+          <li class="drawer-list-item">
+            <a href="https://github.com/peter-lawrey" title="Github" target="_blank">
+              <i class="fa fa-github"></i>Github
+            </a>
+          </li>
+          <li class="drawer-list-item">
+            <a href="https://plus.google.com/u/0/+PeterLawrey" title="Google+" target="_blank">
+              <i class="fa fa-google-plus"></i>Google+
+            </a>
+          </li>
+          <li class="drawer-list-item">
+            <a href="https://www.linkedin.com/in/peterlawrey" title="LinkedIn" target="_blank">
+              <i class="fa fa-linkedin"></i>LinkedIn
+            </a>
+          </li>
+          <li class="drawer-list-item">
+            <a href="https://www.linkedin.com/in/peterlawrey" title="StackOverflow" target="_blank">
+              <i class="fa fa-stack-overflow"></i>Stack Overflow
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="drawer-overlay"></div>
+    <main id="container" role="main" class="container">
+      <div class="surface">
+        <div class="surface-container">
+          <div data-pjax-container class="content">
+            
+<section class="wrapper wrapper-post">
+  <div class="wrapper-container">
+    <article itemscope itemtype="http://schema.org/BlogPosting" role="article" class="post post tag-Microservices tag-Batching tag-Low-Latency">
+        <section class="post-container">
+          <header class="post-header">
+            <ul class="post-meta-list">
+              <li class="post-meta-item">
+                <time datetime="2016-07-09" itemprop="datePublished">
+                  13 hours ago
+                </time>
+              </li>
+                <li class="post-meta-item">
+                  <span class="tags"><i class="fa fa-tags"></i>
+                      <span>
+                      <a href="https://vanilla-java.github.io/tag/Microservices/">Microservices</a>, <a href="https://vanilla-java.github.io/tag/Batching/"> Batching</a>, <a href="https://vanilla-java.github.io/tag/Low-Latency/"> Low Latency</a></span>
+                  </span>
+                </li>
+              <li class="post-meta-item">
+                <a href="#disqus_thread" data-disqus-identifier="">Comments</a>
+              </li>
+            </ul>
+            <h1 itemprop="name headline" class="post-title"><a href="https://vanilla-java.github.io/2016/07/09/Batching-and-Low-Latency.html" itemprop="url" data-pjax title="Batching and Low Latency">Batching and Low Latency</a></h1>
+            <!--h2 itemprop="about" class="post-subtitle"></h2-->
+          </header>
+          <aside class="post-side">
+            <div class="post-author">
+                <a href="http://vanillajava.blogspot.com/" class="post-author-avatar">
+                  <img src="https://avatars.githubusercontent.com/u/1070321?v&#x3D;3" alt="Peter Lawrey">
+                </a>
+              <div class="post-author-info">
+                <a href="http://vanillajava.blogspot.com/" class="post-author-name">
+                  Peter Lawrey
+                </a>
+                <p class="post-author-bio">Most answers for Java and JVM on StackOverflow.com (~12K), &quot;Vanilla Java&quot; blog with four million views, founder of the Performance JUG,  Java Champion</p>
+              </div>
+            </div>
+          </aside>
+          <div itemprop="articleBody" class="post-body">
+            <div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Still under development.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_batch_your_data">Why Batch your data?</h3>
+<div class="paragraph">
+<p>Batching of multiple messages or updates into a single transaction is a common technique for improving performance, in particular it is useful for increasing throughput (messages per second) when the latency (time to process a single message) is high.  However when latencies are low, can batching still help?</p>
+</div>
+<div class="paragraph">
+<p>A couple of week ago, I was looking at testing and optimising our Chronicle Queue replication over TCP.  One of the first tests I did was to see how batching changed the performance and it made a dramatic difference, and I assumed this was a bug, batching shouldn&#8217;t help a well tuned low latency system.  Now I have had a chance to optimise replication, does batching make much difference?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_do_batches_help_hinder">Why do batches help/hinder?</h3>
+<div class="paragraph">
+<p>When your system has an operation with a significant latency, you can utilise more of the available bandwidth by increasing the batch size.</p>
+</div>
+<div class="paragraph">
+<p>Imagine you have a questionaire with 10 questions you want to ask someone. You could send an email for each question and wait for the response to each question before asking the next one. Say it takes 1 minute to answer each question but 10 minutes to send an email, have the person notice it and for you to notice the response.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>sending one question at a time, means each question takes 10 + 1 minutes or 110 minutes in total.</p>
+</li>
+<li>
+<p>sending all 10 questions at once means that the whole questionaire takes 10 + 1 * 10 minutes, or 20 minutes in total.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It makes sense to ask all your questions at once and wait for all the replies once.</p>
+</div>
+<div class="paragraph">
+<p>However, there is a problem, what if you</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>don&#8217;t know all the questions in advance because you are still thinking of them. You have to wait to think of the questions, and you might not know how long this will take.</p>
+</li>
+<li>
+<p>might need to ask each question in response to a previous answer.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The longer you wait to build a batch, the more you delay the processing of the messages you have.</p>
+</div>
+<div class="paragraph">
+<p>Batching works best when you know how many messages you are about to get or you know what delay would be acceptable and you can delay sending the messages or committing the transaction for that amount of time.</p>
+</div>
+<div class="paragraph">
+<p>What if you want to process each message as soon as possible?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_being_tested">What is being tested?</h3>
+<div class="paragraph">
+<p>I am testing the latency under a fixed throughput for publishing a small 40 byte message including time to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>write the message to the persisted queue.</p>
+</li>
+<li>
+<p>read the message and write over TCP.</p>
+</li>
+<li>
+<p>read the TCP socket and write it to a copy of the queue</p>
+</li>
+<li>
+<p>read the message from the queue copy.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I used <code>System.nanoTime()</code> to get high resolution timing. In this cases the replication is over loopback. Since I am interested in the outliers, the overhead using a low latency 10 GigE network wouldn&#8217;t impact these results significantly.  High throughput test here would use less than 20% of a 10 GigE network connection.</p>
+</div>
+<div class="paragraph">
+<p>The test spends 30 seconds warming up, and 120 seconds running.  The distribution of latencies for each message is summarised.</p>
+</div>
+<div class="paragraph">
+<p>As I have discussed prevously, I am focusing on minimising the 99%ile latency (worst 1 in 100).  On the system, I am reporting no more than 100 million messages per second as this is close to the point there the 99% starts to increase dramatically. i.e. it is close the limit of what this system can process in soft real time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_end_to_end_latency_for_different_batch_sizes">End to End latency for different batch sizes</h3>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. 99%ile latency end to end</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Batch Size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60 million events per minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100 million events per minute</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">176 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">34 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+1 &micro;s is 0.001 ms or 1 millionth of a second.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>So you can see that batching helps for size of one to five 40 byte messages.  This may yet provide to be a performance bug which can be solved later, but for now it might help.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_is_batching_used_internally">How is batching used internally?</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_conclusion">Conclusion</h3>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+          </div>
+          <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="post-author">
+                <a href="http://vanillajava.blogspot.com/" class="post-author-avatar">
+                  <img itemprop="image" src="https://avatars.githubusercontent.com/u/1070321?v&#x3D;3" alt="Peter Lawrey">
+                </a>
+              <div class="post-author-info">
+                <h4 class="post-footer-heading">Written By</h4>
+                <a href="http://vanillajava.blogspot.com/" itemprop="url" class="post-author-name">
+                  <span itemprop="name">Peter Lawrey</span>
+                </a>
+                <p itemprop="description" class="post-author-bio">Most answers for Java and JVM on StackOverflow.com (~12K), &quot;Vanilla Java&quot; blog with four million views, founder of the Performance JUG,  Java Champion</p>
+                  <p class="post-author-location">London</p>
+                  <p class="post-author-website">
+                    <a href="http://vanillajava.blogspot.com/" rel="nofollow">http://vanillajava.blogspot.com/</a>
+                  </p>
+                <p class="post-info">
+                  <b class="post-info-title">Published on</b>
+                  <time class="post-date">July 09, 2016</time>
+                </p>
+              </div>
+            </div>
+            <div class="post-social">
+              <h4 class="post-footer-heading">Spread the word</h4>
+              <a href="#" data-action="share-twitter"><i class="fa fa-fw fa-lg fa-twitter"></i></a>
+              <a href="#" data-action="share-facebook"><i class="fa fa-fw fa-lg fa-facebook"></i></a>
+              <a href="#" data-action="share-gplus"><i class="fa fa-fw fa-lg fa-google-plus"></i></a>
+            </div>
+          </footer>
+        </section>
+      <section itemprop="comment" class="post-comments">
+        <div id="disqus_thread"></div>
+      </section>
+    </article>
+
+    <footer role="contentinfo" class="footer">
+      <p><small>Copyright &copy; <span itemprop="copyrightHolder">Vanilla Java</span>. 2016. All Rights Reserved.</small></p>
+      <p><small><a href="http://ghostium.oswaldoacauan.com/" target="_blank">Ghostium Theme</a> by <a href="http://twitter.com/oswaldoacauan" target="_blank">@oswaldoacauan</a></small></p>
+      <p><small>Adapted by <a href="https://twitter.com/mgreau">Maxime Gréau</a></small></p>
+      <p><small>Published with <a href="http://hubpress.io">HubPress</a></small></p>
+    </footer>
+  </div>
+</section>
+
+
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+  var disqus_shortname = 'peterlawrey'; // required: replace example with your forum shortname
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1468066448870"></script>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXX-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+
+  </body>
+</html>
