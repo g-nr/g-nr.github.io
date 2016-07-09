@@ -1,0 +1,49 @@
+= Batching and Low Latency
+Peter Lawrey
+:bp-tags: Microservices, Batching, Low Latency
+
+=== Why Batch your data?
+
+Batching of multiple messages or updates into a single transaction is a common technique for improving performance, in particular it is useful for increasing throughput (messages per second) when the latency (time to process a single message) is high.  However when latencies are low, can batching still help?
+
+A couple of week ago, I was looking at testing and optimising our Chronicle Queue replication over TCP.  One of the first tests I did was to see how batching changed the performance and it made a dramatic difference, and I assumed this was a bug, batching shouldn't help a well tuned low latency system.  Now I have had a chance to optimise replication, does batching make much difference?
+
+=== Why do batches help/hinder?
+
+When your system has an operation with a significant latency, you can utilise more of the available bandwidth by increasing the batch size.
+
+Imagine you have a questionaire with 10 questions you want to ask someone. You could send an email for each question and wait for the response to each question before asking the next one. Say it takes 1 minute to answer each question but 10 minutes to send an email, have the person notice it and for you to notice the response.
+
+- sending one question at a time, means each question takes 10 + 1 minutes or 110 minutes in total.
+- sending all 10 questions at once means that the whole questionaire takes 10 + 1 * 10 minutes, or 20 minutes in total.
+
+It makes sense to ask all your questions at once and wait for all the replies once.
+
+However, there is a problem, what if you
+
+- don't know all the questions in advance because you are still thinking of them. You have to wait to think of the questions, and you might not know how long this will take.
+- might need to ask each question in response to a previous answer.
+
+The longer you wait to build a batch, the more you delay the processing of the messages you have.
+
+Batching works best when you know how many messages you are about to get or you know what delay would be acceptable and you can delay sending the messages or committing the transaction for that amount of time. 
+
+What if you want to process each message as soon as possible?
+
+=== What is being tested?
+
+I am testing the latency under a fixed throughput for publishing a small 40 byte message including time to
+
+- write the message to the persisted queue.
+- read the message and write over TCP.
+- read the TCP socket and write it to a copy of the queue
+- read the message from the queue copy.
+
+I used `System.nanoTime()` to get high resolution timing. In this cases the replication is over loopback. Since I am interested in the outliers, the overhead using a low latency 10 GigE network wouldn't impact these results significantly.  High throughput test here would use less than 20% of a 10 GigE network connection.
+
+The test spends 30 seconds warming up, and 120 seconds running.  The distribution of latencies for each message is summarised.
+
+As I have discussed prevously, I am focusing on minimising the 99%ile latency (worst 1 in 100).  On the system, I am reporting no more than 100 million messages per second as this is close to the point there the 99% starts to increase dramatically. i.e. it is close the limit of what this system can process in soft real time.
+
+
+
