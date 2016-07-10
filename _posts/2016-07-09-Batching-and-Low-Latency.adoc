@@ -51,20 +51,48 @@ As I have discussed prevously, I am focusing on minimising the 99%ile latency (w
 
 .99%ile latency end to end
 |=======
-| Batch Size | 60 million events per minute | 100 million events per minute 
-| 1 | 28 &micro;s | 176 &micro;s 
-| 2 | 29 &micro;s | 30 &micro;s 
-| 5 | 22 &micro;s | 27 &micro;s 
-| 10 | 26 &micro;s | 27 &micro;s 
-| 20 | 34 &micro;s | 31 &micro;s 
+| Batch Size | 10 million events per minute | 60 million events per minute | 100 million events per minute 
+| 1 | 20 &micro;s |  28 &micro;s | [red]#176 &micro;s# 
+| 2 | 22 &micro;s |  29 &micro;s | 30 &micro;s 
+| 5 | 38 &micro;s |  22 &micro;s | 27 &micro;s 
+| 10 | 72 &micro;s |  26 &micro;s | 27 &micro;s 
+| 20 | 125 &micro;s |  34 &micro;s | 31 &micro;s 
 |=======
 
 NOTE: 1 &micro;s is 0.001 ms or 1 millionth of a second.
 
-So you can see that batching helps for size of one to five 40 byte messages.  This may yet provide to be a performance bug which can be solved later, but for now it might help.
+So you can see that batching helps for size of one to five 40 byte messages when the delay between messages is small. However then the delay between messages is relatively large, in this case, every 6 &micro;s, having to wait for enough messages to build a batch hurts the latency.
+
+The high latency for the single message at a time for 100 Mmsg/s may yet provide to be a performance bug which can be solved later, but for now, batching could help reduce the jitter, but you don't want any more batching than you need to avoid any impact.  In this case, I would consider a batch of two, rather than a larger batch size.
+
+=== Why not look at the typical or average latency?
+
+The typical/average latencies are usually better which is why vendors like to report them.  However, they only tell you what the performance looks like momentarily which everything is going well.  By looking at the 99%ile or 99.9%ile you are looking at how something performs when things are not going well.
+
+By comparison, the typical latencies all look fine, and you would know that batching might help at 100 messages per minute.
+
+.50%ile latency end to end
+|=======
+| Batch Size | 10 million events per minute | 60 million events per minute | 100 million events per minute 
+| 1 | 10 &micro;s | 13 &micro;s | 16 &micro;s
+| 2 | 13 &micro;s | 13 &micro;s | 13 &micro;s 
+| 5 | 22 &micro;s | 13 &micro;s | 13 &micro;s 
+| 10 | 36 &micro;s | 15 &micro;s | 13 &micro;s 
+| 20 | 68 &micro;s | 20 &micro;s | 15 &micro;s 
+|=======
+
+Having to wait for a whole batch add latency and this can be far higher than the time you save. You want your batching to be no larger than necessary. 
 
 === How is batching used internally?
 
+While batching messages published made a little difference in the example above, we use batching inetrally because it can make a big difference for lots of small messages.
+
+We batch date before it is replicated over TCP.  As the overhead of passing data over TCP is relatively high, it makes sense to group as much data as is available (when reading the queue you can determine whether more data is pending as you read it)
+
+In particular, making a socket write can be 5 - 10 &micro;s. However we are writing a message around a micro-second or less, this would add an enormous amount to every message if they were sent individually.  By having a background thread batching up these messages we can reduce the latency impact of the socket write.
+
 === Conclusion
 
-TBD
+Batching can be helpful in reducing the impact of latency to improve throughput.  When you are reaching the limit of the throughput you can achieve, batching can improve the overhead and give you high throughputs and lower latencies.
+
+However, batching is not always possible and appropriate and you want a solution which has low latencies even when you are not reaching the limits of your throughput.
