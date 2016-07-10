@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1468066521636"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1468066521636"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1468066521636"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1468148767233"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1468148767233"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1468148767233"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1468066521636"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1468148767233"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/07/09/Batching-and-Low-Latency.html" />
     <meta name="referrer" content="origin" />
@@ -170,7 +170,7 @@ null
             <ul class="post-meta-list">
               <li class="post-meta-item">
                 <time datetime="2016-07-09" itemprop="datePublished">
-                  13 hours ago
+                  2 days ago
                 </time>
               </li>
                 <li class="post-meta-item">
@@ -305,38 +305,45 @@ Still under development.
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. 99%ile latency end to end</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Batch Size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 million events per minute</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">60 million events per minute</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">100 million events per minute</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">28 &micro;s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">176 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red">176 &micro;s</span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">29 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30 &micro;s</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">38 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">22 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">27 &micro;s</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">72 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">26 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">27 &micro;s</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">125 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">34 &micro;s</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">31 &micro;s</p></td>
 </tr>
@@ -355,17 +362,90 @@ Still under development.
 </table>
 </div>
 <div class="paragraph">
-<p>So you can see that batching helps for size of one to five 40 byte messages.  This may yet provide to be a performance bug which can be solved later, but for now it might help.</p>
+<p>So you can see that batching helps for size of one to five 40 byte messages when the delay between messages is small. However then the delay between messages is relatively large, in this case, every 6 &micro;s, having to wait for enough messages to build a batch hurts the latency.</p>
+</div>
+<div class="paragraph">
+<p>The high latency for the single message at a time for 100 Mmsg/s may yet provide to be a performance bug which can be solved later, but for now, batching could help reduce the jitter, but you don&#8217;t want any more batching than you need to avoid any impact.  In this case, I would consider a batch of two, rather than a larger batch size.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_not_look_at_the_typical_or_average_latency">Why not look at the typical or average latency?</h3>
+<div class="paragraph">
+<p>The typical/average latencies are usually better which is why vendors like to report them.  However, they only tell you what the performance looks like momentarily which everything is going well.  By looking at the 99%ile or 99.9%ile you are looking at how something performs when things are not going well.</p>
+</div>
+<div class="paragraph">
+<p>By comparison, the typical latencies all look fine, and you would know that batching might help at 100 messages per minute.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. 50%ile latency end to end</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Batch Size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 million events per minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60 million events per minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100 million events per minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 &micro;s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 &micro;s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 &micro;s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 &micro;s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">68 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 &micro;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 &micro;s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Having to wait for a whole batch add latency and this can be far higher than the time you save. You want your batching to be no larger than necessary.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_how_is_batching_used_internally">How is batching used internally?</h3>
-
+<div class="paragraph">
+<p>While batching messages published made a little difference in the example above, we use batching inetrally because it can make a big difference for lots of small messages.</p>
+</div>
+<div class="paragraph">
+<p>We batch date before it is replicated over TCP.  As the overhead of passing data over TCP is relatively high, it makes sense to group as much data as is available (when reading the queue you can determine whether more data is pending as you read it)</p>
+</div>
+<div class="paragraph">
+<p>In particular, making a socket write can be 5 - 10 &micro;s. However we are writing a message around a micro-second or less, this would add an enormous amount to every message if they were sent individually.  By having a background thread batching up these messages we can reduce the latency impact of the socket write.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_conclusion">Conclusion</h3>
 <div class="paragraph">
-<p>TBD</p>
+<p>Batching can be helpful in reducing the impact of latency to improve throughput.  When you are reaching the limit of the throughput you can achieve, batching can improve the overhead and give you high throughputs and lower latencies.</p>
+</div>
+<div class="paragraph">
+<p>However, batching is not always possible and appropriate and you want a solution which has low latencies even when you are not reaching the limits of your throughput.</p>
 </div>
 </div>
           </div>
@@ -447,7 +527,7 @@ Still under development.
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1468066521636"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1468148767233"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
