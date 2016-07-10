@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1468150435747"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1468150435747"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1468150435747"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1468157136421"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1468157136421"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1468157136421"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1468150435747"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1468157136421"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/07/09/Batching-and-Low-Latency.html" />
     <meta name="referrer" content="origin" />
@@ -298,6 +298,9 @@ This is testing the next release of Chronicle Queue 4.5.0
 </div>
 <div class="paragraph">
 <p>As I have discussed in prevous posts, I am focusing on minimising the 99%ile latency (worst 1 in 100).  On the system, I am reporting no more than 100 million messages per second as this is close to the point there the 99% starts to increase dramatically. i.e. it is close the limit of what this system can process in soft real time.</p>
+</div>
+<div class="paragraph">
+<p>A Centos 7 machine with i7-4790 and 32 GB of memory was used.</p>
 </div>
 </div>
 <div class="sect2">
@@ -630,7 +633,7 @@ This is testing the next release of Chronicle Queue 4.5.0
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1468150435747"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1468157136421"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
