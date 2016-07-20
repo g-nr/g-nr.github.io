@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1.0.0"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1.0.0"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1.0.0"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469014262389"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469014262389"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469014262389"/>
 
 
 
@@ -70,49 +70,30 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1.0.0"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469014262389"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
+    <meta name="referrer" content="origin" />
     
     <meta property="og:site_name" content="Vanilla Java" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Micro-services for performance" />
-    <meta property="og:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency..." />
+    <meta property="og:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency Once you have assembled a large system, it can be" />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
-    <meta property="article:published_time" content="2016-03-22T00:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-05-07T09:14:25.173Z" />
     <meta property="article:tag" content="Microservices" />
-    <meta property="article:tag" content="design" />
+    <meta property="article:tag" content=" design" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Micro-services for performance" />
-    <meta name="twitter:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency..." />
+    <meta name="twitter:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency Once you have assembled a large system, it can be" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
     
     <script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "publisher": "Vanilla Java",
-    "author": {
-        "@type": "Person",
-        "name": "Peter Lawrey",
-        "image": "https://avatars.githubusercontent.com/u/1070321?v=3",
-        "url": "undefined/author/undefined",
-        "sameAs": "http://vanillajava.blogspot.com/"
-    },
-    "headline": "Micro-services for performance",
-    "url": "https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html",
-    "datePublished": "2016-03-22T00:00:00.000Z",
-    "dateModified": "2016-05-07T09:14:25.173Z",
-    "keywords": "Microservices,  design",
-    "description": "Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency..."
-}
+null
     </script>
 
-    <meta name="generator" content="Ghost ?" />
-    <link rel="alternate" type="application/rss+xml" title="Vanilla Java" href="https://vanilla-java.github.io/rss" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="Vanilla Java" href="https://vanilla-java.github.io/rss/" />
   </head>
   <body class="post-template tag-Microservices tag-design">
 
@@ -132,13 +113,11 @@
               <i class="fa fa-list-alt"></i>All posts
             </a>
           </li> -->
-          <!--
           <li class="drawer-list-item">
             <a href="https://vanilla-java.github.io/rss/">
               <i class="fa fa-rss"></i>Subscribe to Feed
             </a>
           </li>
-          -->
           <li class="drawer-list-divider"></li>
           <li class="drawer-list-item drawer-list-title">
             Follow me
@@ -165,11 +144,6 @@
               <i class="fa fa-linkedin"></i>LinkedIn
             </a>
           </li>
-          <li class="drawer-list-item">
-            <a href="https://www.linkedin.com/in/peterlawrey" title="StackOverflow" target="_blank">
-              <i class="fa fa-stack-overflow"></i>Stack Overflow
-            </a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -188,32 +162,32 @@
             <ul class="post-meta-list">
               <li class="post-meta-item">
                 <time datetime="2016-03-22" itemprop="datePublished">
-                  2016-03-22 00:00:00<ago class="ago">
+                  4 months ago
                 </time>
               </li>
                 <li class="post-meta-item">
                   <span class="tags"><i class="fa fa-tags"></i>
                       <span>
-                      <a href="https://vanilla-java.github.io/tag/Microservices">Microservices</a>, <a href="https://vanilla-java.github.io/tag/design"> design</a></span>
+                      <a href="https://vanilla-java.github.io/tag/Microservices/">Microservices</a>, <a href="https://vanilla-java.github.io/tag/design/"> design</a></span>
                   </span>
                 </li>
               <li class="post-meta-item">
-                <a href="#disqus_thread" data-disqus-identifier="dd294049-527a-453e-b6e6-440691cd94a3">Comments</a>
+                <a href="#disqus_thread" data-disqus-identifier="">Comments</a>
               </li>
             </ul>
-            <h1 itemprop="name headline" class="post-title"><a href="/2016/03/22/Micro-services-for-performance.html" itemprop="url" data-pjax title="Micro-services for performance">Micro-services for performance</a></h1>
+            <h1 itemprop="name headline" class="post-title"><a href="/" itemprop="url" data-pjax title="Micro-services for performance">Micro-services for performance</a></h1>
             <!--h2 itemprop="about" class="post-subtitle"></h2-->
           </header>
           <aside class="post-side">
             <div class="post-author">
                 <a href="http://vanillajava.blogspot.com/" class="post-author-avatar">
-                  <img src="https://avatars.githubusercontent.com/u/1070321?v=3" alt="Peter Lawrey">
+                  <img src="https://avatars.githubusercontent.com/u/1070321?v&#x3D;3" alt="Peter Lawrey">
                 </a>
               <div class="post-author-info">
                 <a href="http://vanillajava.blogspot.com/" class="post-author-name">
                   Peter Lawrey
                 </a>
-                <p class="post-author-bio"></p>
+                <p class="post-author-bio">Most answers for Java and JVM on StackOverflow.com (~12K), &quot;Vanilla Java&quot; blog with four million views, founder of the Performance JUG,  Java Champion</p>
               </div>
             </div>
           </aside>
@@ -403,7 +377,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<a class="image" href="http://slideplayer.com/slide/3348635/"><img src="/images/L2-Cache-Coherence-small.jpg" alt="L2 Cache" width="230"></a>
+<a class="image" href="http://slideplayer.com/slide/3348635/"><img src="https://vanilla-java.github.io/images/L2-Cache-Coherence-small.jpg" alt="L2 Cache" width="230"></a>
 </div>
 </div>
 <div class="paragraph">
@@ -479,14 +453,14 @@
           <footer class="post-footer">
             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="post-author">
                 <a href="http://vanillajava.blogspot.com/" class="post-author-avatar">
-                  <img itemprop="image" src="https://avatars.githubusercontent.com/u/1070321?v=3" alt="Peter Lawrey">
+                  <img itemprop="image" src="https://avatars.githubusercontent.com/u/1070321?v&#x3D;3" alt="Peter Lawrey">
                 </a>
               <div class="post-author-info">
                 <h4 class="post-footer-heading">Written By</h4>
                 <a href="http://vanillajava.blogspot.com/" itemprop="url" class="post-author-name">
                   <span itemprop="name">Peter Lawrey</span>
                 </a>
-                <p itemprop="description" class="post-author-bio"></p>
+                <p itemprop="description" class="post-author-bio">Most answers for Java and JVM on StackOverflow.com (~12K), &quot;Vanilla Java&quot; blog with four million views, founder of the Performance JUG,  Java Champion</p>
                   <p class="post-author-location">London</p>
                   <p class="post-author-website">
                     <a href="http://vanillajava.blogspot.com/" rel="nofollow">http://vanillajava.blogspot.com/</a>
@@ -551,10 +525,10 @@
           });
         });
 
-        hljs.initHighlightingOnLoad();      
+        hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1.0.0"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469014262389"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -562,7 +536,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-XXXXX-1', 'auto');
+    ga('create', 'UA-81039510-1', 'auto');
     ga('send', 'pageview');
 
     </script>
