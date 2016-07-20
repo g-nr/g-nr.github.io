@@ -51,6 +51,6 @@ for (int i = 0; i < tests; i++) {
 
 The simple answer is you can't. A latency by itself only tells you what can be achived for some throughput, and you might assume this is the latency for low throughputs, but it might not be.  
 
-Some system actually perform worse with lower throughputs. For our software we tend to see a small worsening of the performance below 50K events/second.  This is due to the CPU not running as hot and the underlying interrupts of the system becoming more prominent. e.g. there is an timer interrupt, typically 100 times a second, which you cannot turn off.  At 100K events per second, this will impact you 99.9%ile, at 10K events per second this will impact you 99%ile, and below 100 events second it will impact every event.
+Some system actually perform worse with lower throughputs. For our software we tend to see a small worsening of the performance below 50K events/second.  This is due to the CPU not running as hot and the underlying interrupts of the system becoming more prominent. e.g. You OS has a timer interrupt, typically 100 times a second, which you cannot turn off.  At 100K events per second, this will impact your 99.9%ile, at 10K events per second this will impact your 99%ile, and below 100 events second it will impact every event.
 
 
