@@ -4,24 +4,21 @@
     "repositoryName": "vanilla-java.github.io",
     "branch": "master"
   },
-  "theme": {
-    "name": "ghostium"
-  },
   "site": {
     "title": "Vanilla Java",
     "logo": "https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg",
     "cover": "https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg",
     "postsPerPage": "10",
-    "googleAnalytics": "UA-XXXXX-1",
-    "disqus": "peterlawrey",
-    "url": "http://blog.hubpress.io"
+    "googleAnalytics": "UA-81039510-1",
+    "disqus": "peterlawrey"
   },
   "socialnetwork": {
     "twitter": "https://twitter.com/PeterLawrey",
-    "github": "https://github.com/peter-lawrey",
     "googleplus": "https://plus.google.com/u/0/+PeterLawrey",
     "linkedin": "https://www.linkedin.com/in/peterlawrey",
-    "stackoverflow": "https://www.linkedin.com/in/peterlawrey",
-    "paypal": "https://www.paypal.me/PeterLawrey"
+    "github": "https://github.com/peter-lawrey"
+  },
+  "theme": {
+    "name": "ghostium"
   }
 }
