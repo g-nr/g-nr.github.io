@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1.0.0"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1.0.0"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1.0.0"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469014262343"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469014262343"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469014262343"/>
 
 
 
@@ -70,52 +70,33 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1.0.0"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469014262343"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html" />
+    <meta name="referrer" content="origin" />
     
     <meta property="og:site_name" content="Vanilla Java" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="A JDBC Gateway Microservice" />
-    <meta property="og:description" content="A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for..." />
+    <meta property="og:description" content="A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for results. In previous posts I looked at the theory behind" />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html" />
-    <meta property="article:published_time" content="2016-04-11T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2016-05-07T09:11:24.899Z" />
     <meta property="article:tag" content="Microservices" />
-    <meta property="article:tag" content="JDBC" />
-    <meta property="article:tag" content="Example" />
+    <meta property="article:tag" content=" JDBC" />
+    <meta property="article:tag" content=" Example" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="A JDBC Gateway Microservice" />
-    <meta name="twitter:description" content="A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for..." />
+    <meta name="twitter:description" content="A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for results. In previous posts I looked at the theory behind" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html" />
     
     <script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "publisher": "Vanilla Java",
-    "author": {
-        "@type": "Person",
-        "name": "Peter Lawrey",
-        "image": "https://avatars.githubusercontent.com/u/1070321?v=3",
-        "url": "undefined/author/undefined",
-        "sameAs": "http://vanillajava.blogspot.com/"
-    },
-    "headline": "A JDBC Gateway Microservice",
-    "url": "https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html",
-    "datePublished": "2016-04-11T23:00:00.000Z",
-    "dateModified": "2016-05-07T09:11:24.899Z",
-    "keywords": "Microservices,  JDBC,  Example",
-    "description": "A deep dive into a low latency microservice We look at a microservice which can run in it&amp;#8217;s own JVM, can perform JDBC updates and queries via a persistent queue for in bound request and a queue for..."
-}
+null
     </script>
 
-    <meta name="generator" content="Ghost ?" />
-    <link rel="alternate" type="application/rss+xml" title="Vanilla Java" href="https://vanilla-java.github.io/rss" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="Vanilla Java" href="https://vanilla-java.github.io/rss/" />
   </head>
-  <body class="post-template tag-Microservices tag-J-D-B-C tag-Example">
+  <body class="post-template tag-Microservices tag-JDBC tag-Example">
 
     <button data-action="open-drawer" id="drawer-button" class="drawer-button"><i class="fa fa-bars"></i></button>
     <nav tabindex="-1" class="drawer">
@@ -133,13 +114,11 @@
               <i class="fa fa-list-alt"></i>All posts
             </a>
           </li> -->
-          <!--
           <li class="drawer-list-item">
             <a href="https://vanilla-java.github.io/rss/">
               <i class="fa fa-rss"></i>Subscribe to Feed
             </a>
           </li>
-          -->
           <li class="drawer-list-divider"></li>
           <li class="drawer-list-item drawer-list-title">
             Follow me
@@ -166,11 +145,6 @@
               <i class="fa fa-linkedin"></i>LinkedIn
             </a>
           </li>
-          <li class="drawer-list-item">
-            <a href="https://www.linkedin.com/in/peterlawrey" title="StackOverflow" target="_blank">
-              <i class="fa fa-stack-overflow"></i>Stack Overflow
-            </a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -183,38 +157,38 @@
             
 <section class="wrapper wrapper-post">
   <div class="wrapper-container">
-    <article itemscope itemtype="http://schema.org/BlogPosting" role="article" class="post post tag-Microservices tag-J-D-B-C tag-Example">
+    <article itemscope itemtype="http://schema.org/BlogPosting" role="article" class="post post tag-Microservices tag-JDBC tag-Example">
         <section class="post-container">
           <header class="post-header">
             <ul class="post-meta-list">
               <li class="post-meta-item">
                 <time datetime="2016-04-12" itemprop="datePublished">
-                  2016-04-12 00:00:00<ago class="ago">
+                  3 months ago
                 </time>
               </li>
                 <li class="post-meta-item">
                   <span class="tags"><i class="fa fa-tags"></i>
                       <span>
-                      <a href="https://vanilla-java.github.io/tag/Microservices">Microservices</a>, <a href="https://vanilla-java.github.io/tag/J-D-B-C"> JDBC</a>, <a href="https://vanilla-java.github.io/tag/Example"> Example</a></span>
+                      <a href="https://vanilla-java.github.io/tag/Microservices/">Microservices</a>, <a href="https://vanilla-java.github.io/tag/JDBC/"> JDBC</a>, <a href="https://vanilla-java.github.io/tag/Example/"> Example</a></span>
                   </span>
                 </li>
               <li class="post-meta-item">
-                <a href="#disqus_thread" data-disqus-identifier="51882f55-7328-4e33-8459-8e15acd0cd1d">Comments</a>
+                <a href="#disqus_thread" data-disqus-identifier="">Comments</a>
               </li>
             </ul>
-            <h1 itemprop="name headline" class="post-title"><a href="/2016/04/12/A-J-D-B-C-Gateway-Microservice.html" itemprop="url" data-pjax title="A JDBC Gateway Microservice">A JDBC Gateway Microservice</a></h1>
+            <h1 itemprop="name headline" class="post-title"><a href="/" itemprop="url" data-pjax title="A JDBC Gateway Microservice">A JDBC Gateway Microservice</a></h1>
             <!--h2 itemprop="about" class="post-subtitle"></h2-->
           </header>
           <aside class="post-side">
             <div class="post-author">
                 <a href="http://vanillajava.blogspot.com/" class="post-author-avatar">
-                  <img src="https://avatars.githubusercontent.com/u/1070321?v=3" alt="Peter Lawrey">
+                  <img src="https://avatars.githubusercontent.com/u/1070321?v&#x3D;3" alt="Peter Lawrey">
                 </a>
               <div class="post-author-info">
                 <a href="http://vanillajava.blogspot.com/" class="post-author-name">
                   Peter Lawrey
                 </a>
-                <p class="post-author-bio"></p>
+                <p class="post-author-bio">Most answers for Java and JVM on StackOverflow.com (~12K), &quot;Vanilla Java&quot; blog with four million views, founder of the Performance JUG,  Java Champion</p>
               </div>
             </div>
           </aside>
@@ -423,14 +397,14 @@
           <footer class="post-footer">
             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="post-author">
                 <a href="http://vanillajava.blogspot.com/" class="post-author-avatar">
-                  <img itemprop="image" src="https://avatars.githubusercontent.com/u/1070321?v=3" alt="Peter Lawrey">
+                  <img itemprop="image" src="https://avatars.githubusercontent.com/u/1070321?v&#x3D;3" alt="Peter Lawrey">
                 </a>
               <div class="post-author-info">
                 <h4 class="post-footer-heading">Written By</h4>
                 <a href="http://vanillajava.blogspot.com/" itemprop="url" class="post-author-name">
                   <span itemprop="name">Peter Lawrey</span>
                 </a>
-                <p itemprop="description" class="post-author-bio"></p>
+                <p itemprop="description" class="post-author-bio">Most answers for Java and JVM on StackOverflow.com (~12K), &quot;Vanilla Java&quot; blog with four million views, founder of the Performance JUG,  Java Champion</p>
                   <p class="post-author-location">London</p>
                   <p class="post-author-website">
                     <a href="http://vanillajava.blogspot.com/" rel="nofollow">http://vanillajava.blogspot.com/</a>
@@ -495,10 +469,10 @@
           });
         });
 
-        hljs.initHighlightingOnLoad();      
+        hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1.0.0"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469014262343"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -506,7 +480,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-XXXXX-1', 'auto');
+    ga('create', 'UA-81039510-1', 'auto');
     ga('send', 'pageview');
 
     </script>
