@@ -49,8 +49,46 @@ for (int i = 0; i < tests; i++) {
 
 === How can we measure latency without a set throughput?
 
-The simple answer is you can't. A latency by itself only tells you what can be achived for some throughput, and you might assume this is the latency for low throughputs, but it might not be.  
+The simple answer is; you can't. A latency by itself only tells you what can be achived for some throughput, and you might assume this is the latency for low throughputs, but it might not be.  
 
 Some systems perform worse with lower throughputs. For our software we tend to see a small worsening of the performance below 50K events/second.  This is due to the CPU not running as hot and the underlying interrupts of the system becoming more prominent. e.g. Your OS has a timer interrupt, typically 100 times a second, which you cannot turn off.  At 100K events per second, this will impact your 99.9%ile, at 10K events per second this will impact your 99%ile, and below 100 events second it will impact every event.
 
+== Latency Test for Chronicle Queue replication
 
+The following charts time how long it takes to;
+
+- Write a 40 byte message to a Chronicle Queue
+- Have the write replicated over TCP
+- Have the second copy acknowledge receipt of the message
+- Have a thread read the acknowledged message.
+
+The test is run for ten minutes and the distribution of latenices plotted.
+
+image:Latency-to-993.png[]
+
+NOTE: There is a step in latency at around 10 million message per second jumps as the message start to batch. At rates below this, each message can be sent individually.
+
+The 99.99%ile and above are believed to be delays in passing the message over TCP. Further reserach is needed to prove this. In any case these delays are much the same regardless of the throughput.
+
+The 99.9%ile and 99.93%ile are a function of how quickly the system can recover after a delay.  The higher the throughput, the less head room the system has to recover form a delay.
+
+image:Latency-from-993.png[]
+
+=== Summary
+
+In the test above, the typical latency varied between 14 and 40 micro-seconds, the 99%ile varied between 17 and 56 micro-seconds depending on the throughput being tested. Notably, the 99.93% latency varied between 21 micro-seconds and 41 milli-seconds, a factor of 2000.
+
+.Possible Throughput results depending on acceptable latencies
+|===
+| Acceptable Latency | Throughput
+| < 30 micro-seconds 99.3% of the time | 7 million message per second
+| < 20 micro-seconds 99.9% of the time | 20 million messages per second
+| < 1 milli-seconds 99.9% of the time | 50 million messages per second
+| < 60 micro-seconds 99.3% of the time | 80 million message per second
+|===
+
+== Conclusion
+
+Your choice of what is an acceptable latency can determine the throughput a suspect can support and meet your Service Level Agreement. Conversely, your choice of throughput can change the latency distribution you get. 
+
+When measuring performance you have to consider both latency distribution and throughput.
