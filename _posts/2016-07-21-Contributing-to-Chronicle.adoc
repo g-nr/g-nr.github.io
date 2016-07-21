@@ -1,0 +1,17 @@
+= Contributing to Chronicle
+Peter Lawrey
+
+image::http://chronicle.software/wp-content/uploads/2014/09/Chronicle.png[]
+
+There is a number of ways to contribute to OpenHFT/Chronicle Software.  You need to;
+
+- fork one of the projects,
+- try an improvement such as adding documentation, a unit test, or a fix.
+- issue a Pull Request.
+
+== Say I am not familiar with these projects
+
+A good way to get a feel of these projects is to look at our projects web site
+
+http://chronicle.software/hft-products/[Chronicle Proucts]
+
