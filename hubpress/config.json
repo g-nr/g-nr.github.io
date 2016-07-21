@@ -8,7 +8,7 @@
     "title": "Vanilla Java",
     "logo": "https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg",
     "cover": "https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg",
-    "postsPerPage": "10",
+    "postsPerPage": "25",
     "googleAnalytics": "UA-81039510-1",
     "disqus": "peterlawrey"
   },
