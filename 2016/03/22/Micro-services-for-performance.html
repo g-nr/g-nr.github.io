@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469119887519"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469119887519"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469119887519"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469126545652"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469126545652"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469126545652"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469119887519"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469126545652"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
     <meta name="referrer" content="origin" />
@@ -78,14 +78,14 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Micro-services for performance" />
-    <meta property="og:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency Once you have assembled a large system, it can be" />
+    <meta property="og:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency Once you have assembled a large system, it can be" />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
     <meta property="article:tag" content="Microservices" />
     <meta property="article:tag" content=" design" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Micro-services for performance" />
-    <meta name="twitter:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency Once you have assembled a large system, it can be" />
+    <meta name="twitter:description" content="Overview Microservices is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way micro-services have been implemented, but can these be solved? Component testability and consistency Once you have assembled a large system, it can be" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
     
     <script type="application/ld+json">
@@ -175,7 +175,7 @@ null
                 <a href="#disqus_thread" data-disqus-identifier="">Comments</a>
               </li>
             </ul>
-            <h1 itemprop="name headline" class="post-title"><a href="/" itemprop="url" data-pjax title="Micro-services for performance">Micro-services for performance</a></h1>
+            <h1 itemprop="name headline" class="post-title"><a href="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" itemprop="url" data-pjax title="Micro-services for performance">Micro-services for performance</a></h1>
             <!--h2 itemprop="about" class="post-subtitle"></h2-->
           </header>
           <aside class="post-side">
@@ -196,7 +196,7 @@ null
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved?</p>
+<p>Microservices is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way micro-services have been implemented, but can these be solved?</p>
 </div>
 </div>
 </div>
@@ -204,7 +204,7 @@ null
 <h2 id="_component_testability_and_consistency">Component testability and consistency</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once you have assembled a large system, it can be hard to impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently and be tested stand alone can help you achieve the the consistency of your system needs end to end.</p>
+<p>Once you have assembled a large system, it can be hard or even impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently, and can be tested as stand alone, could help you achieve the consistency of your system needs end to end.</p>
 </div>
 </div>
 </div>
@@ -258,11 +258,11 @@ null
 <div class="paragraph">
 <p>The <a href="https://en.wikipedia.org/wiki/Microservices#Philosophy">Microservices Architecture</a> is the UNIX Philosophy applied to distributed systems.</p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
 <p>Philosophy of microservices architecture essentially equals the Unix philosophy of "Do one thing and do it well". It is described as follows:</p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="ulist">
 <ul>
 <li>
@@ -289,19 +289,19 @@ null
 <div class="ulist">
 <ul>
 <li>
-<p>services form information barriers</p>
+<p>Services form information barriers.</p>
 </li>
 <li>
-<p>the architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance,[15] ignoring one of these belongs to the "fallacies of distributed computing"</p>
+<p>The architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
 </li>
 <li>
-<p>testing and deployment are more complicated</p>
+<p>Testing and deployment are more complicated.</p>
 </li>
 <li>
-<p>the complexity of a monolithic application is only shifted into the network, but persists.</p>
+<p>The complexity of a monolithic application is only shifted into the network, but persists.</p>
 </li>
 <li>
-<p>Too-fine-grained microservices have been criticized as an anti-pattern</p>
+<p>Too-fine-grained microservices have been criticized as an anti-pattern.</p>
 </li>
 </ul>
 </div>
@@ -334,10 +334,10 @@ null
 </div>
 <h1 id="_how_can_we_get_the_best_of_both_worlds" class="sect0">How can we get the best of both worlds?</h1>
 <div class="sect1">
-<h2 id="_make_your_components_composable">Make your components composable</h2>
+<h2 id="_make_your_components_are_composable">Make your components are composable.</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If your components are composable, they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.</p>
+<p>If your components are composable, then they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.</p>
 </div>
 <div class="paragraph">
 <p>This is particularly important for testing and debugging.  You need to know a group of components work together without the infrastructure getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.</p>
@@ -528,7 +528,7 @@ null
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469119887519"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469126545652"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
