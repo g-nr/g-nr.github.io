@@ -4,11 +4,11 @@
 
 == Overview
 
-Microservices is a buzz word at the moment. Is it really something original or based on established best practices. There are some disadvantages to the way micro-services have been implemented, but can these be solved?
+Microservices is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way micro-services have been implemented, but can these be solved?
 
 == Component testability and consistency
 
-Once you have assembled a large system, it can be hard to impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently and be tested stand alone can help you achieve the the consistency of your system needs end to end.
+Once you have assembled a large system, it can be hard or even impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently, and can be tested as stand alone, could help you achieve the consistency of your system needs end to end.
 
 == The UNIX Philosophy
 
@@ -32,9 +32,9 @@ https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[
 
 The https://en.wikipedia.org/wiki/Microservices#Philosophy[Microservices Architecture] is the UNIX Philosophy applied to distributed systems.
 
-""
 Philosophy of microservices architecture essentially equals the Unix philosophy of "Do one thing and do it well". It is described as follows:
 
+""
 * The services are small - fine-grained to perform a single function.
 * The organization culture should embrace automation of deployment and testing. This eases the burden on management and operations.
 * The culture and design principles should embrace failure and faults, similar to anti-fragile systems.
@@ -44,11 +44,11 @@ Philosophy of microservices architecture essentially equals the Unix philosophy 
 There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages] to using a micro-services arhictecture some of which are
 
 ""
-* services form information barriers
-* the architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance,[15] ignoring one of these belongs to the "fallacies of distributed computing"
-* testing and deployment are more complicated
-* the complexity of a monolithic application is only shifted into the network, but persists.
-* Too-fine-grained microservices have been criticized as an anti-pattern
+* Services form information barriers.
+* The architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance. Ignoring one of these belongs to the "fallacies of distributed computing".
+* Testing and deployment are more complicated.
+* The complexity of a monolithic application is only shifted into the network, but persists.
+* Too-fine-grained microservices have been criticized as an anti-pattern.
 ""
 
 Can we get the best features of a monolith, and micro-services? Does it have to be one or the other?  Should we not use the approach which best suits our problem.  One of the key aspects of Micro-services is controlled deployment of an application. In which case, shouldn't we be able to deploy components as a Monolith or Micro-services where it makes the most sense to do so.
@@ -63,9 +63,9 @@ Proposed alternatives to nanoservices include
 
 = How can we get the best of both worlds?
 
-== Make your components composable
+== Make your components are composable.
 
-If your components are composable, they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.
+If your components are composable, then they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.
 
 This is particularly important for testing and debugging.  You need to know a group of components work together without the infrastructure getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.
 
