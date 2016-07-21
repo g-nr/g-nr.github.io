@@ -1,7 +1,9 @@
 = Contributing to Chronicle
 Peter Lawrey
 
-image::http://chronicle.software/wp-content/uploads/2014/09/Chronicle.png[]
+Look to work on a high peformance Open Source library. This may be a good place to start.
+
+image:http://chronicle.software/wp-content/uploads/2014/09/Chronicle.png[]
 
 There is a number of ways to contribute to OpenHFT/Chronicle Software.  You need to;
 
@@ -9,9 +11,17 @@ There is a number of ways to contribute to OpenHFT/Chronicle Software.  You need
 - try an improvement such as adding documentation, a unit test, or a fix.
 - issue a Pull Request.
 
-== Say I am not familiar with these projects
+== I am not familiar with these projects
 
 A good way to get a feel of these projects is to look at our projects web site
 
-http://chronicle.software/hft-products/[Chronicle Proucts]
+http://chronicle.software/hft-products/[Chronicle Products]
+
+I also suggest you read this blog as it contains more detailed information about using our products in context.
+
+Once you have found a product you are interested in, you can read the README for those products
+
+For example if you click http://chronicle.software/products/chronicle-queue/[Chronicle Queue] you can see links on getting started and the documentation on the right.
+
+If you get stuck, you can ask questions on our https://groups.google.com/forum/#!forum/java-chronicle[Google Group] and if you find a issue, please let us know via the Issue tab on GitHub for each project.
 
