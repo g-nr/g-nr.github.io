@@ -2,29 +2,29 @@
 Peter Lawrey
 :hp-tags: Benchmarking
 
-Without a set throughput, a latency mesurement might be meaningless. Often you see benchamrks where they measure throughput, and sometimes the include a latency measurement. Howeverm latency varies with the throughput you perform, and without this number you have little idea of what the latency means.  Conversely, without an idea of what latencies you find acceptable, the throughput you can achieve for an acceptable latency might not be the maximum throughput you can stress test your system up to.
+Without a set throughput, a latency measurement might be meaningless. Often you see benchmark results with throughput measurements, and sometimes the include latency measurements. However, latency varies with the throughput you perform, and without the throughput you have little idea of what the latency means.  Conversely, without an idea of what latencies you find acceptable, the throughput you can achieve for an acceptable latency might not be the maximum throughput you can stress test your system up to.
 
 == Benchmarketing
 
-When you are reporting on the throughput, or latenices of your software, you want to put forward the best numbers you can.  However, you don't want to fall into the trap of believing your own benchmarketing.  As a technologist you want tools which will help you find problems you need to solve.
+When you are reporting on the throughput, or latencies of your software, you want to put forward the best numbers you can.  However, you don't want to fall into the trap of believing your own benchmarketing.  As a technologist you want tools which will help you find problems you need to solve.
 
 A common question I get is; how do I convince my manager to allow me to spend more time optimising the application.  The simple solution is to avoid benchmarketing and use tools which help you find problems.
 
-To start with, look at the latencies of your system at given throughputs.  Look not at the average latency or typical latency, but rather start with the 99%ile (worst 1 in 100 latency). After you have worked on the 99%ile you can try improving the 99.9%ile.  The 99%ile is often 4x higher than the typical latenices, even in a well tuned systems, and can be many orders of magnitude higher.
+To start with, look at the latencies of your system at given throughputs.  Look not at the average latency or typical latency, but rather start with the 99%ile (worst 1 in 100 latency). After you have worked on the 99%ile you can try improving the 99.9%ile.  The 99%ile is often 4x higher than the typical latencies, even in well tuned systems, and can be many orders of magnitude higher if not tuned.
 
 === Co-ordinated ommission
 
-One of the ways in which your testing tools can lie to you is to back off whenever your systems isn't performing well.  Often this is a concequence of flow control.
+One of the ways in which your testing tools can lie to you is to back off whenever your tested system isn't performing well.  Often this is a consequence of flow control.
 
-Flow control is a very useful techinque for avoiding overloading your system and imrpoves performance.  Flow control does a good job or smoothing out any bad latencies.  However, if your purpose is to look for problems, it is not what you want.  You don't want a system to be able to tell a load generator; can you hold off for a while I am having trouble keeping up.
+Flow control is a very useful technique for avoiding overloading your system and improves performance.  Flow control does a good job or smoothing out any bad latencies.  However, if your purpose is to look for problems, it is not what you want.  You don't want a system to be able to tell a load generator; can you hold off for a while I am having trouble keeping up.
 
-Gill Tene coined this blind spotting of your load testing tool https://www.youtube.com/watch?v=lJ8ydIuPFeU[Co-ordinate Ommission] as you testing tool is effectively conspiring with the system you are testing to hide or dramatatically down play the imporatance of poor latencies.
+Gil Tene coined this benchmarking blind spotting of your load testing tool https://www.youtube.com/watch?v=lJ8ydIuPFeU[Co-ordinate Ommission] as your testing tool is effectively conspiring with the tested system to hide or dramatatically down play the importance of poor latencies.
 
-A simple way to correct for this is to measure the end-to-end latency from the time a test should have started, not when it actually started.  By doing this you bais the result to include any failure of the testing tool to start the test on time.
+A simple way to correct for this is to measure the end-to-end latency from the time a test should have started, not when it actually started.  By doing this you bias the result to include any failure of the testing tool to start the test on time.
 
 === Setting the Throughput
 
-How can we calculate the time a test should have start? We need to test for a given throughput.  The simplest approach is to have a spacing between tasks and wait for that time has been reached.
+How can we calculate the time a test should have started? We need to test for a given throughput.  The simplest approach is to have a spacing between tasks and wait for that time to be reached.
 
 [source, Java]
 ----
@@ -51,6 +51,6 @@ for (int i = 0; i < tests; i++) {
 
 The simple answer is you can't. A latency by itself only tells you what can be achived for some throughput, and you might assume this is the latency for low throughputs, but it might not be.  
 
-Some system actually perform worse with lower throughputs. For our software we tend to see a small worsening of the performance below 50K events/second.  This is due to the CPU not running as hot and the underlying interrupts of the system becoming more prominent. e.g. You OS has a timer interrupt, typically 100 times a second, which you cannot turn off.  At 100K events per second, this will impact your 99.9%ile, at 10K events per second this will impact your 99%ile, and below 100 events second it will impact every event.
+Some systems perform worse with lower throughputs. For our software we tend to see a small worsening of the performance below 50K events/second.  This is due to the CPU not running as hot and the underlying interrupts of the system becoming more prominent. e.g. Your OS has a timer interrupt, typically 100 times a second, which you cannot turn off.  At 100K events per second, this will impact your 99.9%ile, at 10K events per second this will impact your 99%ile, and below 100 events second it will impact every event.
 
 
