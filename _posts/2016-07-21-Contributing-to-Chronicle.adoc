@@ -1,5 +1,6 @@
 = Contributing to Chronicle
 Peter Lawrey
+:hp-tags: Getting Involved, Microservices
 
 Look to work on a high peformance Open Source library. This may be a good place to start.
 
