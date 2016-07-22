@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 16:03:53 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 16:28:14 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Looking to contribute to a high peformance Open Source library in Java. This may be a good place to start.</p>
@@ -3843,7 +3843,9 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p>Services form information <a href="https://en.wikipedia.org/wiki/Barrier_(computer_science)">barriers</a><sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.</p>
 </li>
 <li>
-<p>The architecture introduces additional complexity and new problems to deal with, such as network latency, <a href="http://networking.xtreemhost.com/wp/?p=279&amp;ckattempt=1">message formats</a><sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>, <a href="http://searchnetworking.techtarget.com/definition/load-balancing">load balancing</a> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> and <a href="http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant">fault tolerance</a><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup>. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
+<p>The architecture introduces additional complexity and new problems to deal with, such as network latency, <a href="http://networking.xtreemhost.com/wp/?p=279&amp;ckattempt=1">message formats</a><sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>,
+<a href="http://searchnetworking.techtarget.com/definition/load-balancing">load balancing</a> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> and
+<a href="http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant">fault tolerance</a><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup>. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
 </li>
 <li>
 <p>Testing and deployment are more complicated.</p>
@@ -4013,7 +4015,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a><sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="#_footnote_18" title="View footnote.">18</a>]</sup>. A problem is distributed between a number of systems.</p>
 </div>
 <div class="paragraph">
-<p><strong>Failover</strong>- <a href="http://www.webopedia.com/TERM/F/failover.html">"A backup operation that automatically switches to a standby database, server or network if the primary system fails or is temporarily shut down for servicing."</a><sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="#_footnote_19" title="View footnote.">19</a>]</sup></p>
+<p><strong>Failover</strong>- <a href="http://www.webopedia.com/TERM/F/failover.html">"A backup operation that automatically switches to a standby server or network if the primary system fails or is temporarily shut down for servicing."</a><sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="#_footnote_19" title="View footnote.">19</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p><strong>Latency</strong>- The time an individual operation takes. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a><sup class="footnote">[<a id="_footnoteref_20" class="footnote" href="#_footnote_20" title="View footnote.">20</a>]</sup></p>
@@ -4025,44 +4027,44 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p><strong>Microservices</strong>- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.</p>
 </div>
 <div class="paragraph">
-<p><strong>Testing</strong>- <a href="http://whatis.techtarget.com/definition/software-testing">"Software testing is a method of assessing the functionality of a software program."</a><sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="#_footnote_22" title="View footnote.">22</a>]</sup></p>
+<p><strong>Testing</strong>- checking the functionality of software, this is often performed by a program/method that tests a specific task.</p>
 </div>
 <div class="paragraph">
-<p><strong>Throughput</strong>- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
+<p><strong>Throughput</strong>- The rate of data or messages transferred which is processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
 </div>
 <div class="paragraph">
-<p><strong>Serializations libraries</strong>- the process that translates data, e.g an image, into a wire format that can be sent to and understiod by another mechine.</p>
+<p><strong>Serializations libraries</strong>- The process that translates data into a format that can be consumed by another system.</p>
 </div>
 <div class="paragraph">
-<p><strong>Wire format</strong>- the way a message between mechines is written.</p>
+<p><strong>Wire format</strong>- is a serilzation format.Often used to send data between mechines.</p>
 </div>
 </div>
 </div>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a>. Wikipedia. (2016). Unix philosophy.
+<a href="#_footnoteref_1">1</a>. Wikipedia. (2016). Unix philosophy. Online. Available at: <a href="https://en.wikipedia.org/wiki/Unix_philosophy" class="bare">https://en.wikipedia.org/wiki/Unix_philosophy</a>. Accessed: Mar. 2016
 </div>
 <div class="footnote" id="_footnote_2">
-<a href="#_footnoteref_2">2</a>. Wikipedia. (2016). Unix philosophy.
+<a href="#_footnoteref_2">2</a>. Wikipedia. (2016). Unix philosophy. Online. Available at: <a href="https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy" class="bare">https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy</a>. Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_3">
-<a href="#_footnoteref_3">3</a>. Wikipedia. (2016). Shell script.
+<a href="#_footnoteref_3">3</a>. Wikipedia. (2016). Shell script. Online. Available at: <a href="https://en.wikipedia.org/wiki/Shell_script" class="bare">https://en.wikipedia.org/wiki/Shell_script</a>. Accessed Mar.  2016
 </div>
 <div class="footnote" id="_footnote_4">
-<a href="#_footnoteref_4">4</a>. Wikipedia. (2016). Microservices.
+<a href="#_footnoteref_4">4</a>. Wikipedia. (2016). Microservices. Online. Available at: <a href="https://en.wikipedia.org/wiki/Microservices#Philosophy" class="bare">https://en.wikipedia.org/wiki/Microservices#Philosophy</a>. Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_5">
-<a href="#_footnoteref_5">5</a>. Wikipedia. (2016). Microservices.
+<a href="#_footnoteref_5">5</a>. Wikipedia. (2016). Microservices. Online. Available at: <a href="https://en.wikipedia.org/wiki/Microservices#Criticism" class="bare">https://en.wikipedia.org/wiki/Microservices#Criticism</a>. Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_6">
-<a href="#_footnoteref_6">6</a>. Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.
+<a href="#_footnoteref_6">6</a>. Shirako, J., et al (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08. Online. Available at:https://en.wikipedia.org/wiki/Barrier_(computer_science). Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_7">
-<a href="#_footnoteref_7">7</a>. Luca, A. (2016). Message Formatting
+<a href="#_footnoteref_7">7</a>. Luca, A. (2016). Message Formatting. Online. Available at: <a href="http://networking.xtreemhost.com/wp/?p=279&amp;ckattempt=1" class="bare">http://networking.xtreemhost.com/wp/?p=279&amp;ckattempt=1</a>. Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_8">
-<a href="#_footnoteref_8">8</a>. Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com.
+<a href="#_footnoteref_8">8</a>. Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com. Online. Available at: <a href="http://searchnetworking.techtarget.com/definition/load-balancing" class="bare">http://searchnetworking.techtarget.com/definition/load-balancing</a>. Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_9">
 <a href="#_footnoteref_9">9</a>. Rouse, M. (2016). What is fault-tolerant? - Definition from WhatIs.com.
@@ -4102,9 +4104,6 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 </div>
 <div class="footnote" id="_footnote_21">
 <a href="#_footnoteref_21">21</a>. Webopedia.com. (2016). What is Library? Webopedia Definition.
-</div>
-<div class="footnote" id="_footnote_22">
-<a href="#_footnoteref_22">22</a>. Rouse, M. (2016). What is software testing? - Definition from WhatIs.com.
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ design]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Tue, 22 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[A new start with Asciidoc and HubPress.IO]]></title><description><![CDATA[<div class="paragraph">
 <p>I started to migrate to using Asciidoc on Github last week, but the team at <a href="http://hubpress.io/" class="bare">http://hubpress.io/</a> suggested I use HubPress instead. This uses github for storage and hosting but provides a web site feel skin to both editing and more importantly display for readers.</p>
