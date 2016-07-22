@@ -4,19 +4,19 @@
 
 == Overview
 
-Microservices is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way micro-services have been implemented, but can these be solved?
+*Microservices* is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way microservices have been implemented, but can these be solved?
 
 == Component testability and consistency
 
-Once you have assembled a large system, it can be hard or even impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently, and can be tested as stand alone, could help you achieve the consistency of your system needs end to end.
+Once you have assembled a large system, it can be hard or even impossible to profile where the highest delays come from. You can profile for average *latency* or *throughput*, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently, and can be tested as stand alone, could help you achieve the consistency of your system needs end to end.
 
 == The UNIX Philosophy
 
-Many of the key concepts of Micro-services have been used in distributed systems for many years.  
+Many of the key concepts of microservices have been used in distributed systems for many years.  
 
-Micro-services have much in common with the  https://en.wikipedia.org/wiki/Unix_philosophy[Unix Philosophy] 
+Microservices have much in common with the  https://en.wikipedia.org/wiki/Unix_philosophy[Unix Philosophy] footnote:[Wikipedia. (2016). Unix philosophy.]
 
-https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[Mike Gancarz] is quoted as summed these principles as follows
+https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[Mike Gancarz] footnote:[Wikipedia. (2016). Unix philosophy.] is quoted as summed these principles as follows:
 
 ""
 * Small is beautiful.
@@ -25,12 +25,12 @@ https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[
 * Choose portability over efficiency.
 * Store data in flat text files.
 * Use software leverage to your advantage.
-* Use shell scripts to increase leverage and portability.
+* Use https://en.wikipedia.org/wiki/Shell_script[shell scripts] footnote:[Wikipedia. (2016). Shell script.]to increase leverage and portability.
 * Avoid captive user interfaces.
 * Make every program a filter.
 ""
 
-The https://en.wikipedia.org/wiki/Microservices#Philosophy[Microservices Architecture] is the UNIX Philosophy applied to distributed systems.
+The https://en.wikipedia.org/wiki/Microservices#Philosophy[Microservices Architecture] footnote:[Wikipedia. (2016). Microservices.] is the UNIX Philosophy applied to *distributed systems*.
 
 Philosophy of microservices architecture essentially equals the Unix philosophy of "Do one thing and do it well". It is described as follows:
 
@@ -41,10 +41,10 @@ Philosophy of microservices architecture essentially equals the Unix philosophy 
 * Each service is elastic, resilient, composable, minimal, and complete.
 ""
 
-There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages] to using a micro-services arhictecture some of which are
+There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages] footnote:[Wikipedia. (2016). Microservices.] to using a microservices archictecture some of which are;
 
 ""
-* Services form information barriers.
+* Services form information https://en.wikipedia.org/wiki/Barrier_(computer_science)[barriers] footnote:[Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.].
 * The architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance. Ignoring one of these belongs to the "fallacies of distributed computing".
 * Testing and deployment are more complicated.
 * The complexity of a monolithic application is only shifted into the network, but persists.
@@ -63,7 +63,7 @@ Proposed alternatives to nanoservices include
 
 = How can we get the best of both worlds?
 
-== Make your components are composable.
+== Make sure your components are composable.
 
 If your components are composable, then they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.
 
@@ -73,52 +73,56 @@ Only once your components work together correctly without infrastructure, do you
 
 == Make your infrastructure as fast as your application needs.
 
-Low latency trading systems are distributed systems, and yet they also have very stringent latency requirements.  Most trading systems are designed to care about latencies much faster than you can see.  In the Java space, it is not unusual to see a trading system which needs to have latencies below 100 micro-second 99% of the time or even 99.9% of the time.  This can be achieved using commodity hardware in a high level language like Java.
+Low latency trading systems are distributed systems, and yet they also have very stringent latency requirements.  Most trading systems are designed to care about latencies much faster than you can see.  In the Java space, it is not unusual to see a trading system which needs to have latencies below 100 micro-seconds, 99% of the time or even 99.9% of the time.  This can be achieved using commodity hardware in a high level language like Java.
 
-The keys to achieving low latencies are
+The keys to achieving low latencies are;
 
-* low latency infrastructure for messaging and logging. Ideally around a 1 micro-second for short messages.
-* a minimum of network hops.
-* a high level of reproduce-ability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies.
-* viewing each CPU core as having a specific task/service, with it's own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers)
+* low latency infrastructure for messaging and logging. Ideally around a 1 micro-second for short messages,
+* a minimum of network hops,
+* a high level of reproduceability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies,
+* viewing each CPU core as having a specific task/service, with it's own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers).
 
 Your L2 cache coherence bus is your messaging layer between high performance services.
 
 image::L2-Cache-Coherence-small.jpg[L2 Cache, 230, link="http://slideplayer.com/slide/3348635/"]
 
-You can perform a CAS operation on the same data between two difference cores, where each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.
+You can perform a CAS operation on the same data between two different cores. Here, each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.
 
-Examples of low latency instructure in Java are
+Examples of low latency instructure in Java are;
 
-* https://github.com/real-logic/Aeron[Aeron] A reliable UDP transport
-* https://github.com/OpenHFT/Chronicle-Queue[Chronicle Queue] A persisted queue for messaging and logging.
+* https://github.com/real-logic/Aeron[Aeron]- A reliable UDP transport,
+* https://github.com/OpenHFT/Chronicle-Queue[Chronicle Queue]- A persisted queue for messaging and logging.
 
 These transports have different advantages in terms of handling load balancing and failover.
 
 == Make the message format a configuration consideration.
 
-There is a number of competing concerns in message formats. You want
+There is a number of competing concerns in message formats. You want;
 
-* Human readability so you can validate the messages are not just behaving correctly but doing so in the manner you expect.  I am often surprised how many issues I find by dumping a storage file or the message logs.
+* Human readability so you can validate the messages are not only behaving correctly, but doing so in the manner you expect.  I am often surprised how many issues I find by dumping a storage file or the message logs.
 * Machine friendly binary format for speed.
 * Flexability in terms of future schema changes. Flexability means adding redundancy so the software can cope with adding/removing fields and changing their data types in future. This redundancy is a waste if you don't need it.
 
 Ideally, you can choose the best option at testing/deployment time.
 
-Some examples of serializations libraries where you can change the actual wire format to suit your needs are
+Some examples of serializations libraries where you can change the actual wire format to suit your needs are;
 
-* https://github.com/FasterXML/jackson-core[Jackson Speaming API] which support JSON, XML, CSV, CBOR (a binary format)
-* https://github.com/OpenHFT/Chronicle-Wire[Chronicle Wire] which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.
+* https://github.com/FasterXML/jackson-core[Jackson Speaming API]- Which supports JSON, XML, CSV, CBOR (a binary format),
+* https://github.com/OpenHFT/Chronicle-Wire[Chronicle Wire]- Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.
 
-What I found useful in http://www.yaml.org/spec/1.2/spec.html[YAML] verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators
+What I found useful in http://www.yaml.org/spec/1.2/spec.html[YAML] verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.
 
 == Conclusion
 
 I think there is a lot of good ideas on how to use micro services, and I think many of the criticisms around them are based on how they have been implemented and I believe they are solvable.
 
+== Glossary
 
+*Microservices*- programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.
 
+*Latency*- gernerally, wasted time while one component is waiting for another to complete its process. http://www.webopedia.com/TERM/L/latency.html["Together, latency and bandwidth define the speed and capacity of a network."]
 
+*Throughput*- the amount of data transferred or processed in a certain amount of time. Ths time is written in terms of throughput, e.g where a road could have a throughput of 10 cars per minute.
 
-
+*Distributed system*- a collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility. 
 
