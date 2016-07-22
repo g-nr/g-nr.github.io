@@ -1,0 +1,88 @@
+= Improving network utilisation with compression
+Peter Lawrey
+:hp-tags: Chronicle Wire
+
+Chronicle Wire support multiple Wire Formats such as YAML, JSON and CSV. It also supports a binary format of YAML for performance.  Chronicle Wire Enteprise has an additional Wire Format which compressin
+
+== Compression of serialized objects using delta-ring.
+
+Delta Wire automatically detects which fields in an object have changed and sends only those fields.  If the field is a number it can send the difference using less bytes.  It does this for nested objects.  
+
+You can still utilised generic compression like GZIP, LZW or Snappy to achieve further compression. However, these compression techiques are releatively more expensive.
+
+.A sample data structure
+[source, java]
+----
+class MyDataType extends AbstractMarshallable implements KeyedMarshallable {
+    long firstId; // <1>
+    int secondId; // <1>
+    String thirdId; // <1>
+
+    String staticOne; // <2>
+    long staticTwo; // <2>
+    ZonedDateTime staticThree; // <2>
+    double staticFour; // <2>
+
+    long changesA; // <3>
+    double changesB; // <3>
+
+    @Override
+    public void writeKey(@NotNull Bytes bytes) {
+        bytes.writeLong(firstId).writeInt(secondId).writeUtf8(thirdId); // <4>
+    }
+}
+----
+<1> Composite key for this data transfer object
+<2> Fields which rarely change
+<3> Fields which often change
+<4> Write a key to signify when two objects represent the same data.
+
+To write this object you can use the Chronicle Wire library to write in different formats.
+
+.Update message as YAML - 268 bytes
+[source, Yaml]
+----
+update: !MyDataType {
+  firstId: 1010101010101,
+  secondId: 2222,
+  thirdId: thirdId-1234,
+  staticOne: staticOne-1234,
+  staticTwo: 2020202020202,
+  staticThree: "2016-07-22T12:34:56.789Z[UTC]",
+  staticFour: 1000000.0,
+  changesA: 3000000000,
+  changesB: 123456.0
+}
+----
+
+.Update message as JSON - 242 bytes
+[source, json]
+----
+"update":{"firstId":1010101010101,"secondId":2222,"thirdId":"thirdId-1234","staticOne":"staticOne-1234","staticTwo":2020202020202,"staticThree":"2016-07-22T12:34:56.789Z[UTC]","staticFour":1000000.0,"changesA":3000000001,"changesB":123457.0},"update":{"firstId":1010101010101,"secondId":2222,"thirdId":"thirdId-1234","staticOne":"staticOne-1234","staticTwo":2020202020202,"staticThree":"2016-07-22T12:34:56.789Z[UTC]","staticFour":1000000.0,"changesA":3000000002,"changesB":123457.0}
+----
+
+.Update message as Binary YAML - 205 bytes
+[source]
+----
+Æupdate¶⒑MyDataType\u0082µ٠٠٠ÇfirstId§µ>¶.ë٠٠٠ÈsecondId¥®⒏ÇthirdIdìthirdId-1234ÉstaticOneîstaticOne-1234ÉstaticTwo§j}l]Ö⒈٠٠ËstaticThreeµ\u001D2016-07-22T12:34:56.789Z[UTC]ÊstaticFour\u0090٠$tIÈchangesA£⒉^Ð²ÈchangesB\u0090٠!ñG
+----
+
+While Binary YAML is slightly smaller (< 20%) it's main purpose is speed of encoding and decoding.  By comparison DeltaWire is deisgn to compact the message by reducing duplication with a loss-less compression.
+
+.Two updates, once for the `changesA` and once for `changesB` - 11 bytes average
+[source]
+----
+000000e0       BA 00 89 00 80 04  BA 08 A8 04 BA 00 89 00   ······ ········
+000000f0 80 07 BA 09 90 00 22 F1  47                      ······"· G       
+----
+
+|====
+| Wire Format | Size per message
+| YAML | 268 bytes
+| JSON | 242 bytes
+| Binary YAML | 205 bytes
+| Delta Binary YAML | 11 bytes
+|====
+
+One of the challenges or using binary formats is readability.  For this reason, we have ensured you can automatically convert both Bianry YAML and Delta Binary YAML to YAML without knowledge of the application or shcema.  The messages are still self describing.
+
