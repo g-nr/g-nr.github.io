@@ -81,10 +81,10 @@ In the test above, the typical latency varied between 14 and 40 micro-seconds, t
 .Possible Throughput results depending on acceptable latencies
 |===
 | Acceptable Latency | Throughput
-| < 30 micro-seconds 99.3% of the time | 7 million message per second
-| < 20 micro-seconds 99.9% of the time | 20 million messages per second
-| < 1 milli-seconds 99.9% of the time | 50 million messages per second
-| < 60 micro-seconds 99.3% of the time | 80 million message per second
+| < 30 micro-seconds 99.3% of the time | 7 million message per minute
+| < 20 micro-seconds 99.9% of the time | 20 million messages per minute
+| < 1 milli-seconds 99.9% of the time | 50 million messages per minute
+| < 60 micro-seconds 99.3% of the time | 80 million message per minute
 |===
 
 == Conclusion
