@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 12:19:15 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 14:29:13 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Looking to contribute to a high peformance Open Source library in Java. This may be a good place to start.</p>
@@ -3891,7 +3891,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p>If your components are composable, then they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.</p>
 </div>
 <div class="paragraph">
-<p>This is particularly important for testing and debugging.  You need to know a group of components work together without the infrastructure getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.</p>
+<p>This is particularly important for <strong>testing</strong> and <strong>debugging</strong>.  You need to know a group of business components work together without the infrastructure (eg. Middleware) getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.</p>
 </div>
 <div class="paragraph">
 <p>Only once your components work together correctly without infrastructure, do you need to test how they behave with infrastructure.</p>
@@ -3919,7 +3919,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p>a high level of reproduceability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies,</p>
 </li>
 <li>
-<p>viewing each CPU core as having a specific task/service, with it&#8217;s own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers).</p>
+<p>viewing each <strong>CPU core</strong> as having a specific task/service, with it&#8217;s own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers).</p>
 </li>
 </ul>
 </div>
@@ -4013,10 +4013,19 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p><strong>Throughput</strong>- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
 </div>
 <div class="paragraph">
-<p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a>. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility.</p>
+<p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a>. A problem is distributed between a number of systems.</p>
 </div>
 <div class="paragraph">
 <p><strong>Library</strong>- <a href="http://www.webopedia.com/TERM/L/library.html">"A collection of precompiled routines that a program can use."</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Debugging</strong>- the process of searching for and fixing defects in code.</p>
+</div>
+<div class="paragraph">
+<p><strong>Testing</strong>- <a href="http://whatis.techtarget.com/definition/software-testing">"Software testing is a method of assessing the functionality of a software program."</a></p>
+</div>
+<div class="paragraph">
+<p><strong>CPU core</strong>- <a href="http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/">"A processor core is a processing unit which reads in instructions to perform specific actions."</a></p>
 </div>
 </div>
 </div>
