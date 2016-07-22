@@ -45,19 +45,19 @@ There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages] f
 
 ""
 * Services form information https://en.wikipedia.org/wiki/Barrier_(computer_science)[barriers] footnote:[Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.].
-* The architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance. Ignoring one of these belongs to the "fallacies of distributed computing".
+* The architecture introduces additional complexity and new problems to deal with, such as network latency, http://networking.xtreemhost.com/wp/?p=279&ckattempt=1[message formats] footnote:[Luca, A. (2016). Message Formatting], http://searchnetworking.techtarget.com/definition/load-balancing[load balancing] footnote:[Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com.] and http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant[fault tolerance] footnote:[Rouse, M. (2016). What is fault-tolerant? - Definition from WhatIs.com.]. Ignoring one of these belongs to the "fallacies of distributed computing".
 * Testing and deployment are more complicated.
-* The complexity of a monolithic application is only shifted into the network, but persists.
+* The complexity of a https://en.wikipedia.org/wiki/Monolithic_application[monolithic application] footnote:[Wikipedia. (2016). Monolithic application.] is only shifted into the network, but persists.
 * Too-fine-grained microservices have been criticized as an anti-pattern.
 ""
 
 Can we get the best features of a monolith, and micro-services? Does it have to be one or the other?  Should we not use the approach which best suits our problem.  One of the key aspects of Micro-services is controlled deployment of an application. In which case, shouldn't we be able to deploy components as a Monolith or Micro-services where it makes the most sense to do so.
 
-Proposed alternatives to nanoservices include
+Proposed alternatives to nanoservices include;
 
 ""
-* Package the functionality as a library, rather than a service.
-* Combine the functionality with other functionality, producing a more substantial, useful service.
+* Package the functionality as a *library*, rather than a service.
+* Combine the functionality with other functionalities, producing a more substantial, useful service.
 * Refactor the system, putting the functionality in other services or redesigning the system.
 ""
 
@@ -118,11 +118,12 @@ I think there is a lot of good ideas on how to use micro services, and I think m
 
 == Glossary
 
-*Microservices*- programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.
+*Microservices*- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.
 
-*Latency*- gernerally, wasted time while one component is waiting for another to complete its process. http://www.webopedia.com/TERM/L/latency.html["Together, latency and bandwidth define the speed and capacity of a network."]
+*Latency*- The time an individual operation takes. http://www.webopedia.com/TERM/L/latency.html["Together, latency and bandwidth define the speed and capacity of a network."]
 
-*Throughput*- the amount of data transferred or processed in a certain amount of time. Ths time is written in terms of throughput, e.g where a road could have a throughput of 10 cars per minute.
+*Throughput*- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
 
-*Distributed system*- a collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility. 
+*Distributed System*- A collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility.     
 
+*Library*- http://www.webopedia.com/TERM/L/library.html["A collection of precompiled routines that a program can use."]
