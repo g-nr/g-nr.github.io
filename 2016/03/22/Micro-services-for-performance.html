@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469197753617"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469197753617"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469197753617"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469203391720"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469203391720"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469203391720"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469197753617"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469203391720"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
     <meta name="referrer" content="origin" />
@@ -215,10 +215,10 @@ null
 <p>Many of the key concepts of microservices have been used in distributed systems for many years.</p>
 </div>
 <div class="paragraph">
-<p>Microservices have much in common with the  <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a> <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
+<p>Microservices have much in common with the  <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p><a href="https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy">Mike Gancarz</a> <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup> is quoted as summed these principles as follows:</p>
+<p><a href="https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy">Mike Gancarz</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup> is quoted as summed these principles as follows:</p>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -243,7 +243,7 @@ null
 <p>Use software leverage to your advantage.</p>
 </li>
 <li>
-<p>Use <a href="https://en.wikipedia.org/wiki/Shell_script">shell scripts</a> <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>to increase leverage and portability.</p>
+<p>Use <a href="https://en.wikipedia.org/wiki/Shell_script">shell scripts</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>to increase leverage and portability.</p>
 </li>
 <li>
 <p>Avoid captive user interfaces.</p>
@@ -256,7 +256,7 @@ null
 </blockquote>
 </div>
 <div class="paragraph">
-<p>The <a href="https://en.wikipedia.org/wiki/Microservices#Philosophy">Microservices Architecture</a> <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup> is the UNIX Philosophy applied to <strong>distributed systems</strong>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Microservices#Philosophy">Microservices Architecture</a><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup> is the UNIX Philosophy applied to <strong>distributed systems</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Philosophy of microservices architecture essentially equals the Unix philosophy of "Do one thing and do it well". It is described as follows:</p>
@@ -282,23 +282,23 @@ null
 </blockquote>
 </div>
 <div class="paragraph">
-<p>There are <a href="https://en.wikipedia.org/wiki/Microservices#Criticism">disadvantages</a> <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup> to using a microservices archictecture some of which are;</p>
+<p>There are <a href="https://en.wikipedia.org/wiki/Microservices#Criticism">disadvantages</a><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup> to using a microservices archictecture some of which are;</p>
 </div>
 <div class="quoteblock">
 <blockquote>
 <div class="ulist">
 <ul>
 <li>
-<p>Services form information <a href="https://en.wikipedia.org/wiki/Barrier_(computer_science)">barriers</a> <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.</p>
+<p>Services form information <a href="https://en.wikipedia.org/wiki/Barrier_(computer_science)">barriers</a><sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.</p>
 </li>
 <li>
-<p>The architecture introduces additional complexity and new problems to deal with, such as network latency, <a href="http://networking.xtreemhost.com/wp/?p=279&amp;ckattempt=1">message formats</a> <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>, <a href="http://searchnetworking.techtarget.com/definition/load-balancing">load balancing</a> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> and <a href="http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant">fault tolerance</a> <sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup>. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
+<p>The architecture introduces additional complexity and new problems to deal with, such as network latency, <a href="http://networking.xtreemhost.com/wp/?p=279&amp;ckattempt=1">message formats</a><sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>, <a href="http://searchnetworking.techtarget.com/definition/load-balancing">load balancing</a> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> and <a href="http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant">fault tolerance</a><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup>. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
 </li>
 <li>
 <p>Testing and deployment are more complicated.</p>
 </li>
 <li>
-<p>The complexity of a <a href="https://en.wikipedia.org/wiki/Monolithic_application">monolithic application</a> <sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup> is only shifted into the network, but persists.</p>
+<p>The complexity of a <a href="https://en.wikipedia.org/wiki/Monolithic_application">monolithic application</a><sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup> is only shifted into the network, but persists.</p>
 </li>
 <li>
 <p>Too-fine-grained microservices have been criticized as an anti-pattern.</p>
@@ -381,7 +381,7 @@ null
 </div>
 </div>
 <div class="paragraph">
-<p>You can perform a CAS operation on the same data between two different cores. Here, each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.</p>
+<p>You can perform a CAS operation on the same data between two different cores. Here, each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on <a href="http://ark.intel.com/products/codename/29900/Sandy-Bridge#@All">Sandy Bridge processors</a><sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnote_11" title="View footnote.">11</a>]</sup>, less on newer generations.</p>
 </div>
 <div class="paragraph">
 <p>Examples of low latency instructure in Java are;</p>
@@ -389,15 +389,15 @@ null
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/real-logic/Aeron">Aeron</a>- A reliable UDP transport,</p>
+<p><a href="https://github.com/real-logic/Aeron">Aeron</a><sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup>- A reliable UDP transport,</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a>- A persisted queue for messaging and logging.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a><sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup>- A persisted queue for messaging and logging.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These transports have different advantages in terms of handling load balancing and failover.</p>
+<p>These transports have different advantages in terms of handling load balancing and <strong>failover</strong>.</p>
 </div>
 </div>
 </div>
@@ -410,7 +410,7 @@ null
 <div class="ulist">
 <ul>
 <li>
-<p>Human readability so you can validate the messages are not only behaving correctly, but doing so in the manner you expect.  I am often surprised how many issues I find by dumping a storage file or the message logs.</p>
+<p>Human readability so you can validate the messages are not only behaving correctly, but doing so in the manner you expect. I am often surprised how many issues I find by dumping a storage file or the message logs.</p>
 </li>
 <li>
 <p>Machine friendly binary format for speed.</p>
@@ -424,20 +424,20 @@ null
 <p>Ideally, you can choose the best option at testing/deployment time.</p>
 </div>
 <div class="paragraph">
-<p>Some examples of serializations libraries where you can change the actual wire format to suit your needs are;</p>
+<p>Some examples of <strong>serialization libraries</strong> where you can change the actual <strong>wire format</strong> to suit your needs are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a>- Which supports JSON, XML, CSV, CBOR (a binary format),</p>
+<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a><sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup>- Which supports JSON, XML, CSV, CBOR (a binary format),</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a>- Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup>- Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>What I found useful in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a> verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.</p>
+<p>What I found useful in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a><sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnote_16" title="View footnote.">16</a>]</sup> verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.</p>
 </div>
 </div>
 </div>
@@ -445,7 +445,7 @@ null
 <h2 id="_conclusion">Conclusion</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>I think there is a lot of good ideas on how to use micro services, and I think many of the criticisms around them are based on how they have been implemented and I believe they are solvable.</p>
+<p>I think there is a lot of good ideas on how to use microservices, and I think many of the criticisms around them are based on how they have been implemented and I believe they are solvable.</p>
 </div>
 </div>
 </div>
@@ -453,28 +453,37 @@ null
 <h2 id="_glossary">Glossary</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Microservices</strong>- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.</p>
-</div>
-<div class="paragraph">
-<p><strong>Latency</strong>- The time an individual operation takes. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a></p>
-</div>
-<div class="paragraph">
-<p><strong>Throughput</strong>- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
-</div>
-<div class="paragraph">
-<p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a>. A problem is distributed between a number of systems.</p>
-</div>
-<div class="paragraph">
-<p><strong>Library</strong>- <a href="http://www.webopedia.com/TERM/L/library.html">"A collection of precompiled routines that a program can use."</a></p>
+<p><strong>CPU core</strong>- <a href="http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/">"A processor core is a processing unit which reads in instructions to perform specific actions."</a><sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="#_footnote_17" title="View footnote.">17</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p><strong>Debugging</strong>- the process of searching for and fixing defects in code.</p>
 </div>
 <div class="paragraph">
-<p><strong>Testing</strong>- <a href="http://whatis.techtarget.com/definition/software-testing">"Software testing is a method of assessing the functionality of a software program."</a></p>
+<p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a><sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="#_footnote_18" title="View footnote.">18</a>]</sup>. A problem is distributed between a number of systems.</p>
 </div>
 <div class="paragraph">
-<p><strong>CPU core</strong>- <a href="http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/">"A processor core is a processing unit which reads in instructions to perform specific actions."</a></p>
+<p><strong>Failover</strong>- <a href="http://www.webopedia.com/TERM/F/failover.html">"A backup operation that automatically switches to a standby database, server or network if the primary system fails or is temporarily shut down for servicing."</a><sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="#_footnote_19" title="View footnote.">19</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><strong>Latency</strong>- The time an individual operation takes. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a><sup class="footnote">[<a id="_footnoteref_20" class="footnote" href="#_footnote_20" title="View footnote.">20</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><strong>Library</strong>- <a href="http://www.webopedia.com/TERM/L/library.html">"A collection of precompiled routines that a program can use."</a><sup class="footnote">[<a id="_footnoteref_21" class="footnote" href="#_footnote_21" title="View footnote.">21</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><strong>Microservices</strong>- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.</p>
+</div>
+<div class="paragraph">
+<p><strong>Testing</strong>- <a href="http://whatis.techtarget.com/definition/software-testing">"Software testing is a method of assessing the functionality of a software program."</a><sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="#_footnote_22" title="View footnote.">22</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><strong>Throughput</strong>- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
+</div>
+<div class="paragraph">
+<p><strong>Serializations libraries</strong>- the process that translates data, e.g an image, into a wire format that can be sent to and understiod by another mechine.</p>
+</div>
+<div class="paragraph">
+<p><strong>Wire format</strong>- the way a message between mechines is written.</p>
 </div>
 </div>
 </div>
@@ -509,6 +518,42 @@ null
 </div>
 <div class="footnote" id="_footnote_10">
 <a href="#_footnoteref_10">10</a>. Wikipedia. (2016). Monolithic application.
+</div>
+<div class="footnote" id="_footnote_11">
+<a href="#_footnoteref_11">11</a>. Intel® ARK (Product Specs). (2016). Products (Formerly Sandy Bridge).
+</div>
+<div class="footnote" id="_footnote_12">
+<a href="#_footnoteref_12">12</a>. GitHub. (2016). real-logic/Aeron.
+</div>
+<div class="footnote" id="_footnote_13">
+<a href="#_footnoteref_13">13</a>. Lawrey, P. and Austin, R. (2016). OpenHFT/Chronicle-Queue..
+</div>
+<div class="footnote" id="_footnote_14">
+<a href="#_footnoteref_14">14</a>. GitHub. (2016). FasterXML/jackson-core.
+</div>
+<div class="footnote" id="_footnote_15">
+<a href="#_footnoteref_15">15</a>. Lawrey, P. (2016). OpenHFT/Chronicle-Wire.
+</div>
+<div class="footnote" id="_footnote_16">
+<a href="#_footnoteref_16">16</a>. Ben-Kiki, O., Evans, C. and döt Net, I. (2009). YAML Ain’t Markup Language (YAML™) Version 1.2.
+</div>
+<div class="footnote" id="_footnote_17">
+<a href="#_footnoteref_17">17</a>. Stieben, D. (2012). What Is A Processor Core? MakeUseOf Explains
+</div>
+<div class="footnote" id="_footnote_18">
+<a href="#_footnoteref_18">18</a>. Wikipedia. (2016). Middleware.
+</div>
+<div class="footnote" id="_footnote_19">
+<a href="#_footnoteref_19">19</a>. Webopedia.com. (2016). What is failover? Webopedia Definition.
+</div>
+<div class="footnote" id="_footnote_20">
+<a href="#_footnoteref_20">20</a>. Webopedia.com. (2016). What is Latency? Webopedia Definition.
+</div>
+<div class="footnote" id="_footnote_21">
+<a href="#_footnoteref_21">21</a>. Webopedia.com. (2016). What is Library? Webopedia Definition.
+</div>
+<div class="footnote" id="_footnote_22">
+<a href="#_footnoteref_22">22</a>. Rouse, M. (2016). What is software testing? - Definition from WhatIs.com.
 </div>
 </div>
           </div>
@@ -590,7 +635,7 @@ null
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469197753617"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469203391720"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
