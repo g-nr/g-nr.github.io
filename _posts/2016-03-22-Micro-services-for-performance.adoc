@@ -14,9 +14,9 @@ Once you have assembled a large system, it can be hard or even impossible to pro
 
 Many of the key concepts of microservices have been used in distributed systems for many years.  
 
-Microservices have much in common with the  https://en.wikipedia.org/wiki/Unix_philosophy[Unix Philosophy]footnote:[Wikipedia. (2016). Unix philosophy.]
+Microservices have much in common with the  https://en.wikipedia.org/wiki/Unix_philosophy[Unix Philosophy]footnote:[Wikipedia. (2016). Unix philosophy. Online. Available at: https://en.wikipedia.org/wiki/Unix_philosophy. Accessed: Mar. 2016]
 
-https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[Mike Gancarz]footnote:[Wikipedia. (2016). Unix philosophy.] is quoted as summed these principles as follows:
+https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[Mike Gancarz]footnote:[Wikipedia. (2016). Unix philosophy. Online. Available at: https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy. Accessed Mar. 2016] is quoted as summed these principles as follows:
 
 ""
 * Small is beautiful.
@@ -25,12 +25,12 @@ https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[
 * Choose portability over efficiency.
 * Store data in flat text files.
 * Use software leverage to your advantage.
-* Use https://en.wikipedia.org/wiki/Shell_script[shell scripts]footnote:[Wikipedia. (2016). Shell script.]to increase leverage and portability.
+* Use https://en.wikipedia.org/wiki/Shell_script[shell scripts]footnote:[Wikipedia. (2016). Shell script. Online. Available at: https://en.wikipedia.org/wiki/Shell_script. Accessed Mar.  2016]to increase leverage and portability.
 * Avoid captive user interfaces.
 * Make every program a filter.
 ""
 
-The https://en.wikipedia.org/wiki/Microservices#Philosophy[Microservices Architecture]footnote:[Wikipedia. (2016). Microservices.] is the UNIX Philosophy applied to *distributed systems*.
+The https://en.wikipedia.org/wiki/Microservices#Philosophy[Microservices Architecture]footnote:[Wikipedia. (2016). Microservices. Online. Available at: https://en.wikipedia.org/wiki/Microservices#Philosophy. Accessed Mar. 2016] is the UNIX Philosophy applied to *distributed systems*.
 
 Philosophy of microservices architecture essentially equals the Unix philosophy of "Do one thing and do it well". It is described as follows:
 
@@ -41,11 +41,13 @@ Philosophy of microservices architecture essentially equals the Unix philosophy 
 * Each service is elastic, resilient, composable, minimal, and complete.
 ""
 
-There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages]footnote:[Wikipedia. (2016). Microservices.] to using a microservices archictecture some of which are;
+There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages]footnote:[Wikipedia. (2016). Microservices. Online. Available at: https://en.wikipedia.org/wiki/Microservices#Criticism. Accessed Mar. 2016] to using a microservices archictecture some of which are;
 
 ""
-* Services form information https://en.wikipedia.org/wiki/Barrier_(computer_science)[barriers]footnote:[Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.].
-* The architecture introduces additional complexity and new problems to deal with, such as network latency, http://networking.xtreemhost.com/wp/?p=279&ckattempt=1[message formats]footnote:[Luca, A. (2016). Message Formatting], http://searchnetworking.techtarget.com/definition/load-balancing[load balancing] footnote:[Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com.] and http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant[fault tolerance]footnote:[Rouse, M. (2016). What is fault-tolerant? - Definition from WhatIs.com.]. Ignoring one of these belongs to the "fallacies of distributed computing".
+* Services form information https://en.wikipedia.org/wiki/Barrier_(computer_science)[barriers]footnote:[Shirako, J., et al (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08. Online. Available at:https://en.wikipedia.org/wiki/Barrier_(computer_science). Accessed Mar. 2016].
+* The architecture introduces additional complexity and new problems to deal with, such as network latency, http://networking.xtreemhost.com/wp/?p=279&ckattempt=1[message formats]footnote:[Luca, A. (2016). Message Formatting. Online. Available at: http://networking.xtreemhost.com/wp/?p=279&ckattempt=1. Accessed Mar. 2016], 
+http://searchnetworking.techtarget.com/definition/load-balancing[load balancing] footnote:[Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com. Online. Available at: http://searchnetworking.techtarget.com/definition/load-balancing. Accessed Mar. 2016] and 
+http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant[fault tolerance]footnote:[Rouse, M. (2016). What is fault-tolerant? - Definition from WhatIs.com.]. Ignoring one of these belongs to the "fallacies of distributed computing".
 * Testing and deployment are more complicated.
 * The complexity of a https://en.wikipedia.org/wiki/Monolithic_application[monolithic application]footnote:[Wikipedia. (2016). Monolithic application.] is only shifted into the network, but persists.
 * Too-fine-grained microservices have been criticized as an anti-pattern.
@@ -124,7 +126,7 @@ I think there is a lot of good ideas on how to use microservices, and I think ma
 
 *Distributed System*- A collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]footnote:[Wikipedia. (2016). Middleware.]. A problem is distributed between a number of systems.
 
-*Failover*- http://www.webopedia.com/TERM/F/failover.html["A backup operation that automatically switches to a standby database, server or network if the primary system fails or is temporarily shut down for servicing."]footnote:[Webopedia.com. (2016). What is failover? Webopedia Definition.]
+*Failover*- http://www.webopedia.com/TERM/F/failover.html["A backup operation that automatically switches to a standby server or network if the primary system fails or is temporarily shut down for servicing."]footnote:[Webopedia.com. (2016). What is failover? Webopedia Definition.]
 
 *Latency*- The time an individual operation takes. http://www.webopedia.com/TERM/L/latency.html["Together, latency and bandwidth define the speed and capacity of a network."]footnote:[Webopedia.com. (2016). What is Latency? Webopedia Definition.]
 
@@ -132,10 +134,10 @@ I think there is a lot of good ideas on how to use microservices, and I think ma
 
 *Microservices*- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.
 
-*Testing*- http://whatis.techtarget.com/definition/software-testing["Software testing is a method of assessing the functionality of a software program."]footnote:[Rouse, M. (2016). What is software testing? - Definition from WhatIs.com.]
+*Testing*- checking the functionality of software, this is often performed by a program/method that tests a specific task.
 
-*Throughput*- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
+*Throughput*- The rate of data or messages transferred which is processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
 
-*Serializations libraries*- the process that translates data, e.g an image, into a wire format that can be sent to and understiod by another mechine. 
+*Serializations libraries*- The process that translates data into a format that can be consumed by another system. 
 
-*Wire format*- the way a message between mechines is written.
+*Wire format*- is a serilzation format.Often used to send data between mechines.
