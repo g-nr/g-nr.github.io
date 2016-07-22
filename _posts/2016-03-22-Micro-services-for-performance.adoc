@@ -14,9 +14,9 @@ Once you have assembled a large system, it can be hard or even impossible to pro
 
 Many of the key concepts of microservices have been used in distributed systems for many years.  
 
-Microservices have much in common with the  https://en.wikipedia.org/wiki/Unix_philosophy[Unix Philosophy] footnote:[Wikipedia. (2016). Unix philosophy.]
+Microservices have much in common with the  https://en.wikipedia.org/wiki/Unix_philosophy[Unix Philosophy]footnote:[Wikipedia. (2016). Unix philosophy.]
 
-https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[Mike Gancarz] footnote:[Wikipedia. (2016). Unix philosophy.] is quoted as summed these principles as follows:
+https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[Mike Gancarz]footnote:[Wikipedia. (2016). Unix philosophy.] is quoted as summed these principles as follows:
 
 ""
 * Small is beautiful.
@@ -25,12 +25,12 @@ https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy[
 * Choose portability over efficiency.
 * Store data in flat text files.
 * Use software leverage to your advantage.
-* Use https://en.wikipedia.org/wiki/Shell_script[shell scripts] footnote:[Wikipedia. (2016). Shell script.]to increase leverage and portability.
+* Use https://en.wikipedia.org/wiki/Shell_script[shell scripts]footnote:[Wikipedia. (2016). Shell script.]to increase leverage and portability.
 * Avoid captive user interfaces.
 * Make every program a filter.
 ""
 
-The https://en.wikipedia.org/wiki/Microservices#Philosophy[Microservices Architecture] footnote:[Wikipedia. (2016). Microservices.] is the UNIX Philosophy applied to *distributed systems*.
+The https://en.wikipedia.org/wiki/Microservices#Philosophy[Microservices Architecture]footnote:[Wikipedia. (2016). Microservices.] is the UNIX Philosophy applied to *distributed systems*.
 
 Philosophy of microservices architecture essentially equals the Unix philosophy of "Do one thing and do it well". It is described as follows:
 
@@ -41,13 +41,13 @@ Philosophy of microservices architecture essentially equals the Unix philosophy 
 * Each service is elastic, resilient, composable, minimal, and complete.
 ""
 
-There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages] footnote:[Wikipedia. (2016). Microservices.] to using a microservices archictecture some of which are;
+There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages]footnote:[Wikipedia. (2016). Microservices.] to using a microservices archictecture some of which are;
 
 ""
-* Services form information https://en.wikipedia.org/wiki/Barrier_(computer_science)[barriers] footnote:[Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.].
-* The architecture introduces additional complexity and new problems to deal with, such as network latency, http://networking.xtreemhost.com/wp/?p=279&ckattempt=1[message formats] footnote:[Luca, A. (2016). Message Formatting], http://searchnetworking.techtarget.com/definition/load-balancing[load balancing] footnote:[Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com.] and http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant[fault tolerance] footnote:[Rouse, M. (2016). What is fault-tolerant? - Definition from WhatIs.com.]. Ignoring one of these belongs to the "fallacies of distributed computing".
+* Services form information https://en.wikipedia.org/wiki/Barrier_(computer_science)[barriers]footnote:[Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.].
+* The architecture introduces additional complexity and new problems to deal with, such as network latency, http://networking.xtreemhost.com/wp/?p=279&ckattempt=1[message formats]footnote:[Luca, A. (2016). Message Formatting], http://searchnetworking.techtarget.com/definition/load-balancing[load balancing] footnote:[Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com.] and http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant[fault tolerance]footnote:[Rouse, M. (2016). What is fault-tolerant? - Definition from WhatIs.com.]. Ignoring one of these belongs to the "fallacies of distributed computing".
 * Testing and deployment are more complicated.
-* The complexity of a https://en.wikipedia.org/wiki/Monolithic_application[monolithic application] footnote:[Wikipedia. (2016). Monolithic application.] is only shifted into the network, but persists.
+* The complexity of a https://en.wikipedia.org/wiki/Monolithic_application[monolithic application]footnote:[Wikipedia. (2016). Monolithic application.] is only shifted into the network, but persists.
 * Too-fine-grained microservices have been criticized as an anti-pattern.
 ""
 
@@ -86,50 +86,56 @@ Your L2 cache coherence bus is your messaging layer between high performance ser
 
 image::L2-Cache-Coherence-small.jpg[L2 Cache, 230, link="http://slideplayer.com/slide/3348635/"]
 
-You can perform a CAS operation on the same data between two different cores. Here, each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.
+You can perform a CAS operation on the same data between two different cores. Here, each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on http://ark.intel.com/products/codename/29900/Sandy-Bridge#@All[Sandy Bridge processors]footnote:[Intel® ARK (Product Specs). (2016). Products (Formerly Sandy Bridge).], less on newer generations.
 
 Examples of low latency instructure in Java are;
 
-* https://github.com/real-logic/Aeron[Aeron]- A reliable UDP transport,
-* https://github.com/OpenHFT/Chronicle-Queue[Chronicle Queue]- A persisted queue for messaging and logging.
+* https://github.com/real-logic/Aeron[Aeron]footnote:[GitHub. (2016). real-logic/Aeron.]- A reliable UDP transport,
+* https://github.com/OpenHFT/Chronicle-Queue[Chronicle Queue]footnote:[Lawrey, P. and Austin, R. (2016). OpenHFT/Chronicle-Queue..]- A persisted queue for messaging and logging.
 
-These transports have different advantages in terms of handling load balancing and failover.
+These transports have different advantages in terms of handling load balancing and *failover*.
 
 == Make the message format a configuration consideration.
 
 There is a number of competing concerns in message formats. You want;
 
-* Human readability so you can validate the messages are not only behaving correctly, but doing so in the manner you expect.  I am often surprised how many issues I find by dumping a storage file or the message logs.
+* Human readability so you can validate the messages are not only behaving correctly, but doing so in the manner you expect. I am often surprised how many issues I find by dumping a storage file or the message logs.
 * Machine friendly binary format for speed.
 * Flexability in terms of future schema changes. Flexability means adding redundancy so the software can cope with adding/removing fields and changing their data types in future. This redundancy is a waste if you don't need it.
 
 Ideally, you can choose the best option at testing/deployment time.
 
-Some examples of serializations libraries where you can change the actual wire format to suit your needs are;
+Some examples of *serialization libraries* where you can change the actual *wire format* to suit your needs are:
 
-* https://github.com/FasterXML/jackson-core[Jackson Speaming API]- Which supports JSON, XML, CSV, CBOR (a binary format),
-* https://github.com/OpenHFT/Chronicle-Wire[Chronicle Wire]- Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.
+* https://github.com/FasterXML/jackson-core[Jackson Speaming API]footnote:[GitHub. (2016). FasterXML/jackson-core.]- Which supports JSON, XML, CSV, CBOR (a binary format),
+* https://github.com/OpenHFT/Chronicle-Wire[Chronicle Wire]footnote:[Lawrey, P. (2016). OpenHFT/Chronicle-Wire.]- Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.
 
-What I found useful in http://www.yaml.org/spec/1.2/spec.html[YAML] verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.
+What I found useful in http://www.yaml.org/spec/1.2/spec.html[YAML]footnote:[Ben-Kiki, O., Evans, C. and döt Net, I. (2009). YAML Ain’t Markup Language (YAML™) Version 1.2.] verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.
 
 == Conclusion
 
-I think there is a lot of good ideas on how to use micro services, and I think many of the criticisms around them are based on how they have been implemented and I believe they are solvable.
+I think there is a lot of good ideas on how to use microservices, and I think many of the criticisms around them are based on how they have been implemented and I believe they are solvable.
 
 == Glossary
 
-*Microservices*- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.
-
-*Latency*- The time an individual operation takes. http://www.webopedia.com/TERM/L/latency.html["Together, latency and bandwidth define the speed and capacity of a network."]
-
-*Throughput*- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
-
-*Distributed System*- A collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]. A problem is distributed between a number of systems.
-
-*Library*- http://www.webopedia.com/TERM/L/library.html["A collection of precompiled routines that a program can use."]
+*CPU core*- http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/["A processor core is a processing unit which reads in instructions to perform specific actions."]footnote:[Stieben, D. (2012). What Is A Processor Core? MakeUseOf Explains]
 
 *Debugging*- the process of searching for and fixing defects in code.
 
-*Testing*- http://whatis.techtarget.com/definition/software-testing["Software testing is a method of assessing the functionality of a software program."]
+*Distributed System*- A collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]footnote:[Wikipedia. (2016). Middleware.]. A problem is distributed between a number of systems.
 
-*CPU core*- http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/["A processor core is a processing unit which reads in instructions to perform specific actions."]
+*Failover*- http://www.webopedia.com/TERM/F/failover.html["A backup operation that automatically switches to a standby database, server or network if the primary system fails or is temporarily shut down for servicing."]footnote:[Webopedia.com. (2016). What is failover? Webopedia Definition.]
+
+*Latency*- The time an individual operation takes. http://www.webopedia.com/TERM/L/latency.html["Together, latency and bandwidth define the speed and capacity of a network."]footnote:[Webopedia.com. (2016). What is Latency? Webopedia Definition.]
+
+*Library*- http://www.webopedia.com/TERM/L/library.html["A collection of precompiled routines that a program can use."]footnote:[Webopedia.com. (2016). What is Library? Webopedia Definition.]
+
+*Microservices*- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.
+
+*Testing*- http://whatis.techtarget.com/definition/software-testing["Software testing is a method of assessing the functionality of a software program."]footnote:[Rouse, M. (2016). What is software testing? - Definition from WhatIs.com.]
+
+*Throughput*- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
+
+*Serializations libraries*- the process that translates data, e.g an image, into a wire format that can be sent to and understiod by another mechine. 
+
+*Wire format*- the way a message between mechines is written.
