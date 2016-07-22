@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 16:45:10 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 16:47:44 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Looking to contribute to a high peformance Open Source library in Java. This may be a good place to start.</p>
@@ -3794,7 +3794,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p>Use software leverage to your advantage.</p>
 </li>
 <li>
-<p>Use <a href="https://en.wikipedia.org/wiki/Shell_script">shell scripts</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>to increase leverage and portability.</p>
+<p>Use <a href="https://en.wikipedia.org/wiki/Shell_script">shell scripts</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup> to increase leverage and portability.</p>
 </li>
 <li>
 <p>Avoid captive user interfaces.</p>
@@ -3942,10 +3942,10 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/real-logic/Aeron">Aeron</a><sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup>- A reliable UDP transport,</p>
+<p><a href="https://github.com/real-logic/Aeron">Aeron</a><sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup> - A reliable UDP transport,</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a><sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup>- A persisted queue for messaging and logging.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a><sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup> - A persisted queue for messaging and logging.</p>
 </li>
 </ul>
 </div>
@@ -3982,10 +3982,10 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a><sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup>- Which supports JSON, XML, CSV, CBOR (a binary format),</p>
+<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a><sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup> - Which supports JSON, XML, CSV, CBOR (a binary format),</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup>- Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup> - Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
 </li>
 </ul>
 </div>
