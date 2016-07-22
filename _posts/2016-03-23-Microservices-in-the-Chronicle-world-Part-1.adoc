@@ -1,10 +1,10 @@
 = Microservices in the Chronicle world - Part 1
 :hp-tags: Microservices, examples
 
-At a high level, different Microservices strategies have a lot in common.  They subscribe to the same ideals.
+At a high level, different Microservice strategies have a lot in common.  They subscribe to the same ideals.
 When it comes to the details of how they are actually implemented, they can vary.
 
-Microservices in the Chronicle world are designed around
+Microservices in the Chronicle world are designed around:
 
 * simplicity, simple is fast, flexable and easier to maintain.
 * transparent, you can't control what you don't understand.
