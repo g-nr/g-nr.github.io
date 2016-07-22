@@ -84,5 +84,28 @@ While Binary YAML is slightly smaller (< 20%) it's main purpose is speed of enco
 | Delta Binary YAML | 11 bytes
 |====
 
-One of the challenges or using binary formats is readability.  For this reason, we have ensured you can automatically convert both Bianry YAML and Delta Binary YAML to YAML without knowledge of the application or shcema.  The messages are still self describing.
+One of the challenges of using binary formats is readability.  For this reason, we have ensured you can automatically convert both Bianry YAML and Delta Binary YAML to YAML without knowledge of the application or shcema.  The messages are still self describing.
+
+=== Doesn't compression makes it slower?
+
+It doesn't have to if the compression is simple enough.  In fact writing/reading less data can improve performance.  Writing/reading less data to memory, let alone to disk or a network, can improve latency by touching less memory.
+
+In this test, 1,000 updates are serialized and the average time per message recorded.
+
+.Average time per update to serialize 1000 updates.
+[source]
+----
+TextWire Took an average of 3,119 ns
+JSONWire Took an average of 2,656 ns
+BinaryWire Took an average of 1,990 ns
+DeltaWire Took an average of 608 ns
+----
+
+What if find interesting is that the compressed wire format is also approx 3x faster to serialize, as well as being approx 20x smaller.
+
+== Conclusion
+
+Using compression like Delta Binary Wire can not only be much smaller such as 1/20 th the size, it can also be faster to serialize the data due to less memory being touched. In this example it as at least 3 times faster.
+
+
 
