@@ -92,7 +92,7 @@ You can perform a CAS operation on the same data between two different cores. He
 
 Examples of low latency instructure in Java are;
 
-* https://github.com/real-logic/Aeron[Aeron]footnote:[GitHub. (2016). real-logic/Aeron. Online. Available at:https://github.com/real-logic/Aeron. Accessed Mar. 2016] - A reliable UDP transport,
+* https://github.com/real-logic/Aeron[Aeron]footnote:[GitHub. (2016). real-logic/Aeron. Online. Available at: https://github.com/real-logic/Aeron. Accessed Mar. 2016] - A reliable UDP transport,
 * https://github.com/OpenHFT/Chronicle-Queue[Chronicle Queue]footnote:[Lawrey, P. and Austin, R. (2016). OpenHFT/Chronicle-Queue. Online. Available at: https://github.com/OpenHFT/Chronicle-Queue. Accessed Mar. 2016] - A persisted queue for messaging and logging.
 
 These transports have different advantages in terms of handling load balancing and *failover*.
@@ -140,4 +140,4 @@ I think there is a lot of good ideas on how to use microservices, and I think ma
 
 *Serializations libraries*- The process that translates data into a format that can be consumed by another system. 
 
-*Wire format*- is a serilzation format.Often used to send data between mechines.
+*Wire format*- is a serilzation format. Often used to send data between mechines.
