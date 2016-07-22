@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 10:20:38 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 22 Jul 2016 11:42:41 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Contributing to Chronicle]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Looking to contribute to a high peformance Open Source library in Java. This may be a good place to start.</p>
@@ -3747,7 +3747,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Microservices is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way micro-services have been implemented, but can these be solved?</p>
+<p><strong>Microservices</strong> is a buzz word at the moment. Is it really something original or based on established best practices? There are some disadvantages to the way microservices have been implemented, but can these be solved?</p>
 </div>
 </div>
 </div>
@@ -3755,7 +3755,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <h2 id="_component_testability_and_consistency">Component testability and consistency</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once you have assembled a large system, it can be hard or even impossible to profile where the highest delays come from. You can profile for average latency or throughput, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently, and can be tested as stand alone, could help you achieve the consistency of your system needs end to end.</p>
+<p>Once you have assembled a large system, it can be hard or even impossible to profile where the highest delays come from. You can profile for average <strong>latency</strong> or <strong>throughput</strong>, but to achieve consistent latencies, you need to analyse key portions of your system.  This is where having simple components which run independently, and can be tested as stand alone, could help you achieve the consistency of your system needs end to end.</p>
 </div>
 </div>
 </div>
@@ -3763,13 +3763,13 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <h2 id="_the_unix_philosophy">The UNIX Philosophy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Many of the key concepts of Micro-services have been used in distributed systems for many years.</p>
+<p>Many of the key concepts of microservices have been used in distributed systems for many years.</p>
 </div>
 <div class="paragraph">
-<p>Micro-services have much in common with the  <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a></p>
+<p>Microservices have much in common with the  <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a> <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p><a href="https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy">Mike Gancarz</a> is quoted as summed these principles as follows</p>
+<p><a href="https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy">Mike Gancarz</a> <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup> is quoted as summed these principles as follows:</p>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -3794,7 +3794,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p>Use software leverage to your advantage.</p>
 </li>
 <li>
-<p>Use shell scripts to increase leverage and portability.</p>
+<p>Use <a href="https://en.wikipedia.org/wiki/Shell_script">shell scripts</a> <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>to increase leverage and portability.</p>
 </li>
 <li>
 <p>Avoid captive user interfaces.</p>
@@ -3807,7 +3807,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 </blockquote>
 </div>
 <div class="paragraph">
-<p>The <a href="https://en.wikipedia.org/wiki/Microservices#Philosophy">Microservices Architecture</a> is the UNIX Philosophy applied to distributed systems.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Microservices#Philosophy">Microservices Architecture</a> <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup> is the UNIX Philosophy applied to <strong>distributed systems</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Philosophy of microservices architecture essentially equals the Unix philosophy of "Do one thing and do it well". It is described as follows:</p>
@@ -3833,14 +3833,14 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 </blockquote>
 </div>
 <div class="paragraph">
-<p>There are <a href="https://en.wikipedia.org/wiki/Microservices#Criticism">disadvantages</a> to using a micro-services arhictecture some of which are</p>
+<p>There are <a href="https://en.wikipedia.org/wiki/Microservices#Criticism">disadvantages</a> <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup> to using a microservices archictecture some of which are;</p>
 </div>
 <div class="quoteblock">
 <blockquote>
 <div class="ulist">
 <ul>
 <li>
-<p>Services form information barriers.</p>
+<p>Services form information <a href="https://en.wikipedia.org/wiki/Barrier_(computer_science)">barriers</a> <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.</p>
 </li>
 <li>
 <p>The architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
@@ -3861,11 +3861,11 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <div class="paragraph">
 <p>Can we get the best features of a monolith, and micro-services? Does it have to be one or the other?  Should we not use the approach which best suits our problem.  One of the key aspects of Micro-services is controlled deployment of an application. In which case, shouldn&#8217;t we be able to deploy components as a Monolith or Micro-services where it makes the most sense to do so.</p>
 </div>
-<div class="quoteblock">
-<blockquote>
 <div class="paragraph">
 <p>Proposed alternatives to nanoservices include</p>
 </div>
+<div class="quoteblock">
+<blockquote>
 <div class="ulist">
 <ul>
 <li>
@@ -3885,7 +3885,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 </div>
 <h1 id="_how_can_we_get_the_best_of_both_worlds" class="sect0">How can we get the best of both worlds?</h1>
 <div class="sect1">
-<h2 id="_make_your_components_are_composable">Make your components are composable.</h2>
+<h2 id="_make_sure_your_components_are_composable">Make sure your components are composable.</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If your components are composable, then they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.</p>
@@ -3902,24 +3902,24 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <h2 id="_make_your_infrastructure_as_fast_as_your_application_needs">Make your infrastructure as fast as your application needs.</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Low latency trading systems are distributed systems, and yet they also have very stringent latency requirements.  Most trading systems are designed to care about latencies much faster than you can see.  In the Java space, it is not unusual to see a trading system which needs to have latencies below 100 micro-second 99% of the time or even 99.9% of the time.  This can be achieved using commodity hardware in a high level language like Java.</p>
+<p>Low latency trading systems are distributed systems, and yet they also have very stringent latency requirements.  Most trading systems are designed to care about latencies much faster than you can see.  In the Java space, it is not unusual to see a trading system which needs to have latencies below 100 micro-seconds, 99% of the time or even 99.9% of the time.  This can be achieved using commodity hardware in a high level language like Java.</p>
 </div>
 <div class="paragraph">
-<p>The keys to achieving low latencies are</p>
+<p>The keys to achieving low latencies are;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>low latency infrastructure for messaging and logging. Ideally around a 1 micro-second for short messages.</p>
+<p>low latency infrastructure for messaging and logging. Ideally around a 1 micro-second for short messages,</p>
 </li>
 <li>
-<p>a minimum of network hops.</p>
+<p>a minimum of network hops,</p>
 </li>
 <li>
-<p>a high level of reproduce-ability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies.</p>
+<p>a high level of reproduceability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies,</p>
 </li>
 <li>
-<p>viewing each CPU core as having a specific task/service, with it&#8217;s own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers)</p>
+<p>viewing each CPU core as having a specific task/service, with it&#8217;s own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers).</p>
 </li>
 </ul>
 </div>
@@ -3932,18 +3932,18 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 </div>
 </div>
 <div class="paragraph">
-<p>You can perform a CAS operation on the same data between two difference cores, where each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.</p>
+<p>You can perform a CAS operation on the same data between two different cores. Here, each thread toggles the value set by the other thread with a round trip time of less than 50 nano-seconds on Sandy Bridge processors, less on newer generations.</p>
 </div>
 <div class="paragraph">
-<p>Examples of low latency instructure in Java are</p>
+<p>Examples of low latency instructure in Java are;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/real-logic/Aeron">Aeron</a> A reliable UDP transport</p>
+<p><a href="https://github.com/real-logic/Aeron">Aeron</a>- A reliable UDP transport,</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a> A persisted queue for messaging and logging.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a>- A persisted queue for messaging and logging.</p>
 </li>
 </ul>
 </div>
@@ -3956,12 +3956,12 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <h2 id="_make_the_message_format_a_configuration_consideration">Make the message format a configuration consideration.</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There is a number of competing concerns in message formats. You want</p>
+<p>There is a number of competing concerns in message formats. You want;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Human readability so you can validate the messages are not just behaving correctly but doing so in the manner you expect.  I am often surprised how many issues I find by dumping a storage file or the message logs.</p>
+<p>Human readability so you can validate the messages are not only behaving correctly, but doing so in the manner you expect.  I am often surprised how many issues I find by dumping a storage file or the message logs.</p>
 </li>
 <li>
 <p>Machine friendly binary format for speed.</p>
@@ -3975,20 +3975,20 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p>Ideally, you can choose the best option at testing/deployment time.</p>
 </div>
 <div class="paragraph">
-<p>Some examples of serializations libraries where you can change the actual wire format to suit your needs are</p>
+<p>Some examples of serializations libraries where you can change the actual wire format to suit your needs are;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a> which support JSON, XML, CSV, CBOR (a binary format)</p>
+<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a>- Which supports JSON, XML, CSV, CBOR (a binary format),</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a> which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a>- Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>What I found useful in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a> verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators</p>
+<p>What I found useful in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a> verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.</p>
 </div>
 </div>
 </div>
@@ -3998,6 +3998,44 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <div class="paragraph">
 <p>I think there is a lot of good ideas on how to use micro services, and I think many of the criticisms around them are based on how they have been implemented and I believe they are solvable.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossary">Glossary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Microservices</strong>- programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.</p>
+</div>
+<div class="paragraph">
+<p><strong>Latency</strong>- gernerally, wasted time while one component is waiting for another to complete its process. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Throughput</strong>- the amount of data transferred or processed in a certain amount of time. Ths time is written in terms of throughput, e.g where a road could have a throughput of 10 cars per minute.</p>
+</div>
+<div class="paragraph">
+<p><strong>Distributed system</strong>- a collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a>. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Wikipedia. (2016). Unix philosophy.
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. Wikipedia. (2016). Unix philosophy.
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. Wikipedia. (2016). Shell script.
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. Wikipedia. (2016). Microservices.
+</div>
+<div class="footnote" id="_footnote_5">
+<a href="#_footnoteref_5">5</a>. Wikipedia. (2016). Microservices.
+</div>
+<div class="footnote" id="_footnote_6">
+<a href="#_footnoteref_6">6</a>. Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ design]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Tue, 22 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[A new start with Asciidoc and HubPress.IO]]></title><description><![CDATA[<div class="paragraph">
 <p>I started to migrate to using Asciidoc on Github last week, but the team at <a href="http://hubpress.io/" class="bare">http://hubpress.io/</a> suggested I use HubPress instead. This uses github for storage and hosting but provides a web site feel skin to both editing and more importantly display for readers.</p>
