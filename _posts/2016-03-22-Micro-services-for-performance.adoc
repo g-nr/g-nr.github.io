@@ -53,9 +53,9 @@ There are https://en.wikipedia.org/wiki/Microservices#Criticism[disadvantages] t
 
 Can we get the best features of a monolith, and micro-services? Does it have to be one or the other?  Should we not use the approach which best suits our problem.  One of the key aspects of Micro-services is controlled deployment of an application. In which case, shouldn't we be able to deploy components as a Monolith or Micro-services where it makes the most sense to do so.
 
-""
 Proposed alternatives to nanoservices include
 
+""
 * Package the functionality as a library, rather than a service.
 * Combine the functionality with other functionality, producing a more substantial, useful service.
 * Refactor the system, putting the functionality in other services or redesigning the system.
