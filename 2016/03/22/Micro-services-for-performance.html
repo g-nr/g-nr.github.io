@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469187761957"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469187761957"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469187761957"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469189955516"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469189955516"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469189955516"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469187761957"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469189955516"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html" />
     <meta name="referrer" content="origin" />
@@ -292,13 +292,13 @@ null
 <p>Services form information <a href="https://en.wikipedia.org/wiki/Barrier_(computer_science)">barriers</a> <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.</p>
 </li>
 <li>
-<p>The architecture introduces additional complexity and new problems to deal with, such as network latency, message formats, load balancing and fault tolerance. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
+<p>The architecture introduces additional complexity and new problems to deal with, such as network latency, <a href="http://networking.xtreemhost.com/wp/?p=279&amp;ckattempt=1">message formats</a> <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>, <a href="http://searchnetworking.techtarget.com/definition/load-balancing">load balancing</a> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> and <a href="http://searchdisasterrecovery.techtarget.com/definition/fault-tolerant">fault tolerance</a> <sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup>. Ignoring one of these belongs to the "fallacies of distributed computing".</p>
 </li>
 <li>
 <p>Testing and deployment are more complicated.</p>
 </li>
 <li>
-<p>The complexity of a monolithic application is only shifted into the network, but persists.</p>
+<p>The complexity of a <a href="https://en.wikipedia.org/wiki/Monolithic_application">monolithic application</a> <sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup> is only shifted into the network, but persists.</p>
 </li>
 <li>
 <p>Too-fine-grained microservices have been criticized as an anti-pattern.</p>
@@ -311,17 +311,17 @@ null
 <p>Can we get the best features of a monolith, and micro-services? Does it have to be one or the other?  Should we not use the approach which best suits our problem.  One of the key aspects of Micro-services is controlled deployment of an application. In which case, shouldn&#8217;t we be able to deploy components as a Monolith or Micro-services where it makes the most sense to do so.</p>
 </div>
 <div class="paragraph">
-<p>Proposed alternatives to nanoservices include</p>
+<p>Proposed alternatives to nanoservices include;</p>
 </div>
 <div class="quoteblock">
 <blockquote>
 <div class="ulist">
 <ul>
 <li>
-<p>Package the functionality as a library, rather than a service.</p>
+<p>Package the functionality as a <strong>library</strong>, rather than a service.</p>
 </li>
 <li>
-<p>Combine the functionality with other functionality, producing a more substantial, useful service.</p>
+<p>Combine the functionality with other functionalities, producing a more substantial, useful service.</p>
 </li>
 <li>
 <p>Refactor the system, putting the functionality in other services or redesigning the system.</p>
@@ -453,16 +453,19 @@ null
 <h2 id="_glossary">Glossary</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Microservices</strong>- programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.</p>
+<p><strong>Microservices</strong>- Independantly deployable programmes that act as components in a larger network. They work on processes independently, decreasing interdependence and increases cohesion.</p>
 </div>
 <div class="paragraph">
-<p><strong>Latency</strong>- gernerally, wasted time while one component is waiting for another to complete its process. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a></p>
+<p><strong>Latency</strong>- The time an individual operation takes. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a></p>
 </div>
 <div class="paragraph">
-<p><strong>Throughput</strong>- the amount of data transferred or processed in a certain amount of time. Ths time is written in terms of throughput, e.g where a road could have a throughput of 10 cars per minute.</p>
+<p><strong>Throughput</strong>- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
 </div>
 <div class="paragraph">
-<p><strong>Distributed system</strong>- a collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a>. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility.</p>
+<p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a>. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility.</p>
+</div>
+<div class="paragraph">
+<p><strong>Library</strong>- <a href="http://www.webopedia.com/TERM/L/library.html">"A collection of precompiled routines that a program can use."</a></p>
 </div>
 </div>
 </div>
@@ -485,6 +488,18 @@ null
 </div>
 <div class="footnote" id="_footnote_6">
 <a href="#_footnoteref_6">6</a>. Shirako, J., Peixotto, D., Sarkar, V. and Scherer, W. (2008). Phasers. Proceedings of the 22nd annual international conference on Supercomputing - ICS '08.
+</div>
+<div class="footnote" id="_footnote_7">
+<a href="#_footnoteref_7">7</a>. Luca, A. (2016). Message Formatting
+</div>
+<div class="footnote" id="_footnote_8">
+<a href="#_footnoteref_8">8</a>. Rouse, M. (2016). What is load balancing? - Definition from WhatIs.com.
+</div>
+<div class="footnote" id="_footnote_9">
+<a href="#_footnoteref_9">9</a>. Rouse, M. (2016). What is fault-tolerant? - Definition from WhatIs.com.
+</div>
+<div class="footnote" id="_footnote_10">
+<a href="#_footnoteref_10">10</a>. Wikipedia. (2016). Monolithic application.
 </div>
 </div>
           </div>
@@ -566,7 +581,7 @@ null
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469187761957"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469189955516"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
