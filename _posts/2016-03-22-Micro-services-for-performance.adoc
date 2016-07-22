@@ -67,7 +67,7 @@ Proposed alternatives to nanoservices include;
 
 If your components are composable, then they are always the right size.  You can combine them as needed into a collection of services, or everything into one service.
 
-This is particularly important for testing and debugging.  You need to know a group of components work together without the infrastructure getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.
+This is particularly important for *testing* and *debugging*.  You need to know a group of business components work together without the infrastructure (eg. Middleware) getting in the way.  For the purposes of a unit test, you may want to run all your components in one thread and have one directly call the other.  This can be no more complicated than testing components of a monolith where you can step through your code from one component to another and see exactly what is happening.
 
 Only once your components work together correctly without infrastructure, do you need to test how they behave with infrastructure.
 
@@ -80,7 +80,7 @@ The keys to achieving low latencies are;
 * low latency infrastructure for messaging and logging. Ideally around a 1 micro-second for short messages,
 * a minimum of network hops,
 * a high level of reproduceability of real production load so you can study the 99%tile (worst 1 %) or 99.9%tile (worst 0.1%) latencies,
-* viewing each CPU core as having a specific task/service, with it's own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers).
+* viewing each *CPU core* as having a specific task/service, with it's own CPU cache data and code. The focus is on the distribution of your application between cores (rather than between computers).
 
 Your L2 cache coherence bus is your messaging layer between high performance services.
 
@@ -124,6 +124,12 @@ I think there is a lot of good ideas on how to use micro services, and I think m
 
 *Throughput*- The rate of data or messages transferred or processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
 
-*Distributed System*- A collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]. This allows computers to coordinate their activities and share resources of the system. Users perceive the system as a single, integrated computing facility.     
+*Distributed System*- A collection of autonomous computers linked in a network by https://en.wikipedia.org/wiki/Middleware[middleware]. A problem is distributed between a number of systems.
 
 *Library*- http://www.webopedia.com/TERM/L/library.html["A collection of precompiled routines that a program can use."]
+
+*Debugging*- the process of searching for and fixing defects in code.
+
+*Testing*- http://whatis.techtarget.com/definition/software-testing["Software testing is a method of assessing the functionality of a software program."]
+
+*CPU core*- http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/["A processor core is a processing unit which reads in instructions to perform specific actions."]
