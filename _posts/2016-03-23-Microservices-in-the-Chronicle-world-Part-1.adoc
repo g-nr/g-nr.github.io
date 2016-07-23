@@ -223,7 +223,7 @@ verify(listener);
 
 === Testing a series of components
 
-Lets add an OrderManager as a down stream components. This order manager will receive both market data updates and order ideas, and in turn will produce orders.
+Lets add an OrderManager as a down stream component. This order manager will receive both market data updates and order ideas, and in turn will produce orders.
 
 [source, java]
 ----
