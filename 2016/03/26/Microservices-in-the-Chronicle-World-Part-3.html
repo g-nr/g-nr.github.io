@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469274987510"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469274987510"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469274987510"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469284147278"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469284147278"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469284147278"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469274987510"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469284147278"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html" />
     <meta name="referrer" content="origin" />
@@ -78,7 +78,7 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Microservices in the Chronicle World - Part 3" />
-    <meta property="og:description" content="One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput. In Part 2 we" />
+    <meta property="og:description" content="One of the problems with using microservices is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular, poor throughput is a problem because the reason we are designing a scalable system[1] is to increase throughput. In Part 2" />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html" />
     <meta property="article:tag" content="Microservices" />
     <meta property="article:tag" content=" JMH" />
@@ -86,7 +86,7 @@
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Microservices in the Chronicle World - Part 3" />
-    <meta name="twitter:description" content="One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput. In Part 2 we" />
+    <meta name="twitter:description" content="One of the problems with using microservices is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular, poor throughput is a problem because the reason we are designing a scalable system[1] is to increase throughput. In Part 2" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html" />
     
     <script type="application/ld+json">
@@ -176,7 +176,7 @@ null
                 <a href="#disqus_thread" data-disqus-identifier="">Comments</a>
               </li>
             </ul>
-            <h1 itemprop="name headline" class="post-title"><a href="/" itemprop="url" data-pjax title="Microservices in the Chronicle World - Part 3">Microservices in the Chronicle World - Part 3</a></h1>
+            <h1 itemprop="name headline" class="post-title"><a href="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html" itemprop="url" data-pjax title="Microservices in the Chronicle World - Part 3">Microservices in the Chronicle World - Part 3</a></h1>
             <!--h2 itemprop="about" class="post-subtitle"></h2-->
           </header>
           <aside class="post-side">
@@ -196,7 +196,7 @@ null
             <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.</p>
+<p>One of the problems with using microservices is performance.  <strong>Latencies</strong> can be higher due to the cost of <strong>serialization</strong>, messaging and deserialization, and this reduces <strong>throughput</strong>.  In particular, poor throughput is a problem because the reason we are designing a <a href="http://searchdatacenter.techtarget.com/definition/scalability">scalable system</a><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> is to increase throughput.</p>
 </div>
 <div class="paragraph">
 <p>In <a href="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html">Part 2</a> we saw how we can take a component and add a transport to it to make it a service.</p>
@@ -230,7 +230,7 @@ In one low latency trading system, before adding Chronicle Queue, the average la
 <div class="sect2">
 <h3 id="_benchmarking_with_jmh">Benchmarking with JMH</h3>
 <div class="paragraph">
-<p><a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a>, which might stand for Java Micro-benchmark Harness, is an excellent tool for measuring the throughput and sampling latencies end to end.  We can look at an example of what it is good for with regard to our sample microservice.</p>
+<p><a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>(Java Micro-benchmark Harness) is an excellent tool for measuring the throughput and sampling latencies end to end.  We can look at an example of what it is good for with regard to our sample microservice.</p>
 </div>
 <div class="paragraph">
 <p>We create our own micro-benchmark harness, in Chronicle-Core, for measuring asynchronmos tasks run across multiple threads where you want to time individual portions (which will be covered in Part 4). For now we will look at latencies end-to-end.</p>
@@ -239,7 +239,7 @@ In one low latency trading system, before adding Chronicle Queue, the average la
 <div class="sect2">
 <h3 id="_jmh_latency_test_of_our_service">JMH latency test of our service</h3>
 <div class="paragraph">
-<p>With JMH we can measure timings for the end-to-end benchmark. We have to include a producer to drive the test rather than time a service standalone. We are looking at the single threaded timings.</p>
+<p>With JMH we can measure timings for the end to end benchmark. We have to include a producer to drive the test rather than time a service standalone. We are looking at the single threaded timings.</p>
 </div>
 <div class="listingblock">
 <div class="title">Our JMH benchmark</div>
@@ -293,36 +293,36 @@ public void benchmarkComponents() {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Create an upstream queue</td>
+<td>Create an upstream queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Create a proxy which writes all methods calls to the upstream queue</td>
+<td>Create a proxy which writes all methods calls to the upstream queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Create a downstream queue</td>
+<td>Create a downstream queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Create a proxy for the downstream queue</td>
+<td>Create a proxy for the downstream queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Create the component which will write all outputs to the downstream queue</td>
+<td>Create the component which will write all outputs to the downstream queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Create a reader for the upstream queue which will call the combiner</td>
+<td>Create a reader for the upstream queue which will call the combiner.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>After writing a message to the queue, read it and call the appropriate method in the component</td>
+<td>After writing a message to the queue, read it and call the appropriate method in the component.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The first portions sets up and tearsdown the test.  The actual benchmark injects a message which when read and processed will trigger an output message.</p>
+<p>The first portion sets up and tears down the test.  The actual benchmark injects a message which when read and processed will trigger an output message.</p>
 </div>
 <div class="listingblock">
 <div class="title">Running the tests in JMH</div>
@@ -353,13 +353,13 @@ public void benchmarkComponents() {
 </table>
 </div>
 <div class="paragraph">
-<p>This is running on my development machine (Ubuntu 15.04, two E5-2650 v2, 128 GB memory).  For better results, I suggest the latest Haswell or Skylake and Centos.  The exact timing of this benchmark isn&#8217;t important as the number and type of fields in the message is also is a significant factor.  What is particularly interesting to me is the 99.9%tile latency (worst 1 in 1000) which is consistently under 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.</p>
+<p>This is running on my development machine (Ubuntu 15.04, two E5-2650 v2, 128 GB memory).  For better results, I suggest the latest Haswell or Skylake and Centos.  The exact timing of this benchmark isn&#8217;t important as the number and type of fields in the message is also a significant factor.  What is particularly interesting to me is the 99.9%tile latency (worst 1 in 1000) which is consistently under 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_looking_at_how_jmh_is_called">Looking at how JMH is called.</h3>
 <div class="paragraph">
-<p>To control how JMH is run the following parameters were used.</p>
+<p>To control how JMH is run the following parameters were used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -386,7 +386,7 @@ new Runner(opt).run();</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>However, I have had trouble profiling and debugging JMH benchmarks so I change the way the test is run depending on how it is started</p>
+<p>However, I have had trouble profiling and debugging JMH benchmarks so I change the way the test is run depending on how it is started:</p>
 </div>
 <div class="listingblock">
 <div class="title">Running in Flight Recorder and Debug</div>
@@ -429,6 +429,35 @@ new Runner(opt).run();</code></pre>
 <h3 id="_in_our_next_part">In our next part</h3>
 <div class="paragraph">
 <p><a href="https://vanilla-java.github.io/2016/03/29/Microservices-in-the-Chronicle-world-Part-4.html">Part 4: How can we time just the component running in another thread</a>. In particular see how long it takes to read, process and write each message with individual timings.</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossary">Glossary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Latency</strong>- The time an individual operation takes. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><strong>Serialization</strong>- <a href="https://en.wikipedia.org/wiki/Serialization">"The process of translating data structures or object state into a format that can be stored"</a><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup><em>See also</em> <strong>Serialization libraries</strong>- The process that translates data into a format that can be consumed by another system.</p>
+</div>
+<div class="paragraph">
+<p><strong>Throughput</strong>- The rate of data or messages transferred which is processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Rouse, M. (2016). What is scalability? - Definition from WhatIs.com. Online. SearchDataCenter. Available at: <a href="http://searchdatacenter.techtarget.com/definition/scalability" class="bare">http://searchdatacenter.techtarget.com/definition/scalability</a> [Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. Openjdk.(2016). OpenJDK: jmh. Online. Available at: <a href="http://openjdk.java.net/projects/code-tools/jmh/" class="bare">http://openjdk.java.net/projects/code-tools/jmh/</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. Webopedia.com. (2016). What is Latency? Webopedia Definition. Online. Available at: <a href="http://www.webopedia.com/TERM/L/latency.html" class="bare">http://www.webopedia.com/TERM/L/latency.html</a>. Accessed Jul. 2016
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. Wikipedia. (2016). Serialization. Online. Available at: <a href="https://en.wikipedia.org/wiki/Serialization" class="bare">https://en.wikipedia.org/wiki/Serialization</a>. Accessed Jul. 2016.
 </div>
 </div>
           </div>
@@ -510,7 +539,7 @@ new Runner(opt).run();</code></pre>
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469274987510"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469284147278"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
