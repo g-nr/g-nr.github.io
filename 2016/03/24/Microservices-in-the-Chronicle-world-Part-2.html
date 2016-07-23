@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469276241931"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469276241931"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469276241931"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469276255064"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469276255064"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469276255064"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469276241931"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469276255064"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html" />
     <meta name="referrer" content="origin" />
@@ -78,14 +78,14 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Microservices in the Chronicle world - Part 2" />
-    <meta property="og:description" content="In this part we look at turning a component into a service. In Part 1, we looked at how we can easily create and test components which expect asynchronous messages footnotes:[Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: http://www.webopedia.com/TERM/" />
+    <meta property="og:description" content="In this part we look at turning a component into a service. In Part 1, we looked at how we can easily create and test components which expect asynchronous messages[1] in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into" />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html" />
     <meta property="article:tag" content="Microservices" />
     <meta property="article:tag" content=" Chronicle-Queue" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Microservices in the Chronicle world - Part 2" />
-    <meta name="twitter:description" content="In this part we look at turning a component into a service. In Part 1, we looked at how we can easily create and test components which expect asynchronous messages footnotes:[Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: http://www.webopedia.com/TERM/" />
+    <meta name="twitter:description" content="In this part we look at turning a component into a service. In Part 1, we looked at how we can easily create and test components which expect asynchronous messages[1] in and produce asynchronous messages out.  However, how do we turn this into a service? Turning our components into" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html" />
     
     <script type="application/ld+json">
@@ -198,7 +198,7 @@ null
 <p>In this part we look at turning a component into a service.</p>
 </div>
 <div class="paragraph">
-<p>In <a href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html">Part 1</a>, we looked at how we can easily create and test components which expect <a href="http://www.webopedia.com/TERM/A/asynchronous_messaging.html">asynchronous messages</a> footnotes:[Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/A/asynchronous_messaging.html" class="bare">http://www.webopedia.com/TERM/A/asynchronous_messaging.html</a>. Accessed Jul. 2016] in and produce asynchronous messages out.  However, how do we turn this into a <strong>service</strong>?</p>
+<p>In <a href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html">Part 1</a>, we looked at how we can easily create and test components which expect <a href="http://www.webopedia.com/TERM/A/asynchronous_messaging.html">asynchronous messages</a><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> in and produce asynchronous messages out.  However, how do we turn this into a <strong>service</strong>?</p>
 </div>
 </div>
 </div>
@@ -468,6 +468,12 @@ onOrderIdea: {
 </div>
 </div>
 </div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/A/asynchronous_messaging.html" class="bare">http://www.webopedia.com/TERM/A/asynchronous_messaging.html</a>. Accessed Jul. 2016
+</div>
+</div>
           </div>
           <footer class="post-footer">
             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="post-author">
@@ -547,7 +553,7 @@ onOrderIdea: {
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469276241931"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469276255064"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
