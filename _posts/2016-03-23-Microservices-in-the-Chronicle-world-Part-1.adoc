@@ -248,8 +248,8 @@ orderManager.onOrderIdea(new OrderIdea("EURUSD", Side.Buy, 1.1165, 1e6)); // exp
 
 verify(listener);
 ----
-<1> the first component combines sided prices
-<2> the second component listens to order ideas and top of book market data
+<1> The first component combines sided prices
+<2> The second component listens to order ideas and top of book market data
 
 === Debugging our components
 
