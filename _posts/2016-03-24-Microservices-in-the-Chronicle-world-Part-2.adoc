@@ -3,13 +3,13 @@
 
 In this part we look at turning a component into a service.
 
-In https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html[Part 1], we looked at how we can easily create and test components which expect http://www.webopedia.com/TERM/A/asynchronous_messaging.html[asynchronous messages]footnotes:[Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: http://www.webopedia.com/TERM/A/asynchronous_messaging.html. Accessed Jul. 2016] in and produce asynchronous messages out.  However, how do we turn this into a *service*?
+In https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html[Part 1], we looked at how we can easily create and test components which expect http://www.webopedia.com/TERM/A/asynchronous_messaging.html[asynchronous messages] footnotes:[Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: http://www.webopedia.com/TERM/A/asynchronous_messaging.html. Accessed Jul. 2016] in and produce asynchronous messages out.  However, how do we turn this into a *service*?
 
 === Turning our components into a service.
 
 The key thing which is missing from our components is a transport.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.
 
-There is a wide range of possible transports available
+There is a wide range of possible transports available:
 
 * Raw TCP messages or UDP packets with a library like http://netty.io/[Netty]
 * https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html[JMS Messaging]
