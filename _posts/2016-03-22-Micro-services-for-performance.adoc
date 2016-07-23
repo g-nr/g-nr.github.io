@@ -136,6 +136,6 @@ I think there is a lot of good ideas on how to use microservices, and I think ma
 
 *Throughput*- The rate of data or messages transferred which is processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
 
-*Serializations libraries*- The process that translates data into a format that can be consumed by another system. 
+*Serialization libraries*- The process that translates data into a format that can be consumed by another system. 
 
 *Wire format*- A defined way for sending data between mechines as bytes.
