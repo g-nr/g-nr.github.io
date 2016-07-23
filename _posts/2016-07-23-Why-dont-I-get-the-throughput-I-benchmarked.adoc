@@ -6,7 +6,7 @@ In synthetic benchmarks, you can achieve a high throughput for your system by th
 
 === What is Little's Law?
 
-This law comes from queuing theory, an example being the number of customers in a store.
+This law comes from queuing theory, an example being the number of  https://en.wikipedia.org/wiki/Little%27s_law#Customers_In_The_Store[customers in a store].
 
 [quote, Wikipedia - https://en.wikipedia.org/wiki/Little%27s_law#Customers_In_The_Store[Little's Law]]
 ----
