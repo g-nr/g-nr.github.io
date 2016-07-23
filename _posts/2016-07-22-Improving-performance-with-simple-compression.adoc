@@ -72,11 +72,11 @@ While Binary YAML is slightly smaller (< 20%) it's main purpose is speed of enco
 
 By comparison DeltaWire is designed to compact the message by reducing duplication with a loss-less compression. This reduces the time writing to memory, which can speed up the serialization operation.
 
-.Two updates, one change for the `changesA` and one change for `changesB` - 11 bytes average
+.Two updates, one change for the `changesA` and one change for `changesB` - 10 bytes average
 [source]
 ----
-000000e0       BA 00 89 00 80 04  BA 08 A8 04 BA 00 89 00   ······ ········
-000000f0 80 07 BA 09 90 00 22 F1  47                      ······"· G       
+00000000 BA 00 89 00 80 04 BA 08  A8 C5 BA 00 89 00 80 04 ········ ········
+00000010 BA 09 9A 05                                      ····             
 ----
 
 |====
@@ -84,7 +84,7 @@ By comparison DeltaWire is designed to compact the message by reducing duplicati
 | YAML | 268 bytes
 | JSON | 242 bytes
 | Binary YAML | 205 bytes
-| Delta Binary YAML | 11 bytes
+| Delta Binary YAML | 10 bytes
 |====
 
 One of the challenges of using binary formats is human readability (as binary formats emphasis machine readability)  For this reason, we have ensured you can automatically convert both Binary YAML and Delta Binary YAML to YAML without knowledge of the application or schema.  The messages are still self describing allowing you to use this data even if the application's data structure changes over time.
@@ -93,15 +93,15 @@ One of the challenges of using binary formats is human readability (as binary fo
 
 It doesn't have to be slower if the compression is simple enough.  In fact writing/reading less data can improve performance.  Writing/reading less data to memory, let alone to disk or a network, can improve latency and throughput by touching less memory and writing less data.
 
-The test above is repeated 500 times resulting in 1,000 updates. The average time to serialize each message/udpate is recorded below.
+The test above is repeated 2,500 times resulting in 5,000 updates. The average time to serialize each message/udpate is recorded below.
 
 .Average time to serialize each update.
 [source]
 ----
-TextWire Took an average of 3,119 ns
-JSONWire Took an average of 2,656 ns
-BinaryWire Took an average of 1,990 ns
-DeltaWire Took an average of 608 ns
+TextWire Took an average of 3,446 ns
+JSONWire Took an average of 2,972 ns
+BinaryWire Took an average of 1,473 ns
+DeltaWire Took an average of 554 ns
 ----
 
 What I find interesting is that the compressed wire format is also approximately 3-5x faster to serialize, as well as being approximately 20x smaller.
