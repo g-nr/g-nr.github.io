@@ -37,7 +37,7 @@ Say instead it only takes 1 minute to pass through a till, how many people do yo
 
 Reducing the latency by a factor of 10 means you need one tenth of the resources. More importantly, you only need one tenth of the people trying to check out/tasks to achieve the desired throughput.
 
-NOTE: Some problems have inherent limits to the number of independant tasks you have. Trading systems and business applications might only have an intrinsic concurrency of between 1 and 10, in which case, latency rather than throughput is you main constraint.
+NOTE: Some problems have inherent limits to the number of independant tasks you have. Trading systems and business applications might only have an intrinsic concurrency of between 1 and 10, in which case, latency rather than throughput is your main constraint.
 
 === Chronicle Queue vs Apache Kafka
 
