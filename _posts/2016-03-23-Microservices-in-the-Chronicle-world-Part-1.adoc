@@ -68,7 +68,7 @@ public class TopOfBookPrice extends AbstractMarshallable {
     // more methods <1>
 }
 ----
-<1> For the complete code https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/TopOfBookPrice.java[TopOfBookPrice.java]
+<1> For the complete code https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/orders/TopOfBookPrice.java[TopOfBookPrice.java]
 
 The component which takes one sided prices could have an interface
 
@@ -269,5 +269,5 @@ We have shown how easy it is to test and debug our components. https://vanilla-j
 
 == Glossery
 
-Microservices- Independantly deployable programmes that act as components in a larger network.
+*Microservices*- Independantly deployable programmes that act as components in a larger network.
 
