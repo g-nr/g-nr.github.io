@@ -1,4 +1,4 @@
-= Improving network utilisation with compression
+= Improving performance with simple compression
 Peter Lawrey
 :hp-tags: Chronicle Wire
 
