@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 12:17:35 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 13:22:49 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Chronicle Wire supports multiple Wire Formats such as YAML, JSON and CSV. It also supports a binary format of YAML for performance.  Chronicle Wire Enteprise has an additional Wire Format which performs simple compression which can be faster AND smaller than not compressing data.</p>
@@ -3298,7 +3298,7 @@ new Runner(opt).run();</code></pre>
 <div class="sect2">
 <h3 id="_turning_our_components_into_a_service">Turning our components into a service.</h3>
 <div class="paragraph">
-<p>The key thing which is missing from our components is a transport.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.</p>
+<p>The key thing which is missing from our components is a <strong>transport</strong>.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.</p>
 </div>
 <div class="paragraph">
 <p>There is a wide range of possible transports available:</p>
@@ -3306,31 +3306,31 @@ new Runner(opt).run();</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Raw TCP messages or UDP packets with a library like <a href="http://netty.io/">Netty</a></p>
+<p><a href="http://chronicle.software/products/chronicle-queue/">Chronicle Queue</a></p>
 </li>
 <li>
-<p><a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html">JMS Messaging</a></p>
+<p>Raw TCP messages or UDP packets with a library like <a href="http://netty.io/">Netty</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup></p>
 </li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">REST API</a></p>
+<p><a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html">JMS Messaging</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup></p>
 </li>
 <li>
-<p>Database tables via <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/">JDBC</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">REST API</a><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
 </li>
 <li>
-<p>Files dropped into a directory and use the directory <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html">WatchService</a></p>
+<p>Database tables via <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/">JDBC</a><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup></p>
+</li>
+<li>
+<p>Files dropped into a directory and use the directory <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html">WatchService</a><sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup></p>
 </li>
 <li>
 <p>a thread safe Queue, like <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html">BlockingQueue</a></p>
 </li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/Shared_memory">shared memory</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Shared_memory">shared memory</a><sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup></p>
 </li>
 <li>
-<p><a href="http://chronicle.software/products/chronicle-queue/">Chronicle Queue</a></p>
-</li>
-<li>
-<p><a href="http://aries.apache.org/">Apache Aries</a> for pluggable transports</p>
+<p><a href="http://aries.apache.org/">Apache Aries</a><sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> for pluggable transports</p>
 </li>
 <li>
 <p>no transport at all (method calls are fine for a given use case)</p>
@@ -3559,12 +3559,39 @@ onOrderIdea: {
 <div class="paragraph">
 <p><strong>Service</strong>- A program that is available to other programs to run and make use of.</p>
 </div>
+<div class="paragraph">
+<p><strong>Transport</strong>- A program or hardware that takes data from ome process to another.e.g <a href="http://www.webopedia.com/TERM/M/middleware.html">Middleware</a><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup></p>
+</div>
 </div>
 </div>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnote_1">
 <a href="#_footnoteref_1">1</a>. Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/A/asynchronous_messaging.html" class="bare">http://www.webopedia.com/TERM/A/asynchronous_messaging.html</a>. Accessed Jul. 2016
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. Netty.io. (2016). Netty: Home. Online. Available at: <a href="http://netty.io/" class="bare">http://netty.io/</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. Oracle (2013). The JMS API Programming Model - The Java EE 6 Tutorial. Online. Available at: <a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html" class="bare">https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. Wikipedia. (2016). Java API for RESTful Web Services. Online. Available at: <a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services" class="bare">https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services</a>. Accessed  Mar. 2016
+</div>
+<div class="footnote" id="_footnote_5">
+<a href="#_footnoteref_5">5</a>. Docs.oracle.c(2016). Java JDBC API. Online. Available at: <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_6">
+<a href="#_footnoteref_6">6</a>. Oracle (2016). WatchService (Java Platform SE 8 ). Online. Available at: <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html.Accessed" class="bare">https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html.Accessed</a> 23 Mar. 2016
+</div>
+<div class="footnote" id="_footnote_7">
+<a href="#_footnoteref_7">7</a>. Oracle (2016). BlockingQueue (Java Platform SE 8 ). Online. Available at: <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html" class="bare">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html</a> Accessed 23 Mar. 2016
+</div>
+<div class="footnote" id="_footnote_8">
+<a href="#_footnoteref_8">8</a>. Apache Aries. (2016). Apache Aries - Index. Online. Available at: <a href="http://aries.apache.org/" class="bare">http://aries.apache.org/</a>. Accessed 23 Mar. 2016
+</div>
+<div class="footnote" id="_footnote_9">
+<a href="#_footnoteref_9">9</a>. Beal, V. (2016). What is Middleware? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/M/middleware.html" class="bare">http://www.webopedia.com/TERM/M/middleware.html</a>. Accessed Jul. 2016
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ Chronicle-Queue]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Thu, 24 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Microservices in the Chronicle world - Part 1]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
