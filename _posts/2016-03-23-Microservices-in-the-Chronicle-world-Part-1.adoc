@@ -141,7 +141,7 @@ assertEquals(sp2, sp);
 assertEquals(sp2.hashCode(), sp.hashCode());
 ----
 
-As you can see, the `toString()` is in YAML, concise and readable to a human and in code.
+As you can see, the `toString()` is in http://www.yaml.org/spec/1.2/spec.html[YAML]footnote:[Ben-Kiki, et al (2009). YAML Ain’t Markup Language (YAML™) Version 1.2. Online. Available at: http://www.yaml.org/spec/1.2/spec.html. Accessed Jul. 2016], concise and readable to a human and in code.
 
 [source, java]
 ----
