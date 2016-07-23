@@ -255,7 +255,7 @@ verify(listener);
 
 You can see that one component just calls another. When debugging this single threaded code, each event from the first component is a call to the second component. When that finishes it returns to the first one and the tests.
 
-When any individual event triggers an error, you can see in the stack trace which event caused the issue. However, if you are expecting an event which doesn't happen this is tricker unless your tests are simple (or you do a series of simple tests with `verify()`, `reset()` and `replay()`
+When any individual event triggers an error, you can see in the *stack trace* which event caused the issue. However, if you are expecting an event which doesn't happen this is tricker unless your tests are simple (or you do a series of simple tests with `verify()`, `reset()` and `replay()`
 
 NOTE: it takes almost no time at all to start up the test and debug it in your IDE.  You can run hundreds of test like this in less than a second.
 
@@ -272,3 +272,5 @@ We have shown how easy it is to test and debug our components. https://vanilla-j
 *Microservices*- Independantly deployable programmes that act as components in a larger network.
 
 *Serialization*- https://en.wikipedia.org/wiki/Serialization["The process of translating data structures or object state into a format that can be stored"]footnote:[Wikipedia. (2016). Serialization. Online. Available at: https://en.wikipedia.org/wiki/Serialization. Accessed Jul. 2016.]_See also_ *Serialization libraries*- The process that translates data into a format that can be consumed by another system.
+
+*Stack trace*- "A report of the active http://stackoverflow.com/questions/10057443/explain-the-concept-of-a-stack-frame-in-a-nutshell[stack frames] at a certain point in time during the execution of a program."  footnote:[Wikipedia. (2016). Stack trace. Online. Available at: https://en.wikipedia.org/wiki/Stack_trace. Accessed Jul. 2016] 
