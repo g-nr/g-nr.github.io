@@ -1,5 +1,6 @@
 = Why don't I get the throughput I benchmarked?
 Peter Lawrey
+:hp-tags: Performance, Low Latency
 
 In synthetic benchmarks, you can achieve a high throughput for your system by throwing lots of independant tasks/clients at it to see what the theoretical limit of your system is, however in real world situations, the throughput you achieve is often much, much lower.  One of of the explanations for this comes from https://en.wikipedia.org/wiki/Little%27s_law[Little's Law]
 
