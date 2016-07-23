@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 12:01:54 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 12:14:39 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Chronicle Wire supports multiple Wire Formats such as YAML, JSON and CSV. It also supports a binary format of YAML for performance.  Chronicle Wire Enteprise has an additional Wire Format which performs simple compression which can be faster AND smaller than not compressing data.</p>
@@ -3291,7 +3291,7 @@ new Runner(opt).run();</code></pre>
 <p>In this part we look at turning a component into a service.</p>
 </div>
 <div class="paragraph">
-<p>In <a href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html">Part 1</a>, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service?</p>
+<p>In <a href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html">Part 1</a>, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a <strong>service</strong>?</p>
 </div>
 </div>
 </div>
@@ -3550,6 +3550,14 @@ onOrderIdea: {
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html">In part 3, we will look at benchmarking and profiling with Queue</a>  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossary">Glossary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Service</strong>- A program that is available to other programs to run and make use of.</p>
 </div>
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ Chronicle-Queue]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Thu, 24 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Microservices in the Chronicle world - Part 1]]></title><description><![CDATA[<div id="preamble">
@@ -3899,7 +3907,7 @@ verify(listener);</code></pre>
 <p>You can see that one component just calls another. When debugging this single threaded code, each event from the first component is a call to the second component. When that finishes it returns to the first one and the tests.</p>
 </div>
 <div class="paragraph">
-<p>When any individual event triggers an error, you can see in the <strong>stack trace</strong> which event caused the issue. However, if you are expecting an event which doesn&#8217;t happen this is tricker unless your tests are simple (or you do a series of simple tests with <code>verify()</code>, <code>reset()</code> and <code>replay()</code></p>
+<p>When any individual event triggers an error, you can see in the <strong>stack trace</strong> which event caused the issue. However, if you are expecting an event which doesn&#8217;t happen, this is tricker unless your tests are simple (or you do a series of simple tests with <code>verify()</code>, <code>reset()</code> and <code>replay()</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3908,7 +3916,7 @@ verify(listener);</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-it takes almost no time at all to start up the test and debug it in your IDE.  You can run hundreds of test like this in less than a second.
+it takes almost no time at all to start up the test and debug it in your IDE.  You can run hundreds of tests like this in less than a second.
 </td>
 </tr>
 </table>
