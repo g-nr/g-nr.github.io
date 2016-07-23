@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 11:18:40 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 11:25:41 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Chronicle Wire supports multiple Wire Formats such as YAML, JSON and CSV. It also supports a binary format of YAML for performance.  Chronicle Wire Enteprise has an additional Wire Format which performs simple compression which can be faster AND smaller than not compressing data.</p>
@@ -3749,7 +3749,7 @@ assertEquals(sp2.hashCode(), sp.hashCode());</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see, the <code>toString()</code> is in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, concise and readable to a human and in code.</p>
+<p>As you can see, the <code>toString()</code> is in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, concise, readable to a human and in code.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3783,7 +3783,7 @@ assertEquals(tobp, tobp2);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>However when you run this test in your IDE, you get a comparison window.</p>
+<p>However when you run this test in your  <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>, you get a comparison window.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -3935,7 +3935,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p><strong>Microservices</strong>- Independantly deployable programmes that act as components in a larger network.</p>
 </div>
 <div class="paragraph">
-<p><strong>Serialization</strong>- <a href="https://en.wikipedia.org/wiki/Serialization">"The process of translating data structures or object state into a format that can be stored"</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup><em>See also</em> <strong>Serialization libraries</strong>- The process that translates data into a format that can be consumed by another system.</p>
+<p><strong>Serialization</strong>- <a href="https://en.wikipedia.org/wiki/Serialization">"The process of translating data structures or object state into a format that can be stored"</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup><em>See also</em> <strong>Serialization libraries</strong>- The process that translates data into a format that can be consumed by another system.</p>
 </div>
 </div>
 </div>
@@ -3945,7 +3945,10 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <a href="#_footnoteref_1">1</a>. Ben-Kiki, et al (2009). YAML Ain’t Markup Language (YAML™) Version 1.2. Online. Available at: <a href="http://www.yaml.org/spec/1.2/spec.html" class="bare">http://www.yaml.org/spec/1.2/spec.html</a>. Accessed Jul. 2016
 </div>
 <div class="footnote" id="_footnote_2">
-<a href="#_footnoteref_2">2</a>. Wikipedia. (2016). Serialization. Online. Available at: <a href="https://en.wikipedia.org/wiki/Serialization" class="bare">https://en.wikipedia.org/wiki/Serialization</a>. Accessed Jul. 2016.
+<a href="#_footnoteref_2">2</a>. Wikipedia. (2016). Integrated development environment. Online. Available at: <a href="https://en.wikipedia.org/wiki/Integrated_development_environment" class="bare">https://en.wikipedia.org/wiki/Integrated_development_environment</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. Wikipedia. (2016). Serialization. Online. Available at: <a href="https://en.wikipedia.org/wiki/Serialization" class="bare">https://en.wikipedia.org/wiki/Serialization</a>. Accessed Jul. 2016.
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ examples]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Wed, 23 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Micro-services for performance]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_overview">Overview</h2>
