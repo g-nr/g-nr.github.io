@@ -1,7 +1,7 @@
 = Microservices in the Chronicle World - Part 3
 :hp-tags: Microservices, JMH, Chronicle-Queue
 
-One of the problem with using micro-services is performance.  Latencies can be higher due to the cost of serialization, messaging and deserialization, and this reduces throughput.  In particular poor throughput is a problem because the reason we are designing a scalable system is to increase throughput.
+One of the problems with using microservices is performance.  *Latencies* can be higher due to the cost of *serialization*, messaging and deserialization, and this reduces *throughput*.  In particular, poor throughput is a problem because the reason we are designing a http://searchdatacenter.techtarget.com/definition/scalability[scalable system]footnote:[Rouse, M. (2016). What is scalability? - Definition from WhatIs.com. Online. SearchDataCenter. Available at: http://searchdatacenter.techtarget.com/definition/scalability [Accessed Mar. 2016] is to increase throughput.
 
 In https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html[Part 2] we saw how we can take a component and add a transport to it to make it a service.
 
@@ -11,13 +11,13 @@ IMPORTANT: In one low latency trading system, before adding Chronicle Queue, the
 
 === Benchmarking with JMH
 
-http://openjdk.java.net/projects/code-tools/jmh/[JMH], which might stand for Java Micro-benchmark Harness, is an excellent tool for measuring the throughput and sampling latencies end to end.  We can look at an example of what it is good for with regard to our sample microservice.  
+http://openjdk.java.net/projects/code-tools/jmh/[JMH]footnote:[Openjdk.(2016). OpenJDK: jmh. Online. Available at: http://openjdk.java.net/projects/code-tools/jmh/. Accessed Mar. 2016](Java Micro-benchmark Harness) is an excellent tool for measuring the throughput and sampling latencies end to end.  We can look at an example of what it is good for with regard to our sample microservice.  
 
 We create our own micro-benchmark harness, in Chronicle-Core, for measuring asynchronmos tasks run across multiple threads where you want to time individual portions (which will be covered in Part 4). For now we will look at latencies end-to-end.
 
 === JMH latency test of our service
 
-With JMH we can measure timings for the end-to-end benchmark. We have to include a producer to drive the test rather than time a service standalone. We are looking at the single threaded timings.
+With JMH we can measure timings for the end to end benchmark. We have to include a producer to drive the test rather than time a service standalone. We are looking at the single threaded timings.
 
 .Our JMH benchmark
 [source, java]
@@ -66,15 +66,15 @@ public void benchmarkComponents() {
     assertTrue(reader.readOne()); // <7>
 }
 ----
-<1> Create an upstream queue
-<2> Create a proxy which writes all methods calls to the upstream queue
-<3> Create a downstream queue
-<4> Create a proxy for the downstream queue
-<5> Create the component which will write all outputs to the downstream queue
-<6> Create a reader for the upstream queue which will call the combiner
-<7> After writing a message to the queue, read it and call the appropriate method in the component
+<1> Create an upstream queue.
+<2> Create a proxy which writes all methods calls to the upstream queue.
+<3> Create a downstream queue.
+<4> Create a proxy for the downstream queue.
+<5> Create the component which will write all outputs to the downstream queue.
+<6> Create a reader for the upstream queue which will call the combiner.
+<7> After writing a message to the queue, read it and call the appropriate method in the component.
 
-The first portions sets up and tearsdown the test.  The actual benchmark injects a message which when read and processed will trigger an output message.
+The first portion sets up and tears down the test.  The actual benchmark injects a message which when read and processed will trigger an output message.
 
 .Running the tests in JMH
 ----
@@ -93,11 +93,11 @@ The first portions sets up and tearsdown the test.  The actual benchmark injects
 <1> Critical latency threashold for many systems.
 <2> Can still be important in some systems.
 
-This is running on my development machine (Ubuntu 15.04, two E5-2650 v2, 128 GB memory).  For better results, I suggest the latest Haswell or Skylake and Centos.  The exact timing of this benchmark isn't important as the number and type of fields in the message is also is a significant factor.  What is particularly interesting to me is the 99.9%tile latency (worst 1 in 1000) which is consistently under 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.
+This is running on my development machine (Ubuntu 15.04, two E5-2650 v2, 128 GB memory).  For better results, I suggest the latest Haswell or Skylake and Centos.  The exact timing of this benchmark isn't important as the number and type of fields in the message is also a significant factor.  What is particularly interesting to me is the 99.9%tile latency (worst 1 in 1000) which is consistently under 20 mciro-seconds in this example.  This demonstrates both high performance and consistently fast latencies.
 
 === Looking at how JMH is called.
 
-To control how JMH is run the following parameters were used.
+To control how JMH is run the following parameters were used:
 
 [source, java]
 ----
@@ -116,7 +116,7 @@ new Runner(opt).run();
 ----
 <1> `SampleTime` mode to test latencies rather than throughput.
 
-However, I have had trouble profiling and debugging JMH benchmarks so I change the way the test is run depending on how it is started
+However, I have had trouble profiling and debugging JMH benchmarks so I change the way the test is run depending on how it is started:
 
 .Running in Flight Recorder and Debug
 [source, java]
@@ -148,4 +148,10 @@ if (Jvm.isFlightRecorder()) {
 
 https://vanilla-java.github.io/2016/03/29/Microservices-in-the-Chronicle-world-Part-4.html[Part 4: How can we time just the component running in another thread]. In particular see how long it takes to read, process and write each message with individual timings.
 
+== Glossary
 
+*Latency*- The time an individual operation takes. http://www.webopedia.com/TERM/L/latency.html["Together, latency and bandwidth define the speed and capacity of a network."]footnote:[Webopedia.com. (2016). What is Latency? Webopedia Definition. Online. Available at: http://www.webopedia.com/TERM/L/latency.html. Accessed Jul. 2016]
+
+*Serialization*- https://en.wikipedia.org/wiki/Serialization["The process of translating data structures or object state into a format that can be stored"]footnote:[Wikipedia. (2016). Serialization. Online. Available at: https://en.wikipedia.org/wiki/Serialization. Accessed Jul. 2016.]_See also_ *Serialization libraries*- The process that translates data into a format that can be consumed by another system.
+
+*Throughput*- The rate of data or messages transferred which is processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.
