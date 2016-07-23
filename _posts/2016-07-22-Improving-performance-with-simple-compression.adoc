@@ -40,7 +40,7 @@ class MyDataType extends AbstractMarshallable implements KeyedMarshallable {
 To write this object you can use the Chronicle Wire library to write in different formats.
 
 .Update message as YAML - 268 bytes
-[source, Yaml]
+[source, yaml]
 ----
 update: !MyDataType {
   firstId: 1010101010101,
@@ -59,7 +59,7 @@ update: !MyDataType {
 .Update message as JSON - 242 bytes, smaller without formatting
 [source, json]
 ----
-"update":{"firstId":1010101010101,"secondId":2222,"thirdId":"thirdId-1234","staticOne":"staticOne-1234","staticTwo":2020202020202,"staticThree":"2016-07-22T12:34:56.789Z[UTC]","staticFour":1000000.0,"changesA":3000000001,"changesB":123457.0},"update":{"firstId":1010101010101,"secondId":2222,"thirdId":"thirdId-1234","staticOne":"staticOne-1234","staticTwo":2020202020202,"staticThree":"2016-07-22T12:34:56.789Z[UTC]","staticFour":1000000.0,"changesA":3000000002,"changesB":123457.0}
+"update":{"firstId":1010101010101,"secondId":2222,"thirdId":"thirdId-1234","staticOne":"staticOne-1234","staticTwo":2020202020202,"staticThree":"2016-07-22T12:34:56.789Z[UTC]","staticFour":1000000.0,"changesA":3000000001,"changesB":123457.0}
 ----
 
 .Update message as Binary YAML - 205 bytes
