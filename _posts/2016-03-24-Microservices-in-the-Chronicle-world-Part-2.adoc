@@ -26,7 +26,7 @@ It is the Chronicle Queue we will be looking at in the post.
 
 === Using queue in a unit test
 
-Chronicle Queue is persisted, however in unit tests you usually want to start fresh and remove the queue afterwards.  The idiom you can use as as follow
+Chronicle Queue is persisted, however in unit tests you usually want to start fresh and remove the queue afterwards.  The *idiom* you can use is as follows;
 
 .Creating a temporary Queue
 [source, java]
@@ -46,7 +46,7 @@ This creates a queue which is stored in a single file.  The file is rolled daily
 
 ==== Writing events
 
-If we repeat out test as before, instead of using a mock listener, we can use a listener which writes each method called to a queue
+If we repeat our test as before, instead of using a *mock listener*, we can use a listener which writes each method called to a queue:
 
 .Write methods called to a queue for either interface
 [source, java]
@@ -55,7 +55,7 @@ OrderIdeaListener orderManager = queue.createAppender()
                                       .methodWriter(OrderIdeaListener.class, MarketDataListener.class);
 ----
 
-Our combiner writes to this queue, as does our test
+Our combiner writes to this queue, as does our test:
 
 .The SidedPrice combiner
 [source, java]
@@ -63,7 +63,7 @@ Our combiner writes to this queue, as does our test
 SidedMarketDataCombiner combiner = new SidedMarketDataCombiner((MarketDataListener) orderManager);
 ----
 
-and we can repeat the events inbound.  Putting all this together we get
+We can also repeat the events inbound.  Putting all this together we get:
 
 [source, java]
 ----
@@ -116,7 +116,7 @@ verify(listener);
 <4> we have no more messages
 <5> dump the queue contents so we can see what the input was.
 
-Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won't be able to be stored in a String.  You can use https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java[DumpQueueMain] f
+Finally, the test dumps the raw contents of the queue. This reads the data stored in the file that queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won't be able to be stored in a String.  You can use https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java[DumpQueueMain] f
 
 .The output of dump()
 [source, yaml]
@@ -195,9 +195,13 @@ We can test components stand alone with a queue or in a chain by using more queu
 
 == In our next part
 
-https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html[In part 3, we will look at benchmarking and profiling with Queue]  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.
+https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html[In part 3, we will look at benchmarking and profiling with Queue].  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.
 
 == Glossary
+
+*Idiom*- "A means of expressing a recurring construct in one or more programming languages."footnote:[Wikipedia. (2016). Programming idiom. Online. Available at: https://en.wikipedia.org/wiki/Programming_idiom. Accessed Mar. 2016]
+
+*Mock listener*- Method call/messages can be sent to a mock listener. This acts as a pretend Object for the purposes of testing in order to see that would happen to a Concrete Object.
 
 *Service*- A program that is available to other programs to run and make use of.
 
