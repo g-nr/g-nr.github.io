@@ -253,7 +253,7 @@ verify(listener);
 
 === Debugging our components
 
-You can see that one component just calls another. When debugging this single threaded code each event from the first component is a call to the second component and when that finishes it returns to the first one and the tests.
+You can see that one component just calls another. When debugging this single threaded code, each event from the first component is a call to the second component. When that finishes it returns to the first one and the tests.
 
 When any individual event triggers an error, you can see in the stack trace which event caused the issue. However, if you are expecting an event which doesn't happen this is tricker unless your tests are simple (or you do a series of simple tests with `verify()`, `reset()` and `replay()`
 
