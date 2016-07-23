@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469280169162"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469280169162"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469280169162"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469281697082"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469281697082"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469281697082"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469280169162"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469281697082"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html" />
     <meta name="referrer" content="origin" />
@@ -251,7 +251,7 @@ null
 <div class="sect2">
 <h3 id="_using_queue_in_a_unit_test">Using queue in a unit test</h3>
 <div class="paragraph">
-<p>Chronicle Queue is persisted, however in unit tests you usually want to start fresh and remove the queue afterwards.  The idiom you can use as as follow</p>
+<p>Chronicle Queue is persisted, however in unit tests you usually want to start fresh and remove the queue afterwards.  The <strong>idiom</strong> you can use is as follows;</p>
 </div>
 <div class="listingblock">
 <div class="title">Creating a temporary Queue</div>
@@ -273,7 +273,7 @@ try {
 <div class="sect3">
 <h4 id="_writing_events">Writing events</h4>
 <div class="paragraph">
-<p>If we repeat out test as before, instead of using a mock listener, we can use a listener which writes each method called to a queue</p>
+<p>If we repeat our test as before, instead of using a <strong>mock listener</strong>, we can use a listener which writes each method called to a queue:</p>
 </div>
 <div class="listingblock">
 <div class="title">Write methods called to a queue for either interface</div>
@@ -283,7 +283,7 @@ try {
 </div>
 </div>
 <div class="paragraph">
-<p>Our combiner writes to this queue, as does our test</p>
+<p>Our combiner writes to this queue, as does our test:</p>
 </div>
 <div class="listingblock">
 <div class="title">The SidedPrice combiner</div>
@@ -292,7 +292,7 @@ try {
 </div>
 </div>
 <div class="paragraph">
-<p>and we can repeat the events inbound.  Putting all this together we get</p>
+<p>We can also repeat the events inbound.  Putting all this together we get:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -368,7 +368,7 @@ verify(listener);</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won&#8217;t be able to be stored in a String.  You can use <a href="https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java">DumpQueueMain</a> f</p>
+<p>Finally, the test dumps the raw contents of the queue. This reads the data stored in the file that queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won&#8217;t be able to be stored in a String.  You can use <a href="https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java">DumpQueueMain</a> f</p>
 </div>
 <div class="listingblock">
 <div class="title">The output of dump()</div>
@@ -456,7 +456,7 @@ onOrderIdea: {
 <h2 id="_in_our_next_part">In our next part</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html">In part 3, we will look at benchmarking and profiling with Queue</a>  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.</p>
+<p><a href="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html">In part 3, we will look at benchmarking and profiling with Queue</a>.  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.</p>
 </div>
 </div>
 </div>
@@ -464,10 +464,16 @@ onOrderIdea: {
 <h2 id="_glossary">Glossary</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p><strong>Idiom</strong>- "A means of expressing a recurring construct in one or more programming languages."<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><strong>Mock listener</strong>- Method call/messages can be sent to a mock listener. This acts as a pretend Object for the purposes of testing in order to see that would happen to a Concrete Object.</p>
+</div>
+<div class="paragraph">
 <p><strong>Service</strong>- A program that is available to other programs to run and make use of.</p>
 </div>
 <div class="paragraph">
-<p><strong>Transport</strong>- A program or hardware that takes data from ome process to another.e.g <a href="http://www.webopedia.com/TERM/M/middleware.html">Middleware</a><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup></p>
+<p><strong>Transport</strong>- A program or hardware that takes data from ome process to another.e.g <a href="http://www.webopedia.com/TERM/M/middleware.html">Middleware</a><sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup></p>
 </div>
 </div>
 </div>
@@ -498,7 +504,10 @@ onOrderIdea: {
 <a href="#_footnoteref_8">8</a>. Apache Aries. (2016). Apache Aries - Index. Online. Available at: <a href="http://aries.apache.org/" class="bare">http://aries.apache.org/</a>. Accessed 23 Mar. 2016
 </div>
 <div class="footnote" id="_footnote_9">
-<a href="#_footnoteref_9">9</a>. Beal, V. (2016). What is Middleware? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/M/middleware.html" class="bare">http://www.webopedia.com/TERM/M/middleware.html</a>. Accessed Jul. 2016
+<a href="#_footnoteref_9">9</a>. Wikipedia. (2016). Programming idiom. Online. Available at: <a href="https://en.wikipedia.org/wiki/Programming_idiom" class="bare">https://en.wikipedia.org/wiki/Programming_idiom</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_10">
+<a href="#_footnoteref_10">10</a>. Beal, V. (2016). What is Middleware? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/M/middleware.html" class="bare">http://www.webopedia.com/TERM/M/middleware.html</a>. Accessed Jul. 2016
 </div>
 </div>
           </div>
@@ -580,7 +589,7 @@ onOrderIdea: {
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469280169162"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469281697082"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
