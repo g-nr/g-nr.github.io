@@ -7,19 +7,19 @@ In https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-worl
 
 === Turning our components into a service.
 
-The key thing which is missing from our components is a transport.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.
+The key thing which is missing from our components is a *transport*.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.
 
 There is a wide range of possible transports available:
 
-* Raw TCP messages or UDP packets with a library like http://netty.io/[Netty]
-* https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html[JMS Messaging]
-* https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services[REST API]
-* Database tables via https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/[JDBC]
-* Files dropped into a directory and use the directory https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html[WatchService]
-* a thread safe Queue, like https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html[BlockingQueue]
-* https://en.wikipedia.org/wiki/Shared_memory[shared memory]
 * http://chronicle.software/products/chronicle-queue/[Chronicle Queue]
-* http://aries.apache.org/[Apache Aries] for pluggable transports
+* Raw TCP messages or UDP packets with a library like http://netty.io/[Netty]footnote:[Netty.io. (2016). Netty: Home. Online. Available at: http://netty.io/. Accessed Mar. 2016]
+* https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html[JMS Messaging]footnote:[Oracle (2013). The JMS API Programming Model - The Java EE 6 Tutorial. Online. Available at: https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html. Accessed Mar. 2016]
+* https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services[REST API]footnote:[Wikipedia. (2016). Java API for RESTful Web Services. Online. Available at: https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services. Accessed  Mar. 2016]
+* Database tables via https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/[JDBC]footnote:[Docs.oracle.c(2016). Java JDBC API. Online. Available at: https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/. Accessed Mar. 2016]
+* Files dropped into a directory and use the directory https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html[WatchService]footnote:[Oracle (2016). WatchService (Java Platform SE 8 ). Online. Available at: https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html.Accessed 23 Mar. 2016]
+* a thread safe Queue, like https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html[BlockingQueue]
+* https://en.wikipedia.org/wiki/Shared_memory[shared memory]footnote:[Oracle (2016). BlockingQueue (Java Platform SE 8 ). Online. Available at: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html Accessed 23 Mar. 2016]
+* http://aries.apache.org/[Apache Aries]footnote:[Apache Aries. (2016). Apache Aries - Index. Online. Available at: http://aries.apache.org/. Accessed 23 Mar. 2016] for pluggable transports
 * no transport at all (method calls are fine for a given use case)
 
 It is the Chronicle Queue we will be looking at in the post.
@@ -201,3 +201,4 @@ https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-P
 
 *Service*- A program that is available to other programs to run and make use of.
 
+*Transport*- A program or hardware that takes data from ome process to another.e.g http://www.webopedia.com/TERM/M/middleware.html[Middleware]footnote:[Beal, V. (2016). What is Middleware? Webopedia Definition. Online. Webopedia.com. Available at: http://www.webopedia.com/TERM/M/middleware.html. Accessed Jul. 2016]
