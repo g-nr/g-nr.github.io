@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 13:35:58 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 13:48:17 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Chronicle Wire supports multiple Wire Formats such as YAML, JSON and CSV. It also supports a binary format of YAML for performance.  Chronicle Wire Enteprise has an additional Wire Format which performs simple compression which can be faster AND smaller than not compressing data.</p>
@@ -103,10 +103,10 @@
 <p>By comparison DeltaWire is designed to compact the message by reducing duplication with a loss-less compression. This reduces the time writing to memory, which can speed up the serialization operation.</p>
 </div>
 <div class="listingblock">
-<div class="title">Two updates, one change for the <code>changesA</code> and one change for <code>changesB</code> - 10 bytes average</div>
+<div class="title">Two updates, one change for the <code>changesA</code> and one change for <code>changesB</code> - 11 bytes average</div>
 <div class="content">
-<pre class="highlight"><code>00000000 BA 00 89 00 80 04 BA 08  A8 C5 BA 00 89 00 80 04 ········ ········
-00000010 BA 09 9A 05                                      ····</code></pre>
+<pre class="highlight"><code>000000e0       BA 00 89 00 80 04  BA 08 A8 04 BA 00 89 00   ······ ········
+000000f0 80 07 BA 09 90 00 22 F1  47                      ······"· G</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -133,7 +133,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Delta Binary YAML</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11 bytes</p></td>
 </tr>
 </tbody>
 </table>
@@ -146,15 +146,15 @@
 <p>It doesn&#8217;t have to be slower if the compression is simple enough.  In fact writing/reading less data can improve performance.  Writing/reading less data to memory, let alone to disk or a network, can improve latency and throughput by touching less memory and writing less data.</p>
 </div>
 <div class="paragraph">
-<p>The test above is repeated 2,500 times resulting in 5,000 updates. The average time to serialize each message/udpate is recorded below.</p>
+<p>The test above is repeated 500 times resulting in 1,000 updates. The average time to serialize each message/udpate is recorded below.</p>
 </div>
 <div class="listingblock">
 <div class="title">Average time to serialize each update.</div>
 <div class="content">
-<pre class="highlight"><code>TextWire Took an average of 3,446 ns
-JSONWire Took an average of 2,972 ns
-BinaryWire Took an average of 1,473 ns
-DeltaWire Took an average of 554 ns</code></pre>
+<pre class="highlight"><code>TextWire Took an average of 3,119 ns
+JSONWire Took an average of 2,656 ns
+BinaryWire Took an average of 1,990 ns
+DeltaWire Took an average of 608 ns</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3291,46 +3291,46 @@ new Runner(opt).run();</code></pre>
 <p>In this part we look at turning a component into a service.</p>
 </div>
 <div class="paragraph">
-<p>In <a href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html">Part 1</a>, we looked at how we can easily create and test components which expect asynchronous messages in and produce asynchronous messages out.  However, how do we turn this into a service?</p>
+<p>In <a href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html">Part 1</a>, we looked at how we can easily create and test components which expect <a href="http://www.webopedia.com/TERM/A/asynchronous_messaging.html">asynchronous messages</a><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> in and produce asynchronous messages out.  However, how do we turn this into a <strong>service</strong>?</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_turning_our_components_into_a_service">Turning our components into a service.</h3>
 <div class="paragraph">
-<p>The key thing which is missing from our components is a transport.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.</p>
+<p>The key thing which is missing from our components is a <strong>transport</strong>.  A lack of a transport simplifies testing, profiling and debugging, but we need to distribute our components, and for this we need a transport.</p>
 </div>
 <div class="paragraph">
-<p>There is a wide range of possible transports available</p>
+<p>There is a wide range of possible transports available:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Raw TCP messages or UDP packets with a library like <a href="http://netty.io/">Netty</a></p>
+<p><a href="http://chronicle.software/products/chronicle-queue/">Chronicle Queue</a></p>
 </li>
 <li>
-<p><a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html">JMS Messaging</a></p>
+<p>Raw TCP messages or UDP packets with a library like <a href="http://netty.io/">Netty</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup></p>
 </li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">REST API</a></p>
+<p><a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html">JMS Messaging</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup></p>
 </li>
 <li>
-<p>Database tables via <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/">JDBC</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">REST API</a><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
 </li>
 <li>
-<p>Files dropped into a directory and use the directory <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html">WatchService</a></p>
+<p>Database tables via <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/">JDBC</a><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup></p>
+</li>
+<li>
+<p>Files dropped into a directory and use the directory <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html">WatchService</a><sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup></p>
 </li>
 <li>
 <p>a thread safe Queue, like <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html">BlockingQueue</a></p>
 </li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/Shared_memory">shared memory</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Shared_memory">shared memory</a><sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup></p>
 </li>
 <li>
-<p><a href="http://chronicle.software/products/chronicle-queue/">Chronicle Queue</a></p>
-</li>
-<li>
-<p><a href="http://aries.apache.org/">Apache Aries</a> for pluggable transports</p>
+<p><a href="http://aries.apache.org/">Apache Aries</a><sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> for pluggable transports</p>
 </li>
 <li>
 <p>no transport at all (method calls are fine for a given use case)</p>
@@ -3344,7 +3344,7 @@ new Runner(opt).run();</code></pre>
 <div class="sect2">
 <h3 id="_using_queue_in_a_unit_test">Using queue in a unit test</h3>
 <div class="paragraph">
-<p>Chronicle Queue is persisted, however in unit tests you usually want to start fresh and remove the queue afterwards.  The idiom you can use as as follow</p>
+<p>Chronicle Queue is persisted, however in unit tests you usually want to start fresh and remove the queue afterwards.  The <strong>idiom</strong> you can use is as follows;</p>
 </div>
 <div class="listingblock">
 <div class="title">Creating a temporary Queue</div>
@@ -3366,7 +3366,7 @@ try {
 <div class="sect3">
 <h4 id="_writing_events">Writing events</h4>
 <div class="paragraph">
-<p>If we repeat out test as before, instead of using a mock listener, we can use a listener which writes each method called to a queue</p>
+<p>If we repeat our test as before, instead of using a <strong>mock listener</strong>, we can use a listener which writes each method called to a queue:</p>
 </div>
 <div class="listingblock">
 <div class="title">Write methods called to a queue for either interface</div>
@@ -3376,7 +3376,7 @@ try {
 </div>
 </div>
 <div class="paragraph">
-<p>Our combiner writes to this queue, as does our test</p>
+<p>Our combiner writes to this queue, as does our test:</p>
 </div>
 <div class="listingblock">
 <div class="title">The SidedPrice combiner</div>
@@ -3385,7 +3385,7 @@ try {
 </div>
 </div>
 <div class="paragraph">
-<p>and we can repeat the events inbound.  Putting all this together we get</p>
+<p>We can also repeat the events inbound.  Putting all this together we get:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3461,7 +3461,7 @@ verify(listener);</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Finally, the test dumps the raw contents of the queue. This reads the data stored in the file queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won&#8217;t be able to be stored in a String.  You can use <a href="https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java">DumpQueueMain</a> f</p>
+<p>Finally, the test dumps the raw contents of the queue. This reads the data stored in the file that queue uses.  This dump is only useful for smaller queue with a few MB of data. If you have a few GB, it won&#8217;t be able to be stored in a String.  You can use <a href="https://github.com/OpenHFT/Chronicle-Queue/blob/master/src/main/java/net/openhft/chronicle/queue/DumpQueueMain.java">DumpQueueMain</a> f</p>
 </div>
 <div class="listingblock">
 <div class="title">The output of dump()</div>
@@ -3549,13 +3549,63 @@ onOrderIdea: {
 <h2 id="_in_our_next_part">In our next part</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html">In part 3, we will look at benchmarking and profiling with Queue</a>  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.</p>
+<p><a href="https://vanilla-java.github.io/2016/03/26/Microservices-in-the-Chronicle-World-Part-3.html">In part 3, we will look at benchmarking and profiling with Queue</a>.  While Queue is designed to be simple and transparent, it is also designed to be faster than other persisted transports, even with no tuning.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossary">Glossary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Idiom</strong>- "A means of expressing a recurring construct in one or more programming languages."<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><strong>Mock listener</strong>- Method call/messages can be sent to a mock listener. This acts as a pretend Object for the purposes of testing in order to see that would happen to a Concrete Object.</p>
+</div>
+<div class="paragraph">
+<p><strong>Service</strong>- A program that is available to other programs to run and make use of.</p>
+</div>
+<div class="paragraph">
+<p><strong>Transport</strong>- A program or hardware that takes data from ome process to another.e.g <a href="http://www.webopedia.com/TERM/M/middleware.html">Middleware</a><sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup></p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Beal, V. (2016). What is asynchronous messaging? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/A/asynchronous_messaging.html" class="bare">http://www.webopedia.com/TERM/A/asynchronous_messaging.html</a>. Accessed Jul. 2016
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. Netty.io. (2016). Netty: Home. Online. Available at: <a href="http://netty.io/" class="bare">http://netty.io/</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. Oracle (2013). The JMS API Programming Model - The Java EE 6 Tutorial. Online. Available at: <a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html" class="bare">https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. Wikipedia. (2016). Java API for RESTful Web Services. Online. Available at: <a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services" class="bare">https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services</a>. Accessed  Mar. 2016
+</div>
+<div class="footnote" id="_footnote_5">
+<a href="#_footnoteref_5">5</a>. Docs.oracle.c(2016). Java JDBC API. Online. Available at: <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_6">
+<a href="#_footnoteref_6">6</a>. Oracle (2016). WatchService (Java Platform SE 8 ). Online. Available at: <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html.Accessed" class="bare">https://docs.oracle.com/javase/8/docs/api/java/nio/file/WatchService.html.Accessed</a> 23 Mar. 2016
+</div>
+<div class="footnote" id="_footnote_7">
+<a href="#_footnoteref_7">7</a>. Oracle (2016). BlockingQueue (Java Platform SE 8 ). Online. Available at: <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html" class="bare">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingQueue.html</a> Accessed 23 Mar. 2016
+</div>
+<div class="footnote" id="_footnote_8">
+<a href="#_footnoteref_8">8</a>. Apache Aries. (2016). Apache Aries - Index. Online. Available at: <a href="http://aries.apache.org/" class="bare">http://aries.apache.org/</a>. Accessed 23 Mar. 2016
+</div>
+<div class="footnote" id="_footnote_9">
+<a href="#_footnoteref_9">9</a>. Wikipedia. (2016). Programming idiom. Online. Available at: <a href="https://en.wikipedia.org/wiki/Programming_idiom" class="bare">https://en.wikipedia.org/wiki/Programming_idiom</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_10">
+<a href="#_footnoteref_10">10</a>. Beal, V. (2016). What is Middleware? Webopedia Definition. Online. Webopedia.com. Available at: <a href="http://www.webopedia.com/TERM/M/middleware.html" class="bare">http://www.webopedia.com/TERM/M/middleware.html</a>. Accessed Jul. 2016
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ Chronicle-Queue]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Thu, 24 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Microservices in the Chronicle world - Part 1]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>At a high level, different Microservice strategies have a lot in common.  They subscribe to the same ideals.
+<p>At a high level, different <strong>Microservice</strong> strategies have a lot in common.  They subscribe to the same ideals.
 When it comes to the details of how they are actually implemented, they can vary.</p>
 </div>
 <div class="paragraph">
@@ -3564,13 +3614,13 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="ulist">
 <ul>
 <li>
-<p>simplicity, simple is fast, flexable and easier to maintain.</p>
+<p>Simplicity- simple is fast, flexable and easier to maintain.</p>
 </li>
 <li>
-<p>transparent, you can&#8217;t control what you don&#8217;t understand.</p>
+<p>Transparency- you can&#8217;t control what you don&#8217;t understand.</p>
 </li>
 <li>
-<p>reproduceablity, must be in your design to ensure a quality solution.</p>
+<p>Reproduceablity- this must be in your design to ensure a quality solution.</p>
 </li>
 </ul>
 </div>
@@ -3579,30 +3629,30 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="sect2">
 <h3 id="_what_do_we_mean_by_simple">What do we mean by simple?</h3>
 <div class="paragraph">
-<p>A key part of the microservices design is how messages are passed between services/components. The simplest messages could be called <strong>asynchronous method calls</strong>.</p>
+<p>A key part of the microservices design is how messages are passed between services/components. The simplest messages could be called <em>asynchronous method calls</em>.</p>
 </div>
 <div class="paragraph">
-<p>An asynchronous method call is one which</p>
+<p>An asynchronous method call is one which;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>doesn&#8217;t return anything.</p>
+<p>doesn&#8217;t return anything,</p>
 </li>
 <li>
-<p>doesn&#8217;t alter it&#8217;s arguments.</p>
+<p>doesn&#8217;t alter it&#8217;s arguments;</p>
 </li>
 <li>
-<p>doesn&#8217;t throw any exceptions. (Although the underlying transport could)</p>
+<p>doesn&#8217;t throw any exceptions (although the underlying transport could).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The reason this approach is used, is that the simplest transport is no transport at all.  One component calls another.  This is not only fast (with inlining might not take any time at all), but it is simple to setup, debug and profile.  For most unit tests you don&#8217;t need a real transport so there is no advantage in making the test more complicated than it needs to be.</p>
+<p>The reason this approach is used, is that the simplest transport is no transport at all.  One component calls another.  This is not only fast ( and with inlining might not take any time at all), but it is simple to setup, debug and profile.  For most unit tests you don&#8217;t need a real transport so there is no advantage in making the test more complicated than it needs to be.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_let_s_look_at_an_example">Let&#8217;s look at an example</h3>
+<h3 id="_let_s_look_at_an_example">Let&#8217;s look at an example.</h3>
 <div class="paragraph">
 <p>Say we have a service/component which is taking incremental market data updates. In the simplest case, this could be a market update with only one side, a buy or a sell.  The component could transform this into a full market update combining both the buy and sell price and quantity.</p>
 </div>
@@ -3654,12 +3704,12 @@ When it comes to the details of how they are actually implemented, they can vary
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>For the complete code <a href="https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/TopOfBookPrice.java">TopOfBookPrice.java</a></td>
+<td>For the complete code <a href="https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/orders/TopOfBookPrice.java">TopOfBookPrice.java</a>.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The component which takes one sided prices could have an interface</p>
+<p>The component which takes one sided prices could have an interface;</p>
 </div>
 <div class="listingblock">
 <div class="title">Inbound interface for the first component</div>
@@ -3670,7 +3720,7 @@ When it comes to the details of how they are actually implemented, they can vary
 </div>
 </div>
 <div class="paragraph">
-<p>and it&#8217;s output also has one method</p>
+<p>and it&#8217;s output also has one method;</p>
 </div>
 <div class="listingblock">
 <div class="title">Outbound interface for the first component</div>
@@ -3684,7 +3734,7 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="sect2">
 <h3 id="_what_does_our_microservice_look_like">What does our microservice look like?</h3>
 <div class="paragraph">
-<p>At a high level, the combiner is very simple</p>
+<p>At a high level, the combiner is very simple;</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3705,13 +3755,13 @@ When it comes to the details of how they are actually implemented, they can vary
 </div>
 </div>
 <div class="paragraph">
-<p>It implements our input interface and take the output interface as a listener.</p>
+<p>It implements our input interface and takes the output interface as a listener.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_what_does_abstractmarshallable_provide">What does AbstractMarshallable provide?</h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/OpenHFT/Chronicle-Wire/blob/master/src/main/java/net/openhft/chronicle/wire/AbstractMarshallable.java">AbstractMarshallable</a> class is a convenience class which implements <code>toString()</code>, <code>equals(Object)</code> and <code>hashCode()</code>. It also supports Marshallable&#8217;s <code>writeMarshallable(WireOut)</code> and <code>readMarshallable(WireIn)</code></p>
+<p>The <a href="https://github.com/OpenHFT/Chronicle-Wire/blob/master/src/main/java/net/openhft/chronicle/wire/AbstractMarshallable.java">AbstractMarshallable</a> class is a convenience class which implements <code>toString()</code>, <code>equals(Object)</code> and <code>hashCode()</code>. It also supports Marshallable&#8217;s <code>writeMarshallable(WireOut)</code> and <code>readMarshallable(WireIn)</code>.</p>
 </div>
 <div class="paragraph">
 <p>The default implementations use all the non-static non-transient fields to either print, compare or build a hashCode.</p>
@@ -3723,13 +3773,13 @@ When it comes to the details of how they are actually implemented, they can vary
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-the resulting toString() can always be de-serialized with <code>Marshallable.fromString(CharSequence)</code>
+the resulting toString() can always be <strong>de-serialized</strong> with <code>Marshallable.fromString(CharSequence)</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s look at a couple of examples</p>
+<p>Let&#8217;s look at a couple of examples.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3749,7 +3799,7 @@ assertEquals(sp2.hashCode(), sp.hashCode());</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see, the <code>toString()</code> is in YAML, concise and readable to a human and in code.</p>
+<p>As you can see, the <code>toString()</code> is in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, concise, readable to a human and in code.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3783,7 +3833,7 @@ assertEquals(tobp, tobp2);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>However when you run this test in your IDE, you get a comparison window.</p>
+<p>However when you run this test in your  <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>, you get a comparison window.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -3854,7 +3904,7 @@ verify(listener);</code></pre>
 <div class="sect2">
 <h3 id="_testing_a_series_of_components">Testing a series of components</h3>
 <div class="paragraph">
-<p>Lets add an OrderManager as a down stream components. This order manager will receive both market data updates and order ideas, and in turn will produce orders.</p>
+<p>Lets add an OrderManager as a down stream component. This order manager will receive both market data updates and order ideas, and in turn will produce orders.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3884,11 +3934,11 @@ verify(listener);</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>the first component combines sided prices</td>
+<td>The first component combines sided prices</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>the second component listens to order ideas and top of book market data</td>
+<td>The second component listens to order ideas and top of book market data</td>
 </tr>
 </table>
 </div>
@@ -3896,10 +3946,10 @@ verify(listener);</code></pre>
 <div class="sect2">
 <h3 id="_debugging_our_components">Debugging our components</h3>
 <div class="paragraph">
-<p>You can see that one component just calls another. When debugging this single threaded code each event from the first component is a call to the second component and when that finishes it returns to the first one and the tests.</p>
+<p>You can see that one component just calls another. When debugging this single threaded code, each event from the first component is a call to the second component. When that finishes it returns to the first one and the tests.</p>
 </div>
 <div class="paragraph">
-<p>When any individual event triggers an error, you can see in the stack trace which event caused the issue. However, if you are expecting an event which doesn&#8217;t happen this is tricker unless your tests are simple (or you do a series of simple tests with <code>verify()</code>, <code>reset()</code> and <code>replay()</code></p>
+<p>When any individual event triggers an error, you can see in the <strong>stack trace</strong> which event caused the issue. However, if you are expecting an event which doesn&#8217;t happen, this is tricker unless your tests are simple (or you do a series of simple tests with <code>verify()</code>, <code>reset()</code> and <code>replay()</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3908,7 +3958,7 @@ verify(listener);</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-it takes almost no time at all to start up the test and debug it in your IDE.  You can run hundreds of test like this in less than a second.
+it takes almost no time at all to start up the test and debug it in your IDE.  You can run hundreds of tests like this in less than a second.
 </td>
 </tr>
 </table>
@@ -3926,6 +3976,35 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <div class="paragraph">
 <p>We have shown how easy it is to test and debug our components. <a href="https://vanilla-java.github.io/2016/03/24/Microservices-in-the-Chronicle-world-Part-2.html">How do we turn these into services in Part 2</a>.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossery">Glossery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Microservices</strong>- Independantly deployable programmes that act as components in a larger network.</p>
+</div>
+<div class="paragraph">
+<p><strong>Serialization</strong>- <a href="https://en.wikipedia.org/wiki/Serialization">"The process of translating data structures or object state into a format that can be stored"</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup><em>See also</em> <strong>Serialization libraries</strong>- The process that translates data into a format that can be consumed by another system.</p>
+</div>
+<div class="paragraph">
+<p><strong>Stack trace</strong>- "A report of the active <a href="http://stackoverflow.com/questions/10057443/explain-the-concept-of-a-stack-frame-in-a-nutshell">stack frames</a> at a certain point in time during the execution of a program."  <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Ben-Kiki, et al (2009). YAML Ain’t Markup Language (YAML™) Version 1.2. Online. Available at: <a href="http://www.yaml.org/spec/1.2/spec.html" class="bare">http://www.yaml.org/spec/1.2/spec.html</a>. Accessed Jul. 2016
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. Wikipedia. (2016). Integrated development environment. Online. Available at: <a href="https://en.wikipedia.org/wiki/Integrated_development_environment" class="bare">https://en.wikipedia.org/wiki/Integrated_development_environment</a>. Accessed Mar. 2016
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. Wikipedia. (2016). Serialization. Online. Available at: <a href="https://en.wikipedia.org/wiki/Serialization" class="bare">https://en.wikipedia.org/wiki/Serialization</a>. Accessed Jul. 2016.
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. Wikipedia. (2016). Stack trace. Online. Available at: <a href="https://en.wikipedia.org/wiki/Stack_trace" class="bare">https://en.wikipedia.org/wiki/Stack_trace</a>. Accessed Jul. 2016
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ examples]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Wed, 23 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Micro-services for performance]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_overview">Overview</h2>
@@ -4129,7 +4208,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p><a href="https://github.com/real-logic/Aeron">Aeron</a><sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup> - A reliable UDP transport,</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a><sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup> - A persisted queue for messaging and logging.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Queue">Chronicle Queue</a> - A persisted queue for messaging and logging.</p>
 </li>
 </ul>
 </div>
@@ -4166,15 +4245,15 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a><sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup> - Which supports JSON, XML, CSV, CBOR (a binary format),</p>
+<p><a href="https://github.com/FasterXML/jackson-core">Jackson Speaming API</a><sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup> - Which supports JSON, XML, CSV, CBOR (a binary format),</p>
 </li>
 <li>
-<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup> - Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
+<p><a href="https://github.com/OpenHFT/Chronicle-Wire">Chronicle Wire</a> - Which supports object serialization YAML, a number of different forms of Binary YAML, JSON, CSV, Raw data.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>What I found useful in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a><sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnote_16" title="View footnote.">16</a>]</sup> verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.</p>
+<p>What I found useful in <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a><sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup> verses JSON, is the cleaner syntax which is designed to be human readable, rather than the subset of another language, the natural support for data types, comments, binary content and message seperators.</p>
 </div>
 </div>
 </div>
@@ -4190,22 +4269,22 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <h2 id="_glossary">Glossary</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>CPU core</strong>- <a href="http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/">"A processor core is a processing unit which reads in instructions to perform specific actions."</a><sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="#_footnote_17" title="View footnote.">17</a>]</sup></p>
+<p><strong>CPU core</strong>- <a href="http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/">"A processor core is a processing unit which reads in instructions to perform specific actions."</a><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p><strong>Debugging</strong>- the process of searching for and fixing defects in code.</p>
 </div>
 <div class="paragraph">
-<p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a><sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="#_footnote_18" title="View footnote.">18</a>]</sup>. A test can be distributed between a number of systems.</p>
+<p><strong>Distributed System</strong>- A collection of autonomous computers linked in a network by <a href="https://en.wikipedia.org/wiki/Middleware">middleware</a><sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnote_16" title="View footnote.">16</a>]</sup>. A test can be distributed between a number of systems.</p>
 </div>
 <div class="paragraph">
-<p><strong>Failover</strong>- <a href="http://www.webopedia.com/TERM/F/failover.html">"A backup operation that automatically switches to a standby server or network if the primary system fails or is temporarily shut down for servicing."</a><sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="#_footnote_19" title="View footnote.">19</a>]</sup></p>
+<p><strong>Failover</strong>- <a href="http://www.webopedia.com/TERM/F/failover.html">"A backup operation that automatically switches to a standby server or network if the primary system fails or is temporarily shut down for servicing."</a><sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="#_footnote_17" title="View footnote.">17</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p><strong>Latency</strong>- The time an individual operation takes. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a><sup class="footnote">[<a id="_footnoteref_20" class="footnote" href="#_footnote_20" title="View footnote.">20</a>]</sup></p>
+<p><strong>Latency</strong>- The time an individual operation takes. <a href="http://www.webopedia.com/TERM/L/latency.html">"Together, latency and bandwidth define the speed and capacity of a network."</a><sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="#_footnote_18" title="View footnote.">18</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p><strong>Library</strong>- <a href="http://www.webopedia.com/TERM/L/library.html">"A collection of precompiled routines that a program can use."</a><sup class="footnote">[<a id="_footnoteref_21" class="footnote" href="#_footnote_21" title="View footnote.">21</a>]</sup></p>
+<p><strong>Library</strong>- <a href="http://www.webopedia.com/TERM/L/library.html">"A collection of precompiled routines that a program can use."</a><sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="#_footnote_19" title="View footnote.">19</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p><strong>Microservices</strong>- Independantly deployable programmes that act as components in a larger network.</p>
@@ -4214,7 +4293,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <p><strong>Throughput</strong>- The rate of data or messages transferred which is processed in a certain amount of time. This rate is written in terms of throughput, e.g a road could have a throughput of 10 cars per minute.</p>
 </div>
 <div class="paragraph">
-<p><strong>Serializations libraries</strong>- The process that translates data into a format that can be consumed by another system.</p>
+<p><strong>Serialization libraries</strong>- The process that translates data into a format that can be consumed by another system.</p>
 </div>
 <div class="paragraph">
 <p><strong>Wire format</strong>- A defined way for sending data between mechines as bytes.</p>
@@ -4260,31 +4339,25 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 <a href="#_footnoteref_12">12</a>. GitHub. (2016). real-logic/Aeron. Online. Available at: <a href="https://github.com/real-logic/Aeron" class="bare">https://github.com/real-logic/Aeron</a>. Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_13">
-<a href="#_footnoteref_13">13</a>. Lawrey, P. and Austin, R. (2016). OpenHFT/Chronicle-Queue. Online. Available at: <a href="https://github.com/OpenHFT/Chronicle-Queue" class="bare">https://github.com/OpenHFT/Chronicle-Queue</a>. Accessed Mar. 2016
+<a href="#_footnoteref_13">13</a>. GitHub. (2016). FasterXML/jackson-core. Online. Available at: <a href="https://github.com/FasterXML/jackson-core" class="bare">https://github.com/FasterXML/jackson-core</a>. Accessed Mar. 2016
 </div>
 <div class="footnote" id="_footnote_14">
-<a href="#_footnoteref_14">14</a>. GitHub. (2016). FasterXML/jackson-core. Online. Available at: <a href="https://github.com/FasterXML/jackson-core" class="bare">https://github.com/FasterXML/jackson-core</a>. Accessed Mar. 2016
+<a href="#_footnoteref_14">14</a>. Ben-Kiki, et al (2009). YAML Ain’t Markup Language (YAML™) Version 1.2. Online. Available at: <a href="http://www.yaml.org/spec/1.2/spec.html" class="bare">http://www.yaml.org/spec/1.2/spec.html</a>. Accessed Jul. 2016
 </div>
 <div class="footnote" id="_footnote_15">
-<a href="#_footnoteref_15">15</a>. Lawrey, P. (2016). OpenHFT/Chronicle-Wire. Online. Available at: <a href="https://github.com/OpenHFT/Chronicle-Wire" class="bare">https://github.com/OpenHFT/Chronicle-Wire</a> Accessed Mar. 2016
+<a href="#_footnoteref_15">15</a>. Stieben, D. (2012). What Is A Processor Core? MakeUseOf Explains. Online. Available at: <a href="http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/" class="bare">http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/</a>. Accessed Jul. 2016
 </div>
 <div class="footnote" id="_footnote_16">
-<a href="#_footnoteref_16">16</a>. Ben-Kiki, et al (2009). YAML Ain’t Markup Language (YAML™) Version 1.2. Online. Available at: <a href="http://www.yaml.org/spec/1.2/spec.html" class="bare">http://www.yaml.org/spec/1.2/spec.html</a>. Accessed Jul. 2016
+<a href="#_footnoteref_16">16</a>. Wikipedia. (2016). Middleware. Online. Available at <a href="https://en.wikipedia.org/wiki/Middleware" class="bare">https://en.wikipedia.org/wiki/Middleware</a>. Accessed Jul.2016
 </div>
 <div class="footnote" id="_footnote_17">
-<a href="#_footnoteref_17">17</a>. Stieben, D. (2012). What Is A Processor Core? MakeUseOf Explains. Online. Available at: <a href="http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/" class="bare">http://www.makeuseof.com/tag/processor-core-makeuseof-explains-2/</a>. Accessed Jul. 2016
+<a href="#_footnoteref_17">17</a>. Webopedia.com. (2016). What is failover? Webopedia Definition. Online. Available at: <a href="http://www.webopedia.com/TERM/F/failover.html" class="bare">http://www.webopedia.com/TERM/F/failover.html</a>. Accessed Jul. 2016
 </div>
 <div class="footnote" id="_footnote_18">
-<a href="#_footnoteref_18">18</a>. Wikipedia. (2016). Middleware. Online. Available at <a href="https://en.wikipedia.org/wiki/Middleware" class="bare">https://en.wikipedia.org/wiki/Middleware</a>. Accessed Jul.2016
+<a href="#_footnoteref_18">18</a>. Webopedia.com. (2016). What is Latency? Webopedia Definition. Online. Available at: <a href="http://www.webopedia.com/TERM/L/latency.html" class="bare">http://www.webopedia.com/TERM/L/latency.html</a>. Accessed Jul. 2016
 </div>
 <div class="footnote" id="_footnote_19">
-<a href="#_footnoteref_19">19</a>. Webopedia.com. (2016). What is failover? Webopedia Definition. Online. Available at: <a href="http://www.webopedia.com/TERM/F/failover.html" class="bare">http://www.webopedia.com/TERM/F/failover.html</a>. Accessed Jul. 2016
-</div>
-<div class="footnote" id="_footnote_20">
-<a href="#_footnoteref_20">20</a>. Webopedia.com. (2016). What is Latency? Webopedia Definition. Online. Available at: <a href="http://www.webopedia.com/TERM/L/latency.html" class="bare">http://www.webopedia.com/TERM/L/latency.html</a>. Accessed Jul. 2016
-</div>
-<div class="footnote" id="_footnote_21">
-<a href="#_footnoteref_21">21</a>. Webopedia.com. (2016). What is Library? Webopedia Definition. Onilne. Available at: <a href="http://www.webopedia.com/TERM/L/library.html" class="bare">http://www.webopedia.com/TERM/L/library.html</a>. Accessed Jul. 2016
+<a href="#_footnoteref_19">19</a>. Webopedia.com. (2016). What is Library? Webopedia Definition. Onilne. Available at: <a href="http://www.webopedia.com/TERM/L/library.html" class="bare">http://www.webopedia.com/TERM/L/library.html</a>. Accessed Jul. 2016
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/03/22/Micro-services-for-performance.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ design]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Tue, 22 Mar 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[A new start with Asciidoc and HubPress.IO]]></title><description><![CDATA[<div class="paragraph">
 <p>I started to migrate to using Asciidoc on Github last week, but the team at <a href="http://hubpress.io/" class="bare">http://hubpress.io/</a> suggested I use HubPress instead. This uses github for storage and hosting but provides a web site feel skin to both editing and more importantly display for readers.</p>
