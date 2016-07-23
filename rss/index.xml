@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 13:48:17 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 23 Jul 2016 13:49:05 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving performance with simple compression]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Chronicle Wire supports multiple Wire Formats such as YAML, JSON and CSV. It also supports a binary format of YAML for performance.  Chronicle Wire Enteprise has an additional Wire Format which performs simple compression which can be faster AND smaller than not compressing data.</p>
@@ -103,10 +103,10 @@
 <p>By comparison DeltaWire is designed to compact the message by reducing duplication with a loss-less compression. This reduces the time writing to memory, which can speed up the serialization operation.</p>
 </div>
 <div class="listingblock">
-<div class="title">Two updates, one change for the <code>changesA</code> and one change for <code>changesB</code> - 11 bytes average</div>
+<div class="title">Two updates, one change for the <code>changesA</code> and one change for <code>changesB</code> - 10 bytes average</div>
 <div class="content">
-<pre class="highlight"><code>000000e0       BA 00 89 00 80 04  BA 08 A8 04 BA 00 89 00   ······ ········
-000000f0 80 07 BA 09 90 00 22 F1  47                      ······"· G</code></pre>
+<pre class="highlight"><code>00000000 BA 00 89 00 80 04 BA 08  A8 C5 BA 00 89 00 80 04 ········ ········
+00000010 BA 09 9A 05                                      ····</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -133,7 +133,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Delta Binary YAML</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 bytes</p></td>
 </tr>
 </tbody>
 </table>
@@ -146,15 +146,15 @@
 <p>It doesn&#8217;t have to be slower if the compression is simple enough.  In fact writing/reading less data can improve performance.  Writing/reading less data to memory, let alone to disk or a network, can improve latency and throughput by touching less memory and writing less data.</p>
 </div>
 <div class="paragraph">
-<p>The test above is repeated 500 times resulting in 1,000 updates. The average time to serialize each message/udpate is recorded below.</p>
+<p>The test above is repeated 2,500 times resulting in 5,000 updates. The average time to serialize each message/udpate is recorded below.</p>
 </div>
 <div class="listingblock">
 <div class="title">Average time to serialize each update.</div>
 <div class="content">
-<pre class="highlight"><code>TextWire Took an average of 3,119 ns
-JSONWire Took an average of 2,656 ns
-BinaryWire Took an average of 1,990 ns
-DeltaWire Took an average of 608 ns</code></pre>
+<pre class="highlight"><code>TextWire Took an average of 3,446 ns
+JSONWire Took an average of 2,972 ns
+BinaryWire Took an average of 1,473 ns
+DeltaWire Took an average of 554 ns</code></pre>
 </div>
 </div>
 <div class="paragraph">
