@@ -43,20 +43,20 @@ NOTE: Some problems have inherent limits to the number of independant tasks you 
 
 On the surface, Chronicle Queue and Apache Kafka do many of the same things.  They are both high throughput, persisted queues.  What difference do Chronicle's much lower latencies make?
 
-In this benchmark, https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines[Apache Kafka] achieved a throughput of around 400K/ - 800K/s on one machine, with linear scalability to three machines. This is a very good throughput.  However the latency measured 2 ms and the 99%ile was 3 ms.  This means any individual task which must wait for replication before proceeding must wait around 2 milli-seconds, possibly 3 milli-seconds.
+In this benchmark, https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines[Apache Kafka] achieved a throughput of around 400,000/s - 800,000/s on one machine, with linear scalability to three machines. This is a very good throughput.  However the latency measured 2 ms and the 99%ile was 3 ms.  This means any individual task which must wait for replication before proceeding must wait around 2 milli-seconds, or more conservatively 3 milli-seconds.
 
-If the latency is 3 milli-seconds on average, how many independant tasks do you need to have to reach a desired throughput?
+If the latency is 3 milli-seconds, how many independant tasks do you need to have to reach a desired throughput?
 
 image:Chronicle-vs-Kafka-Concurrency.png[]
 
-To achieve higher throughputs, you need more independant tasks. What if you only have 1 to 10 independant tasks?
+To achieve higher throughputs, you need more independant tasks. What if you only have 1 to 100 independant tasks?
 
 image::Chronicle-vs-Kafka-Concurrency-Scaled.png[]
 
-With a small set of tasks, you are not going to achieve a high throughput with a latency of 3 ms.  By comparison if we look at the 99%ile latency of Chroncile Queue synchronous replication, which is between 20 - 40 micro-seconds, you can achieve high throughputs with very few independant tasks.
+With a small set of tasks, you are not going to achieve a high throughput with a latency of 3 ms.  By comparison if we look at the 99%ile latency of Chroncile Queue synchronous replication, which is between https://vanilla-java.github.io/2016/07/20/Latency-for-a-set-Throughput.html[20 - 40 micro-seconds], you can achieve high throughputs with relatively few independant tasks.
 
 |===
-| Independant Tasks | Chronicle Queue Throughput | Apache Kafka Throughput
+| Independant Task(s) | Chronicle Queue Throughput | Apache Kafka Throughput
 | 1 | 50,000 per second | 340 per second 
 | 10 | 290,000 per second | 3,400 per second
 | 100 | 2,000,000 per second (2 servers) | 34,000 per second
@@ -68,6 +68,6 @@ If asynchronous replication is acceptable, then Chronicle Queue has a much lower
 
 == Conclusion
 
-If you have a problem with many thousands of independant tasks, then high parallelism is a relatively simple way to get the throughput you need and the impact of latency is low.  If you have a few tasks, or just one task you can perform at a given moment, latency rather than throughput is critical.
+If you have a problem with many thousands of independant tasks, then high number of tasks "in flight", or customers in the store, is a relatively simple way to get the throughput you need and the impact of latency is low.  If you have a few tasks, or just one task you can perform at a given moment, latency rather than throughput is critical.
 
 
