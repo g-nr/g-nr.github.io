@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469207458986"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469207458986"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469207458986"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469270440987"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469270440987"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469270440987"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469207458986"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469270440987"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html" />
     <meta name="referrer" content="origin" />
@@ -78,14 +78,14 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Microservices in the Chronicle world - Part 1" />
-    <meta property="og:description" content="At a high level, different Microservice strategies have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around: simplicity, simple is fast, flexable and easier to maintain." />
+    <meta property="og:description" content="At a high level, different Microservice strategies have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around: Simplicity- simple is fast, flexable and easier to maintain." />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html" />
     <meta property="article:tag" content="Microservices" />
     <meta property="article:tag" content=" examples" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Microservices in the Chronicle world - Part 1" />
-    <meta name="twitter:description" content="At a high level, different Microservice strategies have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around: simplicity, simple is fast, flexable and easier to maintain." />
+    <meta name="twitter:description" content="At a high level, different Microservice strategies have a lot in common.  They subscribe to the same ideals. When it comes to the details of how they are actually implemented, they can vary. Microservices in the Chronicle world are designed around: Simplicity- simple is fast, flexable and easier to maintain." />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/03/23/Microservices-in-the-Chronicle-world-Part-1.html" />
     
     <script type="application/ld+json">
@@ -195,7 +195,7 @@ null
             <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>At a high level, different Microservice strategies have a lot in common.  They subscribe to the same ideals.
+<p>At a high level, different <strong>Microservice</strong> strategies have a lot in common.  They subscribe to the same ideals.
 When it comes to the details of how they are actually implemented, they can vary.</p>
 </div>
 <div class="paragraph">
@@ -204,13 +204,13 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="ulist">
 <ul>
 <li>
-<p>simplicity, simple is fast, flexable and easier to maintain.</p>
+<p>Simplicity- simple is fast, flexable and easier to maintain.</p>
 </li>
 <li>
-<p>transparent, you can&#8217;t control what you don&#8217;t understand.</p>
+<p>Transparency- you can&#8217;t control what you don&#8217;t understand.</p>
 </li>
 <li>
-<p>reproduceablity, must be in your design to ensure a quality solution.</p>
+<p>Reproduceablity- this must be in your design to ensure a quality solution.</p>
 </li>
 </ul>
 </div>
@@ -219,30 +219,30 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="sect2">
 <h3 id="_what_do_we_mean_by_simple">What do we mean by simple?</h3>
 <div class="paragraph">
-<p>A key part of the microservices design is how messages are passed between services/components. The simplest messages could be called <strong>asynchronous method calls</strong>.</p>
+<p>A key part of the microservices design is how messages are passed between services/components. The simplest messages could be called <em>asynchronous method calls</em>.</p>
 </div>
 <div class="paragraph">
-<p>An asynchronous method call is one which</p>
+<p>An asynchronous method call is one which;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>doesn&#8217;t return anything.</p>
+<p>doesn&#8217;t return anything,</p>
 </li>
 <li>
-<p>doesn&#8217;t alter it&#8217;s arguments.</p>
+<p>doesn&#8217;t alter it&#8217;s arguments;</p>
 </li>
 <li>
-<p>doesn&#8217;t throw any exceptions. (Although the underlying transport could)</p>
+<p>doesn&#8217;t throw any exceptions (although the underlying transport could).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The reason this approach is used, is that the simplest transport is no transport at all.  One component calls another.  This is not only fast (with inlining might not take any time at all), but it is simple to setup, debug and profile.  For most unit tests you don&#8217;t need a real transport so there is no advantage in making the test more complicated than it needs to be.</p>
+<p>The reason this approach is used, is that the simplest transport is no transport at all.  One component calls another.  This is not only fast ( and with inlining might not take any time at all), but it is simple to setup, debug and profile.  For most unit tests you don&#8217;t need a real transport so there is no advantage in making the test more complicated than it needs to be.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_let_s_look_at_an_example">Let&#8217;s look at an example</h3>
+<h3 id="_let_s_look_at_an_example">Let&#8217;s look at an example.</h3>
 <div class="paragraph">
 <p>Say we have a service/component which is taking incremental market data updates. In the simplest case, this could be a market update with only one side, a buy or a sell.  The component could transform this into a full market update combining both the buy and sell price and quantity.</p>
 </div>
@@ -351,7 +351,7 @@ When it comes to the details of how they are actually implemented, they can vary
 <div class="sect2">
 <h3 id="_what_does_abstractmarshallable_provide">What does AbstractMarshallable provide?</h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/OpenHFT/Chronicle-Wire/blob/master/src/main/java/net/openhft/chronicle/wire/AbstractMarshallable.java">AbstractMarshallable</a> class is a convenience class which implements <code>toString()</code>, <code>equals(Object)</code> and <code>hashCode()</code>. It also supports Marshallable&#8217;s <code>writeMarshallable(WireOut)</code> and <code>readMarshallable(WireIn)</code></p>
+<p>The <a href="https://github.com/OpenHFT/Chronicle-Wire/blob/master/src/main/java/net/openhft/chronicle/wire/AbstractMarshallable.java">AbstractMarshallable</a> class is a convenience class which implements <code>toString()</code>, <code>equals(Object)</code> and <code>hashCode()</code>. It also supports Marshallable&#8217;s <code>writeMarshallable(WireOut)</code> and <code>readMarshallable(WireIn)</code>.</p>
 </div>
 <div class="paragraph">
 <p>The default implementations use all the non-static non-transient fields to either print, compare or build a hashCode.</p>
@@ -568,6 +568,14 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_glossery">Glossery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Microservices- Independantly deployable programmes that act as components in a larger network.</p>
+</div>
+</div>
+</div>
           </div>
           <footer class="post-footer">
             <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="post-author">
@@ -647,7 +655,7 @@ it takes almost no time at all to start up the test and debug it in your IDE.  Y
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469207458986"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469270440987"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
