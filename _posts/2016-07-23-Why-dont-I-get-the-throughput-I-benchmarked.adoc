@@ -70,7 +70,9 @@ If asynchronous replication is acceptable, then Chronicle Queue has a much lower
 
 Apache Kafka was designed for web application monitoring.  It is widely used for this purpose today. As such it does the job very well.
 
-However, Chronicle Queue is design to be fast enough to be part of the critical path, recording all the inputs and outputs of your services. Since you are already recording every input and output allowing you to recreate the state of your component at any point, little additional monitoring is required.  It is not a case of; Now our application is in production, how do we monitor it? Chronicle Queue is integral to the working of the application so you know no information is missing or the application wouldn't work.
+However, Chronicle Queue is design to be fast enough to be part of the critical path, recording all the inputs and outputs of your services. Since you are already recording all the data needed to recreate the state of your component at any point, little additional monitoring is required. (System monitoring is still required)  It is not a case of; Now our application is in production, how do we monitor it? Or how do we replay message to recreate an issue? 
+
+Chronicle Queue is integral to the working of the application so you know no information is missing or the application wouldn't work.
 
 == Conclusion
 
