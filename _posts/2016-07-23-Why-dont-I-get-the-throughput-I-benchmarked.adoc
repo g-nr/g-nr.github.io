@@ -66,6 +66,12 @@ To achieve, the benchmark throughput with Kafka, you need a problem which has a 
 
 If asynchronous replication is acceptable, then Chronicle Queue has a much lower latency of 1.2 micro-seconds for the 99%ile.  This means it can support close to one million messages per second with a single thread and only one task at a time. Two threads are enough to get 80 million events per minute which is our benchmark throughput for the E5-2650 v2 server we tested.
 
+== When do I add monitoring to my application?
+
+Apache Kafka was designed for web application monitoring.  It is widely used for this purpose today. As such it does the job very well.
+
+However, Chronicle Queue is design to be fast enough to be part of the critical path, recording all the inputs and outputs of your services. Since you are already recording every input and output allowing you to recreate the state of your component at any point, little additional monitoring is required.  It is not a case of; Now our application is in production, how do we monitor it? Chronicle Queue is integral to the working of the application so you know no information is missing or the application wouldn't work.
+
 == Conclusion
 
 If you have a problem with many thousands of independant tasks, then high number of tasks "in flight", or customers in the store, is a relatively simple way to get the throughput you need and the impact of latency is low.  If you have a few tasks, or just one task you can perform at a given moment, latency rather than throughput is critical.
