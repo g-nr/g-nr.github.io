@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Tue, 26 Jul 2016 11:36:35 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Why don't I get the throughput I benchmarked?]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Tue, 26 Jul 2016 13:51:13 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Why don't I get the throughput I benchmarked?]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>In synthetic benchmarks, you can achieve a high throughput for your system by throwing lots of independant tasks/clients at it to see what the theoretical limit of your system is, however in real world situations, the throughput you achieve is often much, much lower.  One of of the explanations for this comes from <a href="https://en.wikipedia.org/wiki/Little%27s_law">Little&#8217;s Law</a></p>
@@ -2741,17 +2741,17 @@ This is not intended to be an exhaustive list. It is what we reviewed in the fir
 </div>]]></description><link>https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/04/12/A-J-D-B-C-Gateway-Microservice.html</guid><category><![CDATA[Microservices]]></category><category><![CDATA[ JDBC]]></category><category><![CDATA[ Example]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Tue, 12 Apr 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Microservices in the Chronicle World - Part 5]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this part we look at putting this together as collection of services and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services.</p>
+<p>In this part we look at putting a micro service together as a collection of services, and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_building_a_service_wrapper">Building a Service Wrapper</h3>
+<h3 id="_building_a_service_wrapper">Building a Service Wrapper.</h3>
 <div class="paragraph">
-<p>For more complex services we use an EventLoop in Chronicle Threads to manage multiple concurrent tasks. In this example we have only one task so it is simpler to have a custom class to support it.</p>
+<p>For more complex services, we use an EventLoop in Chronicle Threads to manage multiple concurrent tasks. In this example we have only one task, so it is simpler to have a custom class to support it.</p>
 </div>
 <div class="paragraph">
-<p>This class is available here <a href="https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/ServiceWrapper.java">ServiceWrapper</a></p>
+<p>This class is available at <a href="https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/ServiceWrapper.java">ServiceWrapper</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2811,27 +2811,27 @@ This is not intended to be an exhaustive list. It is what we reviewed in the fir
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This Pauser controls the back off strategy which no events are coming through. It will retry once, yield 100 times, then start sleeping from half a millisecond to 10 milli-seconds.</td>
+<td>This Pauser controls the back off strategy in which no events are coming through. It will retry once, yield 100 times, then start sleeping from half a millisecond to 10 milliseconds.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Obtain the type of the parameter for the <code>ServiceHandler</code> and in this case it is a <code>Service</code></td>
+<td>Obtain the type of the parameter for the <code>ServiceHandler</code> and in this case it is a <code>Service</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Create an output queue</td>
+<td>Create an output queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>And pass it to the implementation so it can write to it&#8217;s output queue</td>
+<td>And pass it to the implementation so it can write to it&#8217;s output queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Create a reader for the input queue</td>
+<td>Create a reader for the input queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Start a thread which will read from the <code>serviceIn</code> reader</td>
+<td>Start a thread which will read from the <code>serviceIn</code> reader.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
@@ -2839,7 +2839,7 @@ This is not intended to be an exhaustive list. It is what we reviewed in the fir
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>Read and process one message</td>
+<td>Read and process one message.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="9"></i><b>9</b></td>
@@ -2849,7 +2849,7 @@ This is not intended to be an exhaustive list. It is what we reviewed in the fir
 </div>
 </div>
 <div class="sect2">
-<h3 id="_timing_our_service">Timing our service</h3>
+<h3 id="_timing_our_service">Timing our service.</h3>
 <div class="paragraph">
 <p>A simple service can time itself. This could be implmented as a wrapper, however for a more complex service you can use the builing in history recording and only examine the result at the end.</p>
 </div>
