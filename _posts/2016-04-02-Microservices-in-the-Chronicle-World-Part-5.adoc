@@ -2,13 +2,13 @@
 Peter Lawrey
 :hp-tags: Microservices, latency profile, JLBH
 
-In this part we look at putting this together as collection of services and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services.
+In this part we look at putting a micro service together as a collection of services, and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services.
 
-=== Building a Service Wrapper
+=== Building a Service Wrapper.
 
-For more complex services we use an EventLoop in Chronicle Threads to manage multiple concurrent tasks. In this example we have only one task so it is simpler to have a custom class to support it.
+For more complex services, we use an EventLoop in Chronicle Threads to manage multiple concurrent tasks. In this example we have only one task, so it is simpler to have a custom class to support it.
 
-This class is available here https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/ServiceWrapper.java[ServiceWrapper]
+This class is available at https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/ServiceWrapper.java[ServiceWrapper].
 
 [source, java]
 ----
@@ -63,17 +63,17 @@ public class ServiceWrapper<I extends ServiceHandler> implements Runnable, Close
     }
 }
 ----
-<1> This Pauser controls the back off strategy which no events are coming through. It will retry once, yield 100 times, then start sleeping from half a millisecond to 10 milli-seconds.
-<2> Obtain the type of the parameter for the `ServiceHandler` and in this case it is a `Service`
-<3> Create an output queue
-<4> And pass it to the implementation so it can write to it's output queue
-<5> Create a reader for the input queue
-<6> Start a thread which will read from the `serviceIn` reader
+<1> This Pauser controls the back off strategy in which no events are coming through. It will retry once, yield 100 times, then start sleeping from half a millisecond to 10 milliseconds.
+<2> Obtain the type of the parameter for the `ServiceHandler` and in this case it is a `Service`.
+<3> Create an output queue.
+<4> And pass it to the implementation so it can write to it's output queue.
+<5> Create a reader for the input queue.
+<6> Start a thread which will read from the `serviceIn` reader.
 <7> Bind this thread to an isolated CPU where possible.
-<8> Read and process one message
+<8> Read and process one message.
 <9> `reset()` the pauser if a message came, otherwise call it for a possible pause.
 
-=== Timing our service
+=== Timing our service.
 
 A simple service can time itself. This could be implmented as a wrapper, however for a more complex service you can use the builing in history recording and only examine the result at the end.
 
