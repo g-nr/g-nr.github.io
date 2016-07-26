@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469274987498"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469274987498"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469274987498"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1469541073332"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1469541073332"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1469541073332"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469274987498"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1469541073332"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2016/04/02/Microservices-in-the-Chronicle-World-Part-5.html" />
     <meta name="referrer" content="origin" />
@@ -78,7 +78,7 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Microservices in the Chronicle World - Part 5" />
-    <meta property="og:description" content="In this part we look at putting this together as collection of services and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services. Building a Service Wrapper For more complex services we use an EventLoop in Chronicle Threads" />
+    <meta property="og:description" content="In this part we look at putting a micro service together as a collection of services, and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services. Building a Service Wrapper. For more complex services, we use an EventLoop" />
     <meta property="og:url" content="https://vanilla-java.github.io/2016/04/02/Microservices-in-the-Chronicle-World-Part-5.html" />
     <meta property="article:tag" content="Microservices" />
     <meta property="article:tag" content=" latency profile" />
@@ -86,7 +86,7 @@
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Microservices in the Chronicle World - Part 5" />
-    <meta name="twitter:description" content="In this part we look at putting this together as collection of services and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services. Building a Service Wrapper For more complex services we use an EventLoop in Chronicle Threads" />
+    <meta name="twitter:description" content="In this part we look at putting a micro service together as a collection of services, and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services. Building a Service Wrapper. For more complex services, we use an EventLoop" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2016/04/02/Microservices-in-the-Chronicle-World-Part-5.html" />
     
     <script type="application/ld+json">
@@ -176,7 +176,7 @@ null
                 <a href="#disqus_thread" data-disqus-identifier="">Comments</a>
               </li>
             </ul>
-            <h1 itemprop="name headline" class="post-title"><a href="/" itemprop="url" data-pjax title="Microservices in the Chronicle World - Part 5">Microservices in the Chronicle World - Part 5</a></h1>
+            <h1 itemprop="name headline" class="post-title"><a href="https://vanilla-java.github.io/2016/04/02/Microservices-in-the-Chronicle-World-Part-5.html" itemprop="url" data-pjax title="Microservices in the Chronicle World - Part 5">Microservices in the Chronicle World - Part 5</a></h1>
             <!--h2 itemprop="about" class="post-subtitle"></h2-->
           </header>
           <aside class="post-side">
@@ -196,17 +196,17 @@ null
             <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this part we look at putting this together as collection of services and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services.</p>
+<p>In this part we look at putting a micro service together as a collection of services, and consider how we can evaluate the performance of these services.  We introduce JLBH (Java Latency Benchmark Harness) to test these services.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_building_a_service_wrapper">Building a Service Wrapper</h3>
+<h3 id="_building_a_service_wrapper">Building a Service Wrapper.</h3>
 <div class="paragraph">
-<p>For more complex services we use an EventLoop in Chronicle Threads to manage multiple concurrent tasks. In this example we have only one task so it is simpler to have a custom class to support it.</p>
+<p>For more complex services, we use an EventLoop in Chronicle Threads to manage multiple concurrent tasks. In this example we have only one task, so it is simpler to have a custom class to support it.</p>
 </div>
 <div class="paragraph">
-<p>This class is available here <a href="https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/ServiceWrapper.java">ServiceWrapper</a></p>
+<p>This class is available at <a href="https://github.com/Vanilla-Java/Microservices/blob/master/src/main/java/net/openhft/samples/microservices/ServiceWrapper.java">ServiceWrapper</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -266,27 +266,27 @@ null
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This Pauser controls the back off strategy which no events are coming through. It will retry once, yield 100 times, then start sleeping from half a millisecond to 10 milli-seconds.</td>
+<td>This Pauser controls the back off strategy in which no events are coming through. It will retry once, yield 100 times, then start sleeping from half a millisecond to 10 milliseconds.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Obtain the type of the parameter for the <code>ServiceHandler</code> and in this case it is a <code>Service</code></td>
+<td>Obtain the type of the parameter for the <code>ServiceHandler</code> and in this case it is a <code>Service</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Create an output queue</td>
+<td>Create an output queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>And pass it to the implementation so it can write to it&#8217;s output queue</td>
+<td>And pass it to the implementation so it can write to it&#8217;s output queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Create a reader for the input queue</td>
+<td>Create a reader for the input queue.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Start a thread which will read from the <code>serviceIn</code> reader</td>
+<td>Start a thread which will read from the <code>serviceIn</code> reader.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
@@ -294,7 +294,7 @@ null
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>Read and process one message</td>
+<td>Read and process one message.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="9"></i><b>9</b></td>
@@ -304,7 +304,7 @@ null
 </div>
 </div>
 <div class="sect2">
-<h3 id="_timing_our_service">Timing our service</h3>
+<h3 id="_timing_our_service">Timing our service.</h3>
 <div class="paragraph">
 <p>A simple service can time itself. This could be implmented as a wrapper, however for a more complex service you can use the builing in history recording and only examine the result at the end.</p>
 </div>
@@ -624,7 +624,7 @@ Every message is being persisted at each stage and is available on restart. As t
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469274987498"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1469541073332"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
