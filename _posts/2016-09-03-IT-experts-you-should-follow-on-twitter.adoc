@@ -1,0 +1,173 @@
+= IT experts you should follow on twitter
+Peter Lawrey
+:hp-tags: Twitter
+
+When I read lists like this they always seem to be male dominated, so here is a list of experts I follow which isn't.
+
+=== Sara Rey Chipps
+
+Just a girl, standing in front of a microprocessor, asking it to love her. I made @girldevelopit. I'm making @jewelbots. Pull requests welcomed. 30 K followers
+
+++++
+<a href="https://twitter.com/SaraJChipps" class="twitter-follow-button" data-show-count="false">Follow @SaraJChipps</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Kelly Sommers
+
+4x Windows Azure MVP & Former 2x DataStax MVP for Apache Cassandra, Backend brat, big data, distributed diva. Relentless learner. I void warranties. 25.7K followers
+
+++++
+<a href="https://twitter.com/kellabyte" class="twitter-follow-button" data-show-count="false">Follow @kellabyte</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Iris Classon
+
+The world’s happiest .NET developer & Microsoft C# MVP! More energy than a 5 year old, talks more than your grandmother, and does anything to make you smile! 18.7K followers
+
+++++
+<a href="https://twitter.com/IrisClasson" class="twitter-follow-button" data-show-count="false">Follow @IrisClasson</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Jessica Kerr
+
+Functional developer, speaker, mother, crazy nut. Stripe. Learning and growing. All tweets are mine, licensed CC0. she/her. 16.6K followers
+
+++++
+<a href="https://twitter.com/jessitron" class="twitter-follow-button" data-show-count="false">Follow @jessitron</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Jen Myers
+
+Technologist & writer. Curriculum director at @pluralsight. Advisor at @girldevelopit. Founder of @codecupcakeschi. Likes adventure, changing the world, otters. 15.7K followers
+
+++++
+<a href="https://twitter.com/antiheroine" class="twitter-follow-button" data-show-count="false">Follow @antiheroine</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Lucy Leiderman
+
+Funnier than you'd expect. Full-stack growth marketer. Building @helloretreaver. Scrum master. I have 5 minutes, come say hi. 13.2K followers
+
+++++
+<a href="https://twitter.com/lucyleid" class="twitter-follow-button" data-show-count="false">Follow @lucyleid</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== ☭ 🚀 🐶 Bodil  🐶 🚀☭
+
+The Hound of the SJWs. 11.1K followers
+
+++++
+<a href="https://twitter.com/bodil" class="twitter-follow-button" data-show-count="false">Follow @bodil</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Femgineer
+
+We empower techies and provide courses and workshops to: educate, empower, and encourage professionals in the high-tech industry. 10K followers
+
+++++
+<a href="https://twitter.com/femgineer" class="twitter-follow-button" data-show-count="false">Follow @femgineer</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Trisha Gee
+
+Coder/blogger/speaker, working for JetBrains. Human. More or less.
+
+++++
+<a href="https://twitter.com/trisha_gee" class="twitter-follow-button" data-show-count="false">Follow @trisha_gee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Maxime Chevalier
+
+PhD in compiler design, dynamic languages and optimization. Interested in programming languages, graphics, electronics, music and DIY. All opinions are my own. 4.7K followers
+
+++++
+<a href="https://twitter.com/Love2Code" class="twitter-follow-button" data-show-count="false">Follow @Love2Code</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== fabianenardon
+
+Data Scientist, Java Champion and impossible projects expert. Founder of http://toolscloud.com  and partner at http://tailtarget.com 
+
+++++
+<a href="https://twitter.com/fabianenardon" class="twitter-follow-button" data-show-count="false">Follow @fabianenardon</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Susan Potter
+
+Post-postmodern infrastructure engineer (Scala, Haskell, Nix) obsessed with finance, Charlotte Brontë, bad pop, and abstract algebra. 4.0K followers
+
+++++
+<a href="https://twitter.com/SusanPotter" class="twitter-follow-button" data-show-count="false">Follow @SusanPotter</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== script kitty
+
+I write the softest software you've ever touched @uber engineering. I wanna be an indie game dev when I grow up. oh, and kelly is my middle name 4.0K followers
+
+++++
+<a href="https://twitter.com/marthakelly" class="twitter-follow-button" data-show-count="false">Follow @marthakelly</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Stacey Mason
+
+Researcher/creator of games & playable stories. Twitch critic. Contributor: @cerebralarcade, @ScholarsPlay, @igdafoundation Prev: @zynga, @eastgate 3.8K followers
+
+++++
+<a href="https://twitter.com/stcymsn" class="twitter-follow-button" data-show-count="false">Follow @stcymsn</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== wendydevolder
+
+Helping #community learn and share skills to write better software by producing talks, conferences, magazine, workshops, skillscasts on #agile #opensource 3.7 K followers
+
+++++
+<a href="https://twitter.com/wendydevolder" class="twitter-follow-button" data-show-count="false">Follow @wendydevolder</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Karen Catlin
+
+Advocate for women in tech. Leadership coach, TEDx speaker, co-author of Present! Board member @TheCLUBSV. Former VP @Adobe. Happy mom. 2.6K followers
+
+++++
+<a href="https://twitter.com/kecatlin" class="twitter-follow-button" data-show-count="false">Follow @kecatlin</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Heather VanCura
+
+Community Builder, Connector, Java Connoisseur (for JCP tweets see @jcp_org); Women & Girls in Tech, Open Source, Fitness, Fashion, Fun.
+
+++++
+<a href="https://twitter.com/heathervc" class="twitter-follow-button" data-show-count="false">Follow @heathervc</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Aysylu Greenberg
+
+Programmer, Artist, Lifelong Learner, distributed infrastructure @google
+
+++++
+<a href="https://twitter.com/aysylu22" class="twitter-follow-button" data-show-count="false">Follow @Aysylu22</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Holly Cummins
+
+IBMer, developer, author, hat-hacker and duvet-cover-maker. My views are my own.
+
+++++
+<a href="https://twitter.com/holly_cummins" class="twitter-follow-button" data-show-count="false">Follow @holly_cummins</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Kasia Mrowca
+
+Product magician, IT passionate, agile & lean enthusiast, PhD candidate, conference junkie. Love skiing and hiking :)
+
+++++
+<a href="https://twitter.com/MrowcaKasia" class="twitter-follow-button" data-show-count="false">Follow @MrowcaKasia</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== Monica Beckwith
+
+(Java/JVM/GC) performance consultant. Mother of 2 awesome kids. Enjoys country living. Java community editor for InfoQ.
+
+++++
+<a href="https://twitter.com/mon_beck" class="twitter-follow-button" data-show-count="false">Follow @mon_beck</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
