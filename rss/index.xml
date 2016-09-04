@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sat, 03 Sep 2016 07:09:32 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[IT experts you should follow on twitter]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sun, 04 Sep 2016 07:45:27 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[IT experts you should follow on twitter]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>When I read lists like this they always seem to be male dominated, so here is a list of experts I follow which isn&#8217;t.</p>
@@ -62,9 +62,16 @@
 <a href="https://twitter.com/femgineer" class="twitter-follow-button" data-show-count="false">Follow @femgineer</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 <div class="sect2">
+<h3 id="_caitie_mccaffrey">Caitie McCaffrey</h3>
+<div class="paragraph">
+<p>Backend Brat &amp; Distributed Systems Diva @twitter Formerly #343i building @Halo Services with @projectorleans. Valkyrie AF. 9.7K followers</p>
+</div>
+<a href="https://twitter.com/caitie" class="twitter-follow-button" data-show-count="false">Follow @caitie</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<div class="sect2">
 <h3 id="_trisha_gee">Trisha Gee</h3>
 <div class="paragraph">
-<p>Coder/blogger/speaker, working for JetBrains. Human. More or less.</p>
+<p>Coder/blogger/speaker, working for JetBrains. Human. More or less. 7.7K followers</p>
 </div>
 <a href="https://twitter.com/trisha_gee" class="twitter-follow-button" data-show-count="false">Follow @trisha_gee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
@@ -118,6 +125,13 @@
 <a href="https://twitter.com/kecatlin" class="twitter-follow-button" data-show-count="false">Follow @kecatlin</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 <div class="sect2">
+<h3 id="_agn_s_crepet">Agnès Crepet</h3>
+<div class="paragraph">
+<p>Java Champion &amp; JS Newbie, @ninjasquad Co-Founder, @MINES_StEtienne CS Teacher &amp; Agile Learning Facilitator, @mixIT_lyon Co-Founder, @duchessfr Leader</p>
+</div>
+<a href="https://twitter.com/agnes_crepet" class="twitter-follow-button" data-show-count="false">Follow @agnes_crepet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<div class="sect2">
 <h3 id="_heather_vancura">Heather VanCura</h3>
 <div class="paragraph">
 <p>Community Builder, Connector, Java Connoisseur (for JCP tweets see @jcp_org); Women &amp; Girls in Tech, Open Source, Fitness, Fashion, Fun.</p>
@@ -151,6 +165,9 @@
 <p>(Java/JVM/GC) performance consultant. Mother of 2 awesome kids. Enjoys country living. Java community editor for InfoQ.</p>
 </div>
 <a href="https://twitter.com/mon_beck" class="twitter-follow-button" data-show-count="false">Follow @mon_beck</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="paragraph">
+<p>For now, I have limited the list to those with at least 1000 followers, but I will continue to update it.</p>
+</div>
 </div>]]></description><link>https://vanilla-java.github.io/2016/09/03/IT-experts-you-should-follow-on-twitter.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2016/09/03/IT-experts-you-should-follow-on-twitter.html</guid><category><![CDATA[Twitter]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Sat, 03 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Why don't I get the throughput I benchmarked?]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
