@@ -68,9 +68,17 @@ We empower techies and provide courses and workshops to: educate, empower, and e
 <a href="https://twitter.com/femgineer" class="twitter-follow-button" data-show-count="false">Follow @femgineer</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Caitie McCaffrey
+
+Backend Brat & Distributed Systems Diva @twitter Formerly #343i building @Halo Services with @projectorleans. Valkyrie AF. 9.7K followers
+
+++++
+<a href="https://twitter.com/caitie" class="twitter-follow-button" data-show-count="false">Follow @caitie</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Trisha Gee
 
-Coder/blogger/speaker, working for JetBrains. Human. More or less.
+Coder/blogger/speaker, working for JetBrains. Human. More or less. 7.7K followers
 
 ++++
 <a href="https://twitter.com/trisha_gee" class="twitter-follow-button" data-show-count="false">Follow @trisha_gee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -132,6 +140,14 @@ Advocate for women in tech. Leadership coach, TEDx speaker, co-author of Present
 <a href="https://twitter.com/kecatlin" class="twitter-follow-button" data-show-count="false">Follow @kecatlin</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Agnès Crepet
+
+Java Champion & JS Newbie, @ninjasquad Co-Founder, @MINES_StEtienne CS Teacher & Agile Learning Facilitator, @mixIT_lyon Co-Founder, @duchessfr Leader
+
+++++
+<a href="https://twitter.com/agnes_crepet" class="twitter-follow-button" data-show-count="false">Follow @agnes_crepet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Heather VanCura
 
 Community Builder, Connector, Java Connoisseur (for JCP tweets see @jcp_org); Women & Girls in Tech, Open Source, Fitness, Fashion, Fun.
@@ -171,3 +187,5 @@ Product magician, IT passionate, agile & lean enthusiast, PhD candidate, confere
 ++++
 <a href="https://twitter.com/mon_beck" class="twitter-follow-button" data-show-count="false">Follow @mon_beck</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
+
+For now, I have limited the list to those with at least 1000 followers, but I will continue to update it.
