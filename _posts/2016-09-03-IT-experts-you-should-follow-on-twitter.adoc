@@ -164,6 +164,15 @@ Advocate for women in tech. Leadership coach, TEDx speaker, co-author of Present
 <a href="https://twitter.com/kecatlin" class="twitter-follow-button" data-show-count="false">Follow @kecatlin</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Ludwine Probst
+
+Data Engineer / Scientist 💻 open source contributor @@ousmotards 🏍 @L@diesCodeParis co-founder 🌍 Tech blogger #TechBeyondBorders 2.6K followers
+
+++++
+<a href="https://twitter.com/nivdul" class="twitter-follow-button" data-show-count="false">Follow @nivdul</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+
 === Stéphanie Hertrich
 
 Developer Evangelist Girl @Microsoft, Technical Angel for #startup ❤️, I'm a coder and a speaker for Tech event, Proud @duchessfr
