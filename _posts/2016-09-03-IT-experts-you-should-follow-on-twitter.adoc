@@ -188,6 +188,14 @@ Product magician, IT passionate, agile & lean enthusiast, PhD candidate, confere
 <a href="https://twitter.com/MrowcaKasia" class="twitter-follow-button" data-show-count="false">Follow @MrowcaKasia</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Amira LAKHAL
+
+#Agile #Java #Scala #Developer at @Valtech_fr || one of @duchessfr leaders || running addict #WomenInTech #yesWeCode
+
+++++
+<a href="https://twitter.com/MiraLak" class="twitter-follow-button" data-show-count="false">Follow @MiraLak</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Monica Beckwith
 
 (Java/JVM/GC) performance consultant. Mother of 2 awesome kids. Enjoys country living. Java community editor for InfoQ.
