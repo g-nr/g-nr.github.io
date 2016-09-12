@@ -237,4 +237,12 @@ Product magician, IT passionate, agile & lean enthusiast, PhD candidate, confere
 <a href="https://twitter.com/mon_beck" class="twitter-follow-button" data-show-count="false">Follow @mon_beck</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Anne Gabrillagues
+
+Agile coach / CSM / CSPO at @ippontech - interested in everything about #agile #lean #designThinking #devops #ux ... - member of @LeanKanbanFr team
+
+++++
+<a href="https://twitter.com/agabrillagues" class="twitter-follow-button" data-show-count="false">Follow @agabrillagues</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 For now, I have limited the list to those with at least 1000 followers, but I will continue to update it.
