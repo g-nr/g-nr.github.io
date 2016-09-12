@@ -140,6 +140,14 @@ Helping #community learn and share skills to write better software by producing 
 <a href="https://twitter.com/wendydevolder" class="twitter-follow-button" data-show-count="false">Follow @wendydevolder</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Mathilde Lemee
+
+CoFounder @SoFizzApp - L'appli pour partager tes activités à proximité avec de nouvelles personnes ! CoFounder @duchessfr - Réseau de femmes devs 2.8K followers
+
+++++
+<a href="https://twitter.com/MathildeLemee" class="twitter-follow-button" data-show-count="false">Follow @MathildeLemee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Karen Catlin
 
 Advocate for women in tech. Leadership coach, TEDx speaker, co-author of Present! Board member @TheCLUBSV. Former VP @Adobe. Happy mom. 2.6K followers
