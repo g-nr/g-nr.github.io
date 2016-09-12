@@ -148,6 +148,15 @@ CoFounder @SoFizzApp - L'appli pour partager tes activités à proximité avec d
 <a href="https://twitter.com/MathildeLemee" class="twitter-follow-button" data-show-count="false">Follow @MathildeLemee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Tiffany Conroy
+
+Interaction designer. Developer. Cutter of bullshit. Made @weareallawesome. Micro diary: @whattiffanydid. she/her. Has strong opinions, loosely held.
+
+++++
+<a href="https://twitter.com/theophani" class="twitter-follow-button" data-show-count="false">Follow @theophani</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+
 === Karen Catlin
 
 Advocate for women in tech. Leadership coach, TEDx speaker, co-author of Present! Board member @TheCLUBSV. Former VP @Adobe. Happy mom. 2.6K followers
