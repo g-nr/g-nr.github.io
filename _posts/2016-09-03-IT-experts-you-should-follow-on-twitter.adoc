@@ -172,6 +172,16 @@ Data Engineer / Scientist 💻 open source contributor @@ousmotards 🏍 @L@dies
 <a href="https://twitter.com/nivdul" class="twitter-follow-button" data-show-count="false">Follow @nivdul</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+== 1+K followers
+
+=== Claude Falguière
+
+Java, Performance, DevOps, Clojure, DataScience, funny ways to learn programming, Devoxx4Kids, ParisJUG, Devoxx, Duchess
+
+++++
+<a href="https://twitter.com/cfalguiere" class="twitter-follow-button" data-show-count="false">Follow @cfalguiere</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 
 === Stéphanie Hertrich
 
@@ -221,6 +231,14 @@ Product magician, IT passionate, agile & lean enthusiast, PhD candidate, confere
 <a href="https://twitter.com/MrowcaKasia" class="twitter-follow-button" data-show-count="false">Follow @MrowcaKasia</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Katia Aresti
+
+Freelance Developer, Open-source enthusiast, drama and dance passionate. @duchessfr Paris MUG
+
+++++
+<a href="https://twitter.com/karesti" class="twitter-follow-button" data-show-count="false">Follow @karesti</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Amira LAKHAL
 
 #Agile #Java #Scala #Developer at @Valtech_fr || one of @duchessfr leaders || running addict #WomenInTech #yesWeCode
@@ -245,4 +263,4 @@ Agile coach / CSM / CSPO at @ippontech - interested in everything about #agile #
 <a href="https://twitter.com/agabrillagues" class="twitter-follow-button" data-show-count="false">Follow @agabrillagues</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
-For now, I have limited the list to those with at least 1000 followers, but I will continue to update it.
+NOTE: For now, I have limited the list to those with at least 1000 followers, but I will continue to update it.
