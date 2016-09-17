@@ -148,7 +148,7 @@ CoFounder @SoFizzApp - L'appli pour partager tes activités à proximité avec d
 <a href="https://twitter.com/MathildeLemee" class="twitter-follow-button" data-show-count="false">Follow @MathildeLemee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
-===Andrea McAts
+=== Andrea McAts
 
 All tweets about Programming. For everything else @roundcrisis 2.7K followers
 
