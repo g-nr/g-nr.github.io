@@ -150,7 +150,7 @@ CoFounder @SoFizzApp - L'appli pour partager tes activités à proximité avec d
 
 ===Andrea McAts
 
-All tweets about Programming. For everything else @roundcrisis
+All tweets about Programming. For everything else @roundcrisis 2.7K followers
 
 ++++
 <a href="https://twitter.com/silverSpoon" class="twitter-follow-button" data-show-count="false">Follow @silverSpoon</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
