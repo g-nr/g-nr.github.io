@@ -148,6 +148,14 @@ CoFounder @SoFizzApp - L'appli pour partager tes activités à proximité avec d
 <a href="https://twitter.com/MathildeLemee" class="twitter-follow-button" data-show-count="false">Follow @MathildeLemee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+===Andrea McAts
+
+All tweets about Programming. For everything else @roundcrisis
+
+++++
+<a href="https://twitter.com/silverSpoon" class="twitter-follow-button" data-show-count="false">Follow @silverSpoon</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Tiffany Conroy
 
 Interaction designer. Developer. Cutter of bullshit. Made @weareallawesome. Micro diary: @whattiffanydid. she/her. Has strong opinions, loosely held.
