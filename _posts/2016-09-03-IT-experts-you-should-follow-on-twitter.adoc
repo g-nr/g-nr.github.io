@@ -86,7 +86,7 @@ Coder/blogger/speaker, working for JetBrains. Human. More or less. 7.7K follower
 
 === Jen Golbeck
 
-Prof at Univ. of MD., Computer Scientist. Tweets about social media, research, zombies. My new book is Social Media Investigation -how to track people online!
+Prof at Univ. of MD., Computer Scientist. Tweets about social media, research, zombies. My new book is Social Media Investigation -how to track people online! 5.9K followers
 
 ++++
 <a href="https://twitter.com/jengolbeck" class="twitter-follow-button" data-show-count="false">Follow @jengolbeck</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -94,7 +94,7 @@ Prof at Univ. of MD., Computer Scientist. Tweets about social media, research, z
 
 === Yara M H Senger
 
-Yara is President of SouJava and co-founder and director of GlobalCode, the largest Java training company in Latin America, currently based in 13 different cities. 5.7K
+Yara is President of SouJava and co-founder and director of GlobalCode, the largest Java training company in Latin America, currently based in 13 different cities. 5.7K followers
 
 ++++
 <a href="https://twitter.com/yarasenger" class="twitter-follow-button" data-show-count="false">Follow @yarasenger</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -110,7 +110,7 @@ PhD in compiler design, dynamic languages and optimization. Interested in progra
 
 === fabianenardon
 
-Data Scientist, Java Champion and impossible projects expert. Founder of http://toolscloud.com  and partner at http://tailtarget.com 4.1K
+Data Scientist, Java Champion and impossible projects expert. Founder of http://toolscloud.com  and partner at http://tailtarget.com 4.1K followers
 
 ++++
 <a href="https://twitter.com/fabianenardon" class="twitter-follow-button" data-show-count="false">Follow @fabianenardon</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
