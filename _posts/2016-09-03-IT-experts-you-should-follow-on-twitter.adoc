@@ -84,6 +84,14 @@ Coder/blogger/speaker, working for JetBrains. Human. More or less. 7.7K follower
 <a href="https://twitter.com/trisha_gee" class="twitter-follow-button" data-show-count="false">Follow @trisha_gee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Jen Golbeck
+
+Prof at Univ. of MD., Computer Scientist. Tweets about social media, research, zombies. My new book is Social Media Investigation -how to track people online!
+
+++++
+<a href="https://twitter.com/jengolbeck" class="twitter-follow-button" data-show-count="false">Follow @jengolbeck</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Yara M H Senger
 
 Yara is President of SouJava and co-founder and director of GlobalCode, the largest Java training company in Latin America, currently based in 13 different cities. 5.7K
