@@ -12,6 +12,14 @@ Just a girl, standing in front of a microprocessor, asking it to love her. I mad
 <a href="https://twitter.com/SaraJChipps" class="twitter-follow-button" data-show-count="false">Follow @SaraJChipps</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== jessfraz
+
+I contribute to open source software for fun and as my job. 'Weird sun beam of awesome.' http://git.j3ss.co 21.7k followers
+
+++++
+<a href="https://twitter.com/jessfraz" class="twitter-follow-button" data-show-count="false">Follow @jessfraz</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Kelly Sommers
 
 4x Windows Azure MVP & Former 2x DataStax MVP for Apache Cassandra, Backend brat, big data, distributed diva. Relentless learner. I void warranties. 25.7K followers
