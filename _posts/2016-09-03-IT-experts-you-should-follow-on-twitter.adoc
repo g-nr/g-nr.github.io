@@ -196,6 +196,14 @@ Data Engineer / Scientist 💻 open source contributor @@ousmotards 🏍 @L@dies
 <a href="https://twitter.com/nivdul" class="twitter-follow-button" data-show-count="false">Follow @nivdul</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Amy Chen
+
+Ramblings of a 20 something software engineer. 2.0K followers
+
+++++
+<a href="https://twitter.com/TheAmyDance" class="twitter-follow-button" data-show-count="false">Follow @TheAmyDance</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 == 1+K followers
 
 === Claude Falguière
