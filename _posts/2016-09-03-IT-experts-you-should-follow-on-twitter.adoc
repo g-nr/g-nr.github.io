@@ -116,6 +116,13 @@ Yara is President of SouJava and co-founder and director of GlobalCode, the larg
 <a href="https://twitter.com/yarasenger" class="twitter-follow-button" data-show-count="false">Follow @yarasenger</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Lynn Langit
+Cloud architect who also codes, prefers AWS & GCP.  5.3K followers
+
+++++
+<a href="https://twitter.com/lynnlangit" class="twitter-follow-button" data-show-count="false">Follow @lynnlangit</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Maxime Chevalier
 
 PhD in compiler design, dynamic languages and optimization. Interested in programming languages, graphics, electronics, music and DIY. All opinions are my own. 4.7K followers
