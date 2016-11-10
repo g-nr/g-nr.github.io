@@ -20,6 +20,14 @@ Just a girl, standing in front of a microprocessor, asking it to love her. I mad
 <a href="https://twitter.com/kellabyte" class="twitter-follow-button" data-show-count="false">Follow @kellabyte</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Julie Lerman
+
+Vermont Geekette, DDD, .NET (& EF) Mentor, Author, MS MVP, MS Regional Director, VTdotNET, Pluralsight, MSDN Mag. Talk to me about mentoring your dev team! 22.5K
+
+++++
+<a href="https://twitter.com/julielerman" class="twitter-follow-button" data-show-count="false">Follow @julielerman</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === jessfraz
 
 I contribute to open source software for fun and as my job. 'Weird sun beam of awesome.' http://git.j3ss.co 21.7k followers
