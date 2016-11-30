@@ -240,6 +240,8 @@ I write the softest software you've ever touched @uber engineering. I wanna be a
 
 Researcher/creator of games & playable stories. Twitch critic. Contributor: @cerebralarcade, @ScholarsPlay, @igdafoundation Prev: @zynga, @eastgate 3.8K followers
 
+http://www.staceymason.net/[Stacey Mason's Home Page]
+
 ++++
 <a href="https://twitter.com/stcymsn" class="twitter-follow-button" data-show-count="false">Follow @stcymsn</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -247,6 +249,8 @@ Researcher/creator of games & playable stories. Twitch critic. Contributor: @cer
 === wendydevolder
 
 Helping #community learn and share skills to write better software by producing talks, conferences, magazine, workshops, skillscasts on #agile #opensource 3.7 K followers
+
+https://www.youtube.com/watch?v=uSRzhe_fzzk[What is Skills Matter] Wendy Devolder is the CEO of Skills Matter.
 
 ++++
 <a href="https://twitter.com/wendydevolder" class="twitter-follow-button" data-show-count="false">Follow @wendydevolder</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -256,6 +260,8 @@ Helping #community learn and share skills to write better software by producing 
 
 CoFounder @SoFizzApp - L'appli pour partager tes activités à proximité avec de nouvelles personnes ! CoFounder @duchessfr - Réseau de femmes devs 2.8K followers
 
+http://www.duchess-france.org/[Duchess France - Women in Tech] "Mathilde Rigabert Lemée [is a] co-founder and active member of Duchess France"
+
 ++++
 <a href="https://twitter.com/MathildeLemee" class="twitter-follow-button" data-show-count="false">Follow @MathildeLemee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -263,6 +269,8 @@ CoFounder @SoFizzApp - L'appli pour partager tes activités à proximité avec d
 === Andrea McAts
 
 All tweets about Programming. For everything else @roundcrisis 2.7K followers
+
+http://www.roundcrisis.com/[Andrea McAts' Blog]
 
 ++++
 <a href="https://twitter.com/silverSpoon" class="twitter-follow-button" data-show-count="false">Follow @silverSpoon</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -272,6 +280,12 @@ All tweets about Programming. For everything else @roundcrisis 2.7K followers
 
 Interaction designer. Developer. Cutter of bullshit. Made @weareallawesome. Micro diary: @whattiffanydid. she/her. Has strong opinions, loosely held.
 
+https://www.youtube.com/watch?v=f_J8mXgavBs[Tiffany Conroy: Workplace confidence]
+
+https://www.youtube.com/watch?v=_qzLmsaUwOs[Tiffany Conroy, Beautiful authentication: Tear down the barbed wire]
+
+https://speakerdeck.com/theophani[Talks by Tiffany Conroy]
+
 ++++
 <a href="https://twitter.com/theophani" class="twitter-follow-button" data-show-count="false">Follow @theophani</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -279,6 +293,14 @@ Interaction designer. Developer. Cutter of bullshit. Made @weareallawesome. Micr
 === Karen Catlin
 
 Advocate for women in tech. Leadership coach, TEDx speaker, co-author of Present! Board member @TheCLUBSV. Former VP @Adobe. Happy mom. 2.6K followers
+
+https://karencatlin.com/[Karen Catlin's Home Page] "Advocating for women in the tech industry"
+
+http://www.slideshare.net/KarenCatlin[Karen Catlin's presentations]
+
+https://www.youtube.com/watch?v=VTBWPTp1Rrk[Poornima Vijayashanker & Karen Catlin on Mentoring]
+
+https://www.youtube.com/watch?v=7_EeG0vLCi8[A Techie's Guide to Public Speaking Karen Catlin]
 
 ++++
 <a href="https://twitter.com/kecatlin" class="twitter-follow-button" data-show-count="false">Follow @kecatlin</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -288,6 +310,10 @@ Advocate for women in tech. Leadership coach, TEDx speaker, co-author of Present
 
 Data Engineer / Scientist 💻 open source contributor @@ousmotards 🏍 @L@diesCodeParis co-founder 🌍 Tech blogger #TechBeyondBorders 2.6K followers
 
+https://nivdul.wordpress.com/[Ludwine Probst's Blog]
+
+https://www.youtube.com/watch?v=wfSIpkRaEPM[Tech Beyond Borders by Ludwine Probst]
+
 ++++
 <a href="https://twitter.com/nivdul" class="twitter-follow-button" data-show-count="false">Follow @nivdul</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -295,6 +321,8 @@ Data Engineer / Scientist 💻 open source contributor @@ousmotards 🏍 @L@dies
 === Amy Chen
 
 Ramblings of a 20 something software engineer. 2.0K followers
+
+https://medium.com/@amy[Amy Chen's Blog]
 
 ++++
 <a href="https://twitter.com/TheAmyDance" class="twitter-follow-button" data-show-count="false">Follow @TheAmyDance</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -403,3 +431,9 @@ Ecuatoriana-Española-American, #badass #usualsuspect #iloveourITcommunity. Brut
 <p/>
 ++++
 NOTE: For now, I have limited the list to those with at least 1000 followers, but I will continue to update it.
+
+== Groups supporting women in tech
+
+=== IEEE Women in Engineering
+
+https://www.youtube.com/channel/UClrcXvuwAbpdE6o9NUXaLxA[IEEE Women in Engineering YouTube page]
