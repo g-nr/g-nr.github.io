@@ -128,6 +128,8 @@ https://www.youtube.com/watch?v=3_YzTL5yrFQ[Bodil Stokke - Reactive Game Develop
 
 We empower techies and provide courses and workshops to: educate, empower, and encourage professionals in the high-tech industry. 10K followers
 
+https://www.youtube.com/channel/UCr3v8cEC5IGfWBS03PpsfKw[Femginerr's YouTube Channel]
+
 ++++
 <a href="https://twitter.com/femgineer" class="twitter-follow-button" data-show-count="false">Follow @femgineer</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -135,6 +137,10 @@ We empower techies and provide courses and workshops to: educate, empower, and e
 === Caitie McCaffrey
 
 Backend Brat & Distributed Systems Diva @twitter Formerly #343i building @Halo Services with @projectorleans. Valkyrie AF. 9.7K followers
+
+https://caitiem.com/[CaitieM's Blog]
+
+https://speakerdeck.com/caitiem20[Talks by Caitie McCaffrey]
 
 ++++
 <a href="https://twitter.com/caitie" class="twitter-follow-button" data-show-count="false">Follow @caitie</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -144,6 +150,14 @@ Backend Brat & Distributed Systems Diva @twitter Formerly #343i building @Halo S
 
 Coder/blogger/speaker, working for JetBrains. Human. More or less. 7.7K followers
 
+https://trishagee.github.io/[Trisha Gee's Home Page]
+
+http://mechanitis.blogspot.co.uk/[Trisha Gee's Blog]
+
+https://www.infoq.com/author/Trisha-Gee[Trisha Gee's content on InfoQ]
+
+https://www.youtube.com/watch?v=XOWZ0Zr0HGY[Interview with Trisha Gee]
+
 ++++
 <a href="https://twitter.com/trisha_gee" class="twitter-follow-button" data-show-count="false">Follow @trisha_gee</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -151,6 +165,12 @@ Coder/blogger/speaker, working for JetBrains. Human. More or less. 7.7K follower
 === Jen Golbeck
 
 Prof at Univ. of MD., Computer Scientist. Tweets about social media, research, zombies. My new book is Social Media Investigation -how to track people online! 5.9K followers
+
+http://jengolbeck.com/[Jen Golbeck's Home Page]
+
+http://www.cs.umd.edu/~golbeck/[Jennifer Golbeck's Work Page]
+
+https://en.wikipedia.org/wiki/Jen_Golbeck[Jen Golbeck's Wikipedia Page]
 
 ++++
 <a href="https://twitter.com/jengolbeck" class="twitter-follow-button" data-show-count="false">Follow @jengolbeck</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -160,12 +180,19 @@ Prof at Univ. of MD., Computer Scientist. Tweets about social media, research, z
 
 Yara is President of SouJava and co-founder and director of GlobalCode, the largest Java training company in Latin America, currently based in 13 different cities. 5.7K followers
 
+https://www.youtube.com/channel/UCdgpYryLQ8I5ZqNRb010K0g[GlobalCode YouTube Channel]
+
 ++++
 <a href="https://twitter.com/yarasenger" class="twitter-follow-button" data-show-count="false">Follow @yarasenger</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
 === Lynn Langit
+
 Cloud architect who also codes, prefers AWS & GCP.  5.3K followers
+
+https://lynnlangit.com/[Lynn Langit's Blog]
+
+http://www.slideshare.net/lynnlangit[Lynn Langit's presentations]
 
 ++++
 <a href="https://twitter.com/lynnlangit" class="twitter-follow-button" data-show-count="false">Follow @lynnlangit</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -175,6 +202,8 @@ Cloud architect who also codes, prefers AWS & GCP.  5.3K followers
 
 PhD in compiler design, dynamic languages and optimization. Interested in programming languages, graphics, electronics, music and DIY. All opinions are my own. 4.7K followers
 
+https://pointersgonewild.com/[Maxime Chevalier's Blog] "Pointers Gone Wild A blog about compilers, programming and technology."
+
 ++++
 <a href="https://twitter.com/Love2Code" class="twitter-follow-button" data-show-count="false">Follow @Love2Code</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -183,6 +212,8 @@ PhD in compiler design, dynamic languages and optimization. Interested in progra
 
 Data Scientist, Java Champion and impossible projects expert. Founder of http://toolscloud.com  and partner at http://tailtarget.com 4.1K followers
 
+https://www.youtube.com/watch?v=9rO6qnBTpOI[Fabiane Nardon - Java Champion Brasil & impossible projects expert]
+
 ++++
 <a href="https://twitter.com/fabianenardon" class="twitter-follow-button" data-show-count="false">Follow @fabianenardon</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -190,6 +221,8 @@ Data Scientist, Java Champion and impossible projects expert. Founder of http://
 === Susan Potter
 
 Post-postmodern infrastructure engineer (Scala, Haskell, Nix) obsessed with finance, Charlotte Brontë, bad pop, and abstract algebra. 4.0K followers
+
+http://susanpotter.net/[Susan Petter's Home Page]
 
 ++++
 <a href="https://twitter.com/SusanPotter" class="twitter-follow-button" data-show-count="false">Follow @SusanPotter</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
