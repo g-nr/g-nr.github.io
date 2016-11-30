@@ -14,6 +14,8 @@ https://blackse.wordpress.com/[Dr Sure Black's Home Page]
 
 https://unbound.com/books/saving-bletchley-park[Saving Bletchley Park] "The story of the saving of the home of modern computing by Sue Black"
 
+http://techmums.co/[Tech Mums] "Empowering mums, their families and communities through technology"
+
 ++++
 <a href="https://twitter.com/Dr_Black" class="twitter-follow-button" data-show-count="false">Follow @Dr_Black</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
