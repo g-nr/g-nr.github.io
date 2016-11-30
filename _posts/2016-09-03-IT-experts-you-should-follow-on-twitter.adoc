@@ -4,6 +4,16 @@ Peter Lawrey
 
 When I read lists like this they always seem to be male dominated, so here is a list of experts I follow which isn't.
 
+=== Dr Sue Black OBE
+
+UK Govt Advisor @gdsteam | Tech Evangelist | Hon Prof Comp Sci @UCL | Author @SavingBletchley | Founder @techmumsHQ @BCSWomen | Agents: @NoelGay19 @TobyMundy 39K followers
+
+https://blackse.wordpress.com/[Dr Sure Black's Home Page]
+
+++++
+<a href="https://twitter.com/Dr_Black" class="twitter-follow-button" data-show-count="false">Follow @Dr_Black</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 === Sara Rey Chipps
 
 Just a girl, standing in front of a microprocessor, asking it to love her. I made @girldevelopit. I'm making @jewelbots. Pull requests welcomed. 30 K followers
