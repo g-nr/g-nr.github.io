@@ -328,6 +328,18 @@ https://medium.com/@amy[Amy Chen's Blog]
 <a href="https://twitter.com/TheAmyDance" class="twitter-follow-button" data-show-count="false">Follow @TheAmyDance</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
+=== Amira LAKHAL
+
+#Agile #Java #Scala #Developer at @Valtech_fr || one of @duchessfr leaders || running addict #WomenInTech #yesWeCode
+
+https://www.youtube.com/watch?v=EkXhPG1U6zk[IOT, timeseries and prediction with Android, Cassandra and Spark]
+
+http://nighthacking.com/amira-lakhal-iot-timeseries-and-prediction/[Nighhacker Interview]
+
+++++
+<a href="https://twitter.com/MiraLak" class="twitter-follow-button" data-show-count="false">Follow @MiraLak</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
 == 1+K followers
 
 === Claude Falguière
@@ -393,14 +405,6 @@ Freelance Developer, Open-source enthusiast, drama and dance passionate. @duches
 
 ++++
 <a href="https://twitter.com/karesti" class="twitter-follow-button" data-show-count="false">Follow @karesti</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-++++
-
-=== Amira LAKHAL
-
-#Agile #Java #Scala #Developer at @Valtech_fr || one of @duchessfr leaders || running addict #WomenInTech #yesWeCode
-
-++++
-<a href="https://twitter.com/MiraLak" class="twitter-follow-button" data-show-count="false">Follow @MiraLak</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
 === Monica Beckwith
