@@ -8,6 +8,8 @@ When I read lists like this they always seem to be male dominated, so here is a 
 
 Just a girl, standing in front of a microprocessor, asking it to love her. I made @girldevelopit. I'm making @jewelbots. Pull requests welcomed. 30 K followers
 
+http://sarajchipps.com/[Sara Rey Chipps' Blog]
+
 ++++
 <a href="https://twitter.com/SaraJChipps" class="twitter-follow-button" data-show-count="false">Follow @SaraJChipps</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -15,6 +17,10 @@ Just a girl, standing in front of a microprocessor, asking it to love her. I mad
 === Kelly Sommers
 
 4x Windows Azure MVP & Former 2x DataStax MVP for Apache Cassandra, Backend brat, big data, distributed diva. Relentless learner. I void warranties. 25.7K followers
+
+http://kellabyte.com/[Kellabyte's blog]
+
+https://www.youtube.com/user/kellabyte[Kelly Sommers YouTube Channel]
 
 ++++
 <a href="https://twitter.com/kellabyte" class="twitter-follow-button" data-show-count="false">Follow @kellabyte</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -24,6 +30,10 @@ Just a girl, standing in front of a microprocessor, asking it to love her. I mad
 
 Vermont Geekette, DDD, .NET (& EF) Mentor, Author, MS MVP, MS Regional Director, VTdotNET, Pluralsight, MSDN Mag. Talk to me about mentoring your dev team! 22.5K
 
+http://thedatafarm.com/blog/[The Data Farm] "Julie Lerman's World of Data"
+
+https://channel9.msdn.com/Events/Speakers/Julie-Lerman[Julie Lerman's Channel 9] "Julie Lerman is a Microsoft MVP, mentor and consultant who lives in the hills of Vermont. You can find Julie presenting on Entity Framework , Domain-Driven Design and other topics at user groups and conferences around the world"
+
 ++++
 <a href="https://twitter.com/julielerman" class="twitter-follow-button" data-show-count="false">Follow @julielerman</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -32,13 +42,33 @@ Vermont Geekette, DDD, .NET (& EF) Mentor, Author, MS MVP, MS Regional Director,
 
 I contribute to open source software for fun and as my job. 'Weird sun beam of awesome.' http://git.j3ss.co 21.7k followers
 
+https://blog.jessfraz.com/[Jessie Frazelle's Blog]
+
 ++++
 <a href="https://twitter.com/jessfraz" class="twitter-follow-button" data-show-count="false">Follow @jessfraz</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+++++
+
+=== jennmoneydollars
+
+my father's strongest most handsome daughter. i came to win, 19K followers
+
+http://jennmoney.biz/[Jenn Schiffer's Blog]
+
+https://youtu.be/wewAC5X_CZ8[No one expects the lady code troll] "@jennschiffer’s hilarious talk on how and why she satirizes the tech industry." - @xoxo
+
+https://society6.com/jennmoneydollars[Jenn Schiffer's Pixel Art]
+
+++++
+<a href="https://twitter.com/jennschiffer" class="twitter-follow-button" data-show-count="false">Follow @jennschiffer</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
 
 === Iris Classon
 
 The world’s happiest .NET developer & Microsoft C# MVP! More energy than a 5 year old, talks more than your grandmother, and does anything to make you smile! 18.7K followers
+
+http://irisclasson.com/[Iris Classon's Blog]
+
+http://stackoverflow.com/users/984153/iris-classon[Iris Classon's StackOverflow profile]
 
 ++++
 <a href="https://twitter.com/IrisClasson" class="twitter-follow-button" data-show-count="false">Follow @IrisClasson</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -48,6 +78,12 @@ The world’s happiest .NET developer & Microsoft C# MVP! More energy than a 5 y
 
 Functional developer, speaker, mother, crazy nut. Stripe. Learning and growing. All tweets are mine, licensed CC0. she/her. 16.6K followers
 
+http://blog.jessitron.com/[Jessitron's Blog]
+
+https://www.infoq.com/author/Jessica-Kerr[Jessica Ker's InfoQ videos]
+
+http://jessitron.com/[Jessitron's Home Page]
+
 ++++
 <a href="https://twitter.com/jessitron" class="twitter-follow-button" data-show-count="false">Follow @jessitron</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -55,6 +91,8 @@ Functional developer, speaker, mother, crazy nut. Stripe. Learning and growing. 
 === Jen Myers
 
 Technologist & writer. Curriculum director at @pluralsight. Advisor at @girldevelopit. Founder of @codecupcakeschi. Likes adventure, changing the world, otters. 15.7K followers
+
+http://jenmyers.net/[Jen Myer's Home Page]
 
 ++++
 <a href="https://twitter.com/antiheroine" class="twitter-follow-button" data-show-count="false">Follow @antiheroine</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -64,6 +102,10 @@ Technologist & writer. Curriculum director at @pluralsight. Advisor at @girldeve
 
 Funnier than you'd expect. Full-stack growth marketer. Building @helloretreaver. Scrum master. I have 5 minutes, come say hi. 13.2K followers
 
+http://lucyleiderman.com/[Lucy Leidrman's Home Page]
+
+https://plus.google.com/+LucyLeiderman[Lucy Leiderman's Google+ page]
+
 ++++
 <a href="https://twitter.com/lucyleid" class="twitter-follow-button" data-show-count="false">Follow @lucyleid</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ++++
@@ -71,6 +113,12 @@ Funnier than you'd expect. Full-stack growth marketer. Building @helloretreaver.
 === ☭ 🚀 🐶 Bodil  🐶 🚀☭
 
 The Hound of the SJWs. 11.1K followers
+
+https://bodil.lol/[Bodil's Home Page]
+
+https://www.youtube.com/watch?v=SPgPhKLE1wg[Bodil Stokke - The Miracle of Generators]
+
+https://www.youtube.com/watch?v=3_YzTL5yrFQ[Bodil Stokke - Reactive Game Development For The Discerning Hipster]
 
 ++++
 <a href="https://twitter.com/bodil" class="twitter-follow-button" data-show-count="false">Follow @bodil</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
