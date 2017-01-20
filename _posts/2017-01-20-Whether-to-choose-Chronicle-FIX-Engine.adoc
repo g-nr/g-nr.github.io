@@ -1,4 +1,4 @@
-= Choosing Chronicle FIX Engine
+= Whether to choose Chronicle FIX Engine
 Peter Lawrey
 :hp-tags: Chronicle FIX, FAQ
 
