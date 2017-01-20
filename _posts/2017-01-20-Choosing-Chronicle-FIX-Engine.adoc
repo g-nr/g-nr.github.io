@@ -21,6 +21,7 @@ Chronicle FIX supports;
 === Technologies used
 
 - Core Java 8.
+- Build on largely Open Source libraries, also from Chronicle.
 - YAML for configuration.
 - QuickFIX style XML Schema files.
 - Source on GitHub.
