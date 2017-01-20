@@ -6,6 +6,8 @@ Peter Lawrey
 
 The FIX Trading Community web site has posted a http://www.fixtradingcommunity.org/pg/structure/tech-specs/implementation-guide/choosing-a-fix-engine[list of common questions about FIX Engines]. This page brings together our answers for these questions.
 
+For more details on http://chronicle.software/products/chronicle-fix/[Chronicle FIX]
+
 === Capabilities/throughput
 
 Chronicle FIX supports;
