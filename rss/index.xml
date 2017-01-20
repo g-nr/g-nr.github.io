@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 20 Jan 2017 10:20:39 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Whether to choose Chronicle FIX Engine]]></title><description><![CDATA[<div class="sect1">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 20 Jan 2017 10:31:08 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Choosing Chronicle FIX Engine]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The FIX Trading Community web site has posted a <a href="http://www.fixtradingcommunity.org/pg/structure/tech-specs/implementation-guide/choosing-a-fix-engine">list of common questions about FIX Engines</a>. This page will bring together our answers for these questions.</p>
+<p>The FIX Trading Community web site has posted a <a href="http://www.fixtradingcommunity.org/pg/structure/tech-specs/implementation-guide/choosing-a-fix-engine">list of common questions about FIX Engines</a>. This page brings together our answers for these questions.</p>
 </div>
 <div class="sect2">
 <h3 id="_capabilities_throughput">Capabilities/throughput</h3>
@@ -29,6 +29,9 @@
 <li>
 <p>zero copy between the FIX message and your data model. An intermediate data model is provided for convenience but is not required.</p>
 </li>
+<li>
+<p>designed for ultra low GC systems (minor GC less than once a day)</p>
+</li>
 </ul>
 </div>
 </div>
@@ -43,7 +46,10 @@
 <p>YAML for configuration.</p>
 </li>
 <li>
-<p>QUickFIX style XML Schema files.</p>
+<p>QuickFIX style XML Schema files.</p>
+</li>
+<li>
+<p>Source on GitHub.</p>
 </li>
 </ul>
 </div>
@@ -223,7 +229,7 @@ A: We have a HTML5 GUI for monitoring sessions and querying logs of messages.</p
 </div>
 </div>
 </div>
-</div>]]></description><link>https://vanilla-java.github.io/2017/01/20/Whether-to-choose-Chronicle-FIX-Engine.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2017/01/20/Whether-to-choose-Chronicle-FIX-Engine.html</guid><category><![CDATA[Chronicle FIX]]></category><category><![CDATA[ FAQ]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Fri, 20 Jan 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[IT experts you should follow on twitter]]></title><description><![CDATA[<div id="preamble">
+</div>]]></description><link>https://vanilla-java.github.io/2017/01/20/Choosing-Chronicle-FIX-Engine.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2017/01/20/Choosing-Chronicle-FIX-Engine.html</guid><dc:creator><![CDATA[Peter Lawrey]]></dc:creator></item><item><title><![CDATA[IT experts you should follow on twitter]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>When I read lists like this they always seem to be male dominated, so here is a list of experts I follow which isn&#8217;t.</p>
