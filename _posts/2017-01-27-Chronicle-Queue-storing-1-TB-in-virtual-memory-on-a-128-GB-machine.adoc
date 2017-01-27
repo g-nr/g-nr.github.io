@@ -1,5 +1,6 @@
 = Chronicle Queue storing 1 TB in virtual memory on a 128 GB machine
 Peter Lawrey
+:hp-tags: Chronicle Queue, Off Heap
 
 If you use a standard JVM like Oracle JVM, or the OpenJDK, you might find that as the heap size grows the performance of your JVM can drop as GC pause time escalates.  This tends to be a problem around 32 GB of heap, but depends on the application at which point the size of you heap becomes a problem.
 
