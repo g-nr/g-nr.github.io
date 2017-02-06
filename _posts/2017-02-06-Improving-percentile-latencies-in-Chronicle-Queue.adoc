@@ -101,6 +101,8 @@ image::https://github.com/Vanilla-Java/vanilla-java.github.io/blob/master/images
 
 === Conclusion
 
-WHile minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency of the dramatically and increase the throughput you can safely sustain.
+It is possible to have low latency encrypted messages where the 99%ile is less than 10 microseconds, however we need to have a throughput of less than 700K messages per second (or use multiple threads / queues)
+
+While minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency of the dramatically and increase the throughput you can safely sustain.
 
 
