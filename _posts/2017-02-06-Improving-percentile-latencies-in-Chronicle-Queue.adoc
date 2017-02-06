@@ -20,13 +20,13 @@ We have also added encryption support for our enterprise solution. We test here 
 |====
 | Test | Throughput where 99%ile is 10 microseconds
 | March 2016, unencrypted +
-Centos 7 server | &nbsp;&nbsp;&nbsp;100K/s
+Centos 7 server | &nbsp;&nbsp;&nbsp;100 K/s
 | February 2017, encrypted +
-Centos 7 server | &nbsp;&nbsp;&nbsp;700K/s
+Centos 7 server | &nbsp;&nbsp;&nbsp;700 K/s
 | February 2017, unencrypted +
-Windows 10 Laptop | 1,200K/s
+Windows 10 Laptop | 1,200 K/s
 | February 2017, unencrypted +
-Centos 7 server | 2,400K/s
+Centos 7 server | 2,400 K/s
 |====
 
 What makes this improvement significant, is that we added correction for co-ordinated omission.
