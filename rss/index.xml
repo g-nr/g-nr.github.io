@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Mon, 06 Feb 2017 18:39:19 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving percentile latencies in Chronicle Queue]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Mon, 06 Feb 2017 18:41:45 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Improving percentile latencies in Chronicle Queue]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Compared to a year ago, we have significantly improved throughput at which we can achieve good the 99%ile (worst one in 100).
@@ -158,7 +158,10 @@ Not all default methods are bad, we still use them often without a problem. Only
 <div class="sect2">
 <h3 id="_conclusion">Conclusion</h3>
 <div class="paragraph">
-<p>WHile minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency of the dramatically and increase the throughput you can safely sustain.</p>
+<p>It is possible to have low latency encrypted messages where the 99%ile is less than 10 microseconds, however we need to have a throughput of less than 700K messages per second (or use multiple threads / queues)</p>
+</div>
+<div class="paragraph">
+<p>While minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency of the dramatically and increase the throughput you can safely sustain.</p>
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2017/02/06/Improving-percentile-latencies-in-Chronicle-Queue.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2017/02/06/Improving-percentile-latencies-in-Chronicle-Queue.html</guid><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Mon, 06 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Chronicle Queue storing 1 TB in virtual memory on a 128 GB machine]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
