@@ -1,5 +1,6 @@
 = Improving percentile latencies in Chronicle Queue
 Peter Lawrey
+:hp-tags: Chronicle Queue, Low Latency
 
 Compared to a year ago, we have significantly improved throughput at which we can achieve good the 99%ile (worst one in 100).  
 What tools and tricks did we use to achieve that?
