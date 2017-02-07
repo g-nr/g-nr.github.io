@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1486488296978"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1486488296978"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1486488296978"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1486490068322"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1486490068322"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1486490068322"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1486488296978"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1486490068322"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2017/02/07/Low-latency-encrypted-messages-with-Chronicle-Queue-Enterprise.html" />
     <meta name="referrer" content="origin" />
@@ -159,7 +159,7 @@ null
             <ul class="post-meta-list">
               <li class="post-meta-item">
                 <time datetime="2017-02-07" itemprop="datePublished">
-                  17 hours ago
+                  18 hours ago
                 </time>
               </li>
               <li class="post-meta-item">
@@ -199,10 +199,10 @@ null
 <div class="sect2">
 <h3 id="_why_use_salting">Why use Salting?</h3>
 <div class="paragraph">
-<p>Most messages start with the same bytes. Whether the message is XML, JSON, FIX, Java Serialization, the first few bytes are predictable.  The start of every encrypted message can end up the same. This make brute force cracking of the key easier because you know what you are looking.</p>
+<p>Most messages start with the same bytes. Whether the message is XML, JSON, FIX, Java Serialization, the first few bytes are predictable.  The start of every encrypted message can end up the same. This makes brute force cracking of the key easier because you know what you are looking for.</p>
 </div>
 <div class="paragraph">
-<p>To avoid this we add a 64 bit random number to the start of every message using SecureRandom.  This make brute force attack harder.</p>
+<p>To avoid this we add a 64 bit random number to the start of every message using SecureRandom, which make brute force attack harder.</p>
 </div>
 </div>
 <div class="sect2">
@@ -304,7 +304,7 @@ null
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1486488296978"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1486490068322"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
