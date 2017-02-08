@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1486411999857"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1486411999857"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1486411999857"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1486517340298"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1486517340298"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1486517340298"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1486411999857"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1486517340298"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2017/02/06/Improving-percentile-latencies-in-Chronicle-Queue.html" />
     <meta name="referrer" content="origin" />
@@ -78,14 +78,14 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Improving percentile latencies in Chronicle Queue" />
-    <meta property="og:description" content="Compared to a year ago, we have significantly improved throughput at which we can achieve good the 99%ile (worst one in 100). What tools and tricks did we use to achieve that? What are we testing? Chronicle Queue appends messages to a file while another thread or process can" />
+    <meta property="og:description" content="Compared to a year ago, we have significantly improved the throughput at which we can achieve the 99%ile (worst one in 100). What tools and tricks did we use to achieve that? What are we testing? Chronicle Queue appends messages to a file while another thread or process can" />
     <meta property="og:url" content="https://vanilla-java.github.io/2017/02/06/Improving-percentile-latencies-in-Chronicle-Queue.html" />
     <meta property="article:tag" content="Chronicle Queue" />
     <meta property="article:tag" content=" Low Latency" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Improving percentile latencies in Chronicle Queue" />
-    <meta name="twitter:description" content="Compared to a year ago, we have significantly improved throughput at which we can achieve good the 99%ile (worst one in 100). What tools and tricks did we use to achieve that? What are we testing? Chronicle Queue appends messages to a file while another thread or process can" />
+    <meta name="twitter:description" content="Compared to a year ago, we have significantly improved the throughput at which we can achieve the 99%ile (worst one in 100). What tools and tricks did we use to achieve that? What are we testing? Chronicle Queue appends messages to a file while another thread or process can" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2017/02/06/Improving-percentile-latencies-in-Chronicle-Queue.html" />
     
     <script type="application/ld+json">
@@ -162,7 +162,7 @@ null
             <ul class="post-meta-list">
               <li class="post-meta-item">
                 <time datetime="2017-02-06" itemprop="datePublished">
-                  20 hours ago
+                  3 days ago
                 </time>
               </li>
                 <li class="post-meta-item">
@@ -195,7 +195,7 @@ null
             <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Compared to a year ago, we have significantly improved throughput at which we can achieve good the 99%ile (worst one in 100).
+<p>Compared to a year ago, we have significantly improved the throughput at which we can achieve the 99%ile (worst one in 100).
 What tools and tricks did we use to achieve that?</p>
 </div>
 </div>
@@ -209,7 +209,7 @@ What tools and tricks did we use to achieve that?</p>
 <p>For our clients with higher expectations for latency, they are looking to have the whole service which is under 100 micro-seconds 99% of the time.</p>
 </div>
 <div class="paragraph">
-<p>For our test, we have chosen to find the throughput you can achieve and still be under 10 micro-seconds 99% of the time. The test write 20 million 40 bytes messages which contain the time the message should have been sent to avoid co-ordinated omission, and read by another thread. The difference in time is recorded.</p>
+<p>For our test, we have chosen to find the throughput you can achieve and still be under 10 micro-seconds 99% of the time. The test writes 20 million 40 bytes messages, which contains the time the message should have been sent to avoid co-ordinated omission, and read by another thread. The difference in time is recorded.</p>
 </div>
 <div class="paragraph">
 <p>We have also added encryption support for our enterprise solution. We test here a salted AES 128-bit encryption.</p>
@@ -256,7 +256,7 @@ Centos 7 server</p></td>
 <div class="sect2">
 <h3 id="_sampling_tool">Sampling tool</h3>
 <div class="paragraph">
-<p>WHile profilers are very useful, one thing they struggle with is helping you find the cause of latency outliers.  This is because profilers show you averages and unless your outliers are really large, they don&#8217;t show up as significant.</p>
+<p>While profilers are very useful, one thing they struggle with is helping you find the cause of latency outliers.  This is because profilers show you averages, and unless your outliers are really large, they don&#8217;t show up as significant.</p>
 </div>
 <div class="paragraph">
 <p>To address this we added a class which acts as a basic stack sampler.</p>
@@ -311,13 +311,13 @@ public class StackSampler {
 </div>
 </div>
 <div class="paragraph">
-<p>We can accumulate the results in a <code>Map&lt;String, Integer&gt;</code> which is nothing special, except we can filter only those which contributed to an outlier e.g. a delay of over 10 microseconds.</p>
+<p>We can accumulate the results in a <code>Map&lt;String, Integer&gt;</code> which is nothing special. Except we can filter only those which contributed to an outlier e.g. a delay of over 10 microseconds.</p>
 </div>
 <div class="paragraph">
-<p>The results are pretty crude, however we found issues in code the profile didn&#8217;t show.  The issue which came up again and again was <code>default</code> methods. As of Java 8 update 121, they just don&#8217;t seem to be optimised as well as methods in classes. We found that copying the default method to selected classes and only for the selected methods in this sampler, we saw a reduction in outliers which allowed us to increase the throughput further.</p>
+<p>The results are pretty crude, however we found issues in code that the profile didn&#8217;t show.  The issue which came up again and again was <code>default</code> methods. As of Java 8 update 121, they just don&#8217;t seem to be optimised as well as methods in classes. We found that copying the default method to selected classes and only for the selected methods in this sampler, we saw a reduction in outliers which allowed us to increase the throughput further.</p>
 </div>
 <div class="paragraph">
-<p>There was other optimisations more specific to our problem, but using class methods instead of default methods is a trick we have used before.</p>
+<p>There were other optimisations more specific to our problem, but using class methods instead of default methods is a trick we have used before.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -335,7 +335,7 @@ Not all default methods are bad, we still use them often without a problem. Only
 <div class="sect2">
 <h3 id="_charting_the_99_ile_latency">Charting the 99%ile latency.</h3>
 <div class="paragraph">
-<p>For the unencrypted messages we achieve reasonable (less than 10 micro-seconds) latencies in the 99.9%ile up to 1.4 million messages per second and in the 99%ile up to 2.3 million per second</p>
+<p>For the unencrypted messages we achieve reasonable (less than 10 micro-seconds) latencies in the 99.9%ile up to 1.4 million messages per second and in the 99%ile up to 2.3 million per second.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -346,10 +346,10 @@ Not all default methods are bad, we still use them often without a problem. Only
 <div class="sect2">
 <h3 id="_conclusion">Conclusion</h3>
 <div class="paragraph">
-<p>It is possible to have low latency encrypted messages where the 99%ile is less than 10 microseconds, however we need to have a throughput of less than 700K messages per second (or use multiple threads / queues)</p>
+<p>It is possible to have low latency encrypted messages where the 99%ile is less than 10 microseconds, however we need to have a throughput of less than 700K messages per second (or use multiple threads / queues).</p>
 </div>
 <div class="paragraph">
-<p>While minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency of the dramatically and increase the throughput you can safely sustain.</p>
+<p>While minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency dramatically and increase the throughput you can safely sustain.</p>
 </div>
 </div>
           </div>
@@ -431,7 +431,7 @@ Not all default methods are bad, we still use them often without a problem. Only
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1486411999857"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1486517340298"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
