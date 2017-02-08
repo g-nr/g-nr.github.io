@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Tue, 07 Feb 2017 18:05:15 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Low latency encrypted messages with Chronicle Queue Enterprise]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Wed, 08 Feb 2017 01:29:00 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Low latency encrypted messages with Chronicle Queue Enterprise]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Chronicle Queue Enterprise supports replication in a cluser and system monitoring. We recently added encrypted messages and the inital results are encouraging.</p>
@@ -42,7 +42,7 @@
 </div>]]></description><link>https://vanilla-java.github.io/2017/02/07/Low-latency-encrypted-messages-with-Chronicle-Queue-Enterprise.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2017/02/07/Low-latency-encrypted-messages-with-Chronicle-Queue-Enterprise.html</guid><category><![CDATA[Chronicle Queue]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Tue, 07 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Improving percentile latencies in Chronicle Queue]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Compared to a year ago, we have significantly improved throughput at which we can achieve good the 99%ile (worst one in 100).
+<p>Compared to a year ago, we have significantly improved the throughput at which we can achieve the 99%ile (worst one in 100).
 What tools and tricks did we use to achieve that?</p>
 </div>
 </div>
@@ -56,7 +56,7 @@ What tools and tricks did we use to achieve that?</p>
 <p>For our clients with higher expectations for latency, they are looking to have the whole service which is under 100 micro-seconds 99% of the time.</p>
 </div>
 <div class="paragraph">
-<p>For our test, we have chosen to find the throughput you can achieve and still be under 10 micro-seconds 99% of the time. The test write 20 million 40 bytes messages which contain the time the message should have been sent to avoid co-ordinated omission, and read by another thread. The difference in time is recorded.</p>
+<p>For our test, we have chosen to find the throughput you can achieve and still be under 10 micro-seconds 99% of the time. The test writes 20 million 40 bytes messages, which contains the time the message should have been sent to avoid co-ordinated omission, and read by another thread. The difference in time is recorded.</p>
 </div>
 <div class="paragraph">
 <p>We have also added encryption support for our enterprise solution. We test here a salted AES 128-bit encryption.</p>
@@ -103,7 +103,7 @@ Centos 7 server</p></td>
 <div class="sect2">
 <h3 id="_sampling_tool">Sampling tool</h3>
 <div class="paragraph">
-<p>WHile profilers are very useful, one thing they struggle with is helping you find the cause of latency outliers.  This is because profilers show you averages and unless your outliers are really large, they don&#8217;t show up as significant.</p>
+<p>While profilers are very useful, one thing they struggle with is helping you find the cause of latency outliers.  This is because profilers show you averages, and unless your outliers are really large, they don&#8217;t show up as significant.</p>
 </div>
 <div class="paragraph">
 <p>To address this we added a class which acts as a basic stack sampler.</p>
@@ -158,13 +158,13 @@ public class StackSampler {
 </div>
 </div>
 <div class="paragraph">
-<p>We can accumulate the results in a <code>Map&lt;String, Integer&gt;</code> which is nothing special, except we can filter only those which contributed to an outlier e.g. a delay of over 10 microseconds.</p>
+<p>We can accumulate the results in a <code>Map&lt;String, Integer&gt;</code> which is nothing special. Except we can filter only those which contributed to an outlier e.g. a delay of over 10 microseconds.</p>
 </div>
 <div class="paragraph">
-<p>The results are pretty crude, however we found issues in code the profile didn&#8217;t show.  The issue which came up again and again was <code>default</code> methods. As of Java 8 update 121, they just don&#8217;t seem to be optimised as well as methods in classes. We found that copying the default method to selected classes and only for the selected methods in this sampler, we saw a reduction in outliers which allowed us to increase the throughput further.</p>
+<p>The results are pretty crude, however we found issues in code that the profile didn&#8217;t show.  The issue which came up again and again was <code>default</code> methods. As of Java 8 update 121, they just don&#8217;t seem to be optimised as well as methods in classes. We found that copying the default method to selected classes and only for the selected methods in this sampler, we saw a reduction in outliers which allowed us to increase the throughput further.</p>
 </div>
 <div class="paragraph">
-<p>There was other optimisations more specific to our problem, but using class methods instead of default methods is a trick we have used before.</p>
+<p>There were other optimisations more specific to our problem, but using class methods instead of default methods is a trick we have used before.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -182,7 +182,7 @@ Not all default methods are bad, we still use them often without a problem. Only
 <div class="sect2">
 <h3 id="_charting_the_99_ile_latency">Charting the 99%ile latency.</h3>
 <div class="paragraph">
-<p>For the unencrypted messages we achieve reasonable (less than 10 micro-seconds) latencies in the 99.9%ile up to 1.4 million messages per second and in the 99%ile up to 2.3 million per second</p>
+<p>For the unencrypted messages we achieve reasonable (less than 10 micro-seconds) latencies in the 99.9%ile up to 1.4 million messages per second and in the 99%ile up to 2.3 million per second.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -193,10 +193,10 @@ Not all default methods are bad, we still use them often without a problem. Only
 <div class="sect2">
 <h3 id="_conclusion">Conclusion</h3>
 <div class="paragraph">
-<p>It is possible to have low latency encrypted messages where the 99%ile is less than 10 microseconds, however we need to have a throughput of less than 700K messages per second (or use multiple threads / queues)</p>
+<p>It is possible to have low latency encrypted messages where the 99%ile is less than 10 microseconds, however we need to have a throughput of less than 700K messages per second (or use multiple threads / queues).</p>
 </div>
 <div class="paragraph">
-<p>While minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency of the dramatically and increase the throughput you can safely sustain.</p>
+<p>While minimising the latency of outliers is tricky, reducing the 99%ile latency can improve the consistency dramatically and increase the throughput you can safely sustain.</p>
 </div>
 </div>]]></description><link>https://vanilla-java.github.io/2017/02/06/Improving-percentile-latencies-in-Chronicle-Queue.html</link><guid isPermaLink="true">https://vanilla-java.github.io/2017/02/06/Improving-percentile-latencies-in-Chronicle-Queue.html</guid><category><![CDATA[Chronicle Queue]]></category><category><![CDATA[ Low Latency]]></category><dc:creator><![CDATA[Peter Lawrey]]></dc:creator><pubDate>Mon, 06 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Chronicle Queue storing 1 TB in virtual memory on a 128 GB machine]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
