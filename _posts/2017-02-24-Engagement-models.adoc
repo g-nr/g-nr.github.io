@@ -1,0 +1,74 @@
+= Engagement models
+Peter Lawrey
+:hp-tags: Draft
+
+A question which often comes up is; how do we engage with you as a company?  
+While our aim is to have an on going relationship and a recurring revenue, 
+it's important we have the right start to be able to get to that point.  
+We have four main ways a company can engage with us
+
+=== Consulting
+
+This is a good way to start if the company likes what we do but they are not sure how we can help specifically.
+The best thing about this approach is we don't do in with a solution looking for a problem to solve, instead we look
+at the problems and pain point you have and try to find the best solutions.  Often clients want re-assurance the choices they
+have already made and the right ones.  Even when there is a need for change, the key thing is to find the minimum, targeted changes
+which will yield the best result for the lowest risk.
+
+Often we are brought in as performance experts. The real issue is usually technical debt. The reason they haven't achieve the 
+performance they need to scale to, is also the reason they are finding development of new features and fixes is slow is the same, technical debt.
+Technical debt means making short term decisions which cause a problem in the long run.  This is a preferly reasonable way to manage a project
+in the same way starting a business by taking out a loan is reasonable.  At some point however paying off this debt becomes a burden to the busines or project
+and you need to find a way to restructure it.
+
+This is where finding some simple, elegant and targetted solution to paying off technical debt and allow the project to move forward at a pace, fix the performance issues, and improve team satifaction.
+
+As a business consulting is a good way to start, however the aim is use it to help determine what the nest steps are.
+
+Typically consulting is one to two weeks. More than half the time one of our products help, but is many cases we can fix the issue with small changes to what the clients has already.
+
+=== Training
+
+Training involves delivering, preprepared content to developers. Unlike consulting where you want to avoid assuming what will help the client, with training you decide in advance what to cover and assume it will be useful.
+
+For us, the key thing to get from our training is to think differently about Java and software development in general. We encourage solving problems head on, with a simple, elegant solution.  Adding work arounds, or more layers of abstraction should be avoided as these usualy add complexity.
+
+For me, and the participants, training is the most fun. We get to discuss many techincal aspects you don't normally get to play with.
+
+Typically training is 4 - 5 days long.
+
+=== Proof of Concept
+
+When the client has a solution in mind that they would like us to deliver, we might do a Proof of Concept to demonstrate we can deliver the solution.  
+This should be a paid engagement, even if the amount paid is less than it would cost us to demonstrate, 
+we know that the people we are discussing this with can get a budget approved and a senior manager has had to sign it off.
+
+Key points about of PoC
+
+- it should demonstrate we are capable of delivering, not demonstrate we have done all the work.
+- it is leading to us delivering the solution.
+- there should be some payment.
+
+If the aim is for us to help the clients team to deliver the solution we should do a workshop.
+
+A Proof of Concept with an Investment typically takes a one to two months.
+
+=== Workshop
+
+In most cases, our clients are looking to use our libraries to build a custom solution themselves. The best way to start this is for us to workshop a skeleton solution.  This is very hands on for the team as they need to be able to deleiver the ultimate solution.
+
+Key points about a workshop
+
+- is should demostrate that the client's development team can deliver the solution confidently.
+- provide a skeleton of which 50%-90% will be used in production.
+- it is leading the client delivering the solution.
+
+If the aim is for us to deleiver the solution, we should start with a PoC.
+
+A Workshop takes one to two weeks depending on the complexity of the skeleton solution.
+
+=== Ongoing support
+
+Our support provides updates, priority response to issues, as well as ongoing consulting.
+Clients have said that their development is more effective if they have support as we can help them with both our products and using Java in general.
+
