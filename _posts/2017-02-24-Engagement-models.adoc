@@ -11,7 +11,8 @@ So, with that in mind, I thought it would be worth sharing with you the typical 
 
 This is a good way to start if the company likes what we do but they are not sure how we can help specifically.
 We look at the problems and pain point you have and try to find the best solutions. 
-If the solution happens to be one of our products, great, but often we can solve the pain point with a small amount of targeted development.
+If the solution happens to involve one of our products, great, but often we can solve the pain point with a small amount of targeted development.
+Even if one of our product would help, many are open source and we don't make money from them directly so we have no particular reason to encourage you to use them.
 Often clients want re-assurance that the choices they
 have already made are the right ones.  Even when there is a need for change, the key thing is to find the minimum, targeted changes
 which will yield the best result for the lowest risk.
