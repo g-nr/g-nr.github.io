@@ -1,6 +1,5 @@
 = Engagement models
 Peter Lawrey
-:hp-tags: Draft
 
 A question which often comes up is; how do we engage with you as a company?  
 While our aim is to have an ongoing relationship and a recurring revenue, 
@@ -28,6 +27,8 @@ As a business, consulting is a good way to start. However, the aim is use it to 
 
 Typically, consulting is 1 - 2 weeks, and more than half the time, one of our products help. Although, in many cases we can fix the issue with small changes to what the clients has already.
 
+http://chronicle.software/consultancy/[More information on Consultancy]
+
 === Training
 
 Training involves delivering preprepared content to developers. Unlike consulting, where you want to avoid assuming what will help the client, with training you decide in advance what to cover and assume it will be useful.
@@ -37,6 +38,8 @@ For us, the key thing to get from our training is to think differently about Jav
 For me and the participants, training is the most fun. We get to discuss many techincal aspects you don't normally get to play with.
 
 Typically, training is 4 - 5 days long.
+
+http://chronicle.software/corporate-java-training/[More information on Training]
 
 === Proof of Concept
 
@@ -72,4 +75,6 @@ A Workshop takes 1 - 2 weeks depending on the complexity of the skeleton solutio
 
 Our support provides updates, priority response to issues, as well as ongoing consulting.
 Clients have said that their development is more effective if they have support as we can help them with both our products and using Java in general.
+
+http://chronicle.software/support/[More information on Annual Support]
 
