@@ -10,8 +10,9 @@ So, with that in mind, I thought it would be worth sharing with you the typical 
 === Consulting
 
 This is a good way to start if the company likes what we do but they are not sure how we can help specifically.
-The best thing about this approach is that we don't do in with a solution looking for a problem to solve, instead we look
-at the problems and pain point you have and try to find the best solutions.  Often clients want re-assurance that the choices they
+We look at the problems and pain point you have and try to find the best solutions. 
+If the solution happens to be one of our products, great, but often we can solve the pain point with a small amount of targeted development.
+Often clients want re-assurance that the choices they
 have already made are the right ones.  Even when there is a need for change, the key thing is to find the minimum, targeted changes
 which will yield the best result for the lowest risk.
 
