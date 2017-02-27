@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Mon, 27 Feb 2017 08:17:24 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Engagement models]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Mon, 27 Feb 2017 08:19:39 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Engagement models]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>A question which often comes up is; how do we engage with you as a company?
@@ -12,7 +12,7 @@ So, with that in mind, I thought it would be worth sharing with you the typical 
 <h3 id="_consulting">Consulting</h3>
 <div class="paragraph">
 <p>This is a good way to start if the company likes what we do but they are not sure how we can help specifically.
-We look at the problems and pain point you have and try to find the best solutions.
+We look at the problems and pain points and try to find the best solutions.
 If the solution happens to involve one of our products, great, but often we can solve the pain point with a small amount of targeted development.
 Even if one of our products would help, many are open source and we don&#8217;t make money from them directly so we have no particular reason to encourage our clients to use them.
 Often clients want re-assurance that the choices they
@@ -32,11 +32,14 @@ in the same way starting a business by taking out a loan is reasonable.  At some
 <p>As a business, consulting is a good way to start. However, the aim is used it to help determine what the next steps are.</p>
 </div>
 <div class="paragraph">
-<p>Typically, consulting is 1 - 2 weeks, and more than half the time, one of our products help. Although, in many cases we can fix the issue with small changes.</p>
+<p>Typically, consulting is 1 - 2 weeks, and more than half the time, one of our products helps. Although, in many cases we can fix the issue with small changes.</p>
 </div>
 <div class="paragraph">
 <p><a href="http://chronicle.software/consultancy/">More information on Consultancy</a></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_training">Training</h3>
 <div class="paragraph">
 <p>Training involves delivering preprepared content to developers. Unlike consulting, where you want to avoid assuming what will help the client, with training you decide in advance what to cover and assume it will be useful.</p>
 </div>
