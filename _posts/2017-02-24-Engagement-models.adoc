@@ -11,25 +11,23 @@ So, with that in mind, I thought it would be worth sharing with you the typical 
 This is a good way to start if the company likes what we do but they are not sure how we can help specifically.
 We look at the problems and pain point you have and try to find the best solutions. 
 If the solution happens to involve one of our products, great, but often we can solve the pain point with a small amount of targeted development.
-Even if one of our product would help, many are open source and we don't make money from them directly so we have no particular reason to encourage you to use them.
+Even if one of our products would help, many are open source and we don't make money from them directly so we have no particular reason to encourage you to use them.
 Often clients want re-assurance that the choices they
 have already made are the right ones.  Even when there is a need for change, the key thing is to find the minimum, targeted changes
 which will yield the best result for the lowest risk.
 
 Often we are brought in as performance experts. The real issue is usually technical debt. The reason they haven't achieved the 
 performance they need to scale to, is also the reason they are finding that development of new features and fixes is slow is the same- technical debt.
-Technical debt means making short term decisions which cause a problem in the long run.  This is a preferly reasonable way to manage a project
+Technical debt means making short term decisions which cause a problem in the long run.  This is a prefered reasonable way to manage a project
 in the same way starting a business by taking out a loan is reasonable.  At some point however paying off this debt becomes a burden to the business or project, and you need to find a way to restructure it.
 
-This is where finding a simple, elegant and targetted solution to paying off technical debt is worth seeking out. It allows the project to move forward at a pace, fix the performance issues, and improve team satifaction.
+This is where finding a simple, elegant and targetted solution to paying off technical debt is worth seeking out. It allows the project to move forward at a pace, fix the performance issues, and improve team satisfaction.
 
 As a business, consulting is a good way to start. However, the aim is use it to help determine what the next steps are.
 
 Typically, consulting is 1 - 2 weeks, and more than half the time, one of our products help. Although, in many cases we can fix the issue with small changes to what the clients has already.
 
 http://chronicle.software/consultancy/[More information on Consultancy]
-
-=== Training
 
 Training involves delivering preprepared content to developers. Unlike consulting, where you want to avoid assuming what will help the client, with training you decide in advance what to cover and assume it will be useful.
 
