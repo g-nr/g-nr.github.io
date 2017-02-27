@@ -18,7 +18,7 @@ which will yield the best result for the lowest risk.
 
 Often we are brought in as performance experts. The real issue is usually technical debt. The reason they haven't achieved the 
 performance they need to scale to, is also the reason they are finding that development of new features and fixes is slow is the same- technical debt.
-Technical debt means making short term decisions which cause a problem in the long run.  This is a prefered reasonable way to manage a project
+Technical debt means making short term decisions which cause a problem in the long run.  This is a perfectly reasonable way to manage a project
 in the same way starting a business by taking out a loan is reasonable.  At some point however paying off this debt becomes a burden to the business or project, and you need to find a way to restructure it.
 
 This is where finding a simple, elegant and targetted solution to paying off technical debt is worth seeking out. It allows the project to move forward at a pace, fix the performance issues, and improve team satisfaction.
