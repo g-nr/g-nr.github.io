@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sun, 12 Mar 2017 13:55:40 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Object Pools revisited]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Sun, 12 Mar 2017 19:48:56 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Object Pools revisited]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Object pools where popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be?</p>
@@ -30,6 +30,9 @@
 </div>
 <div class="paragraph">
 <p>"new String hibyte=0" copies the data to a byte[] and uses a deprecated constructor to set the hi byte to 0 create the String.</p>
+</div>
+<div class="paragraph">
+<p>The Source code is available here <a href="https://github.com/OpenHFT/Chronicle-Wire/blob/master/microbenchmarks/src/main/java/net/openhft/chronicle/wire/benchmarks/ObjectPoolMain.java">ObjectPoolMain.java</a></p>
 </div>
 </div>
 <div class="sect2">
