@@ -22,6 +22,8 @@ For different lengths of bytes (1, 2, 4, 8, 16, 32) we use JMH to benchmark how 
 
 "new String hibyte=0" copies the data to a byte[] and uses a deprecated constructor to set the hi byte to 0 create the String.
 
+The Source code is available here https://github.com/OpenHFT/Chronicle-Wire/blob/master/microbenchmarks/src/main/java/net/openhft/chronicle/wire/benchmarks/ObjectPoolMain.java[ObjectPoolMain.java]
+
 === The results
 
 The average time to use the Object Pool was around 9 nano-seconds for short strings of up to 8 characters. About half the saving comes from avoiding the need to copy the data to a byte[] first. Also avoiding the use of even a trivial Charset character encoding also saved a significant amount.
