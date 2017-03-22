@@ -2,7 +2,7 @@
 Peter Lawrey
 :hp-tags: Low Latency
 
-Object pools where popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be?
+Object pools were popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be?
 
 === Overview
 
@@ -32,7 +32,7 @@ image::bytesToString.png[]
 
 === Why use an Object Pool at all?
 
-In this casse the main reason is to avoid creating objects. If the String can be reused, it can dramatically reduce the garbage produced. Most of the time, only new Strings take space, rather than every String your use and this can be a 90% reduction in memory use and garbage production.
+In this case the main reason is to avoid creating objects. If the String can be reused, it can dramatically reduce the garbage produced. Most of the time, only new Strings take space, rather than every String your use and this can be a 90% reduction in memory use and garbage production.
 
 === Conclusion
 
