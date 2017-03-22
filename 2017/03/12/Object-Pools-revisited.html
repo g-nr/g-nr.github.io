@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1489348136851"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1489348136851"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1489348136851"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1490204329586"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1490204329586"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1490204329586"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1489348136851"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1490204329586"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2017/03/12/Object-Pools-revisited.html" />
     <meta name="referrer" content="origin" />
@@ -78,13 +78,13 @@
     <meta property="og:site_name" content="Vanilla Java" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Object Pools revisited" />
-    <meta property="og:description" content="Object pools where popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be? Overview Up to Java 5.0 using object pools could significantly improve performance.  However from" />
+    <meta property="og:description" content="Object pools were popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be? Overview Up to Java 5.0 using object pools could significantly improve performance.  However from" />
     <meta property="og:url" content="https://vanilla-java.github.io/2017/03/12/Object-Pools-revisited.html" />
     <meta property="article:tag" content="Low Latency" />
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Object Pools revisited" />
-    <meta name="twitter:description" content="Object pools where popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be? Overview Up to Java 5.0 using object pools could significantly improve performance.  However from" />
+    <meta name="twitter:description" content="Object pools were popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be? Overview Up to Java 5.0 using object pools could significantly improve performance.  However from" />
     <meta name="twitter:url" content="https://vanilla-java.github.io/2017/03/12/Object-Pools-revisited.html" />
     
     <script type="application/ld+json">
@@ -161,7 +161,7 @@ null
             <ul class="post-meta-list">
               <li class="post-meta-item">
                 <time datetime="2017-03-12" itemprop="datePublished">
-                  20 hours ago
+                  11 days ago
                 </time>
               </li>
                 <li class="post-meta-item">
@@ -194,7 +194,7 @@ null
             <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Object pools where popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be?</p>
+<p>Object pools were popular before Java 5.0 however more efficient allocation made most of these pools a needless complication. Can a Object Pool still make sense and how fast do they need to be?</p>
 </div>
 </div>
 </div>
@@ -242,7 +242,7 @@ null
 <div class="sect2">
 <h3 id="_why_use_an_object_pool_at_all">Why use an Object Pool at all?</h3>
 <div class="paragraph">
-<p>In this casse the main reason is to avoid creating objects. If the String can be reused, it can dramatically reduce the garbage produced. Most of the time, only new Strings take space, rather than every String your use and this can be a 90% reduction in memory use and garbage production.</p>
+<p>In this case the main reason is to avoid creating objects. If the String can be reused, it can dramatically reduce the garbage produced. Most of the time, only new Strings take space, rather than every String your use and this can be a 90% reduction in memory use and garbage production.</p>
 </div>
 </div>
 <div class="sect2">
@@ -342,7 +342,7 @@ The library used only supports ISO-8859-1 and UTF-8, so if you need another char
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1489348136851"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1490204329586"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
