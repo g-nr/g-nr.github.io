@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Thu, 13 Apr 2017 00:27:32 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[StringBuffer, and how hard it is to get rid of legacy code]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Vanilla Java]]></title><description><![CDATA[Vanilla Java]]></description><link>https://vanilla-java.github.io</link><image><url>https://raw.githubusercontent.com/Vanilla-Java/vanilla-java.github.io/master/images/French-Vanilla-Java.jpg</url><title>Vanilla Java</title><link>https://vanilla-java.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Thu, 13 Apr 2017 00:28:25 GMT</lastBuildDate><atom:link href="https://vanilla-java.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[StringBuffer, and how hard it is to get rid of legacy code]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>In 2006, Java 5.0 was released with StringBuilder, a more light weight and sane version of StringBuffer. The <a href="https://docs.oracle.com/javase/1.5.0/docs/api/java/lang/StringBuffer.html">Javadoc for Java 5.0 for StringBuffer</a> notes</p>
@@ -74,7 +74,7 @@
 <div class="sect2">
 <h3 id="_so_there_is_still_some_legacy_code">So there is still some legacy code</h3>
 <div class="paragraph">
-<p>What about a new feature like lambdas and Streams.  They were written entirely in the last ten years and they use some external libraries such as Objectwebs ASM, but these guy really know the internals of the JVM and is designed to be as light weight as possible.</p>
+<p>What about a new feature like lambdas and Streams.  They were written entirely in the last ten years and they use some external libraries such as Objectwebs ASM, but these developers really know the internals of the JVM and is designed to be as light weight as possible.</p>
 </div>
 <div class="listingblock">
 <div class="title">How many StringBuffers does this create?</div>
@@ -89,7 +89,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>So running jmap again, what do we see?</p>
+<p>So running <code>jmap</code> again, what do we see?</p>
 </div>
 <div class="listingblock">
 <div class="content">
