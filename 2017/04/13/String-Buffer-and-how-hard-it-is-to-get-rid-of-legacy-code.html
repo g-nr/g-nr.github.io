@@ -38,9 +38,9 @@
     <link href="//fonts.googleapis.com/" rel="dns-prefetch">
     <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1492043252447"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1492043252447"/>
-    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1492043252447"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/main.min.css?v=1492043305346"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/custom.css?v=1492043305346"/>
+    <link rel="stylesheet" href="//vanilla-java.github.io/themes/ghostium/assets/css/asciidoctor-foundation.css?v=1492043305346"/>
 
 
 
@@ -70,7 +70,7 @@
       GHOSTIUM.enablePjax = typeof enable_pjax !== 'undefined' ? enable_pjax : true;
     </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1492043252447"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/head-scripts.min.js?v=1492043305346"></script>
 
     <link rel="canonical" href="https://vanilla-java.github.io/2017/04/13/String-Buffer-and-how-hard-it-is-to-get-rid-of-legacy-code.html" />
     <meta name="referrer" content="origin" />
@@ -267,7 +267,7 @@ null
 <div class="sect2">
 <h3 id="_so_there_is_still_some_legacy_code">So there is still some legacy code</h3>
 <div class="paragraph">
-<p>What about a new feature like lambdas and Streams.  They were written entirely in the last ten years and they use some external libraries such as Objectwebs ASM, but these guy really know the internals of the JVM and is designed to be as light weight as possible.</p>
+<p>What about a new feature like lambdas and Streams.  They were written entirely in the last ten years and they use some external libraries such as Objectwebs ASM, but these developers really know the internals of the JVM and is designed to be as light weight as possible.</p>
 </div>
 <div class="listingblock">
 <div class="title">How many StringBuffers does this create?</div>
@@ -282,7 +282,7 @@ null
 </div>
 </div>
 <div class="paragraph">
-<p>So running jmap again, what do we see?</p>
+<p>So running <code>jmap</code> again, what do we see?</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -391,7 +391,7 @@ null
         hljs.initHighlightingOnLoad();
       </script>
 
-    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1492043252447"></script>
+    <script src="//vanilla-java.github.io/themes/ghostium/assets/js/foot-scripts.min.js?v=1492043305346"></script>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
