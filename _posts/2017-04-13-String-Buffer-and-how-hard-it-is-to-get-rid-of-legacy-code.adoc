@@ -61,7 +61,7 @@ The `129` is for the number of instances produced on Java 8 update 121.  This is
 
 === So there is still some legacy code
 
-What about a new feature like lambdas and Streams.  They were written entirely in the last ten years and they use some external libraries such as Objectwebs ASM, but these guy really know the internals of the JVM and is designed to be as light weight as possible.
+What about a new feature like lambdas and Streams.  They were written entirely in the last ten years and they use some external libraries such as Objectwebs ASM, but these developers really know the internals of the JVM and is designed to be as light weight as possible.
 
 .How many StringBuffers does this create?
 ----
@@ -74,7 +74,7 @@ public class Main {
 }
 ----
 
-So running jmap again, what do we see?
+So running `jmap` again, what do we see?
 
 [source, bash]
 ----
